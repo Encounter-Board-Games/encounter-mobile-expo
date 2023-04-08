@@ -5,198 +5,201 @@ import { FontAwesome } from "@expo/vector-icons";
 // padding: 13px;
 const Button_ = styled.TouchableOpacity`
   justify-content: center;
-  height: auto;
-  width: auto;
-  flex: 1;
-  padding-left: 13px;
-  padding-right: 13px;
+  ${(props) => (props.height ? "height: " + props.height : "")};
+  ${(props) => (props.width ? "width: " + props.width : "")};
+  ${(props) => (props.flex ? "flex: 1;" : "")};
+  padding-left: ${(props) => props.paddingSides};
+  padding-right: ${(props) => props.paddingSides};
   align-items: center;
-  border-radius: "8px";
-  border: 1.5px solid;
-  background-color: transparent;
-  opacity: .5;
+  border-radius: ${(props) => props.theme.borderRadius.button};
+  border: 1.5px solid ${(props) => props.borderColor};
+  background-color: ${(props) =>
+    props.isOutline ? "transparent" : props.background};
+
+  opacity: ${(props) => (props.disabled ? ".5" : 1)};
 `;
 
 export const Text = styled.Text`
-  font-size: 18px;
+  font-size: ${(props) => props.fontSize};
   font-family: Nunito;
-  color: #c8e8e0;
+  color: ${(props) =>
+    props.isOutline ? props.textColorIsOutline : props.textColor};
 `;
 
 function getConfigs(theme, type) {
   if (type == "CallToAction")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#414042",
-      borderColor: "#414042",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.darkColor,
+      borderColor: theme.colors.darkColor,
       width: "100%",
-      height: '48px',
-      paddingSides: '24px',
-      fontSize: "18px",
+      height: theme.sizes.btnBig,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.h2,
     };
   if (type == "CallToAction-Orange")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#fda856",
-      borderColor: "#fda856",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.warming,
+      borderColor: theme.colors.warming,
       width: "100%",
-      height: '48px',
-      paddingSides: '24px',
-      fontSize: "18px",
+      height: theme.sizes.btnBig,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.h2,
     };
   if (type == "CallToAction-Small")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#414042",
-      borderColor: "#414042",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.darkColor,
+      borderColor: theme.colors.darkColor,
       width: "auto",
-      height: "32px",
-      paddingSides: "8px",
-      fontSize: "14px",
+      height: theme.sizes.btnSmall,
+      paddingSides: theme.space.space1,
+      fontSize: theme.sizes.subtitle2,
     };
   if (type == "CallToAction-Orange-Small")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#fda856",
-      borderColor: "#fda856",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.warming,
+      borderColor: theme.colors.warming,
       width: "auto",
-      height: "32px",
-      paddingSides: "8px",
-      fontSize: "14px",
+      height: theme.sizes.btnSmall,
+      paddingSides: theme.space.space1,
+      fontSize: theme.sizes.subtitle2,
     };
   if (type == "CallToAction-Light-Small2")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#414042",
-      borderColor: "#414042",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.primaryDarkColor,
+      borderColor: theme.colors.primaryDarkColor,
       width: "100%",
-      height: "32px",
-      paddingSides: '24px',
-      fontSize: "16px",
+      height: theme.sizes.btnSmall,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.subtitle1,
     };
   if (type == "CallToAction-Light-Small")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#414042",
-      borderColor: "#414042",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.primaryDarkColor,
+      borderColor: theme.colors.primaryDarkColor,
       width: "100%",
-      height: "40px",
-      paddingSides: '24px',
-      fontSize: "16px",
+      height: theme.sizes.btn,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.subtitle1,
     };
   if (type == "CallToAction-Light")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#414042",
-      borderColor: "#414042",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.primaryDarkColor,
+      borderColor: theme.colors.primaryDarkColor,
       width: "100%",
-      height: '48px',
-      paddingSides: '24px',
-      fontSize: "18px",
+      height: theme.sizes.btnBig,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.h2,
     };
 
   if (type == "CallToAction-Outline")
     return {
       // isOutline: true,
-      textColorIsOutline: "#6D6E71",
-      textColor: "#6D6E71",
-      background: "#FAFAFA",
-      borderColor: "#BCBEC0",
+      textColorIsOutline: theme.colors.secondDarkColor,
+      textColor: theme.colors.secondDarkColor,
+      background: theme.colors.lightColor,
+      borderColor: theme.colors.secondColor,
       width: "auto",
-      height: '48px',
-      paddingSides: '24px',
-      fontSize: "16px",
+      height: theme.sizes.btnBig,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.subtitle1,
     };
   if (type == "CallToAction-Outline-Flex")
     return {
       isOutline: true,
-      textColorIsOutline: "#6D6E71",
-      textColor: "#6D6E71",
-      background: "#BCBEC0",
-      borderColor: "#BCBEC0",
+      textColorIsOutline: theme.colors.secondDarkColor,
+      textColor: theme.colors.secondDarkColor,
+      background: theme.colors.secondColor,
+      borderColor: theme.colors.secondColor,
       width: "100%",
-      height: "40px",
-      paddingSides: '24px',
-      fontSize: "16px",
+      height: theme.sizes.btn,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.subtitle1,
     };
 
   if (type == "ComplementButton")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#0d3c54",
-      borderColor: "#0d3c54",
-      height: '32px',
-      paddingSides: "8px",
-      fontSize: "14px",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.complementColor,
+      borderColor: theme.colors.complementColor,
+      height: theme.space.space4,
+      paddingSides: theme.space.space1,
+      fontSize: theme.sizes.subtitle2,
     };
 
   if (type == "CallToAction-Primary-Color")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#414042",
-      borderColor: "#414042",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.primaryDarkColor,
+      borderColor: theme.colors.primaryDarkColor,
 
-      height: '32px',
-      paddingSides: "8px",
-      height: "40px",
-      fontSize: "16px",
+      height: theme.space.space4,
+      paddingSides: theme.space.space1,
+      height: theme.sizes.btn,
+      fontSize: theme.sizes.subtitle1,
     };
 
   if (type == "ComplementButton-Medium")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#0d3c54",
-      borderColor: "#0d3c54",
-      height: '32px',
-      paddingSides: "8px",
-      height: "40px",
-      fontSize: "16px",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.complementColor,
+      borderColor: theme.colors.complementColor,
+      height: theme.space.space4,
+      paddingSides: theme.space.space1,
+      height: theme.sizes.btn,
+      fontSize: theme.sizes.subtitle1,
     };
 
   if (type == "ComplementButton-Big")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#0d3c54",
-      borderColor: "#0d3c54",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.complementColor,
+      borderColor: theme.colors.complementColor,
       width: "auto",
-      height: '48px',
-      paddingSides: '24px',
-      fontSize: "16px",
+      height: theme.sizes.btnBig,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.subtitle1,
     };
 
   if (type == "ComplementButton-Orange-Big")
     return {
-      textColorIsOutline: "#FAFAFA",
-      textColor: "#FAFAFA",
-      background: "#fda856",
-      borderColor: "#fda856",
+      textColorIsOutline: theme.colors.lightColor,
+      textColor: theme.colors.lightColor,
+      background: theme.colors.warming,
+      borderColor: theme.colors.warming,
       width: "auto",
-      height: '48px',
-      paddingSides: '24px',
-      fontSize: "16px",
+      height: theme.sizes.btnBig,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.subtitle1,
     };
   if (type == "ComplementButton-Outline")
     return {
       isOutline: true,
-      textColorIsOutline: "#0d3c54",
-      textColor: "#0d3c54",
-      background: "#0d3c54",
-      borderColor: "#0d3c54",
+      textColorIsOutline: theme.colors.complementColor,
+      textColor: theme.colors.complementColor,
+      background: theme.colors.complementColor,
+      borderColor: theme.colors.complementColor,
       width: "auto",
-      height: '48px',
-      paddingSides: '24px',
-      fontSize: "16px",
+      height: theme.sizes.btnBig,
+      paddingSides: theme.space.space3,
+      fontSize: theme.sizes.subtitle1,
     };
 }
 
@@ -218,21 +221,21 @@ export const Button = withTheme((props) => {
 });
 
 const SocialButton_ = styled.TouchableOpacity`
-  height: '48px';
-  border-radius: '24px';
+  height: 48px;
+  border-radius: 24px;
   width: 100%;
-  padding-left: '32px';
-  padding-right: '32px';
+  padding-left: 32px;
+  padding-right: 32px;
   justify-content: center;
   flex-flow: row;
   align-items: center;
-  background:  #414042;
-  opacity: .5;
+  background: ${(props) => props.backgroundColor};
+  opacity: ${(props) => (props.disabled ? ".5" : 1)};
 `;
 const SocialButtonText = styled.Text`
   font-family: Nunito;
-  font-size: '16px';
-  color: "#FAFAFA";
+  font-size: 16px;
+  color: ${(props) => props.theme.colors.lightColor};
 `;
 
 export const SocialButton = (props) => (

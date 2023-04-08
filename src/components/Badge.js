@@ -1,25 +1,20 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components';
 
-const BadgeContainer = styled.View`
-  margin-top: 4px;
-  margin-right: 4px;
-  padding: 4px;
-  border-radius: 100px;
-  border: 1.5px solid;
-  background-color:  #c8e8e0;
+export const Badge_ = styled.View`
+    margin-top: ${props => props.theme.space.space0};
+    margin-right: ${props => props.theme.space.space0};
+	padding:  ${props => props.theme.space.space0}  ${props => props.theme.space.space1};
+    border-radius: ${props => props.isCircle ? '100px' : props.theme.borderRadius.tag};	
+    border: 1.5px solid ${props => props.isSelected ?  props.theme.colors.primaryColor :  props.theme.colors.secondColor};
+    background-color:   ${props => props.isSelected ?  props.theme.colors.primaryLightColor :  'transparent'};
 `;
 
-const BadgeText = styled.Text`
-  font-size: 12px;
-  font-family: Nunito;
-  color: #414042;
+export const Text = styled.Text`
+font-size:  ${props => props.theme.sizes.subtitle3};
+font-family: Nunito;
+color: ${props => props.theme.colors.primaryDarkColor};
 `;
-
-const Badge = (props) => (
-  <BadgeContainer {...props}>
-    <BadgeText>{props.children}</BadgeText>
-  </BadgeContainer>
-);
-
-export default Badge;
+export const Badge = (props) => <Badge_ {...props}>
+    <Text {...props} >{props.children}</Text> 
+    </Badge_>

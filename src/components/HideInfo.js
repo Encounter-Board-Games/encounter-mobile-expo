@@ -1,8 +1,11 @@
-import React from 'react';
-import Stepper from './Stepper';
+import React from 'react'
+import styled from 'styled-components'
+import Stepper from './Stepper'
 
-const Step = ({ n, size }) => {
-  return <Stepper customColor="darkColor" size={size || 2} number={n} current={-1} />;
-};
 
-export default Step;
+
+
+export default (props) => {
+
+    return <Stepper width={'auto'} customColor="darkColor" size={props.size ? props.size : 2} number={props.n} current={-1}/>
+}

@@ -6,6 +6,7 @@
  *************/
 
 import { Dimensions, Platform, PixelRatio } from 'react-native';
+import config from '../config';
 
 const {
   width: SCREEN_WIDTH,
@@ -15,75 +16,97 @@ const {
 // based on iphone 5s's scale
 const scale = SCREEN_WIDTH / 375;
 
+function actuatedNormalize(size) {
+  const newSize = size * scale
+  // return size + 'px'
+  if (Platform.OS === 'ios') {
+    return ( Math.round(PixelRatio.roundToNearestPixel(newSize))) + 'px'
+  } else {
+    return (Math.round(PixelRatio.roundToNearestPixel(newSize))   )+ 'px'
+  }
+}
+
 
 export default {
   colors: {
-    primaryColor:  "#c8e8e0",
-    primaryDarkColor: "#0e9577",
-    primaryLightColor: "#ebf7f4",
 
-    secondColor: "#BCBEC0",
-    secondDarkColor: "#6D6E71",
-    secondLightColor: "#E6E7E8",
+    ...config.theme.colors,
 
-    complementColor: "#0d3c54",
+    // primaryColor: '#C1E0DF',
+    // primaryDarkColor: '#22A19f',
+    // primaryLightColor: '#EBF5F5',
 
-    lightColor: "#FAFAFA",
-    darkColor:  '#414042',
+    // secondColor: '#BCBEC0',
+    // secondDarkColor: '#6D6E71',
+    // secondLightColor: '#E6E7E8',
 
-    success: "#6FE382",
-    warming: "#fda856",
-    danger: "#E35959",
+    // complementColor: '#081C4F',
+
+    // lightColor: '#FAFAFA',
+    // darkColor: '#414042',
+
+    // success: '#6FE382',
+    // warming: '#E39059',
+    // danger: '#E35959',
+
+
+
   },
   elements:{
-    productDetailsImage: 0.5,
+    productDetailsImage: .3,
+    ...config.theme.elements
   },
   header: {
     heigth: "50px",
     largeHeigth: "80px",
     title: "16px",
-    largeTitle: '24px'
+    largeTitle: "24px"
   },
   sizes: {
-    icons: '18px',
-    notification: '32px',
 
-    btnBig: '48px',
-    btn: '40px',
-    btnSmall: '32px',
 
-    h1: '24px',
-    h2: '18px',
-    h3: '16px',
-    h4: '16px',
+    icons: (18) ,//+ 'px',
+    notification: actuatedNormalize(32) ,//+ 'px',
 
-    subtitle1: '16px',
-    subtitle2: '14px',
-    subtitle3: '12px',
+    btnBig: actuatedNormalize(48),
+    btn: actuatedNormalize(40),
+    btnSmall: actuatedNormalize(32),
 
-    button1: '16px',
-    button2: '14px',
-    button3: '12px',
+
+    h1: actuatedNormalize(24),
+    h2: actuatedNormalize(18),
+    h3: actuatedNormalize(16),
+    h4: actuatedNormalize(16),
+
+    subtitle1: actuatedNormalize(16),
+    subtitle2: actuatedNormalize(14),
+    subtitle3: actuatedNormalize(12),
+
+    button1: actuatedNormalize(16),
+    button2: actuatedNormalize(14),
+    button3: actuatedNormalize(12),
     button4: '11px',
+
   },
   space: {
-    space0: '4px' ,
-    space1: '8px' ,
-    space2: '16px',
-    space3: '24px',
-    space4: '32px',
-    space5: '40px',
+    space0: actuatedNormalize(4) ,//+'px',
+    space1: actuatedNormalize(8) ,//+'px',
+    space2: actuatedNormalize(16),//+ 'px',
+    space3: actuatedNormalize(24),//+ 'px',
+    space4: actuatedNormalize(32),//+ 'px',
+    space5: actuatedNormalize(40),//+ 'px',
   },
   borderRadius: {
-    button:  '8px',
-    tag:  '20px',
+    button:  actuatedNormalize(8),
+    tag:  actuatedNormalize(20),
   },
   shadow: {
     shadowColor: 'rgb(0, 0, 0)',
-    shadowOffset: { width: '0px', height: '5px' },
+    shadowOffset: { width: '0px', height: '2px' },
     shadowOpacity: .16,
     shadowRadius: '3px',
     elevation: 2,
   },
-};
 
+ 
+};

@@ -1,110 +1,104 @@
-import React from 'react';
+import React from 'react'
 import styled, { withTheme } from 'styled-components';
-import { View, Platform, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { ScrollView, KeyboardAvoidingView, View, Platform } from 'react-native';
+import { EvilIcons, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import PropTypes from 'prop-types';
 import { H3, Subtitle1 } from './Typography';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { getBottomSpace } from 'react-native-iphone-x-helper'
+import Constants from 'expo-constants';
+
 
 const SafeSpace = styled.View`
-  height: ${getBottomSpace() + 'px'};
-  width: 100%;
-`;
+    height: ${getBottomSpace() + 'px'};
+    width: 100%;
+`
 
 const Container = styled.View`
-  background-color: "#FAFAFA";
-  flex: 1;
-  height: 100%;
-  width: 100%;
-  padding-top:'32px';
+
+    background-color: ${props => props.theme.colors.lightColor};
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    padding-top: ${props => Platform.OS === "ios" ? props.theme.space.space4 : 0};
 `;
 
 const Header = styled.View`
-  background-color: "#FAFAFA";
-  margin-top: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
-  height: 42px;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  border-color: "#BCBEC0";
-  border-bottom-width: 1px;
+    background-color: ${props => props.theme.colors.lightColor};
+    margin-top:  ${props => props.noPadding ? 0 : props.theme.space.space2};
+    margin-left: ${props => props.theme.space.space2};
+    margin-right: ${props => props.theme.space.space2};
+    height: 42px;   
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-color: ${props => props.withBorder ? props.theme.colors.secondColor : 'transparent'};
+    border-bottom-width: 1px;
 `;
 
-const CloseButton = styled(TouchableOpacity)`
-  position: absolute;
-  top: 0;
-  left: -8px;
-  background-color: "#FAFAFA";
-  height: 40px;
-  width: 40px;
-  justify-content: center;
-  align-items: center;
+const CloseButton = styled.TouchableOpacity`
+    position: absolute;
+    top:0;
+    left: -8px;
+    background-color: ${props => props.theme.colors.lightColor};
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items:center;
 `;
 
-const ToolItem = styled(TouchableOpacity)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: "#FAFAFA";
-  height: 40px;
-  justify-content: center;
-  align-items: center;
+const ToolItem = styled.TouchableOpacity`
+    position: absolute;
+    top:0;
+    right:0;
+    background-color: ${props => props.theme.colors.lightColor};
+    height: 40px;
+    justify-content: center;
+    align-items:center;
 `;
 
-const ScreenPopUp = props => {
-  const navigate = useNavigation();
 
-  const goBack = () => {
-    navigate.goBack();
+const ScreenPopUp = (props) => {
 
-    return props.onBack === props.onBack();
-  };
+    const navigate = useNavigation()
 
-  const renderHeader = () => {
-    const { title, tooltext, withBorder, theme } = props;
+    const goBack = () => {
+        
+        navigate.goBack()
+
+        return props.onBack && props.onBack()
+    }
 
     return (
-      <Header noPadding={!title} withBorder={withBorder}>
-        <CloseButton onPress={() => goBack()}>
-          <Ionicons name="ios-arrow-round-back" color= '#414042' size={32} />
-        </CloseButton>
-        {title === <H3>{title}</H3>}
-        {tooltext === (
-          <ToolItem onPress={() => props.onToolPress === props.onToolPress()}>
-            <Subtitle1 color= '#414042'>{tooltext}</Subtitle1>
-          </ToolItem>
-        )}
-      </Header>
-    );
-  };
+       
 
-  const { children, footer } = props;
+            <Container>
+                {
+                    !props.hideHeader && <Header noPadding={!props.title} {...props}>
+                        <CloseButton onPress={() => goBack()}>
+                            <Ionicons name="ios-arrow-round-back" color={props.theme.colors.darkColor} size={32} />
+                        </CloseButton>
+                        {
+                            props.title && <H3>{props.title}</H3>
+                        }
+                        {
+                            props.tooltext && <ToolItem onPress={() => props.onToolPress && props.onToolPress()}><Subtitle1 color={props.theme.colors.primaryDarkColor}>{props.tooltext}</Subtitle1></ToolItem>
+                        }
 
-  return (
-    <Container>
-      {renderHeader()}
-      <View flex={1}>{children}</View>
-      {footer === footer()}
-    </Container>
-  );
-};
 
-ScreenPopUp.propTypes = {
-  title: PropTypes.string,
-  hideHeader: PropTypes.bool,
-  withBorder: PropTypes.bool,
-  tooltext: PropTypes.string,
-  onToolPress: PropTypes.func,
-  onBack: PropTypes.func,
-  children: PropTypes.node,
-  footer: PropTypes.func,
-};
 
-ScreenPopUp.defaultProps = {
-  hideHeader: false,
-};
 
-export default withTheme(ScreenPopUp);
+                    </Header>
+                }
+                <View flex={1}>
+                {props.children}
+                   
+
+</View>
+                    {
+                        props.footer && props.footer()
+                    }
+            </Container>
+    )
+}
+
+export default withTheme(ScreenPopUp)

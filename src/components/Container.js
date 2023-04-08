@@ -1,63 +1,68 @@
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import React from 'react'
 import styled, { withTheme } from 'styled-components';
 import { H2, Subtitle2 } from './Typography';
 
+
 import {
     Placeholder,
+    PlaceholderMedia,
     PlaceholderLine,
     Fade
 } from "rn-placeholder";
+import Texts from '../texts';
 
 const Box = styled.View`
     background-color: white;
-    margin-bottom: 16px;
+    margin-bottom: ${props => props.theme.space.space2};
     width: 100%;
-    padding-top:  16px;
-    padding-bottom:  16px;
-    shadow-color: 'rgb(0, 0, 0)';
-    shadow-offset: 0px, 5px;
-    shadow-opacity: .16;
-    shadow-radius: 3px;
-    elevation: 2;
+    padding-top:  ${props => props.theme.space.space2};
+    padding-bottom:  ${props => props.theme.space.space2};
+
+
+    shadow-color: ${props => props.theme.shadow.shadowColor};
+    shadow-offset: ${props => props.theme.shadow.shadowOffset.width} ${props => props.theme.shadow.shadowOffset.width};
+    shadow-opacity: ${props => props.theme.shadow.shadowOpacity};
+    shadow-radius: ${props => props.theme.shadow.shadowRadius};
+    elevation: ${props => props.theme.shadow.elevation};
 `;
 
 const Header = styled.View`
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 16px;
+    padding-left: ${props => props.theme.space.space2};
+    padding-right: ${props => props.theme.space.space2};
+    margin-bottom: ${props => props.theme.space.space2};
     position: relative;
-`;
+`
 
-const ToolText = styled(TouchableOpacity)`
+const ToolText = styled.TouchableOpacity`
     position: absolute;
-    right: 16px;
+    right: ${props => props.theme.space.space2};
     top:0;
-`;
-
+`
 export default withTheme((props) => {
-    const subtitle = props.subtitle ? <Subtitle2>{props.subtitle}</Subtitle2> : null;
-    const toolText = props.toolText ? (
-      <ToolText onPress={() => props?.onToolTextPress()}>
-        <Subtitle2 underline type="primaryDarkColor">{props.toolText}</Subtitle2>
-      </ToolText>
-    ) : null;
-  
-    return (
-      <Box>
+
+
+    return (<Box>
         <Header>
-          {props.isLoading ? (
-            <Placeholder style={{ flex: 1 }} Animation={Fade}>
-              <PlaceholderLine noMargin height={24} />
-            </Placeholder>
-          ) : (
-            <H2>{props.title}</H2>
-          )}
-          {subtitle}
-          {toolText}
+
+            {
+                props.isLoading ? <Placeholder
+                    style={{ flex: 1 }}
+                    Animation={Fade}
+                >
+
+                    <PlaceholderLine noMargin height={24} />
+                </Placeholder> :
+                <H2>{props.title}</H2>
+            }
+            
+            {props.subtitle && <Subtitle2>{props.subtitle}</Subtitle2>}
+
+
+            {props.toolText && <ToolText onPress={() => props.onToolTextPress && props.onToolTextPress()}>
+                <Subtitle2 underline type='primaryDarkColor'>{props.toolText}</Subtitle2>
+            </ToolText>}
         </Header>
         {props.children}
-      </Box>
-    );
-  });
-  
+    </Box>
+    )
+})

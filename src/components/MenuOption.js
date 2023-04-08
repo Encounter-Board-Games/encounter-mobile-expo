@@ -1,105 +1,88 @@
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import styled, { withTheme } from 'styled-components';
+import React from 'react'
+import { H4, Subtitle2 } from './Typography'
+import styled, { withTheme } from 'styled-components'
 import { EvilIcons } from '@expo/vector-icons';
+import { Space, SpaceHorizontal } from './Space'
 import {
-  Placeholder,
-  PlaceholderMedia,
-  PlaceholderLine,
-  Fade,
-} from 'rn-placeholder';
-import { SpaceHorizontal } from './Space';
-import { H4, Subtitle2 } from './Typography';
+    Placeholder,
+    PlaceholderMedia,
+    PlaceholderLine,
+    Fade
+} from "rn-placeholder";
 import Icons from './Icons';
 
-const Container = styled(TouchableOpacity)`
-  flex-flow: row;
-  align-items: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-color: "#ebf7f4";
-  border-bottom-width: 1.5px;
-`;
+const Container = styled.TouchableOpacity`
+    flex-flow: row;
+    align-items:center;
+    padding-top: ${props => props.theme.space.space2};
+    padding-bottom: ${props => props.theme.space.space2};
+    border-color: ${props => props.hideBorder ? 'transparent' : props.theme.colors.secondLightColor};
+    border-bottom-width: 1.5px;;
+`
 
 const Info = styled.View`
-  flex: 1;
-`;
-
+    flex: 1;
+`
 const InfoIcon = styled.View`
-  min-width: 40px;
-  margin-right: 8px;
-  padding-left: 4px;
-`;
+    min-width: 40px;
+    margin-right:  ${props => props.theme.space.space2}
+    padding-left: ${props => props.theme.space.space0}
+`
 
-const PlaceholderContainer = styled(Placeholder)`
-  padding: 8px;
-`;
+export default withTheme((props) => {
 
-const ListItem = withTheme((props) => {
-  let content;
-  if (props.isLoading) {
-    content = (
-      <PlaceholderContainer Animation={Fade}>
+    if (props.isLoading)
+       return (
+       <Placeholder Animation={Fade} >
         <Container>
-          <InfoIcon>
-            <PlaceholderMedia size={32} />
-          </InfoIcon>
-          <Info>
-            <PlaceholderLine noMargin height={24} />
-            {!props.oneLine === (
-              <>
-               
-                <PlaceholderLine noMargin height={20} />
-              </>
-            )}
-          </Info>
-          <SpaceHorizontal n={1} />
-          <PlaceholderMedia size={16} />
-        </Container>
-      </PlaceholderContainer>
-    );
-  } else {
-    const { children, description, hideArrow, icon, onPress, title } = props;
-    content = (
-      <>
-        {children || (
-          <>
-            {icon === (
-              <InfoIcon>
-                <Icons name={icon} color= '#414042' size={props.theme.sizes.icons} />
-              </InfoIcon>
-            )}
+            <InfoIcon>
+                 <PlaceholderMedia size={32} />
+            </InfoIcon>
             <Info>
-              {typeof title === 'function' ? (
-                title()
-              ) : (
-                <H4>{title}</H4>
-              )}
-              {description === (
-                <>
-                 
-                  <Subtitle2 type="secondDarkColor">{description}</Subtitle2>
-                </>
-              )}
+                
+                <PlaceholderLine noMargin height={24} /> 
+                {
+                   !props.oneLine && <React.Fragment>
+                        <Space n={0} />
+                        <PlaceholderLine noMargin height={20} /> 
+                    </React.Fragment>
+                }
+                
+
             </Info>
-          </>
-        )}
-        {!hideArrow === (
-          <EvilIcons
-            name="chevron-right"
-            color= '#414042'
-            size={props.theme.sizes.icons}
-          />
-        )}
-      </>
-    );
-  }
+            <SpaceHorizontal n={1} />
+            <PlaceholderMedia size={16} />
+        </Container>
+        </Placeholder>)
 
-  return (
-    <Container onPress={props.onPress}>
-      {content}
-    </Container>
-  );
-});
+    return (<Container {...props} onPress={() => props.onPress && props.onPress()}>
 
-export default ListItem;
+        {
+            props.children ? props.children : (<React.Fragment>
+                {
+                    props.icon && <InfoIcon>
+                        <Icons name={props.icon} color={props.theme.colors.darkColor} size={props.theme.sizes.icons} />
+                    </InfoIcon>
+                }
+
+
+                <Info>
+            { {}.toString.call(props.title) === '[object Function]' ? props.title() :<H4>{props.title}</H4> }
+                    {
+                        props.description && (
+                            <React.Fragment>
+                                <Space n={0} />
+                                <Subtitle2 type={"secondDarkColor"}>{props.description}</Subtitle2>
+                            </React.Fragment>
+                        )
+                    }
+
+                </Info>
+            </React.Fragment>)
+        }
+
+        {
+            !props.hideArrow && <EvilIcons name="chevron-right" color={props.theme.colors.darkColor} size={props.theme.sizes.icons} />
+        }
+    </Container>)
+})

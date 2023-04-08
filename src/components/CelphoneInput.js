@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { TouchableOpacity } from 'react-native';
 import styled from "styled-components";
 import Numberpad from "./Numberpad";
 
@@ -8,13 +7,13 @@ const Content = styled.View`
   height: 100%;
   flex: 1;
   zindex: 999;
-  border-radius: "8px";
-  background: "#FAFAFA";
+  border-radius: 8px;
+  background: ${(props) => props.theme.colors.lightColor};
 `;
 
 const ContentInput = styled.View`
   flex: 1;
-  padding: '16px';
+  padding: ${(props) => props.theme.space.space2};
   align-items: center;
   justify-content: center;
 `;
@@ -22,21 +21,21 @@ const ContainerInputs = styled.ScrollView`
   flex: 1;
 `;
 
-const CustomInput = styled(TouchableOpacity)`
-    border: 1.5px solid  #c8e8e0;
-    background: "#ebf7f4";
-    padding-left: '24px';
-    border-radius: '8px';
-    height: '56px';
+const CustomInput = styled.TouchableOpacity`
+    border: 1.5px solid ${(props) => props.theme.colors.primaryColor}
+    background: ${(props) => props.theme.colors.primaryLightColor}
+    padding-left: ${(props) => props.theme.space.space3}
+    border-radius: ${(props) => props.theme.borderRadius.button}
+    height: 56px
     width: 100%;
     justify-content: center;
 `;
 
 const CustomInputText = styled.Text`
 
-    font-size: '16px';
-    opacity: '.5';
-    color: "#BCBEC0";
+    font-size: ${(props) => props.theme.space.space2};
+    opacity: ${(props) => (props.disabled ? ".5" : "1")}
+    color: ${(props) => props.theme.colors.secondColor}
 `;
 
 export default () => {
@@ -57,7 +56,9 @@ export default () => {
   return (
     <Content flex={1}>
       <ContentInput flex={1}>
-        <CustomInput />
+        <CustomInput>
+          {/* <CustomInputText>{content.length == 0 ? '(ddd) xxxxx-xxxx' : content} </CustomInputText> */}
+        </CustomInput>
       </ContentInput>
       <Numberpad onPress={(n) => addText(n)} />
     </Content>

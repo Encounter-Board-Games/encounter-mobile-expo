@@ -1,24 +1,18 @@
-import styled from 'styled-components';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import styled from 'styled-components'
+import { getBottomSpace, } from 'react-native-iphone-x-helper'
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
-import PropTypes from 'prop-types';
 
 export const Space = styled.View`
-  height: 24px;
-  width: 1px;
-`;
-
+height: ${props => props.theme.space['space' + props.n]};
+width: 1px;
+`
 export const SpaceHorizontal = styled.View`
-  width: ${props => props.theme.space['space' + props.n]}px;
-  height: 1px;
-`;
+width: ${props => props.theme.space['space' + props.n]};
+height: 1px;
+`
 
 export const Bottom = styled.View`
-  width: 100%;
-  height: 16px;
-`;
-
-Bottom.propTypes = {
-  theme: PropTypes.object.isRequired,
-};
+    width: 100%;
+    height: ${(Platform.OS == "ios" ? getBottomSpace() + 16 : Constants.statusBarHeight + 16) + 'px'};
+`
