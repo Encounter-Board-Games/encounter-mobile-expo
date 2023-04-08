@@ -4,8 +4,8 @@ export default {
   translation: "encounter",
   facebookAppId: "707085366783241",
 
-  notLoggedImg: require("./assets/img/no-orders.png"),
-  splash: require("./assets/splash-encounter.png"),
+  notLoggedImg: require("./src/assets/img/no-orders.png"),
+  splash: require("./src/assets/splash-encounter.png"),
 
   showCompanyOnAvaiable: false,
   notFoundSuggestion: false,
@@ -34,7 +34,7 @@ export default {
 
   theme: {
     colors: {
-      primaryColor: "#c8e8e0",
+      primaryColor:  '#c8e8e0',
       primaryDarkColor: "#0e9577",
       primaryLightColor: "#ebf7f4",
 
@@ -45,7 +45,7 @@ export default {
       complementColor: "#0d3c54",
 
       lightColor: "#FAFAFA",
-      darkColor: "#414042",
+      darkColor:  '#414042',
 
       success: "#6FE382",
       warming: "#fda856",

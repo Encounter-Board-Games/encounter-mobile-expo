@@ -2,23 +2,23 @@ import React, { useEffect, useRef } from "react";
 import { H3 } from "../../../components/Typography";
 import styled, { withTheme } from "styled-components";
 import { Modalize } from "react-native-modalize";
-import { Text, TouchableOpacity } from "react-native";
+import { Text } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { translation } from "../../../texts";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+//
 const Container = styled.View`
-  padding: ${(props) => props.theme.space.space2};
+  padding: 16px;
   padding-top: 0;
-  background: ${(props) => props.theme.colors.lightColor};
+  background: "#FAFAFA";
   flex: 1;
   width: 100%;
   height: 100%;
 `;
 
-const Header = styled(TouchableOpacity)`
-  padding: ${(props) => props.theme.space.space2};
-  background-color: ${(props) => props.theme.colors.lightColor};
+const Header = styled.TouchableOpacity`
+  padding: 16px;
+  background-color: "#FAFAFA";
   position: relative;
   justify-content: center;
   align-items: center;
@@ -29,9 +29,9 @@ const Header = styled(TouchableOpacity)`
 
 const CloseButton = styled.View`
     position: absolute;
-    top:${(props) => props.theme.space.space2};
-    left: ${(props) => props.theme.space.space2};
-    background-color: ${(props) => props.theme.colors.lightColor};
+    top:16px;
+    left: 16px;
+    background-color: "#FAFAFA";
     height: 100%;
     width: 40px
     justify-content: center;
@@ -45,16 +45,15 @@ export default withTheme(({ theme }) => {
     modalRef.current.open();
   }, [modalRef]);
   const close = () => {};
-
   return (
     <Modalize
-      modalStyle={{ backgroundColor: theme.colors.lightColor }}
+      modalStyle={{ backgroundColor: "#FAFAFA" }}
       HeaderComponent={() => (
         <Header onPress={close}>
           <CloseButton>
             <Entypo
               name="chevron-thin-down"
-              color={theme.colors.darkColor}
+              color= '#414042'
               size={16}
             />
           </CloseButton>
@@ -63,9 +62,11 @@ export default withTheme(({ theme }) => {
       )}
       ref={modalRef}
       adjustToContentHeight={true}
+
+      //   modalHeight={height} //Dimensions.get('window').height/3 - (Constants.statusBarHeight ) - 400}
     >
       <SafeAreaView>
-        Pedro
+        <Text>Pedro</Text>
       </SafeAreaView>
     </Modalize>
   );

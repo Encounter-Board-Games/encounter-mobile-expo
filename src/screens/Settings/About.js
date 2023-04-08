@@ -11,15 +11,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 const Container = styled.View`
-    padding: ${props => props.theme.space.space2}
-    padding-top: ${props => props.theme.space.space3}
+    padding: 16px
+    padding-top: 24px
     padding-bottom: 0
     flex: 1
     height: 100%
 `
 const ButtonContent = styled.View`
     width: 100%
-    padding: ${props => props.theme.space.space2}
+    padding: 16px
 `
 
 const Line = styled.View` 
@@ -37,7 +37,7 @@ export default withTheme((props) => {
                         .catch()
                 })
     }
-
+    // alert(getBottomSpace())
     return <ScreePopup
         title={"Sobre" + (about.nameAbout || "")}
         footer={() => <ButtonContent>
@@ -49,12 +49,12 @@ export default withTheme((props) => {
                 {about.aboutText}
             </Subtitle1>
 
-            <Space n={3} />
+           
             <H3 type="secondDarkColor">Conheça nosso instagram</H3>
 
-            <Space n={0} />
+           
             <Line>
-                <Ionicons color={props.theme.colors.secondDarkColor} size={20} name="logo-instagram" />
+                <Ionicons color={"#6D6E71"} size={20} name="logo-instagram" />
                 <SpaceHorizontal n={1} />
                 <H4 type="secondDarkColor">@{about.instagram}</H4>
             </Line>

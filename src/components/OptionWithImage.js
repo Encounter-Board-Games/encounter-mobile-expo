@@ -5,14 +5,14 @@ import { H4, H3 } from './Typography';
 import { Image } from 'react-native';
 
 const OptionWithImage = styled(TouchableOpacity)`
-    padding: ${props => props.theme.space.space2};
-    padding-top: ${props => props.theme.space.space2};
-    padding-bottom: ${props => props.theme.space.space2};
-    border-radius: ${props => props.theme.borderRadius.button};
+    padding: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-radius: '8px';
     border: 1.5px;
-    border-color: ${props => props.isActive ? props.theme.colors.primaryColor : props.theme.colors.secondColor};
-    margin-bottom: ${props => props.theme.space.space2};
-    background-color: ${props => props.isActive ? props.theme.colors.primaryLightColor : 'transparent'};
+    border-color: "#BCBEC0";
+    margin-bottom: 16px;
+    background-color: 'transparent';
     height: 120px;
 `
 
@@ -32,7 +32,7 @@ const ImageContent = styled.View`
     align-items: flex-start;
     justify-content: flex-end;
     height: 100%;
-    padding-right: ${props => props.theme.space.space2};
+    padding-right: 16px;
     width: 50%;
 `
 

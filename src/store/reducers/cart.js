@@ -24,13 +24,18 @@ const delivery = {
 };
 
 const defaultCart = {
-  products: [],
+  products: [], //key, price, name
+
   deliveryTypeOpened: undefined,
   delivery,
+  // tempo de aluguem
   time: undefined,
   payment: undefined,
+
   deliveryTaxes: undefined,
-  cupom: undefined,
+
+  cupom: undefined, //cumpom vinculado
+
   subtotal: undefined,
   total: false,
 };
@@ -114,6 +119,7 @@ export default function cart(state = defaultCart, action) {
     case CART_SET_DELIVERY:
       return {
         ...state,
+        // products: [...state.products],
         delivery: {
           ...state.delivery,
           [action.deliveryType]: {

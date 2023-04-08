@@ -10,35 +10,35 @@ import { handleSearchLocationByTerm } from '../store/actions/address';
 const SearchBarContainer = styled.View`
   padding-top: 8px;
   padding-bottom: 8px;
-  height: 48px;
+  height: '48px';
   background: white;
-  border-radius: ${props => props.theme.borderRadius.button};
+  border-radius: '8px';
   align-items: center;
   flex-flow: row;    
   width: 100%;
 
-  shadow-color: ${props => props.theme.shadow.shadowColor};
-  shadow-offset: ${props => props.theme.shadow.shadowOffset.width} ${props => props.theme.shadow.shadowOffset.width} ;
-  shadow-opacity: ${props => props.theme.shadow.shadowOpacity};
-  shadow-radius: ${props => props.theme.shadow.shadowRadius};
-  elevation: ${props => props.theme.shadow.elevation};
+  shadow-color: 'rgb(0, 0, 0)';
+  shadow-offset: 0px, 5px;
+  shadow-opacity: .16;
+  shadow-radius: 3px;
+  elevation: 2;
   padding-left: 12px;
 `;
 
 const ClearButton = styled(TouchableOpacity)`
   padding: 4px;
-  background-color: ${props => props.theme.colors.secondLightColor};
+  background-color: "#E6E7E8";
   border-radius: 16px;
   justify-content: center;
   align-items:center;
-  margin-right: ${props => props.theme.space.space1};
+  margin-right: 8px;
 `;
 
 const SearchInput = styled.TextInput`
   flex: 1;
   height: 100%;
-  color: ${props => props.theme.colors.secondDarkColor};
-  font-size: ${props => props.theme.sizes.subtitle3};
+  color: "#6D6E71";
+  font-size: {"12px"};
 `;
 
 const SearchBar = (props) => {

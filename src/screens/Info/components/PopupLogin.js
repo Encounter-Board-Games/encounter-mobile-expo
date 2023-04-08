@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Space } from '../../../components/Space'
+import Dice from '../../../components/Dice'
+import { Space, SpaceHorizontal } from '../../../components/Space'
 import { Button } from '../../../components/Button'
 import { useDispatch } from 'react-redux'
 import { Subtitle2 } from '../../../components/Typography'
@@ -27,7 +28,7 @@ export default () => {
     return (
         <Container>
             <Subtitle2>Você precisa estar logado para essa ação!</Subtitle2>
-            <Space n={2} />
+           
             <Line>
                 <Button onPress={() =>{
                     dispatch(closePopupModal())

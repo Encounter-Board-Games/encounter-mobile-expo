@@ -1,8 +1,10 @@
 import React from "react";
-import { TouchableOpacity } from 'react-native';
-import styled from "styled-components/native";
+import styled from "styled-components";
+import { getBottomSpace } from "react-native-iphone-x-helper";
 import { useDispatch, useSelector } from "react-redux";
+import { openCart } from "../../../store/actions/info";
 import { currencyFormat } from "../../../utils/helpers";
+import { View } from "react-native-animatable";
 import { translation } from "../../../texts";
 import { handleOpenCart } from "../../../store/actions/cart";
 
@@ -15,37 +17,37 @@ const Container = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
-  padding-left: ${(props) => props.theme.space.space2};
-  padding-right: ${(props) => props.theme.space.space2};
-  background: ${(props) => props.theme.colors.primaryDarkColor};
+  padding-left: 16px;
+  padding-right: 16px;
+  background:  #414042;
   flex-flow: row;
 `;
 const Price = styled.Text`
   font-family: Nunito-Bold;
-  font-size: ${(props) => props.theme.sizes.h3};
-  color: ${(props) => props.theme.colors.lightColor};
+  font-size: 16px;
+  color: "#FAFAFA";
 `;
 const PriceItem = styled.Text`
   font-family: Nunito;
-  font-size: ${(props) => props.theme.sizes.h3};
-  color: ${(props) => props.theme.colors.lightColor};
+  font-size: 16px;
+  color: "#FAFAFA";
 `;
 
-const Button = styled(TouchableOpacity)`
-  background: ${(props) => props.theme.colors.lightColor};
-  padding-left: ${(props) => props.theme.space.space3};
-  padding-right: ${(props) => props.theme.space.space3};
-  margin-top: ${(props) => props.theme.space.space1};
-  margin-bottom: ${(props) => props.theme.space.space1};
-  height: ${(props) => props.theme.space.space5};
+const Button = styled.TouchableOpacity`
+  background: "#FAFAFA";
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: 40px;
   justify-content: center;
   align-items: center;
-  border-radius: ${(props) => props.theme.borderRadius.button};
+  border-radius: "8px";
 `;
 const ButtonText = styled.Text`
   font-family: Nunito;
-  font-size: ${(props) => props.theme.sizes.h3};
-  color: ${(props) => props.theme.colors.darkColor};
+  font-size: 16px;
+  color:  #414042;
 `;
 
 export default (props) => {
@@ -59,7 +61,7 @@ export default (props) => {
     <Container>
       <PriceContent flex={1} style={{ flexFlow: "row" }}>
         <Price>{currencyFormat(total)}</Price>
-        {time === (
+        {time && (
           <PriceItem>
             {translation("cart.minimezedText", { time, countItems })}
           </PriceItem>

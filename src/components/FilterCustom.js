@@ -41,13 +41,13 @@ const FilterItem = withTheme(({ type, image, selects, theme, full }) => {
         {
             filter.info && <View style={{ position: 'relative', zIndex: 99 }}>
                 <MoreInfo>
-                    <Space n={3} />
+                   
                     <TouchableOpacity onPress={() => dispatch(openInfoModal(filter.info, filter.title))}
                         style={{
                             width: 32,
                             height: 32,
                         }}>
-                        <Icons name={"exclamation"} color={theme.colors.darkColor} size={theme.sizes.icons} />
+                        <Icons name={"exclamation"} color= '#414042' size={theme.sizes.icons} />
 
                     </TouchableOpacity>
 
@@ -82,7 +82,7 @@ const Question = ({ full, title, options, type, optionsType, image, selectsState
     const formatData = (title) => {
         return title.split('\\n').map((t, i) => (
             <View key={i}>
-                {i > 0 && <Space n={1} />}
+                {i > 0}
                 <H4>
                     {t.split('*').map((text, index) =>
                         index % 2 === 0 ? (
@@ -100,9 +100,9 @@ const Question = ({ full, title, options, type, optionsType, image, selectsState
     const dispatch = useDispatch();
     return (
         <Content>
-            <Space n={3} />
+           
             {formatData(title)}
-            <Space n={2} />
+           
 
             {
                 optionsType === "imageChoice" ?
@@ -130,7 +130,7 @@ const Step = ({ onNext, steps, selectsState }) => {
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
           {steps.map((step, index) => (<Question full={steps.length == 1} selectsState={selectsState} key={index} {...step} />))}
           <Footer>
-            <Space n={2} />
+           
             <Button disabled={!hasSelects} type="CallToAction-Light" width={"100%"} onPress={() => onNext()}>Continuar</Button>
           </Footer>
           <Bottom />
@@ -165,7 +165,7 @@ export default withTheme(({ theme, onNext, steps, selectsState, onBack }) => {
 
         <Carrossel stepperUp
 
-            paddingRight={theme.space.space3}
+            paddingRight={'24px'}
             enablePages={stepsEnable}
             current={current}
             noMargin

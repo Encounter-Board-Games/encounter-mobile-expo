@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled, { withTheme } from "styled-components";
-import { Text, Image, TouchableOpacity } from "react-native";
+import { Text, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ProductStatus from "./ProductStatus";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,33 +12,26 @@ import {
   PlaceholderLine,
   Fade,
 } from "rn-placeholder";
-import { Space } from "../../../components/Space";
 import { Subtitle3 } from "../../../components/Typography";
 import { handleRememberProduct } from "../../../store/actions/user";
 import { View } from "react-native-animatable";
 
+// border-radius: '8px';
 const ProductImage = styled.View`
-  height: ${(props) => (props.spotlight ? 200 : 140)}px;
-  width: ${(props) => (props.spotlight ? 200 : 140)}px;
-  min-height: ${(props) => (props.spotlight ? 200 : 140)}px;
-  min-width: ${(props) => (props.spotlight ? 200 : 140)}px;
-  max-height: ${(props) => (props.spotlight ? 200 : 140)}px;
-  max-width: ${(props) => (props.spotlight ? 200 : 140)}px;
+  height: auto;
+  width: auto;
 `;
 
-const Container = styled(TouchableOpacity)`
-  width: ${(props) => (props.spotlight ? 200 : 140)}px;
-  min-height: 10px;
-  ${(props) =>
-    props.flex ? "flex: 1;" : `margin-left: ${props.theme.space.space2}`}
+const Container = styled.TouchableOpacity`
+  width: auto;
 `;
 const Content = styled.View``;
 
 const ProductPrice = styled.Text`
   max-width: 100%;
-  font-size: ${(props) => props.theme.sizes.subtitle2};
+  font-size: 14px;
   font-family: Nunito;
-  color: ${(props) => props.theme.colors.darkColor};
+  color: #414042;
 `;
 
 const ProductStatusContent = styled.Text``;
@@ -61,8 +54,8 @@ export default withTheme((props) => {
   useEffect(() => {
     if (props.showImage) setShowImage(props.showImage);
   }, [props.showImage]);
-  const Subtitle3Size = +props.theme.sizes.subtitle3.replace("px", "");
-  
+  const Subtitle3Size = "12px";
+  // if (props.isLoading ) return null;
   if (props.isLoading)
     return (
       <Container {...props}>
@@ -72,13 +65,13 @@ export default withTheme((props) => {
               <PlaceholderMedia size={"100%"} />
             </ProductImage>
           </View>
-          <Space n={0} />
+         
           <PlaceholderLine noMargin height={Subtitle3Size * 2} />
-          <Space n={1} />
+         
           {props.showPrice && (
             <PlaceholderLine noMargin height={Subtitle3Size * 1.5} />
           )}
-          <Space n={0} />
+         
           {!props.spotlight && (
             <PlaceholderLine noMargin height={Subtitle3Size * 1.5} />
           )}
@@ -89,7 +82,7 @@ export default withTheme((props) => {
   if (!product)
     return (
       <Container {...props}>
-        
+        <Text></Text>
       </Container>
     );
 
@@ -106,7 +99,7 @@ export default withTheme((props) => {
           )}
         </ProductImage>
       </View>
-      <Space n={0} />
+     
       <Content style={{ flex: props.noFlex ? undefined : 1 }}>
         <Subtitle3
           numberOfLines={props.numberOfLines ? props.numberOfLines : 2}
@@ -114,7 +107,7 @@ export default withTheme((props) => {
           {product.name}
         </Subtitle3>
       </Content>
-      {(props.showPrice || !props.spotlight) && <Space n={1} />}
+      {(props.showPrice || !props.spotlight) }
 
       {props.showPrice && (
         <ProductPrice>{product.priceValueFormated}</ProductPrice>

@@ -1,28 +1,19 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 const BadgeContainer = styled.View`
-  margin-top: ${(props) => props.theme.space.space0};
-  margin-right: ${(props) => props.theme.space.space0};
-  padding: ${(props) => props.theme.space.space0} ${(props) =>
-  props.theme.space.space1};
-  border-radius: ${(props) =>
-    props.isCircle ? '100px' : props.theme.borderRadius.tag};
-  border: 1.5px solid
-    ${(props) =>
-      props.isSelected
-        ? props.theme.colors.primaryColor
-        : props.theme.colors.secondColor};
-  background-color: ${(props) =>
-    props.isSelected
-      ? props.theme.colors.primaryLightColor
-      : 'transparent'};
+  margin-top: 4px;
+  margin-right: 4px;
+  padding: 4px;
+  border-radius: 100px;
+  border: 1.5px solid;
+  background-color:  #c8e8e0;
 `;
 
 const BadgeText = styled.Text`
-  font-size: ${(props) => props.theme.fontSizes.subtitle3}px;
+  font-size: 12px;
   font-family: Nunito;
-  color: ${(props) => props.theme.colors.primaryDarkColor};
+  color: #414042;
 `;
 
 const Badge = (props) => (

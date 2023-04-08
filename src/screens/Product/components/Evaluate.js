@@ -48,13 +48,13 @@ export default () => {
   return (
     <Container>
       <H3>Deixe sua avaliação</H3>
-      <Space n={4} />
+     
       {evaluationsProducts.map((key, index) => (
         <React.Fragment key={index}>
-          {evaluationsProducts.length !== 1 || (
+          {evaluationsProducts.length !== 1 && (
             <React.Fragment>
               <Subtitle2>{products[key].name}</Subtitle2>
-              <Space n={1} />
+             
             </React.Fragment>
           )}
           <Dices>
@@ -73,10 +73,10 @@ export default () => {
               />
             ))}
           </Dices>
-          <Space n={3} />
+         
         </React.Fragment>
       ))}
-      <Space n={2} />
+     
 
       <Line>
         <Button

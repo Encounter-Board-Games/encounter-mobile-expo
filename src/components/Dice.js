@@ -3,45 +3,28 @@ import { TouchableOpacity } from 'react-native';
 import styled from "styled-components";
 
 const Container = styled(TouchableOpacity)`
-  width: ${(props) => props.size * 16}px;
-  height: ${(props) => props.size * 16}px;
-  border-radius: ${(props) => props.size * 2}px;
+  width: auto;
+  height: auto;
+  border-radius: 2px;
   position: relative;
-  margin-right: ${(props) => props.theme.space.space0};
-  border: 0.5px solid ${(props) => props.theme.colors.warming};
-  background-color: ${(props) =>
-    props.isSelected ? props.theme.colors.warming : "transparent"};
+  margin-right: 4px;
+  border: 0.5px solid;
+  background-color: #fda856;
 `;
 
 const Pointer = styled.View`
   position: absolute;
-  height: ${(props) => props.size * 4}px;
-  width: ${(props) => props.size * 4}px;
-  ${(props) => (props.top ? "top: " + props.top : "")};
-  ${(props) => (props.left ? "left: " + props.left : "")};
-  ${(props) => (props.right ? "right: " + props.right : "")};
-  ${(props) => (props.bottom ? "bottom: " + props.bottom : "")};
-  border-radius: ${(props) => props.size * 4}px;
-  background-color: ${(props) =>
-    props.isSelected
-      ? props.theme.colors.lightColor
-      : props.theme.colors.warming};
+  height: auto;
+  width: auto;
+  border-radius: 4px;
+  background-color: #fda856;
 `;
 
-const topLeft = (size) => ({ top: `${size * 2}px`, left: `${size * 2}px` });
-const topRight = (size) => ({ top: `${size * 2}px`, right: `${size * 2}px` });
-const bottomLeft = (size) => ({
-  bottom: `${size * 2}px`,
-  left: `${size * 2}px`,
-});
-const bottomRight = (size) => ({
-  bottom: `${size * 2}px`,
-  right: `${size * 2}px`,
-});
-const middle = (size) => ({
-  top: `${size * 6 - 0.5}px`,
-  left: `${size * 6 - 0.5}px`,
-});
+const topLeft = "12px";
+const topRight = "12px";
+const bottomLeft = "12px";
+const bottomRight = "12px";
+const middle = "12px";
 
 const dices = [
   [middle],

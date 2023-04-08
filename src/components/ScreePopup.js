@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { ScrollView, KeyboardAvoidingView, View, Platform, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -12,24 +12,24 @@ const SafeSpace = styled.View`
 `;
 
 const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.lightColor};
+  background-color: "#FAFAFA";
   flex: 1;
   height: 100%;
   width: 100%;
-  padding-top: ${({ theme }) => Platform.OS === 'ios' ? theme.space.space4 : 0};
-  padding-bottom: ${getBottomSpace()}px;
+  padding-top: '32px';
+  padding-bottom: 32px;
 `;
 
 const Header = styled.View`
-  background-color: ${({ theme }) => theme.colors.lightColor};
-  margin-top: ${({ noPadding, theme }) => noPadding ? 0 : theme.space.space2};
-  margin-left: ${({ theme }) => theme.space.space2};
-  margin-right: ${({ theme }) => theme.space.space2};
+  background-color: "#FAFAFA";
+  margin-top: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
   height: 42px;
   position: relative;
   justify-content: center;
   align-items: center;
-  border-color: ${({ withBorder, theme }) => withBorder ? theme.colors.secondColor : 'transparent'};
+  border-color: "#BCBEC0";
   border-bottom-width: 1px;
 `;
 
@@ -37,7 +37,7 @@ const CloseButton = styled(TouchableOpacity)`
   position: absolute;
   top: 0;
   left: -8px;
-  background-color: ${({ theme }) => theme.colors.lightColor};
+  background-color: "#FAFAFA";
   height: 40px;
   width: 40px;
   justify-content: center;
@@ -48,7 +48,7 @@ const ToolItem = styled(TouchableOpacity)`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: ${({ theme }) => theme.colors.lightColor};
+  background-color: "#FAFAFA";
   height: 40px;
   justify-content: center;
   align-items: center;
@@ -76,12 +76,12 @@ const ScreenPopUp = ({ theme, hideHeader, title, tooltext, onToolPress, noScroll
         {!hideHeader === (
           <Header noPadding={!title} withBorder={!!tooltext}>
             <CloseButton onPress={goBack}>
-              <Ionicons name="ios-arrow-round-back" color={theme.colors.darkColor} size={32} />
+              <Ionicons name="ios-arrow-round-back" color= '#414042' size={32} />
             </CloseButton>
             {title === <H3>{title}</H3>}
             {tooltext === (
               <ToolItem onPress={onToolPress}>
-                <Subtitle1 color={theme.colors.primaryDarkColor}>{tooltext}</Subtitle1>
+                <Subtitle1 color= '#414042'>{tooltext}</Subtitle1>
               </ToolItem>
             )}
           </Header>

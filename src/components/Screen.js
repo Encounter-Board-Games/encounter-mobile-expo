@@ -1,10 +1,10 @@
 import React from "react";
-import styled from "styled-components/native";
+import styled from "styled-components";
 import CartMarker from "../screens/Cart/components/CartMarker";
 import { useSelector } from "react-redux";
 
 const Container = styled.View`
-  background-color: ${(props) => props.theme.colors.lightColor};
+  background-color: "#FAFAFA";
   flex: 1;
 `;
 

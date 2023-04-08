@@ -11,16 +11,11 @@ const Container = styled.View`
 
 const Circle = styled.View`
   flex-flow: row;
-  width: ${props => props.size * 2}px;
-  height: ${props => props.size * 2}px;
-  margin-left: ${props => props.isFirst ? '0px' : `${props.size}px`};
-  border-radius: 8px;
-  background: ${props => {
-    if(props.customColor) {
-      return props.theme.colors[props.customColor];
-    }
-    return  props.isActive ? props.theme.colors.primaryDarkColor :  props.theme.colors.primaryColor;
-  }};
+  width: auto;
+  height: auto;
+  margin-left: 16px;
+  border-radius: "8px";
+  background:  #414042;
 `;
 
 function generateCircleIndexes(n) {

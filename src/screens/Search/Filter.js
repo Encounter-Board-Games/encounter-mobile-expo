@@ -14,8 +14,8 @@ import { useNavigation } from '@react-navigation/native'
 import { translation } from '../../texts'
 
 const Container = styled.View`
-    padding: ${props => props.theme.space.space2};
-    padding-top: ${props => props.theme.space.space0};
+    padding: 16px;
+    padding-top: 4px;
     flex: 1;
 `
 

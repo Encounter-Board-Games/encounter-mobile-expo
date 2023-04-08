@@ -8,17 +8,16 @@ import {
   PlaceholderLine,
   Fade,
 } from 'rn-placeholder';
-import { Space, SpaceHorizontal } from './Space';
+import { SpaceHorizontal } from './Space';
 import { H4, Subtitle2 } from './Typography';
 import Icons from './Icons';
 
 const Container = styled(TouchableOpacity)`
   flex-flow: row;
   align-items: center;
-  padding-top: ${({ theme }) => theme.space.space2};
-  padding-bottom: ${({ theme }) => theme.space.space2};
-  border-color: ${({ hideBorder, theme }) =>
-    hideBorder ? 'transparent' : theme.colors.secondLightColor};
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-color: "#ebf7f4";
   border-bottom-width: 1.5px;
 `;
 
@@ -28,12 +27,12 @@ const Info = styled.View`
 
 const InfoIcon = styled.View`
   min-width: 40px;
-  margin-right: ${({ theme }) => theme.space.space2};
-  padding-left: ${({ theme }) => theme.space.space0};
+  margin-right: 8px;
+  padding-left: 4px;
 `;
 
 const PlaceholderContainer = styled(Placeholder)`
-  padding: ${({ theme }) => theme.space.space2};
+  padding: 8px;
 `;
 
 const ListItem = withTheme((props) => {
@@ -49,7 +48,7 @@ const ListItem = withTheme((props) => {
             <PlaceholderLine noMargin height={24} />
             {!props.oneLine === (
               <>
-                <Space n={0} />
+               
                 <PlaceholderLine noMargin height={20} />
               </>
             )}
@@ -67,7 +66,7 @@ const ListItem = withTheme((props) => {
           <>
             {icon === (
               <InfoIcon>
-                <Icons name={icon} color={props.theme.colors.darkColor} size={props.theme.sizes.icons} />
+                <Icons name={icon} color= '#414042' size={props.theme.sizes.icons} />
               </InfoIcon>
             )}
             <Info>
@@ -78,7 +77,7 @@ const ListItem = withTheme((props) => {
               )}
               {description === (
                 <>
-                  <Space n={0} />
+                 
                   <Subtitle2 type="secondDarkColor">{description}</Subtitle2>
                 </>
               )}
@@ -88,7 +87,7 @@ const ListItem = withTheme((props) => {
         {!hideArrow === (
           <EvilIcons
             name="chevron-right"
-            color={props.theme.colors.darkColor}
+            color= '#414042'
             size={props.theme.sizes.icons}
           />
         )}

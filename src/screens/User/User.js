@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import MenuOption from '../../components/MenuOption';
 import styled, { withTheme } from 'styled-components';
 import ScreePopup from '../../components/ScreePopup';
@@ -8,19 +7,19 @@ import { Space } from '../../components/Space';
 import { useSelector, useDispatch } from 'react-redux';
 import InformationBox from '../../components/InformationBox';
 import { handleReopenOnboarding } from '../../store/actions/onboarding';
-import config from '../../config';
+import config from "../../../config";
 
 
 const Container = styled.View`
-    padding: ${props => props.theme.space.space2};
-    padding-top: ${props => props.theme.space.space1};
-`
+    padding: 16px;
+    padding-top: 8px;
+`;
 
-const Logout = styled(TouchableOpacity)`
+const Logout = styled.TouchableOpacity`
     flex-flow: row;
-    margin-top: ${props => props.theme.space.space3}
+    margin-top: 24px
     align-items:center;
-`
+`;
 
 
 export default withTheme((props) => {
@@ -42,17 +41,15 @@ export default withTheme((props) => {
         <Container>
             {
                 hasPendences && <React.Fragment>
-                <Space n={1} />
+               
                     <InformationBox
                         titleType="danger"
                         title='Você possui documentos pendentes!'
-                        description={`Complete seu cadastro para 
-começar a alugar.`}
+                        description={`Complete seu cadastro para começar a alugar.`}
                         buttonText='Completar cadastro'
                         onPressButton={() => navigation.navigate('SelfUpload') }
                     />
-
-                    <Space n={3} />
+                   
                 </React.Fragment>
             }
 

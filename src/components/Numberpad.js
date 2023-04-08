@@ -12,13 +12,13 @@ const Number = styled(TouchableOpacity)`
   flex: 1;
   align-items: center;
   justify-content: center;
-  border: 0.5px solid ${(props) => props.theme.colors.primaryColor};
-  background-color: ${(props) => props.theme.colors.primaryLightColor};
-  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+  border: 0.5px solid  #c8e8e0;
+  background-color: "#ebf7f4";
+  opacity: 0.5;
 `;
 
 const NumberText = styled.Text`
-  color: ${(props) => props.theme.colors.primaryDarkColor};
+  color:  #414042;
   font-family: Nunito;
   font-size: 24px;
 `;
@@ -72,7 +72,7 @@ const NumberPadComponent = ({ onPress, onCleanPress, disabled, theme }) => (
       </Number>
       <Number disabled={disabled} isLast onPress={() => onCleanPress()}>
         <NumberText>
-          <Ionicons name="ios-arrow-back" color={theme.colors.primaryDarkColor} size={24} />
+          <Ionicons name="ios-arrow-back" color= '#414042' size={24} />
         </NumberText>
       </Number>
     </Line>

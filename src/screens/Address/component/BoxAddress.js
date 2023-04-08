@@ -1,40 +1,36 @@
-import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
-import styled, { withTheme } from 'styled-components';
-import { Subtitle2, Subtitle1 } from '../../../components/Typography';
-import { Space, SpaceHorizontal } from '../../../components/Space';
+import React, { Component } from 'react'
+import styled, { withTheme } from 'styled-components'
+import { Subtitle2, Subtitle1 } from '../../../components/Typography'
+import { SpaceHorizontal } from '../../../components/Space'
 import { EvilIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 
 
 
-const AddressBox = styled(TouchableOpacity)`
-    
-    margin-left: ${props => props.theme.space.space2};
-    margin-right: ${props => props.theme.space.space2};
-    
-    background-color: ${props => props.theme.colors.lightColor}
-    ${props => !props.noPadding ?  'padding:'+ props.theme.space.space2 : ''}
-
-    border-radius: ${props => props.theme.borderRadius.button};
-    shadow-color: ${props => props.theme.shadow.shadowColor};
-    shadow-offset: ${props => props.theme.shadow.shadowOffset.width} ${props => props.theme.shadow.shadowOffset.width};
-    shadow-opacity: ${props => props.theme.shadow.shadowOpacity};
-    shadow-radius: ${props => props.theme.shadow.shadowRadius};
-    elevation: ${props => props.theme.shadow.elevation};
-    margin-bottom: ${props => props.theme.space.space2};
-
+const AddressBox = styled.TouchableOpacity`
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: "#FAFAFA";
+    padding: 16px;
+    border-radius: '8px';
+    shadow-color: 'rgb(0, 0, 0)';
+    shadow-offset: 0px; 5px;
+    shadow-opacity: .16;
+    shadow-radius: 3px;
+    elevation: 2;
+    margin-bottom: 16px;
     align-items: center;
-
     flex: 1;
     align-items: center;
     justify-content: center;
     flex-flow: row;
-`
+`;
+
 const AddressBoxInfo = styled.View`
     flex: 1;
     align-items: flex-start;
-`
+`;
+
 
 class BoxAddress extends Component {
 
@@ -48,13 +44,13 @@ class BoxAddress extends Component {
 
                     <AddressBoxInfo>
                         <Subtitle1>{address.nameFormated}</Subtitle1>
-                        <Space n={0} />
+                       
                         <Subtitle2 type="secondDarkColor">{address.addressFormated}</Subtitle2>
                         <Subtitle2 type="secondDarkColor">{address.complement}</Subtitle2>
                     </AddressBoxInfo>
                     <SpaceHorizontal n={2} />
                     {
-                        !choseAddressMode && <EvilIcons name="chevron-right" color={theme.colors.darkColor} size={theme.sizes.icons} />
+                        !choseAddressMode && <EvilIcons name="chevron-right" color= '#414042' size={theme.sizes.icons} />
                     }
                 </AddressBox>
             </React.Fragment>

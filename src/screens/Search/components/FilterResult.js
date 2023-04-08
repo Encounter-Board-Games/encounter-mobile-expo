@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Text } from "react-native";
 import styled from "styled-components";
 import ProductItem from "../../Product/components/ProductItem";
 import { handleSetRecentsFilteringText } from "../../../store/actions/filters";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Placeholder,
+  PlaceholderMedia,
   PlaceholderLine,
   Fade,
 } from "rn-placeholder";
@@ -21,12 +23,12 @@ const ContentLine = styled.View`
   flex: 1;
 `;
 const Space = styled.View`
-    width: ${(props) => props.theme.space.space2}
+    width: 16px
     
     height: 1px;
 `;
 const Space2 = styled.View`
-    height: ${(props) => props.theme.space.space2}
+    height: 16px
     width: 1px;
 `;
 
@@ -52,6 +54,7 @@ export default (props) => {
   const onViewRef = React.useRef(({ viewableItems }) => {
     console.log(viewableItems);
     setProductsShow(viewableItems.map((i) => i.index));
+    // Use viewable items in state or as intended
   });
   const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 20 });
 

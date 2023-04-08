@@ -1,9 +1,25 @@
-import { about as getAbout, updateVersion } from "../../graphql";
-import storage from "../../utils/storage";
+import { about as getAbout, updateVersion } from "../../graphql"
+import storage from "../../utils/storage"
 let pkg = require('../../../app.json');
-export const APP_SET_CONFIGURATION = "APP_SET_CONFIGURATION";
-export const APP_SET_TERMS = "APP_SET_TERMS";
-export const APP_SET_NEED_UPDATE_VERSION = "APP_SET_NEED_UPDATE_VERSION";
+
+
+export const APP_SET_CONFIGURATION = "APP_SET_CONFIGURATION"
+export const APP_SET_TERMS = "APP_SET_TERMS"
+export const APP_SET_NEED_UPDATE_VERSION = "APP_SET_NEED_UPDATE_VERSION"
+
+
+// const about = {
+//     phone: '5511998454090',
+//     instagram: 'encounter.bg',
+//     name: 'Encounter',
+//     nameAbout: ' a Encounter',
+//     aboutText: 'Lorem ipsum nisi lorem luctus vitae vel per nam non, quisque suspendisse aenean vivamus inceptos sem mauris morbi, eleifend ornare nisl habitasse vulputate et facilisis habitasse. molestie vitae tellus sem phasellus mollis accumsan mauris lectus tincidunt porta, turpis aenean urna fringilla duis nullam tempus praesent lacus lobortis purus, luctus consectetur luctus quisque justo hendrerit fermentum nisl mauris. pellentesque posuere justo mauris vitae dui nisi sed sem faucibus nisi aenean vulputate ipsum.'
+// }
+
+// const terms = {
+//     terms: 'https://www.linkedin.com/feed/',
+//     policy: 'https://www.linkedin.com/feed/',
+// }
 
 function appSetConfiguration(about){
     return {
@@ -30,6 +46,8 @@ export function handleLoadAppConfig(){
         const { about, help} = await getAbout()
         const { name, instagram, description, terms, politics } = about;
         
+
+        //  var match = myStr;
         dispatch(appSetConfiguration(
             {
                  phone: '55' + help.match(/\d/g),

@@ -11,7 +11,6 @@ const ToolItem = styled(TouchableOpacity)`
     align-items:center;
 `;
 
-
 const Header = styled.View`
     flex-flow: row;
     position: relative;
@@ -20,6 +19,9 @@ const Header = styled.View`
 export default withTheme((props) => <Header>
 <H3>{props.title}</H3>
 {
-    props.showSeeAll && <ToolItem onPress={() => props?.onSeeAllPress()}><Subtitle1 underline color={props.theme.colors.primaryDarkColor}>Ver todos</Subtitle1></ToolItem>
+    props.showSeeAll && 
+        <ToolItem onPress={() => props?.onSeeAllPress()}>
+            <Subtitle1 underline color= '#414042'>Ver todos</Subtitle1>
+        </ToolItem>
 }
 </Header>)

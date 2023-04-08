@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Space } from '../../../components/Space';
-import { Button } from '../../../components/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { H4, H3 } from '../../../components/Typography';
-import { closePopupModal } from '../../../store/actions/info';
-import { Keyboard, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import Dice from '../../../components/Dice'
+import { Space, SpaceHorizontal } from '../../../components/Space'
+import { Button } from '../../../components/Button'
+import { useDispatch, useSelector } from 'react-redux'
+import { H4, H3 } from '../../../components/Typography'
+import { openLoginPopup } from '../../../store/actions/user'
+import { closePopupModal } from '../../../store/actions/info'
+import { Linking, KeyboardAvoidingView, Keyboard } from 'react-native'
+import { handleRemoveCurrentPayment } from '../../../store/actions/payments'
+import { useNavigation } from '@react-navigation/native'
+import { View } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const Container = styled.View`
     align-items: center;
@@ -13,14 +19,14 @@ const Container = styled.View`
     width: 100%;
 `
  const TextInput = styled.TextInput`
-      height:40px;
+     height:40px;
      width: 100%;
-     border: 1.5px solid ${props => props.theme.colors.primaryColor}
-     background: ${props => props.theme.colors.primaryLightColor}
-     padding-left: ${props => props.theme.space.space2}
-     padding-right: ${props => props.theme.space.space2}
-     border-radius: ${props => props.theme.borderRadius.button}
-     font-size: ${props => props.theme.space.space2};
+     border: 1.5px solid;
+     background: "#ebf7f4";
+     padding-left: 16px
+     padding-right: 16px
+     border-radius: '8px';
+     font-size: 16px;
  `
 
 const Line = styled.View`
@@ -32,16 +38,16 @@ const Line = styled.View`
 const Btn = styled.View`
     flex:  1 1 0px
 `
-const Option_ = styled(TouchableOpacity)`
-    margin-top: ${props => props.theme.space.space1};
+const Option_ = styled.TouchableOpacity`
+    margin-top: 8px;
     align-items: center;
     justify-content: center;
     border-radius: 40px;
-    border: 1px solid ${props => props.theme.colors.primaryColor};
+    border: 1px solid  #c8e8e0;
     width: 40px;
     height: 40px;
-    margin-left:  ${props => props.theme.space.space1};
-    margin-right:  ${props => props.theme.space.space1};
+    margin-left:  8px;
+    margin-right:  8px;
 `
 
 const Option = ({children, onPress}) => {
@@ -51,10 +57,13 @@ const Option = ({children, onPress}) => {
 }
 
 export default () => {
-    const dispatch = useDispatch();
-    const [text, setText] = useState('');
-    const {  popup = { } } = useSelector(state => state.info);
-    const { callBack = () => {}, title = undefined, description = undefined, cancelBtn = undefined, options = [], } = popup.data  ? popup.data : {};
+    const dispatch = useDispatch()
+
+    const [text, setText] = useState('')
+    
+    const {  popup = { } } = useSelector(state => state.info)
+    const { callBack = () => {}, title = undefined, description = undefined, cancelBtn = undefined, options = [], } = popup.data  ? popup.data : {}
+
 
     const cancel = () =>{
         dispatch(closePopupModal())
@@ -68,6 +77,7 @@ export default () => {
     return (
   
         <Container onPress={() => Keyboard.dismiss()}>
+            {/* <KeyboardAvoidingView behavior="padding"> */}
             {
                 title && <H3 center>{title}</H3>
             }
@@ -75,18 +85,21 @@ export default () => {
             {
                 description && <H4 noBold center>{description}</H4>
             }
-            <Space n={1} />
+            
+           
+
             <View style={{ width: '100%', flexDirection:'row', flexWrap: 'wrap'}}>
                 {
                     options.map((option, index) => <View key={index} style={{ flexGrow: 1, alignItems: 'center' }}><Option onPress={() => choose(option)} >{option}</Option></View>)
                 }
             </View>
-            <Space n={2} />
+           
             <Line>
                 <Btn>
                     <Button onPress={cancel} type="CallToAction-Outline" width={'auto'}>{ cancelBtn ? cancelBtn : 'Cancelar'}</Button>
                 </Btn>
             </Line>
+            {/* </KeyboardAvoidingView> */}
         </Container>
     )
 }

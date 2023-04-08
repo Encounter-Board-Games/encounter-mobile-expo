@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import Screen from "../../components/Screen";
 
 import styled, { withTheme } from "styled-components";
 import SearchBar from "./components/SearchBar";
-import { H3, Subtitle2 } from "../../components/Typography";
+import {
+  H3,
+  Subtitle2,
+} from "../../components/Typography";
 import { useSelector, useDispatch } from "react-redux";
 import { Tag } from "../../components/Tag";
 import {
@@ -17,10 +20,10 @@ import ProductShelf from "../Product/components/ProductShelf";
 import HeaderSeeAll from "../../components/HeaderSeeAll";
 import FilterResult from "./components/FilterResult";
 import { translation } from "../../texts";
-import config from "../../config";
+import config from "../../../config";
 
 const Container = styled.View`
-  padding: ${(props) => props.theme.space.space2};
+  padding: 16px;
   padding-bottom: 0px;
   flex: 1;
 `;
@@ -30,30 +33,30 @@ const FlexContent = styled.View`
 `;
 
 const Space = styled.View`
-  height: ${(props) => props.theme.space.space2};
+  height: 16px;
   width: 100%;
-  color: ${(props) => props.theme.colors.secondColor};
+  color: "#BCBEC0";
 `;
 
 const Chips = styled.ScrollView`
   max-height: 40px;
-  margin-top: ${(props) => props.theme.space.space1};
+  margin-top: 8px;
 `;
 
 const Space3 = styled.View`
-    height: ${(props) => props.theme.space.space3}
+    height: 24px;
     width: 1px;
 `;
 const Space2 = styled.View`
-    height: ${(props) => props.theme.space.space2}
+    height: 16px
     width: 1px;
 `;
 
-const RecentItem = styled(TouchableOpacity)`
-  padding-bottom: ${(props) => props.theme.space.space1};
-  padding-top: ${(props) => props.theme.space.space1};
+const RecentItem = styled.TouchableOpacity`
+  padding-bottom: 8px;
+  padding-top: 8px;
   border-bottom-width: 0.5px;
-  border-color: ${(props) => props.theme.colors.secondLightColor};
+  border-color: "#E6E7E8";
 `;
 
 const Search = (props) => {
@@ -111,7 +114,7 @@ const Search = (props) => {
                 key={index}
                 onPress={() => dispatch(handleChangeFilteringText(item, false))}
               >
-                <Subtitle2 color={props.theme.colors.secondDarkColor}>
+                <Subtitle2 color={"#6D6E71"}>
                   {item}
                 </Subtitle2>
               </RecentItem>

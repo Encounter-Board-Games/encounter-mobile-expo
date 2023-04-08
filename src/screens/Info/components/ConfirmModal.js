@@ -1,12 +1,15 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components/native";
-
+import React, { useState } from "react";
+import styled from "styled-components";
+import Dice from "../../../components/Dice";
 import { Space, SpaceHorizontal } from "../../../components/Space";
 import { Button } from "../../../components/Button";
+import { useDispatch, useSelector } from "react-redux";
 import { H4, H3 } from "../../../components/Typography";
-
+import { openLoginPopup } from "../../../store/actions/user";
 import { closePopupModal } from "../../../store/actions/info";
+import { Linking } from "react-native";
+import { handleRemoveCurrentPayment } from "../../../store/actions/payments";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   align-items: center;
@@ -30,10 +33,10 @@ export default () => {
   const { popup = {} } = useSelector((state) => state.info);
   const {
     callBack = () => {},
-    title,
-    description,
-    cancelBtn,
-    confirmBtn,
+    title = undefined,
+    description = undefined,
+    cancelBtn = undefined,
+    confirmBtn = undefined,
   } = popup.data ? popup.data : {};
 
   const remove = () => {
@@ -48,25 +51,25 @@ export default () => {
 
   return (
     <Container>
-      {title ? <H3 center>{title}</H3> : null}
-      <Space n={1} />
-      {description ? (
+      {title && <H3 center>{title}</H3>}
+     
+      {description && (
         <H4 noBold center>
           {description}
         </H4>
-      ) : null}
+      )}
 
-      <Space n={2} />
+     
       <Line>
         <Btn>
           <Button onPress={cancel} type="CallToAction-Outline" width={"auto"}>
-            {cancelBtn || "Cancelar"}
+            {cancelBtn ? cancelBtn : "Cancelar"}
           </Button>
         </Btn>
         <SpaceHorizontal n={4} />
         <Btn>
           <Button onPress={remove} type="ComplementButton-Big" width={"auto"}>
-            {confirmBtn || "Sim, excluir"}
+            {confirmBtn ? confirmBtn : "Sim, excluir"}
           </Button>
         </Btn>
       </Line>

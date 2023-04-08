@@ -1,22 +1,22 @@
 import React from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import styled, { withTheme } from 'styled-components/native';
+import styled, { withTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 
 const Container = styled.View`
     width: 100%;
     position: relative;
-    padding-right: ${props => props.withButton ? '28px' : '0px'};
+    padding-right: '28px';
 `
 
 export const CustomInput = styled.TextInput`
-    border: 1.5px solid ${props => props.theme.colors.primaryColor}
-    background: ${props => props.theme.colors.primaryLightColor}
-    padding-left: ${props => props.theme.space.space2}
-    border-radius: ${props => props.theme.borderRadius.button}
-    height: ${props => props.field ? '48px' : '56px'}
-    font-size: ${props => props.theme.space.space2};
-    opacity: ${props => props.disabled ? '.5' : '1'}
+    border: 1.5px solid  #c8e8e0;
+    background: "#ebf7f4";
+    padding-left: 16px;
+    border-radius: 8px;
+    height: 56px;
+    font-size: 16px;
+    opacity: .5;
 `
 
 const Button = styled.View`
@@ -25,15 +25,15 @@ const Button = styled.View`
     justify-content:center;
     width: 56px;
     border-radius: 56px;
-    background: ${props => props.theme.colors.primaryDarkColor};
-    opacity: ${props => props.disabledButton ? '.5' : '1'}
+    background: #414042;
+    opacity: .5;
 `
 
 const ButtonSpace = styled.View`
     height: 56px;
     width: 56px;
     border-radius: 56px;
-    background: ${props => props.theme.colors.lightColor};
+    background: "#FAFAFA";
     position: absolute;
     right: 0;
 `
@@ -46,7 +46,7 @@ const TouchRightIcon = styled(TouchableOpacity)`
     right: 0;
     align-items: center;
     justify-content: center;
-    opacity: ${props => props.disabled ? '.5' : '1'}
+    opacity: .5;
 `
 
 const CustomTextInput = (props) => {
@@ -73,7 +73,7 @@ const CustomTextInput = (props) => {
     if(props.rightIcon) {
         rightIcon = (
             <TouchRightIcon {...props} onPress={() => props.onRightIconPress && props.onRightIconPress()}>
-                <Ionicons name={props.rightIcon} color={props.theme.colors.darkColor} size={32} />
+                <Ionicons name={props.rightIcon} color= '#414042' size={32} />
             </TouchRightIcon>
         );
     }

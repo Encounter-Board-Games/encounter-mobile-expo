@@ -14,13 +14,13 @@ import { handleOpenCart } from "../../store/actions/cart";
 const Container = styled.View`
   width: 100%;
   height: 100%;
-  padding-bottom: ${(props) => props.theme.space.space2};
+  padding-bottom: 16px;
 `;
 
 const Header = styled.View`
-  padding-top: ${(props) => props.theme.space.space3};
-  padding-left: ${(props) => props.theme.space.space2};
-  padding-right: ${(props) => props.theme.space.space2};
+  padding-top: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
 export default () => {
@@ -40,7 +40,7 @@ export default () => {
           <H2>Complete suas informações abaixo:</H2>
         </Header>
 
-        <Space n={2} />
+       
         <EditProfileContent navigation={navigation} hasTerms />
       </Container>
     </Animatable.View>

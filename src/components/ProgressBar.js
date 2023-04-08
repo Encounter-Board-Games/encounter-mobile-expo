@@ -6,15 +6,15 @@ const Progress = styled.View`
     width: 100%;
     border-radius: 4px;
     height: 4px;
-    background: ${props => props.theme.colors.secondColor}
+    background: "#BCBEC0";
 `
 
 
 const Bar = styled.View`
-    width: ${props => props.percent ? (props.percent + '%'): '0%'};
+    width: 0%;
     border-radius: 4px;
     height: 4px;
-    background: ${props => props.theme.colors.complementColor}
+    background: "#0d3c54";
 `
 
 

@@ -203,7 +203,10 @@ export function handleRemoveAddress() {
     try {
       dispatch(setRemoveAddress(key));
       const result = await removeAddress(key);
+      // await dispatch(handleaddressData())
+
       if (!result.success) throw Error();
+
       dispatch(handleShowNotification("Removido com sucesso"));
     } catch (error) {
       console.log(error);

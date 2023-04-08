@@ -11,31 +11,30 @@ import {
 
 const Box = styled.View`
     background-color: white;
-    margin-bottom: ${props => props.theme.space.space2};
+    margin-bottom: 16px;
     width: 100%;
-    padding-top:  ${props => props.theme.space.space2};
-    padding-bottom:  ${props => props.theme.space.space2};
-
-
-    shadow-color: ${props => props.theme.shadow.shadowColor};
-    shadow-offset: ${props => props.theme.shadow.shadowOffset.width} ${props => props.theme.shadow.shadowOffset.width};
-    shadow-opacity: ${props => props.theme.shadow.shadowOpacity};
-    shadow-radius: ${props => props.theme.shadow.shadowRadius};
-    elevation: ${props => props.theme.shadow.elevation};
+    padding-top:  16px;
+    padding-bottom:  16px;
+    shadow-color: 'rgb(0, 0, 0)';
+    shadow-offset: 0px, 5px;
+    shadow-opacity: .16;
+    shadow-radius: 3px;
+    elevation: 2;
 `;
 
 const Header = styled.View`
-    padding-left: ${props => props.theme.space.space2};
-    padding-right: ${props => props.theme.space.space2};
-    margin-bottom: ${props => props.theme.space.space2};
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 16px;
     position: relative;
-`
+`;
 
 const ToolText = styled(TouchableOpacity)`
     position: absolute;
-    right: ${props => props.theme.space.space2};
+    right: 16px;
     top:0;
-`
+`;
+
 export default withTheme((props) => {
     const subtitle = props.subtitle ? <Subtitle2>{props.subtitle}</Subtitle2> : null;
     const toolText = props.toolText ? (

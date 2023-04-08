@@ -2,6 +2,7 @@ import {
     SET_CURRENT_LOCATION,
     SET_CURRENT_LOCATION_NOT_FOUND,
     SET_LOCATIONS_SEARCHS,
+    SET_LOCATIONS_SEARCHS_NOT_FOUND, 
     EDIT_ADDRESS,
     SET_SEARCHS_LOCATIONS_TERM ,
     SET_LOCATIONS_SEARCHS_LOADING, 
@@ -10,6 +11,7 @@ import {
     SET_CHOSE_ADDRESS_MODE,
     REMOVE_ADDRESS
 } from '../actions/address'
+import { arrayToObj } from '../../utils/helpers'
 
 export default function address(state = {}, action) {
     

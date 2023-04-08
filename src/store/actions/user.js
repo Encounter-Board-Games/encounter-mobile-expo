@@ -22,7 +22,7 @@ import {
 } from "../../graphql";
 import * as Device from "expo-device";
 import * as ImageManipulator from "expo-image-manipulator";
-import storage from "../store";
+import storage from "../../utils/storage";
 
 import * as Crypto from "expo-crypto";
 import { setProducts } from "./product";
@@ -32,9 +32,10 @@ import { arrayToObj } from "../../utils/helpers";
 import { handleLogoutCart, handleLoginCart } from "./cart";
 import { setAdresses } from "./address";
 import { API_URI } from "../../graphql/client";
-import config from "../../config";
+import config from "../../../config";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { Linking } from "react-native";
+
 export const SHOW_LOGIN_POPUP = "SHOW_LOGIN_POPUP";
 export const SET_LOGOUT_USER = "SET_LOGOUT_USER";
 export const SET_NEED_COMPLETE_INFOS = "SET_NEED_COMPLETE_INFOS";
@@ -49,16 +50,20 @@ export const SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS =
   "SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS";
 
 export const SET_AUTO_COMPLETE_REGISTER = "SET_AUTO_COMPLETE_REGISTER";
-
+//FAVORITES
 export const SET_USER_INFO = "SET_USER_INFO";
 export const SET_USER_FAVORITES = "SET_USER_FAVORITES";
 export const ADD_USER_FAVORITE = "ADD_USER_FAVORITE";
 export const REMOVE_USER_FAVORITE = "REMOVE_USER_FAVORITE";
 
+//LOCATION AND ADDRESS
+// PENDENCES
 export const SET_PENDENCES = "SET_PENDENCES";
 
+// NOTIFICATIONS
 export const SET_USER_NOTIFICATION = "SET_USER_NOTIFICATION";
 
+// REMEMBER PRODUCTS
 export const SET_USER_REMEMBER_PRODUCTS = "SET_USER_REMEMBER_PRODUCTS";
 export const ADD_USER_REMEMBER_PRODUCTS = "ADD_USER_REMEMBER_PRODUCTS";
 export const REMOVE_USER_REMEMBER_PRODUCTS = "REMOVE_USER_REMEMBER_PRODUCTS";
@@ -67,17 +72,26 @@ const platform = Device.modelName;
 const os = Device.osName;
 
 async function getUniqueDeviceId() {
-  const deviceId = (await storage.getItem("deviceId"))?.deviceId;
-  if (deviceId) return deviceId;
+  const deviceId = await storage.getItem("deviceId");
+  if (deviceId) return deviceId.deviceId;
   const deviceIdNew = ("" + Math.random()).replace("0.", "");
   await storage.setItem("deviceId", { deviceId: deviceIdNew });
   return deviceIdNew;
 }
 
-const showLoginPopup = (show) => ({ type: SHOW_LOGIN_POPUP, show });
-export const hideLoginPopup = () => showLoginPopup(false);
-export const openLoginPopup = () => showLoginPopup(true);
+export function hideLoginPopup() {
+  return showLoginPopup(false);
+}
+export function openLoginPopup() {
+  return showLoginPopup(true);
+}
 
+function showLoginPopup(show) {
+  return {
+    type: SHOW_LOGIN_POPUP,
+    show,
+  };
+}
 function setAutocompleteRegister(name, lastname) {
   return {
     type: SET_AUTO_COMPLETE_REGISTER,
@@ -177,8 +191,9 @@ function setUserNotification(notifications) {
   };
 }
 
-
-
+// export const SET_USER_REMEMBER_PRODUCTS = "SET_USER_REMEMBER_PRODUCTS"
+// export const ADD_USER_REMEMBER_PRODUCTS = "ADD_USER_REMEMBER_PRODUCTS"
+// export const REMOVE_USER_REMEMBER_PRODUCTS = "REMOVE_USER_REMEMBER_PRODUCTS"
 function setUserRememberProducts(rememberProductKeys) {
   return {
     type: SET_USER_REMEMBER_PRODUCTS,
@@ -222,6 +237,7 @@ export function loginApple() {
 
         state: csrf,
         nonce: hashedNonce,
+        // nonce
       });
 
       const { fullName } = result;
@@ -231,6 +247,11 @@ export function loginApple() {
     } catch (e) {
       sendErros(JSON.stringify(e));
       dispatch(setLoginLoading(false));
+      if (e.code === "ERR_CANCELED") {
+        // handle that the user canceled the sign-in flow
+      } else {
+        // handle other errors
+      }
     }
   };
 }
@@ -265,7 +286,7 @@ export function loginFB() {
     try {
       await Facebook.initializeAsync(config.facebookAppId);
       const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ["public_profile", "email"]
+        permissions: ["public_profile", "email"], //'user_birthday', 'user_gender' ],
       });
       if (type === "success") {
         dispatch(handleSocialLogin("facebook", token));
@@ -305,6 +326,8 @@ export function handleSocialLogin(type, password) {
       dispatch(handleShowNotification("Ocorreu um erro", "danger"));
       dispatch(setLoginLoading(false));
     }
+
+    // action
   };
 }
 export function handleSendPassword(password) {
@@ -364,6 +387,8 @@ export function handleSendPassword(password) {
       dispatch(handleShowNotification("Ocorreu um erro", "danger"));
       dispatch(setLoginLoading(false));
     }
+
+    // action
   };
 }
 
@@ -438,7 +463,10 @@ export function handleEditUserInfo(
     dispatch(setNeedCompleteInfos(false));
 
     if (!terms) dispatch(handleShowNotification("Dados alterados com sucesso"));
+
     dispatch(handleUserData());
+
+    // if(result)
   };
 }
 
@@ -545,6 +573,13 @@ export function handleToggleLike(productId) {
   };
 }
 
+// export function handleToggleFavorite(productId){
+//     return dispatch => {
+//         const { user } = getState();
+
+//     }
+// }
+
 export function handleUploadSelfDocument(image) {
   return async (dispatch, getState) => {
     const { user } = getState();
@@ -552,10 +587,11 @@ export function handleUploadSelfDocument(image) {
     const SELF_WITH_DOCUMENT = "SELF_WITH_DOCUMENT";
     const resizedPhoto = await ImageManipulator.manipulateAsync(
       image.uri,
-      [{ resize: { width: 300 } }],
+      [{ resize: { width: 300 } }], // resize to width of 300 and preserve aspect ratio
       { compress: 0.7, format: "jpeg" }
     );
 
+    //    console.log(resizedPhoto)
     const { filename } = await upload(resizedPhoto.uri);
 
     const result = await uploadDocument(filename, SELF_WITH_DOCUMENT);

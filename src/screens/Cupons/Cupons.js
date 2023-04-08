@@ -18,7 +18,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const Container = styled.View`
     min-height:100%;
-    padding: ${props => props.theme.space.space2};
+    padding: 16px;
 `
 
 const Cupon = styled.View`
@@ -45,13 +45,13 @@ const Cupons = () => {
                 <Box key={index}>
                     <Cupon>
                         <H3>{cupon.title}</H3>
-                        <Space n={2} />
+                       
                         <Subtitle2 type="secondDarkColor">{cupon.description}</Subtitle2>
-                        <Space n={2} />
+                       
                         <Button type="CallToAction-Outline" onPress={() => openFilter(cupon.search)}>{translation("cupon.btn")}</Button>
-                        <Space n={2} />
+                       
                         <Subtitle2 width='100%' right type="secondDarkColor">{cupon.progressBarText}</Subtitle2>
-                        <Space n={1} />
+                       
                         <ProgressBar percent={cupon.progressBar} />
                     </Cupon>
                 </Box>

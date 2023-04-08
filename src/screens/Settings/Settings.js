@@ -1,40 +1,40 @@
-import React from 'react'
-import MenuOption from '../../components/MenuOption'
-import styled, { withTheme } from 'styled-components'
-import Screen from '../../components/Screen'
-import { Button } from '../../components/Button'
-import { H3, Subtitle2 } from '../../components/Typography'
-import { Space, SpaceHorizontal } from '../../components/Space'
-import { Image } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { useSelector, useDispatch } from 'react-redux'
-import { openLoginPopup } from '../../store/actions/user'
+import React from 'react';
+import MenuOption from '../../components/MenuOption';
+import styled, { withTheme } from 'styled-components';
+import Screen from '../../components/Screen';
+import { Button } from '../../components/Button';
+import { H3, Subtitle2 } from '../../components/Typography';
+import { Space, SpaceHorizontal } from '../../components/Space';
+import { Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { openLoginPopup } from '../../store/actions/user';
 import {
     Placeholder,
     PlaceholderLine,
     Fade
 } from "rn-placeholder";
-import { openPopupModal } from '../../store/actions/info'
-import { Ionicons } from '@expo/vector-icons'
-import { translation } from '../../texts'
-import config from '../../config'
+import { openPopupModal } from '../../store/actions/info';
+import { Ionicons } from '@expo/vector-icons';
+import { translation } from '../../texts';
+import config from "../../../config";
 
 const Container = styled.View`
-    padding: ${props => props.theme.space.space2}
+    padding: 16px
 `
 
 const MenuItem = styled.View`
     align-items:center;
-    padding-top: ${props => props.theme.space.space2};
-    padding-bottom: ${props => props.theme.space.space2};
-    border-color: ${props => props.theme.colors.secondLightColor};
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-color: "#E6E7E8";
     border-bottom-width: 1.5px;
 `
 
 const MenuItemHeader = styled.View`
     flex-flow: row;
     align-items:center; 
-    padding-bottom: ${props => props.theme.space.space2};
+    padding-bottom: 16px;
 `
 const MenuItemText = styled.View`
 flex: 1;
@@ -51,9 +51,11 @@ const Line = styled.View`
 const UserImage= styled.View`
 width: 64px;
 height: 64px;
-margin-right: ${props => props.theme.space.space2};
-margin-bottom: ${props => props.theme.space.space1};
+margin-right: 16px;
+margin-bottom: 8px;
 `
+
+
 
 export default withTheme((props) => {
 
@@ -80,7 +82,7 @@ export default withTheme((props) => {
                 }
                 
                
-                <Space n={0} />
+               
                 <Line>
                     
                     <Subtitle2 type="secondDarkColor">Editar perfil</Subtitle2>
@@ -97,7 +99,7 @@ export default withTheme((props) => {
         <MenuItemHeader>
             <MenuItemText>
                 <H3>Você ainda não está na sua conta.</H3>
-                <Space n={1} />
+               
                 <Subtitle2 type="secondDarkColor">{translation("settings.notLogged")}</Subtitle2>
             </MenuItemText>
             <MenuItemImage>

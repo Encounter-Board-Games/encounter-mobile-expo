@@ -3,7 +3,7 @@ import InformationBox from '../../../components/InformationBox'
 import { openLoginPopup } from '../../../store/actions/user';
 import { useDispatch } from 'react-redux';
 import { translation } from '../../../texts';
-import config from '../../../config';
+import config from '../../../../config';
 
 
 export default (props) => {

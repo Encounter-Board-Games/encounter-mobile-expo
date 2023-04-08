@@ -3,31 +3,31 @@ import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 
 export const Radio = styled(TouchableOpacity)`
-    margin-top: ${props => props.theme.space.space1};
-    margin-right: ${props => props.theme.space.space1};
+    margin-top: 8px;
+    margin-right: 8px;
     padding: 6px 12px;
     flex-flow: row;
     align-items:center;
     justify-content: center;
-    border-radius: ${props => props.isCircle ? '100px' : props.theme.borderRadius.tag};	
-    border: 1.5px solid ${props => props.isSelected ? props.theme.colors.primaryColor : props.theme.colors.secondColor};
-    background-color:   ${props => props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
+    border-radius: '100px';	
+    border: 1.5px solid;
+    background-color: "#BCBEC0";
 `;
 
 const CloseButton = styled(TouchableOpacity)`
-    background-color: ${props => props.theme.colors.secondLightColor};
+    background-color: "#E6E7E8";
     height: 16px;
     width: 16px;
     border-radius: 16px;
     justify-content: center;
     align-items:center;
-    margin-left: ${props => props.theme.space.space1}
+    margin-left: 8px
 `;
 
 export const Text = styled.Text`
 font-size: 14px;
-font-family:  ${props => props.isSelected ? 'Nunito' : 'Nunito'};
-color: ${props => props.isSelected ? props.theme.colors.primaryDarkColor : props.theme.colors.darkColor};
+font-family: 'Nunito';
+color:  #414042;
 `;
 
 export const CheckButton = (props) => (<Radio {...props} onPress={() => props.onPress && props.onPress()}>

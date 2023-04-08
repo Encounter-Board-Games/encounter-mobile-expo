@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled, { withTheme } from "styled-components";
-import { H1 } from "../../components/Typography";
 import Welcome from "./components/Welcome";
 import FilterCustom from "../../components/FilterCustom";
 import { useDispatch, useSelector } from "react-redux";
-import { handleLoadFilters } from "../../store/actions/filters";
 import Carrossel from "../../components/Carrossel";
 import FisrtQuestion from "./components/FisrtQuestion";
 import {
@@ -14,13 +12,12 @@ import {
 } from "../../store/actions/onboarding";
 import Finish from "./components/Finish";
 import HowKnowUs from "./components/HowKnowUs";
-import config from "../../config";
+import config from "../../../config";
 
 const Container = styled.View`
   flex: 1;
-  background: ${(props) => props.theme.colors.lightColor};
-  padding-top: ${(props) =>
-    Platform.OS === "ios" ? props.theme.space.space4 : 0};
+  background: "#FAFAFA";
+  padding-top: '32px';
 `;
 
 export default withTheme((props) => {
@@ -41,6 +38,7 @@ export default withTheme((props) => {
         />
       </Container>
     );
+  // return <Container><Welcome /></Container>
 
   if (config.translation == "zeero")
     return (

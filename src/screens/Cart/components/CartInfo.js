@@ -3,7 +3,7 @@ import { Subtitle2, H3, H4 } from "../../../components/Typography";
 import styled, { withTheme } from "styled-components";
 import { Space, SpaceHorizontal } from "../../../components/Space";
 import { Button } from "../../../components/Button";
-import { View, Dimensions, TouchableOpacity } from "react-native";
+import { View, Dimensions } from "react-native";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import { useSelector, useDispatch, connect } from "react-redux";
 import { currencyFormat } from "../../../utils/helpers";
@@ -25,7 +25,7 @@ import {
 } from "../../../store/actions/shared";
 import Payment from "./Payment";
 import { translation } from "../../../texts";
-import config from "../../../config";
+import config from "../../../../config";
 import { handleOpenCart } from "../../../store/actions/cart";
 
 const Line = styled.View`
@@ -38,8 +38,8 @@ const Title = styled.View`
   flex: 1;
   padding-right: 8px;
 `;
-const Remove = styled(TouchableOpacity)`
-    margin-right: ${(props) => props.theme.space.space1}
+const Remove = styled.TouchableOpacity`
+    margin-right: 8px;
     justify-content:center;
     width: 24px;
     height: 24px;
@@ -47,28 +47,26 @@ const Remove = styled(TouchableOpacity)`
 const LineProducts = styled.View`
   flex-direction: row;
   width: 100%;
-  height: ${(props) => props.theme.sizes.h1};
+  height: 24px;
 `;
 
 const CupomContent = styled.View`
     margin: 4px;
-    padding: ${(props) => props.theme.space.space2}
-    padding-top: ${(props) => props.theme.space.space1}
-    padding-bottom: ${(props) => props.theme.space.space1}
-    background: ${(props) => props.theme.colors.lightColor}
-    border-radius: ${(props) => props.theme.borderRadius.button}
+    padding: 16px
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: "#FAFAFA"
+    border-radius: 8px
 
-    shadow-color: ${(props) => props.theme.shadow.shadowColor};
-    shadow-offset: ${(props) => props.theme.shadow.shadowOffset.width} ${(
-  props
-) => props.theme.shadow.shadowOffset.width} ;
-    shadow-opacity: ${(props) => props.theme.shadow.shadowOpacity};
-    shadow-radius: ${(props) => props.theme.shadow.shadowRadius};
-    elevation: ${(props) => props.theme.shadow.elevation};
+    shadow-color: 'rgb(0, 0, 0)';
+    shadow-offset: '0px','5px';
+    shadow-opacity: .16;
+    shadow-radius: '3px';
+    elevation: 2;
 `;
 
 const Hr = styled.View`
-  background: ${(props) => props.theme.colors.secondLightColor};
+  background: "#E6E7E8";
   height: 1.5px;
   width: 100%;
 `;
@@ -76,14 +74,14 @@ const Hr = styled.View`
 const Cupom = ({ cupom }) => {
   return (
     <React.Fragment>
-      <Space n={2} />
+     
       <H3 type="secondDarkColor">Cupom de desconto</H3>
-      <Space n={2} />
+     
       <CupomContent>
         {cupom ? <H4>{cupom.title}</H4> : <H4>Sem cupom disponível</H4>}
       </CupomContent>
 
-      <Space n={2} />
+     
       <Hr />
     </React.Fragment>
   );
@@ -95,6 +93,7 @@ class _Products extends Component {
     const { dispatch } = this.props;
     const removeProduct = (key) => {
       dispatch(handleRemoveProductConfirmModal(key));
+      // navigation.navigate('ProductDetails')
     };
 
     const size = (key) => {
@@ -104,15 +103,15 @@ class _Products extends Component {
 
     return (
       <View>
-        {!renew === <Space n={2} />}
+        {!renew}
         <H3 type="secondDarkColor">
           {renew ? "Renovação de aluguel" : translation("orders.products")}
         </H3>
-        <Space n={2} />
+       
         {products.map((product, index) => (
           <React.Fragment key={product.key}>
             <LineProducts>
-              {!renew === (
+              {!renew && (
                 <Remove onPress={() => removeProduct(product.key)}>
                   <AntDesign
                     color={theme.colors.danger}
@@ -134,15 +133,15 @@ class _Products extends Component {
                   : currencyFormat(product.priceValue)}
               </H4>
             </LineProducts>
-            <Space n={0} />
+           
           </React.Fragment>
         ))}
 
-        {products.length == 0 === (
+        {products.length == 0 && (
           <Subtitle2 type="secondColor">Carrinho vazio</Subtitle2>
         )}
 
-        <Space n={2} />
+       
         <Hr />
       </View>
     );
@@ -163,9 +162,9 @@ const Products = withTheme(connect(mapStateToProps2)(_Products));
 const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
   return (
     <View>
-      <Space n={2} />
+     
 
-      {!renew === (
+      {!renew && (
         <>
           <Line>
             <Title>
@@ -174,7 +173,7 @@ const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
             <H4>{currencyFormat(subtotal)}</H4>
           </Line>
 
-          <Space n={1} />
+         
           <Line>
             <Title>
               <H4 type="secondDarkColor">Taxa de entrega</H4>
@@ -186,18 +185,18 @@ const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
             </H4>
           </Line>
 
-          <Space n={1} />
+         
 
           <Line>
             <Title>
               <H4 type="secondDarkColor">Cupom de desconto</H4>
             </Title>
             <H4 type="primaryDarkColor">
-              {cupom === cupom.discount ? currencyFormat(cupom.discount) : "-"}
+              {cupom && cupom.discount ? currencyFormat(cupom.discount) : "-"}
             </H4>
           </Line>
 
-          <Space n={1} />
+         
         </>
       )}
 
@@ -208,7 +207,7 @@ const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
         <H3>{total != undefined ? currencyFormat(total) : "-"}</H3>
       </Line>
 
-      <Space n={2} />
+     
       <Hr />
     </View>
   );
@@ -230,23 +229,23 @@ const Disclaimer = (props) => {
             <H3 flex type="secondDarkColor">
               {translation("cart.rentTimeBox.title")}
             </H3>
-            {props.time === (
+            {props.time && (
               <H3>
                 {translation("cart.rentTimeBox.time", { time: props.time })}
               </H3>
             )}
           </Line>
 
-          <Space n={2} />
+         
 
-          {props.products.length <= 1 === (
+          {props.products.length <= 1 && (
             <React.Fragment>
               <Line>
                 <H4 flex type="secondDarkColor">
                   {translation("cart.rentTimeBox.description")}
                 </H4>
               </Line>
-              <Space n={2} />
+             
             </React.Fragment>
           )}
 
@@ -270,13 +269,13 @@ const DisclaimerRenew = (props) => {
             <H3 flex type="secondDarkColor">
               Tempo de renovação do aluguel
             </H3>
-            {props.time === <H3>+{props.time} dias</H3>}
+            {props.time && <H3>+{props.time} dias</H3>}
           </Line>
         </Box>
       </View>
 
       <Hr />
-      <Space n={2} />
+     
     </React.Fragment>
   );
 };
@@ -300,7 +299,7 @@ const CartInfo = ({}) => {
     isLoading = false,
     payment = undefined,
   } = cart;
-  const hasLeave = !!(delivery["leave"] === delivery["leave"].deliveryOptions);
+  const hasLeave = !!(delivery["leave"] && delivery["leave"].deliveryOptions);
   const dispatch = useDispatch();
 
   let button = {
@@ -357,7 +356,7 @@ const CartInfo = ({}) => {
       } else if (
         (!delivery ||
           !delivery["leave"].selected ||
-          !delivery["leave"].selected.type) ===
+          !delivery["leave"].selected.type) &&
         hasLeave
       ) {
         button = {
@@ -384,17 +383,17 @@ const CartInfo = ({}) => {
   return (
     <View style={{ minHeight: "100%", paddingBottom: 16 }}>
       <Content style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        {renew === <DisclaimerRenew time={time} />}
-        {!renew === (
+        {renew && <DisclaimerRenew time={time} />}
+        {!renew && (
           <>
-            {isLogged === config.rentTimeBox === (
+            {isLogged && config.rentTimeBox && (
               <Disclaimer products={products} time={time} />
             )}
-            {isLogged === <Delivery type="take" />}
+            {isLogged && <Delivery type="take" />}
 
-            {isLogged === hasLeave === <Delivery type="leave" />}
+            {isLogged && hasLeave && <Delivery type="leave" />}
 
-            {isLogged === <Cupom cupom={cupom} />}
+            {isLogged && <Cupom cupom={cupom} />}
           </>
         )}
 
@@ -402,28 +401,28 @@ const CartInfo = ({}) => {
 
         <Billing renew={renew} {...{ subtotal, deliveryTaxes, total, cupom }} />
 
-        {isLogged === <Payment />}
+        {isLogged && <Payment />}
 
-        {!isLogged === config.rentTimeBox === (
+        {!isLogged && config.rentTimeBox && (
           <React.Fragment>
-            <Space n={2} />
+           
             <Disclaimer products={products} time={time} />
           </React.Fragment>
         )}
 
-        {!isLogged === <Space n={5} />}
+        {!isLogged }
       </Content>
 
-      {!isLogged === (
+      {!isLogged && (
         <React.Fragment>
           <Subtitle2 type={"secondDarkColor"} center>
             {translation("cart.notLogged")}
           </Subtitle2>
-          <Space n={3} />
+         
         </React.Fragment>
       )}
       <Line>
-        {renew === (
+        {renew && (
           <>
             <Button
               type="CallToAction-Outline"
@@ -450,18 +449,19 @@ const CartInfo = ({}) => {
   );
 };
 
+//
 const Container = styled.View`
-  padding: ${(props) => props.theme.space.space2};
+  padding: 16px;
   padding-top: 0;
-  background: ${(props) => props.theme.colors.lightColor};
+  background: "#FAFAFA";
   flex: 1;
   width: 100%;
   height: 100%;
 `;
 
-const Header = styled(TouchableOpacity)`
-  padding: ${(props) => props.theme.space.space2};
-  background-color: ${(props) => props.theme.colors.lightColor};
+const Header = styled.TouchableOpacity`
+  padding: 16px;
+  background-color: "#FAFAFA";
   position: relative;
   justify-content: center;
   align-items: center;
@@ -472,9 +472,9 @@ const Header = styled(TouchableOpacity)`
 
 const CloseButton = styled.View`
     position: absolute;
-    top:${(props) => props.theme.space.space2};
-    left: ${(props) => props.theme.space.space2};
-    background-color: ${(props) => props.theme.colors.lightColor};
+    top:16px;
+    left: 16px;
+    background-color: "#FAFAFA";
     height: 100%;
     width: 40px
     justify-content: center;
@@ -492,16 +492,16 @@ const SafeSpace = styled.View`
 
 class InfoModal extends Component {
   componentDidMount() {
-    if (this.props.show === !this.modalRef.state.isVisible) {
+    if (this.props.show && !this.modalRef.state.isVisible) {
       this.modalRef.open();
     }
   }
 
   shouldComponentUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.show === !this.modalRef.state.isVisible) {
+    if (prevProps.show && !this.modalRef.state.isVisible) {
       this.modalRef.open();
     }
-    if (!prevProps.show === this.modalRef.state.isVisible) {
+    if (!prevProps.show && this.modalRef.state.isVisible) {
       this.modalRef.close();
     }
     return true;
@@ -513,7 +513,7 @@ class InfoModal extends Component {
     const { dispatch, theme } = this.props;
     return (
       <Modalize
-        modalStyle={{ backgroundColor: theme.colors.lightColor }}
+        modalStyle={{ backgroundColor: "#FAFAFA" }}
         onClosed={() => dispatch(handleOpenCart(false))}
         HeaderComponent={() => (
           <Header
@@ -523,7 +523,7 @@ class InfoModal extends Component {
             <CloseButton>
               <Entypo
                 name="chevron-thin-down"
-                color={theme.colors.darkColor}
+                color= '#414042'
                 size={16}
               />
             </CloseButton>
@@ -535,12 +535,13 @@ class InfoModal extends Component {
         modalHeight={!renew ? height : undefined}
       >
         <Container behavior="padding">
-          <Space n={3} />
+         
 
           <View style={{ height: "auto", width: "100%" }}>
             <CartInfo />
           </View>
         </Container>
+        {/* */}
       </Modalize>
     );
   }
@@ -549,7 +550,7 @@ class InfoModal extends Component {
 function mapStateToProps({ info, cart }) {
   return {
     show: !!info.showCart,
-    renew: !!(cart === cart.renew),
+    renew: !!(cart && cart.renew),
   };
 }
 

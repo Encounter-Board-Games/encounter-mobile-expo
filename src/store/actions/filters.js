@@ -18,6 +18,10 @@ export const SET_FILTERING_RESULTS = 'SET_FILTERING_RESULTS'
 export const SET_FILTERING_RESULTS_LOADING = 'SET_FILTERING_RESULTS_LOADING'
 export const SET_FILTERING_TUTORIAL = 'SET_FILTERING_TUTORIAL'
 
+// export const defaultSelectsFilter = {
+//     order: ['A-Z'],
+//     searchGroup: ['Todo acervo']
+// }
 
 const myFavorites = 'Meus Favoritos'
 
@@ -152,7 +156,7 @@ export function handleSetSelectFilter(filterType, value, needDebounce = true) {
 }
 
 function setChips() {
-
+    // setChipFilters
     return (dispatch, getState) => {
 
         const { filters } = getState();
@@ -175,6 +179,8 @@ function setChips() {
                 type: 'searchGroup'
             })
 
+
+        // ${filters.filters.find(f => f.key == key).title}
         Object.keys(filters.selects)
             .filter(key => filters.selects[key].length > 0 && key !== 'order' && key !== 'searchGroup')
             .map(key => ({
@@ -234,6 +240,7 @@ export function handleLoadFilters() {
 
 export function handleLoadAndOpenFilter(key){
     return async dispatch => {
+        // dispatch(setFilteringResultLoading())
         const filter = await getFilter(key)
         dispatch(handleSetSelects(filter))
     }

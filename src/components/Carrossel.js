@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
-import { withTheme } from 'styled-components/native';
+import { withTheme } from 'styled-components';
 import Stepper from './Stepper';
 import { EvilIcons } from '@expo/vector-icons';
-import { Space } from './Space';
 import {
   Container,
   Content,
@@ -67,7 +66,7 @@ const Carrossel = ({
             {!!onBack && (
               <EvilIcons
                 name="chevron-left"
-                color={theme.colors.darkColor}
+                color= "#414042"
                 size={32}
               />
             )}
@@ -99,7 +98,6 @@ const Carrossel = ({
       </ScrollView>
       {!!stepperDown && (
         <React.Fragment>
-          <Space n={0} />
           <Stepper width="auto" total={nPages} current={current} />
         </React.Fragment>
       )}

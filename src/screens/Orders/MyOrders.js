@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Screen from "../../components/Screen";
 import Tab from "../../components/Tab";
 import styled from "styled-components";
+import { Text } from "react-native";
+import InformationBox from "../../components/InformationBox";
 import { useSelector, useDispatch } from "react-redux";
 import OrdersList from "./components/OrdersList";
 import NotLoggedBox from "../User/components/NotLoggedBox";
+import { handleLoadOrders } from "../../store/actions/orders";
 import { translation } from "../../texts";
-
+import RenewCartInfo from "../Cart/components/RenewCartInfo";
+// import a  from '../../assets/img'
 const Container = styled.View`
-  padding: ${(props) => props.theme.space.space2};
+  padding: 16px;
 `;
 const TabContent = styled.View`
   flex: 1;
-  padding-top: ${(props) => props.theme.space.space2};
+  padding-top: 16px;
 `;
 
 export default () => {

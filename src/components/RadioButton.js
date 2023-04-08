@@ -5,21 +5,21 @@ import Circle from './Circle';
 
 export const Radio = styled(TouchableOpacity)`
     flex-flow: row;
-    margin-top: ${props => props.theme.space.space1};
+    margin-top: 8px;
     padding: 0px 12px;
     align-items: center;
-    ${props => props.isFlex ? `flex: 1`: '' }
-    margin-right: ${props => props.isLast ? '0px' : (props.isFlex ? props.theme.space.space2 : props.theme.space.space1)};
+    flex: 1;
+    margin-right: "8px";
     height: 40px;
-    border-radius: ${props => props.theme.borderRadius.button};	
-    border: 1.5px solid ${props => props.isSelected ?  props.theme.colors.primaryColor :  props.theme.colors.secondColor};
-    background-color:   ${props => props.isSelected ?  props.theme.colors.primaryLightColor :  'transparent'};
+    border-radius: '8px';	
+    border: 1.5px solid "#BCBEC0";
+    background-color:  "#ebf7f4";
 `;
 
 export const Text = styled.Text`
     font-size: 14px;
-    font-family: Nunito${props => props.isSelected ? '-Bold' : ''};
-    color: ${props => props.isSelected ? props.theme.colors.primaryDarkColor : props.theme.colors.darkColor};
+    font-family: Nunito;
+    color:  #414042;
 `;
 
 export const RadioButton = (props) => (

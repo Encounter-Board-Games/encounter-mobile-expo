@@ -1,4 +1,5 @@
 import { handleSetSelects } from './filters'
+import { API_URI } from '../../graphql/client'
 import { customFilter } from '../../graphql'
 export const SET_SELECT_FILTER_TOGGLE_DISCOVERY = 'SET_SELECT_FILTER_TOGGLE_DISCOVERY'
 export const START_DISCOVERY = 'START_DISCOVERY'
@@ -70,10 +71,12 @@ export function handleFinishDiscovery(){
     return async (dispatch, getState) => {
         const { discovery } = getState();
         
-        dispatch(handleSetSelects(discovery.filters));
-        dispatch(closeDiscovery());
-        dispatch(setFilters({}));
-        if(discoveryResolve) discoveryResolve(true);
+        dispatch(handleSetSelects(discovery.filters))
+
+        // await Storage.setItem(storageName, discovery.filters)
+        dispatch(closeDiscovery())
+        dispatch(setFilters({}))
+        if(discoveryResolve) discoveryResolve(true)
     }
 
 }

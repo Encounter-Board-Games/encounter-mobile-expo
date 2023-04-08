@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Dice from "../../../components/Dice";
 import { Space, SpaceHorizontal } from "../../../components/Space";
 import { Button } from "../../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { H4, H3 } from "../../../components/Typography";
+import { openLoginPopup } from "../../../store/actions/user";
 import { closePopupModal } from "../../../store/actions/info";
-import { Keyboard, View, TouchableOpacity } from "react-native";
+import { Linking, KeyboardAvoidingView, Keyboard } from "react-native";
+import { handleRemoveCurrentPayment } from "../../../store/actions/payments";
+import { useNavigation } from "@react-navigation/native";
+import { View } from "react-native";
 
-const Container = styled(TouchableOpacity)`
+const Container = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   width: 100%;
 `;
 const TextInput = styled.TextInput`
-      height:40px;
-     width: 100%;
-     border: 1.5px solid ${(props) => props.theme.colors.primaryColor}
-     background: ${(props) => props.theme.colors.primaryLightColor}
-     padding-left: ${(props) => props.theme.space.space2}
-     padding-right: ${(props) => props.theme.space.space2}
-     border-radius: ${(props) => props.theme.borderRadius.button}
-     font-size: ${(props) => props.theme.space.space2};
+  height:40px;
+  width: 100%;
+  border: 1.5px solid;
+  background: "#ebf7f4";
+  padding-left: 16px
+  padding-right: 16px
+  border-radius: 8px
+  font-size: 16px;
  `;
 
 const Line = styled.View`
@@ -59,14 +64,17 @@ export default () => {
 
   return (
     <Container onPress={() => Keyboard.dismiss()}>
+      {/* <KeyboardAvoidingView behavior="padding"> */}
       {title && <H3 center>{title}</H3>}
-      <Space n={1} />
+     
       {description && (
         <H4 noBold center>
           {description}
         </H4>
       )}
-      <Space n={1} />
+
+     
+
       <View style={{ width: "100%" }}>
         <TextInput
           multiline={true}
@@ -75,7 +83,7 @@ export default () => {
           onChangeText={(text) => setText(text)}
         />
       </View>
-      <Space n={2} />
+     
       <Line>
         <Btn>
           <Button onPress={cancel} type="CallToAction-Outline" width={"auto"}>
@@ -89,6 +97,7 @@ export default () => {
           </Button>
         </Btn>
       </Line>
+      {/* </KeyboardAvoidingView> */}
     </Container>
   );
 };

@@ -1,9 +1,10 @@
 import React from "react";
-import { View, TouchableWithoutFeedback, Image } from "react-native";
+import { Text, View, TouchableWithoutFeedback, Image } from "react-native";
 import { Camera } from "expo-camera";
 import { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../../../components/Button";
+import { getBottomSpace } from "react-native-iphone-x-helper";
 import { SpaceHorizontal } from "../../../components/Space";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -11,7 +12,7 @@ const Screen = styled.View`
     flex: 1;
     justify-content: flex-end
     align-items: flex-end
-    padding: ${(props) => props.theme.space.space2}
+    padding: 16px
 `;
 const Line = styled.View`
   width: 100%;

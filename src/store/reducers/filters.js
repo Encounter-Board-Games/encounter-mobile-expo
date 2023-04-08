@@ -2,7 +2,7 @@ import { SET_FILTERS, SET_SELECTS_DEFAULT, SET_SELECTS, SET_RECENTS_FILTERING_TE
 
 
 export default function filters(state = {}, action) {
-
+    // if(action.type == SET_FILTERS) 
     switch (action.type) {
         case SET_FILTERING_TUTORIAL:
             return{

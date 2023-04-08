@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Screen from "../../components/Screen";
 import Container from "../../components/Container";
 import ProductShelf from "../Product/components/ProductShelf";
-import { useSelector, useDispatch, connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   handleInitHome,
   handleProcessActions,
 } from "../../store/actions/shared";
 import { Button } from "../../components/Button";
+import styled from "styled-components";
 import Carrossel from "../../components/Carrossel";
 import { Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -16,13 +17,21 @@ import { Placeholder, PlaceholderMedia, Fade } from "rn-placeholder";
 import { handleOpenDiscovery } from "../../store/actions/discovery";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { translation } from "../../texts";
-import config from "../../config";
+import config from "../../../config";
 import { handleNotFoundProductSuggestion } from "../../store/actions/user";
-import { withTheme } from "styled-components";
-import { FindOut, Banner } from "./HomeStyles";
 
+const FindOut = styled.View`
+  flex-flow: row;
+  padding-left: 16px;
+`;
 
-function Home(props) {
+const Banner = styled.View`
+  width: 100%;
+  height: 200px;
+  max-height: 200px;
+`;
+
+export default function Home(props) {
   const [currentBanner, setCurrentBanner] = useState(0);
 
   const dispatch = useDispatch();
@@ -52,6 +61,7 @@ function Home(props) {
         <Container isLoading>
           <ProductShelf ids={[1, 2, 4, 5]} isLoading />
         </Container>
+
         <Container isLoading>
           <ProductShelf spotlight ids={[1, 2, 4, 5]} isLoading />
         </Container>
@@ -177,4 +187,4 @@ function Home(props) {
   );
 }
 
-export default withTheme(connect(Home));
+// export default connect()(Home)

@@ -1,76 +1,77 @@
-import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
-import styled, { withTheme } from 'styled-components';
-import { Space, Bottom } from '../../../components/Space';
-import { H1, H4, H3 } from '../../../components/Typography';
-import { Button } from '../../../components/Button';
-import { useDispatch } from 'react-redux';
-import { API_URI } from '../../../graphql/client';
-import OptionWithImage from '../../../components/OptionWithImage';
+import React, { useState } from 'react'
+import styled, { withTheme } from 'styled-components'
+import { Space, Bottom } from '../../../components/Space'
+import { H1, H4, H3, Subtitle2 } from '../../../components/Typography'
+import { Image, View } from 'react-native'
+import { Button } from '../../../components/Button'
+import { RadioButton } from '../../../components/RadioButton'
+import { setSelectQuestionToggleOnboarding } from '../../../store/actions/onboarding'
+import { useDispatch, useSelector } from 'react-redux'
+import { API_URI } from '../../../graphql/client'
+import OptionWithImage from '../../../components/OptionWithImage'
 import { Platform } from 'react-native';
 import Constants from 'expo-constants';
-import { handleRespondQuestion } from '../../../store/actions/user';
+import { handleRespondQuestion } from '../../../store/actions/user'
 
 
 const Container = styled.View`
     flex: 1;
     width: 100%;
     position:relative;
-    padding-left: ${props => props.theme.space.space3}
-    padding-right: ${props => props.theme.space.space3}
-`
+    padding-left: 24px
+    padding-right: 24px
+`;
 
 const Content = styled.ScrollView`
 flex-grow: 1;
-
-`
+`;
 
 const PaddingTop = styled.View`
-height:  ${props => Platform.OS == "ios" ? Constants.statusBarHeight + 'px' :props.theme.space.space2 };
+height: auto;
 width: 100%;
-`
+`;
 
 const ImageContent = styled.View`
 flex: 1;
 align-items: center;
 justify-content: center;
-
-
-`
+`;
 
 const Itens = styled.ScrollView`
     flex-grow: 1;
-`
+`;
+
 const ButtonSpace = styled.View`
-  height: ${props => props.theme.sizes.btnBig}
-`
+  height: '48px';
+`;
+
 const ButtonWrap = styled.View`
-  background-color: ${props => props.theme.colors.lightColor};
-  border-radius: ${props => props.theme.borderRadius.button};
-`
+  background-color: "#FAFAFA";
+  border-radius: '8px';
+`;
+
 const Footer = styled.View`
     width: 100%;
     position:absolute;
     bottom:0;
-    left: ${props => props.theme.space.space3};
-`
+    left: 24px;
+`;
 
 const Tags = styled.View`
     flex-flow: row;
     flex-wrap: wrap;
-`
+`;
 
-const KnowInfo = styled(TouchableOpacity)`
+const KnowInfo = styled.TouchableOpacity`
     flex-flow: row;
     width: 100%;
     justify-content: center;
     align-items: center;
-`
+`;
+
 const Line = styled.View`
-    flex-flow: row
-`
-
-
+    flex-flow: row;
+`;
 
 export default withTheme((props) => {
   
@@ -108,11 +109,11 @@ export default withTheme((props) => {
       <Container>
           <Content showsVerticalScrollIndicator={false}  >
             <PaddingTop />
-            <Space n={3} />
+           
             <H1 color="secondDarkColor">Antes de conhecer o app...</H1>
-            <Space n={3} />
+           
             <H4 color="secondDarkColor">...só de curiosidade, <H3 color="secondDarkColor">como chegou até aqui?</H3></H4>
-            <Space n={3} />
+           
             <Itens>
                 {
                   options.map((option, key) => <OptionWithImage
@@ -129,7 +130,7 @@ export default withTheme((props) => {
           </Content>
           
           <Footer>
-              <Space n={2} />
+             
               <ButtonWrap>
                 <Button disabled={!select} type="CallToAction-Light" width={"100%"} onPress={next}>Continuar</Button>
               </ButtonWrap>

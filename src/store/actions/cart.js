@@ -10,7 +10,7 @@ import {
 import { addOrderAndSelect } from "./orders";
 import { handleShowNotification } from "./notification";
 import { translation } from "../../texts";
-import config from "../../config";
+import config from "../../../config";
 import { setProducts } from "./product";
 
 export const CART_ADD_PRODUCT = "CART_ADD_PRODUCT";
@@ -134,6 +134,7 @@ export function handleRemoveProductConfirmModal(productKey) {
             }
             resolve(r);
           },
+          // title: 'Exluir endereço',
           confirmBtn: "Sim",
           title: translation("cart.cartRemove"),
         })
@@ -144,6 +145,8 @@ export function handleRemoveProductConfirmModal(productKey) {
 export function handleRemoveProduct(productKey) {
   return (dispatch, getState) => {
     dispatch(removeProduct(productKey));
+
+    // dispatch(openCart())
     dispatch(calcTotal());
   };
 }
@@ -158,7 +161,7 @@ export function handleAddProduct(productKey, options) {
 
       return true;
     };
-
+    // const options = ['P', 'M', 'G']
     if (!config.chooseTagsAndCategories || options.length <= 1)
       return Promise.resolve(chooseOption());
     return new Promise((r) => {
@@ -175,6 +178,19 @@ export function handleAddProduct(productKey, options) {
           title: "Escolha o tamanho:",
         })
       );
+
+      // Alert.alert(
+      //     'Qual tamanho?',
+      //     'Estolha o tamanho da sua peça:',
+      //     [
+      //         ...options.map(text => ({
+      //             text,
+      //             onPress: () => {  chooseOption(text); r()}
+      //         })),
+      //         { text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel', },
+      //     ],
+      //     { cancelable: false }
+      // );
     });
   };
 }
@@ -331,8 +347,8 @@ export function handleCalcDeliveryTaxes() {
         adresses[take.selected.key]
           ? adresses[take.selected.key].cep
           : undefined,
-        hasLeave ? adresses[leave.selected.key]
-          && adresses[leave.selected.key].cep
+        hasLeave && adresses[leave.selected.key]
+          ? adresses[leave.selected.key].cep
           : undefined
       );
       dispatch(cartIsLoading(false));
@@ -340,6 +356,7 @@ export function handleCalcDeliveryTaxes() {
     } else {
       dispatch(setDeliveryTaxes(0));
     }
+    // deliveryTaxes()
     dispatch(calcTotal());
   };
 }
@@ -406,6 +423,7 @@ export function handleCheckOut() {
           );
         return false;
       }
+      // console.log(JSON.stringify(order.order, null,))
       dispatch(addOrderAndSelect(order.order));
       dispatch(clear());
       dispatch(handleOpenCart(false));

@@ -1,3 +1,4 @@
+// import { getShelves } from "../../utils/api"
 import { handleInitBanner, handleLoadShelves } from "./shelves";
 import {
   handleLoadOnboarding,
@@ -32,16 +33,18 @@ export function handleInitHome() {
 
 export function handleInitApp() {
   return async (dispatch) => {
+    // setTimeout(
+    //     () => dispatch(handleShowNotification('Informações alteradas com sucesso!', 'success', 30000))
+    // , 4000
+    // )
 
     try {
       await Promise.all([
-        ,
         dispatch(handleLoadNeedUpdateApp()),
         dispatch(handleLoadAppConfig()),
         dispatch(handleLoadOnboarding()),
         dispatch(handleLoadFilters()),
       ]);
-
       dispatch(handleUserData()).then((_) => dispatch(handleSetQuickSearchs()));
       dispatch(handleLoadDeliveryMethods());
       dispatch(handleLoadDiscovery());
@@ -95,6 +98,11 @@ export function handleProcessActions(action) {
     if (type == "product") {
       dispatch(handleSetCurrentProduct(action.split("#|#")[1]));
       redirect("ProductDetails");
+    }
+
+    if (type == "order") {
+      // dispatch(handleSetCurrentProduct(action.split("#|#")[1]))
+      // redirect("Billing")
     }
 
     if (type == "filter") {
