@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Animatable from "react-native-animatable";
 import styled from "styled-components";
 import { Space } from "../../components/Space";
-import { H2, Subtitle2 } from "../../components/Typography";
+import { H1, H4, H2, Subtitle2 } from "../../components/Typography";
 import { Image } from "react-native";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import Constants from "expo-constants";
@@ -14,14 +14,17 @@ import { useNavigation } from "@react-navigation/native";
 import { handleUploadSelfDocument } from "../../store/actions/user";
 
 const MainContainer = styled.View`
-flex: 1;
-width: 100%;
-height: 100%;
-padding-left: 24px;
-padding-right: 24px;
-padding-top: 16px;
-padding-bottom: 24px;
-background: #FAFAFA;
+  flex: 1;
+  width: 100%;
+  height: 100%
+  padding-left: ${(props) => props.theme.space.space3};
+  padding-right: ${(props) => props.theme.space.space3};
+  padding-top: ${(props) =>
+    Platform.OS == "ios"
+      ? Constants.statusBarHeight + "px"
+      : props.theme.space.space2};
+  padding-bottom: ${getBottomSpace() + 24 + "px"};
+  background: ${(props) => props.theme.colors.lightColor};
 `;
 
 const Line = styled.View`
@@ -32,8 +35,8 @@ const Line = styled.View`
 
 const Icon = styled.View`
     min-height: 20px;
-    width: 16px;
-    margin-right: 8px;
+    width: ${(props) => props.theme.space.space2};
+    margin-right: ${(props) => props.theme.space.space1};
 `;
 
 const ImageContent = styled.View`
@@ -49,7 +52,7 @@ const Content = styled.View`
 `;
 
 const Footer = styled.View`
-  padding-bottom: 16px;
+  padding-bottom: ${(props) => props.theme.space.space2};
 `;
 
 const ButtonsRow = styled.View`
@@ -62,7 +65,8 @@ const ScreenOne = (props) => {
 
   return (
     <MainContainer>
-      <Content> 
+      <Content>
+        <Space n={5} />
         <H2>
           <H2 noBold>
             Para que você consiga efetuar seu primeiro aluguel, precisaremos de
@@ -71,7 +75,7 @@ const ScreenOne = (props) => {
           foto sua (selfie) segurando seu RG ou CNH ou RNE.
         </H2>
 
-       
+        <Space n={3} />
         <Line>
           <Icon>
             <Image
@@ -86,7 +90,7 @@ const ScreenOne = (props) => {
           </Subtitle2>
         </Line>
 
-       
+        <Space n={2} />
         <Line>
           <Icon>
             <Image
@@ -100,7 +104,7 @@ const ScreenOne = (props) => {
           </Subtitle2>
         </Line>
 
-       
+        <Space n={4} />
         <ImageContent>
           <Image
             resizeMode={"contain"}
@@ -108,7 +112,7 @@ const ScreenOne = (props) => {
             source={require("../../assets/img/selfie.png")}
           />
         </ImageContent>
-       
+        <Space n={4} />
       </Content>
       <Footer>
         <ButtonsRow>
@@ -122,7 +126,7 @@ const ScreenOne = (props) => {
           </Button>
         </ButtonsRow>
 
-       
+        <Space n={2} />
         <ButtonsRow>
           <Button
             width="100%"
@@ -144,17 +148,17 @@ const ScreenTwo = (props) => {
   return (
     <MainContainer>
       <Content>
-       
+        <Space n={3} />
         <H2 noBold>
           Estamos analisando sua foto e em breve você receberá um retorno pelo
           e-mail e aplicativo.
         </H2>
-       
+        <Space n={3} />
         <H2 noBold>
           Enquanto isso, <H2>você pode fazer seu pedido de aluguel.</H2>
         </H2>
 
-       
+        <Space n={3} />
         <Line>
           <Icon>
             <Image
@@ -171,7 +175,7 @@ const ScreenTwo = (props) => {
           </Content>
         </Line>
 
-       
+        <Space n={4} />
         <ImageContent>
           <Image
             resizeMode={"contain"}
@@ -179,7 +183,7 @@ const ScreenTwo = (props) => {
             source={require("../../assets/img/selfie-2.png")}
           />
         </ImageContent>
-       
+        <Space n={4} />
       </Content>
       <Footer>
         <ButtonsRow>
@@ -215,7 +219,7 @@ export default () => {
 
     dispatch(handleUploadSelfDocument(photo)).then((_) => {
       setOk(true);
-    }); //.then(_ => { setLoading(false) })
+    });
   };
 
   const onOkClick = () => navigation.goBack();

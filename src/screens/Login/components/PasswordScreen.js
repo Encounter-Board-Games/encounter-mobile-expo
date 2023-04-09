@@ -1,29 +1,30 @@
 import React, { useState } from "react";
-
 import * as Animatable from "react-native-animatable";
-import { H2, H3, Subtitle2, H4 } from "../../../components/Typography";
+import { H3, Subtitle2, H4 } from "../../../components/Typography";
 import CustomInput from "../../../components/Input";
-import { SocialButton, Button } from "../../../components/Button";
+import { Button } from "../../../components/Button";
 import styled, { withTheme } from "styled-components";
 import { Space } from "../../../components/Space";
 import { Ionicons } from "@expo/vector-icons";
 import {
-  handleEmailAlreadyExists,
   hadleBackToLogin,
   handleSendPassword,
   handleForgotPassword,
 } from "../../../store/actions/user";
 import { useDispatch, useSelector } from "react-redux";
 import { getBottomSpace } from "react-native-iphone-x-helper";
-import { View, Dimensions } from "react-native";
+import { View, Dimensions, TouchableOpacity } from "react-native";
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const Container = styled.View`
-  padding: 24px;
-  padding-top: 16px;
+  padding: ${(props) => props.theme.space.space3};
+  padding-top: ${(props) => props.theme.space.space2};
   width: 100%;
   align-items: center;
+
+  min-height: ${(props) =>
+    props.minHeight ? props.minHeight : SCREEN_HEIGHT * 0.5}px;
 `;
 
 const Line = styled.View`
@@ -40,15 +41,12 @@ const BackButton = styled.TouchableOpacity`
 const Forgot = styled.TouchableOpacity``;
 
 const SafeSpace = styled.View`
-  height: auto;
+  height: ${getBottomSpace()}px;
   width: 1px;
 `;
 
 export default withTheme((props) => {
-  // state = {
-  //     email : '',
-  //     isLoading: false
-  // }
+  
   const { login = {} } = useSelector((state) => state.user);
   const isLoading = login.loading;
   const errorMessage = login.errorMessage;
@@ -77,26 +75,26 @@ export default withTheme((props) => {
         <BackButton onPress={() => dispatch(hadleBackToLogin())}>
           <Ionicons
             name="ios-arrow-round-back"
-            color= '#414042'
+            color={props.theme.colors.darkColor}
             size={32}
           />
         </BackButton>
       </Line>
       <View flex={1} style={{ width: "100%" }}>
-       
+        <Space n={1} />
         <H4 center>{title}</H4>
-       
+        <Space n={3} />
 
         <Subtitle2 type="secondDarkColor">Senha</Subtitle2>
-        {errorMessage && (
+        {errorMessage === (
           <Animatable.View animation="shake">
             <H3 center type="danger">
               {errorMessage}
             </H3>
-           
+            <Space n={1} />
           </Animatable.View>
         )}
-       
+        <Space n={1} />
         <CustomInput
           value={password}
           disabled={isLoading}
@@ -107,10 +105,10 @@ export default withTheme((props) => {
           onChangeText={(password) => setPassword(password)}
           placeholder={placeholder}
         />
-       
+        <Space n={3} />
       </View>
 
-      {login.isLogin && !login.isForgot && (
+      {login.isLogin === !login.isForgot === (
         <Forgot onPress={() => dispatch(handleForgotPassword())}>
           <Subtitle2 underline type="primaryDarkColor">
             Esqueci minha senha
@@ -118,7 +116,7 @@ export default withTheme((props) => {
         </Forgot>
       )}
 
-     
+      <Space n={3} />
       <Button
         disabled={minLengthPassword > password.length || isLoading}
         type="CallToAction-Light"
@@ -128,9 +126,9 @@ export default withTheme((props) => {
       </Button>
       {/* <Subtitle2 center type='secondDarkColor'>-ou entre com-</Subtitle2>
 
-       
+        <Space n={2} />
         <SocialButton backgroundColor={"#3b5998"}> Entrar com Facebook </SocialButton>
-       
+        <Space n={1} />
         <SocialButton backgroundColor={"#2b83fc"}> Entrar com Google </SocialButton> */}
       <SafeSpace />
     </Container>

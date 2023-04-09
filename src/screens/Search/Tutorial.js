@@ -14,11 +14,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Tutorial = styled.View`
     width: 100%;
-    height: 120%
-    position: absolute
-    z-index: 99
-    background: rgba(0, 0, 0, .8)
-    padding: 16px
+    height: 120%;
+    position: absolute;
+    z-index: 99;
+    background: rgba(0, 0, 0, .8);
+    padding: ${props => props.theme.space.space2};
 `;
 
 const Content = styled.View`
@@ -29,22 +29,21 @@ const Content = styled.View`
 
 const ContentArea = styled.View`
     position: absolute;
-    top: 0
-    left:0
+    top: 0;
+    left:0;
     width: 100%;
     height: 100%;
     z-index: 99
 `;
-
 const Arrow = styled.View`
     position: absolute;
-    right: 8px
+    right: 8px;
     width: 20%;
-    top: -36px
-    height: auto
+    top: -36px;
+    height: auto;
     z-index: 99;
-    align-items: flex-start
-    justify-content: flex-start
+    align-items: flex-start;
+    justify-content: flex-start;
 `;
 
 export default () => {
@@ -62,16 +61,16 @@ export default () => {
        <SafeAreaView>
        <Content>
             <SearchBar disabled type="Filter" />
-           
+            <Space n={3} />
             <Animatable.View duration={500} animation={"fadeInUp"} style={{ flex: 1 }}>
 
                 <Arrow>
                     <Image resizeMode="contain" style={{ width: '100%', height: 80 }} source={require('../../assets/img/undo.png')} />
                 </Arrow>
                 <H2 type="lightColor">Filtros de busca</H2>
-               
+                <Space n={3} />
                 <H2 type="lightColor">Dica <H2 noBold type="lightColor">: {translation("tutorial")} </H2> </H2>
-               
+                <Space n={0} />
                 <H2 type="lightColor" noBold>Use sem moderação :)</H2>
             </Animatable.View>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import MenuOption from '../../components/MenuOption';
 import styled , { withTheme } from 'styled-components';
 import ScreePopup from '../../components/ScreePopup';
-import { Linking } from 'react-native';
+import { Linking, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Subtitle1 } from '../../components/Typography';
 import { SpaceHorizontal } from '../../components/Space';
@@ -12,19 +12,19 @@ import { Linking as ExpoLink } from 'expo';
 import * as Application from 'expo-application';
 import * as IntentLauncher from 'expo-intent-launcher';
 import { handleLogout } from '../../store/actions/user';
-import config from "../../../config";
-;import storage from '../../utils/storage';
+import config from '../../config';
+import storage from '../../utils/storage';
 import Icons from '../../components/Icons';
 
 
 const Container = styled.View`
-    padding: 16px;
-    padding-top: 8px;
+    padding: ${props => props.theme.space.space2};
+    padding-top: ${props => props.theme.space.space1};
 `
 
 const Logout = styled.TouchableOpacity`
     flex-flow: row;
-    margin-top: 24px
+    margin-top: ${props => props.theme.space.space3}
     align-items:center;
 `
 
@@ -39,8 +39,7 @@ export default withTheme( (props) => {
 
     
     const open_settings = () => {
-        // TODO: it might work on SDK 37?
-        // Linking.openSettings();
+        
         if (Platform.OS === 'ios') {
             ExpoLink.openURL(`app-settings:`);
         } else {
@@ -66,14 +65,14 @@ export default withTheme( (props) => {
             }
             {
                 config.cleanStorage && <Logout onPress={() => storage.clear() }>
-                    <Icons name="logout" color= '#414042' size={16} />
+                    <Icons name="logout" color={props.theme.colors.darkColor} size={16} />
                     <SpaceHorizontal n={1} />
                     <Subtitle1>Limpar</Subtitle1>
                 </Logout>
             }
             {
                 isLogged && <Logout onPress={() => dispatch(handleLogout(true))}>
-                    <Icons name="logout" color= '#414042' size={16} />
+                    <Icons name="logout" color={props.theme.colors.darkColor} size={16} />
                     <SpaceHorizontal n={1} />
                     <Subtitle1>Sair</Subtitle1>
                 </Logout>

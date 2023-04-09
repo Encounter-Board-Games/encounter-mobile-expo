@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
+import { TouchableOpacity } from 'react-native';
 import { Space, SpaceHorizontal } from "../../../components/Space";
 import { H4, Subtitle2, H3 } from "../../../components/Typography";
-import styled, { withTheme } from "styled-components";
+import styled, { withTheme } from "styled-components/native";
 import { EvilIcons } from "@expo/vector-icons";
 import HideInfo from "../../../components/HideInfo";
 import { useSelector, useDispatch } from "react-redux";
@@ -43,7 +44,9 @@ export default withTheme((props) => {
 
   return (
     <React.Fragment>
+      <Space n={2} />
       <H3 type="secondDarkColor">Pagamento</H3>
+      <Space n={2} />
       <Line>
         <Title>
           <H4>Pagamento via app</H4>
@@ -52,10 +55,9 @@ export default withTheme((props) => {
           <SelectPayment onPress={() => addPayment()}>
             <EvilIcons
               name="credit-card"
-              color= '#414042'
+              color={props.theme.colors.darkColor}
               size={24}
             />
-
             <SpaceHorizontal n={0} />
             <HideInfo n={4} />
             <SpaceHorizontal n={0} />
@@ -66,7 +68,7 @@ export default withTheme((props) => {
             <Subtitle2 bold>Adicionar cartão</Subtitle2>
             <EvilIcons
               name="chevron-right"
-              color= '#414042'
+              color={props.theme.colors.darkColor}
               size={24}
             />
           </SelectPayment>

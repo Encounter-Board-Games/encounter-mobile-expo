@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { TouchableOpacity } from 'react-native';
 import styled from "styled-components";
 import Numberpad from "./Numberpad";
 
@@ -56,9 +57,7 @@ export default () => {
   return (
     <Content flex={1}>
       <ContentInput flex={1}>
-        <CustomInput>
-          {/* <CustomInputText>{content.length == 0 ? '(ddd) xxxxx-xxxx' : content} </CustomInputText> */}
-        </CustomInput>
+        <CustomInput />
       </ContentInput>
       <Numberpad onPress={(n) => addText(n)} />
     </Content>

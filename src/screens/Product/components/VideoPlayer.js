@@ -1,19 +1,19 @@
-import React from 'react'
+import React from 'react';
 import { WebView } from 'react-native-webview';
 import styled from 'styled-components';
-import { View, Dimensions } from 'react-native';
+import { Dimensions, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import * as Animatable from 'react-native-animatable';
-import { TouchableOpacity } from 'react-native';
 
 const Container = styled.View`
-width: 100%
-    height: auto;
+    width: 100%
+    height: ${Dimensions.get('window').height}px;
     position: absolute;
     z-index: 1;
-    top: 46px;
+    top: -${Constants.statusBarHeight + 46}px;
     left:0;
 `;
+
 const Content = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;

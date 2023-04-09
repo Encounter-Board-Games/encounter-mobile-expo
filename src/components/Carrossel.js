@@ -1,120 +1,110 @@
-
-import React, { useState, useEffect } from 'react';
-import { Animated, View, Dimensions, ScrollView } from 'react-native';
-import styled, { withTheme } from 'styled-components'
+import React, { useState, useEffect, useRef } from 'react';
+import { Dimensions, ScrollView } from 'react-native';
+import { withTheme } from 'styled-components/native';
 import Stepper from './Stepper';
-import { Entypo, AntDesign, EvilIcons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 import { Space } from './Space';
+import {
+  Container,
+  Content,
+  StepperHeader,
+  StepperHeaderBack,
+} from './CarrosselStyles';
 
-const Container = styled.View`
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-`
-const Content = styled.View`
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: ${props => props.noMargin ? 0 : (props.stepperUp ? '0px' : props.theme.space.space2)};
-`
-const StepperHeader = styled.View`
-    flex-flow: row;
-    width: 100%;
-    padding-right: ${props => props.paddingRight ? props.paddingRight : '0'};
-    padding-left: ${props => props.paddingRight ? props.paddingRight : '0'};
-`
-const StepperHeaderBack = styled.TouchableOpacity`
-    flex-flow: row;
-    flex: 1;
-    height: 32px;
-`
+const Carrossel = ({
+  children,
+  current: initialCurrent = 0,
+  enablePages,
+  blocked,
+  noMargin,
+  stepperUp,
+  stepperDown,
+  onCurrentChange,
+  onBack,
+  paddingRight,
+  padding = 0,
+  theme,
+}) => {
+  const [current, setCurrent] = useState(initialCurrent);
+  const forceToRef = useRef(undefined);
+  const myScrollRef = useRef(null);
+  const deviceWidth = Dimensions.get('window').width - padding;
 
-// export const CarroselTime = (props) => {
-//     let carrosel;
-
-
-//     return (<Carros)
-// }
-
-export default withTheme((props) => {
-
-    const deviceWidth = Dimensions.get('window').width - (props.padding ? props.padding : 0)
-
-    const [current, setCurrert] = useState(props.current || 0)
-    
-    let forceTo = undefined;
-
-    const onChange = (event) => {
-
-        const current = Math.max(Math.floor((event.nativeEvent.contentOffset.x / deviceWidth) + .1), 0)
-
-        if (forceTo != undefined && current == forceTo ||
-            forceTo == undefined) {
-            forceTo = undefined;
-            setCurrert(current)
-
-            if (props.onCurrentChange)
-                props.onCurrentChange(current)
-        }
-
-
+  const handleScroll = (event) => {
+    const newCurrent = Math.max(
+      Math.floor((event.nativeEvent.contentOffset.x / deviceWidth) + 0.1),
+      0
+    );
+    if (
+      forceToRef.current !== undefined &&
+      newCurrent === forceToRef.current
+    ) {
+      forceToRef.current = undefined;
+      setCurrent(newCurrent);
+      if (onCurrentChange) {
+        onCurrentChange(newCurrent);
+      }
     }
+  };
 
+  useEffect(() => {
+    if (myScrollRef.current) {
+      forceToRef.current = forceToRef.current || initialCurrent;
+      myScrollRef.current.scrollTo({ x: deviceWidth * initialCurrent });
+    }
+  }, [initialCurrent, deviceWidth]);
 
-    useEffect(() => {
-        if (myScroll) {
-            forceTo = forceTo || props.current;
-            myScroll.scrollTo({ x: deviceWidth * props.current })
-        }
-    })
+  const filteredChildren = Array.isArray(children)
+    ? children.slice(0, enablePages)
+    : [children];
+  const nPages = filteredChildren.length;
 
-    const children = Array.isArray(props.children) ? props.children : [props.children]
+  return (
+    <Container>
+      {(stepperUp || !!onBack) && (
+        <StepperHeader paddingRight={paddingRight}>
+          <StepperHeaderBack onPress={onBack} disabled={!onBack}>
+            {!!onBack && (
+              <EvilIcons
+                name="chevron-left"
+                color={theme.colors.darkColor}
+                size={32}
+              />
+            )}
+          </StepperHeaderBack>
+          {stepperUp && (
+            <Stepper width="auto" total={nPages} current={current} />
+          )}
+        </StepperHeader>
+      )}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        pagingEnabled
+        scrollEnabled={!blocked}
+        ref={myScrollRef}
+        onScroll={handleScroll}
+        style={{ flex: 1 }}
+      >
+        {filteredChildren.map((child, i) => (
+          <Content
+            stepperUp={stepperUp}
+            noMargin={noMargin}
+            key={`image-${i}`}
+            style={{ width: deviceWidth }}
+          >
+            {child}
+          </Content>
+        ))}
+      </ScrollView>
+      {!!stepperDown && (
+        <React.Fragment>
+          <Space n={0} />
+          <Stepper width="auto" total={nPages} current={current} />
+        </React.Fragment>
+      )}
+    </Container>
+  );
+};
 
-    const nEnabled = props.enablePages || children.length
-
-    let myScroll;
-
-
-    return (
-        <Container>
-            {
-                (props.stepperUp || !!props.onBack) && <StepperHeader paddingRight={props.paddingRight}>
-                    <StepperHeaderBack onPress={props.onBack} disabled={!props.onBack}>
-                        {
-                            !!props.onBack && <EvilIcons name="chevron-left" color={props.theme.colors.darkColor} size={32} />
-                        }
-                        
-                    </StepperHeaderBack>
-                    {
-                        props.stepperUp && <Stepper width={"auto"} number={children.length} current={current} />
-                    }
-                    
-                </StepperHeader>
-            }
-            <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                scrollEventThrottle={10}
-                pagingEnabled
-                scrollEnabled={!props.blocked}
-                ref={(ref) => { myScroll = ref }}
-                onScroll={(event) => onChange(event)}
-                flex={1}
-            >
-                {children.filter((child, index) => index < nEnabled).map((child, i) => (
-                    <Content stepperUp={props.stepperUp} noMargin={props.noMargin} key={`image${i}`} style={{ width: deviceWidth }}>
-                        {child}
-                    </Content>
-                ))}
-            </ScrollView>
-            {
-                props.stepperDown && <React.Fragment>
-                    <Space n={0} />
-                    <Stepper number={children.length} current={current} />
-                </React.Fragment>
-            }
-
-        </Container>
-    )
-
-})
+export default withTheme(Carrossel);

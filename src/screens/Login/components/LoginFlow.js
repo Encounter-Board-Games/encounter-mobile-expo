@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import LoginScreen from './LoginScreen'
 import { useSelector } from 'react-redux'
-import { LoginRegisterSteps } from '../../../store/actions/user'
 import PasswordScreen from './PasswordScreen'
 import CodeSentScreen from './CodeSentScreen'
 
 
-
 const Container = styled.View`
 
-    padding: 24px;
+    padding: ${props => props.theme.space.space3};
     width: 100%;
 `
 

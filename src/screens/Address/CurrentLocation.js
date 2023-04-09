@@ -1,37 +1,39 @@
 import React, { Component } from 'react';
-import { Dimensions, Image } from 'react-native';
+import { Dimensions, Image, TouchableOpacity } from 'react-native';
 import * as Location from 'expo-location';
 import MapView from 'react-native-maps';
 import styled, { withTheme } from 'styled-components';
 import { Button } from '../../components/Button';
+import { Space } from '../../components/Space';
+import { getBottomSpace } from 'react-native-iphone-x-helper'
 import { Subtitle2 } from '../../components/Typography';
 import { Ionicons } from '@expo/vector-icons';
 import { handleSearchLocation } from '../../store/actions/address';
 import { connect } from 'react-redux';
-// import {  } from '@react-navigation/native';
 
 const Container = styled.View`
     flex: 1;
     position: relative;
-`;
 
+`
 const Header = styled.View`
     position: absolute;
-    top: 32px;
+    top: ${props => props.theme.space.space4};
     left: 0;
     zIndex: 99;
     width: 100%;
-    padding: 16px
-`;
+    padding: ${props => props.theme.space.space2}
+`
 
 const Footer = styled.View`
     position: absolute;
-    bottom: 16px;
+    bottom: ${getBottomSpace() + 'px'};
     left: 0;
     zIndex: 99;
     width: 100%;
-    padding: 16px
-`;
+    padding: ${props => props.theme.space.space2}
+`
+
 
 const CloseButton = styled.TouchableOpacity`
     height: 40px;
@@ -41,28 +43,31 @@ const CloseButton = styled.TouchableOpacity`
 `;
 
 const Address = styled.View`
-    background: "#FAFAFA"
+
+    background: ${props => props.theme.colors.lightColor}
     width: 100%;
-    border-radius: '8px';
-    padding: 16px;
-    shadow-color: 'rgb(0, 0, 0)';
-    shadow-offset: 0px, 5px;
-    shadow-opacity: .16;
-    shadow-radius: 3px;
-    elevation: 2;
-    opacity: '.8';
-`;
+    border-radius: ${props => props.theme.borderRadius.button}
+    padding: ${props => props.theme.space.space2}
+
+    shadow-color: ${props => props.theme.shadow.shadowColor};
+    shadow-offset: ${props => props.theme.shadow.shadowOffset.width} ${props => props.theme.shadow.shadowOffset.width};
+    shadow-opacity: ${props => props.theme.shadow.shadowOpacity};
+    shadow-radius: ${props => props.theme.shadow.shadowRadius};
+    elevation: ${props => props.theme.shadow.elevation};
+
+    opacity: ${props => props.disabled ? '.8' : '1'}
+`
 
 const MarkerMiddle = styled.View`
     width: 32px;
     height: 32px;
     position:absolute;
-    top: 16px;
-    left: 16px;
+    top: ${Dimensions.get('window').height / 2 - 16}px;
+    left: ${Dimensions.get('window').width / 2 - 16}px;
     zIndex: 99;
     align-items:center;
     justify-content:center;
-`;
+`
 
 
 class CurrentLocation extends Component {
@@ -73,7 +78,7 @@ class CurrentLocation extends Component {
     }
 
     async componentDidMount() {
-        let { status } = await Location.requestPermissionsAsync();
+        let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
             setErrorMsg('Permission to access location was denied');
         }
@@ -92,7 +97,7 @@ class CurrentLocation extends Component {
 
 
     onPressMap = (e) => {
-        if (this.map && e.nativeEvent.coordinate) {
+        if (this.map === e.nativeEvent.coordinate) {
             this.setState({ moving: true })
             this.map.animateCamera({ center: e.nativeEvent.coordinate, pitch: 10, altitude: 800 }, 500)
         }
@@ -115,32 +120,30 @@ class CurrentLocation extends Component {
             this.setState({ moving: false })
             this.requestStreeName(e)
         }
-        // this.map.animateCamera({ center: e, pitch: 10, }, 500)
     }
 
 
     render() {
         const { moving } = this.state
-        const streetName = this.props.currentLocation && 
+        const streetName = this.props.currentLocation === 
                             this.props.currentLocation.street ?
                             (this.props.currentLocation.formatted_address || this.props.currentLocation.street) :
                             undefined
         const markerTop = Dimensions.get('window').height / 2 - 16
-        // nagivation.goBack()
 
         return (<Container >
 
-            <Hedaer>
+            <Header>
                 <CloseButton onPress={() => this.props.navigation.goBack()}>
-                    <Ionicons name="ios-arrow-round-back" color= '#414042' size={32} />
+                    <Ionicons name="ios-arrow-round-back" color={this.props.theme.colors.darkColor} size={32} />
                 </CloseButton>
-            </Hedaer>
+            </Header>
 
             <Footer>
                 <Address disabled={!streetName}>
                     <Subtitle2> {!streetName ? 'Carragando...' : streetName} </Subtitle2>
                 </Address>
-               
+                <Space n={2} />
                 <Button onPress={() => this.props.navigation.navigate("AddNewAddress")} disabled={!streetName} type="CallToAction-Light">Confirmar</Button>
             </Footer>
 
@@ -159,7 +162,6 @@ class CurrentLocation extends Component {
                 loadingEnabled
                 style={{ flex: 1, width: Dimensions.get('window').width, height: Dimensions.get('window').height, }}
             >
-
             </MapView>
         </Container>)
 

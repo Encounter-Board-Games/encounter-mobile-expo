@@ -1,37 +1,41 @@
-import React from 'react'
-import styled, { withTheme } from 'styled-components'
-import { H3 } from '../../../components/Typography'
-import { CheckButton } from '../../../components/CheckButton'
-import { RadioButton } from '../../../components/RadioButton'
-import { handleSetSelectFilter } from '../../../store/actions/filters'
-import { useDispatch } from 'react-redux'
-import { openInfoModal } from '../../../store/actions/info'
-import Icons from '../../../components/Icons'
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import styled, { withTheme } from 'styled-components';
+import { H3 } from '../../../components/Typography';
+import { CheckButton } from '../../../components/CheckButton';
+import { RadioButton } from '../../../components/RadioButton';
+import { handleSetSelectFilter } from '../../../store/actions/filters';
+import { useDispatch } from 'react-redux';
+import { openInfoModal } from '../../../store/actions/info';
+import Icons from '../../../components/Icons';
+
 const Tags = styled.View`
     flex-flow: row;
     flex-wrap: wrap;
-`
+`;
 
 const Space = styled.View`
     height: 8px;
     width: 1px;
-`
+`;
+
 const Hr = styled.View`
     height: 16px;
     border-color:${prop => prop.theme.colors.secondLightColor};
     border-bottom-width: 1px;
-`
+`;
+
 const Header = styled.View`
     position: relative;
     flex-flow: row;
-`
+`;
 
 const Icon = styled.TouchableOpacity`
     position: absolute;
     right: 0;
     padding-left: 16px;
     padding-right: 16px;
-`
+`;
 
 const FilterItem = (props) => {
 
@@ -41,11 +45,11 @@ const FilterItem = (props) => {
             <Space />
             <Space />
             <Header>
-                { props.title !== "" && <H3 color={"#6D6E71"}>{props.title}</H3> }
+                { props.title !== "" && <H3 color={props.theme.colors.secondDarkColor}>{props.title}</H3> }
 
                 {
                     props.info && <Icon onPress={() => dispatch(openInfoModal(props.info, props.title))}>
-                        <Icons name={"exclamation"} color= '#414042' size={16} />
+                        <Icons name={"exclamation"} color={props.theme.colors.darkColor} size={16} />
              
                     </Icon>
                 }

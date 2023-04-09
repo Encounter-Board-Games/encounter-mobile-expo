@@ -6,7 +6,7 @@
  *************/
 
 import { Dimensions, Platform, PixelRatio } from 'react-native';
-import config from '../config';
+import config from '../../config';
 
 const {
   width: SCREEN_WIDTH,
@@ -49,8 +49,6 @@ export default {
     // warming: '#E39059',
     // danger: '#E35959',
 
-
-
   },
   elements:{
     productDetailsImage: .3,
@@ -63,15 +61,12 @@ export default {
     largeTitle: "24px"
   },
   sizes: {
-
-
     icons: (18) ,//+ 'px',
     notification: actuatedNormalize(32) ,//+ 'px',
 
     btnBig: actuatedNormalize(48),
     btn: actuatedNormalize(40),
     btnSmall: actuatedNormalize(32),
-
 
     h1: actuatedNormalize(24),
     h2: actuatedNormalize(18),
@@ -107,6 +102,4 @@ export default {
     shadowRadius: '3px',
     elevation: 2,
   },
-
- 
 };

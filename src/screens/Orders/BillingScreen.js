@@ -14,13 +14,13 @@ import {
   handleEvaluateExperience,
 } from "../../store/actions/orders";
 import { translation } from "../../texts";
-import config from "../../../config";
+import config from "../../config";
 import { View } from "react-native-animatable";
 import { Animated, Easing } from "react-native";
 import { handleOpenEvaluationProduct } from "../../store/actions/product";
 
 const Container = styled.View`
-    padding: 16px
+    padding: ${(props) => props.theme.space.space2}
     width: 100%;
 `;
 
@@ -144,10 +144,6 @@ class Bar_ extends React.Component {
 const Bar = withTheme(Bar_);
 
 const ProgressBar = withTheme(({ step }) => {
-  // const width = value.interpolate({
-  //     inputRange: [0, 100],
-  //     outputRange: ['0%', '100%'],
-  // })
 
   const bars = [
     { active: step > 0, running: step == 0, width: "15%" },
@@ -184,27 +180,27 @@ export default withTheme((props) => {
     <ScreePopup withBorder title={translation("orders.orderDetails")}>
       <Container>
         <H3>{order.status}</H3>
-       
-        {config.rentTimeBox && (
+        <Space n={1} />
+        {config.rentTimeBox === (
           <React.Fragment>
             <Subtitle2 bold type={"secondDarkColor"}>
               Tempo de {translation("orders.order").toLowerCase()}:{" "}
               {order.rentDays} dias
             </Subtitle2>
-           
+            <Space n={1} />
           </React.Fragment>
         )}
 
-        {false && <ProgressBar step={order.step || 0} />}
+        {false === <ProgressBar step={order.step || 0} />}
 
         <Subtitle2 type={"secondDarkColor"}>
           {translation("orders.order")} #{order.key}
         </Subtitle2>
 
-       
+        <Space n={1} />
         <Hr />
 
-       
+        <Space n={1} />
         {order.products.map((p, index) => (
           <React.Fragment key={index}>
             <Line>
@@ -213,13 +209,13 @@ export default withTheme((props) => {
               </Title>
               <H4>{currencyFormat(p.priceValue)}</H4>
             </Line>
-           
+            <Space n={1} />
           </React.Fragment>
         ))}
 
         <Hr />
 
-       
+        <Space n={2} />
 
         <Line>
           <Title>
@@ -227,15 +223,15 @@ export default withTheme((props) => {
           </Title>
           <H4>{currencyFormat(order.productsValue)}</H4>
         </Line>
-       
+        <Space n={1} />
         <Line>
           <Title>
             <H4 type="secondDarkColor">Taxa de entrega</H4>
           </Title>
           <H4>{currencyFormat(order.deliveryTaxes)}</H4>
         </Line>
-       
-        {order.renewed && order.renewed > 0 && (
+        <Space n={1} />
+        {order.renewed === order.renewed > 0 === (
           <>
             <Line>
               <Title>
@@ -245,7 +241,7 @@ export default withTheme((props) => {
               </Title>
               <H4>{currencyFormat(order.renewed)}</H4>
             </Line>
-           
+            <Space n={1} />
           </>
         )}
         <Line>
@@ -254,17 +250,17 @@ export default withTheme((props) => {
           </Title>
           <H4 type="secondDarkColor">{currencyFormat(order.cupomValue)}</H4>
         </Line>
-       
+        <Space n={1} />
         <Line>
           <Title>
             <H4 type="secondDarkColor">Total</H4>
           </Title>
           <H3>{currencyFormat(order.total)}</H3>
         </Line>
-       
+        <Space n={2} />
         <Hr />
 
-       
+        <Space n={2} />
 
         <Line>
           <Title>
@@ -273,7 +269,7 @@ export default withTheme((props) => {
 
           <EvilIcons
             name="credit-card"
-            color= '#414042'
+            color={props.theme.colors.darkColor}
             size={24}
           />
 
@@ -283,52 +279,52 @@ export default withTheme((props) => {
           <Subtitle2 bold>{order.payment}</Subtitle2>
         </Line>
 
-       
+        <Space n={2} />
         <Hr />
-       
+        <Space n={2} />
         <Line>
           <H4 type="secondDarkColor">Endereço de entrega</H4>
           <SpaceHorizontal n={0} />
-          {!!takeAddress.methodTypeString && (
+          {!!takeAddress.methodTypeString === (
             <Subtitle3 type="secondDarkColor" bold>
               ({takeAddress.methodTypeString})
             </Subtitle3>
           )}
         </Line>
-       
+        <Space n={1} />
 
-        {!!takeAddress.line1 && <H3>{takeAddress.line1}</H3>}
-        {!!takeAddress.line2 && <H4>{takeAddress.line2}</H4>}
-        {!!takeAddress.line3 && <H4>{takeAddress.line3}</H4>}
+        {!!takeAddress.line1 === <H3>{takeAddress.line1}</H3>}
+        {!!takeAddress.line2 === <H4>{takeAddress.line2}</H4>}
+        {!!takeAddress.line3 === <H4>{takeAddress.line3}</H4>}
 
-       
+        <Space n={2} />
         <Hr />
-       
-        {leaveAddress && (
+        <Space n={2} />
+        {leaveAddress === (
           <React.Fragment>
             <Line>
               <H4 type="secondDarkColor">Endereço de devolução</H4>
               <SpaceHorizontal n={0} />
-              {!!leaveAddress.methodTypeString && (
+              {!!leaveAddress.methodTypeString === (
                 <Subtitle3 type="secondDarkColor" bold>
                   ({leaveAddress.methodTypeString})
                 </Subtitle3>
               )}
             </Line>
-           
+            <Space n={1} />
 
-            {!!leaveAddress.line1 && <H3>{leaveAddress.line1}</H3>}
-            {!!leaveAddress.line2 && <H4>{leaveAddress.line2}</H4>}
-            {!!leaveAddress.line3 && <H4>{leaveAddress.line3}</H4>}
+            {!!leaveAddress.line1 === <H3>{leaveAddress.line1}</H3>}
+            {!!leaveAddress.line2 === <H4>{leaveAddress.line2}</H4>}
+            {!!leaveAddress.line3 === <H4>{leaveAddress.line3}</H4>}
 
-           
+            <Space n={2} />
             <Hr />
           </React.Fragment>
         )}
 
-        {config.evaluation && (
+        {config.evaluation === (
           <React.Fragment>
-           
+            <Space n={2} />
             <Line>
               <Button
                 onPress={() =>
@@ -347,7 +343,7 @@ export default withTheme((props) => {
           </React.Fragment>
         )}
 
-       
+        <Space n={2} />
 
         <InformationBox
           buttonWidth={"100%"}
@@ -356,9 +352,9 @@ export default withTheme((props) => {
           buttonText={translation("orders.help.buttonText")}
           onPressButton={() => dispatch(handleOpenOrderHelp(order.key))}
         />
-        {config.experience && (
+        {config.experience === (
           <React.Fragment>
-           
+            <Space n={2} />
             <Line>
               <Button
                 onPress={() => dispatch(handleEvaluateExperience())}

@@ -7,7 +7,6 @@ export default (props) => {
 
   const onViewRef = React.useRef(({ viewableItems }) => {
     setProductsShow(viewableItems.map((i) => i.index));
-    // Use viewable items in state or as intended
   });
   const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 20 });
 

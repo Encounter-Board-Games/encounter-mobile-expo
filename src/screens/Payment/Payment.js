@@ -3,10 +3,10 @@ import ScreePopup from "../../components/ScreePopup";
 import styled, { withTheme } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import NotLoggedBox from '../User/components/NotLoggedBox';
-import { handleCloseCartChoseAddress, handleCloseSetCartChosePayment } from '../../store/actions/shared';
+import { handleCloseSetCartChosePayment } from '../../store/actions/shared';
 import MenuOption from '../../components/MenuOption';
 import { Button } from '../../components/Button';
-import { H3, H4 } from '../../components/Typography';
+import { H4 } from '../../components/Typography';
 import HideInfo from '../../components/HideInfo';
 import { handleLoadPaymentMethods, handleSetCurrentPayment } from '../../store/actions/payments';
 import { Space } from '../../components/Space';
@@ -14,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { handleSelectPaymentMethod } from '../../store/actions/cart';
 
 const Container = styled.View`
-    padding: 16px;
+    padding: ${props => props.theme.space.space2};
     min-height:100%;
 
 `
@@ -33,7 +33,6 @@ export default withTheme(() => {
 
     const onBack = () => {
         if(choseMode) dispatch(handleCloseSetCartChosePayment())
-        // navigation.goBack()
     }
 
     useEffect(() => {
@@ -64,7 +63,7 @@ export default withTheme(() => {
                 paymentMethods.map((payment, index) => <MenuOption hideArrow={choseMode} key={payment.key} onPress={() => goTo(payment.key)} icon="credit-card" title={() => <Line><HideInfo n={4} /><H4> {payment.card_number}</H4></Line>} />)
         }
 
-       
+        <Space n={3} />
         {
             !isLoading && <Button type="CallToAction-Outline-Flex" onPress={() => openCreate()}>Adicionar novo cartão de crédito</Button>
         }

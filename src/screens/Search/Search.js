@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import Screen from "../../components/Screen";
 
 import styled, { withTheme } from "styled-components";
 import SearchBar from "./components/SearchBar";
-import {
-  H3,
-  Subtitle2,
-} from "../../components/Typography";
+import { H3, Subtitle2 } from "../../components/Typography";
 import { useSelector, useDispatch } from "react-redux";
 import { Tag } from "../../components/Tag";
 import {
@@ -20,10 +17,10 @@ import ProductShelf from "../Product/components/ProductShelf";
 import HeaderSeeAll from "../../components/HeaderSeeAll";
 import FilterResult from "./components/FilterResult";
 import { translation } from "../../texts";
-import config from "../../../config";
+import config from "../../config";
 
 const Container = styled.View`
-  padding: 16px;
+  padding: ${(props) => props.theme.space.space2};
   padding-bottom: 0px;
   flex: 1;
 `;
@@ -33,30 +30,30 @@ const FlexContent = styled.View`
 `;
 
 const Space = styled.View`
-  height: 16px;
+  height: ${(props) => props.theme.space.space2};
   width: 100%;
-  color: "#BCBEC0";
+  color: ${(props) => props.theme.colors.secondColor};
 `;
 
 const Chips = styled.ScrollView`
   max-height: 40px;
-  margin-top: 8px;
+  margin-top: ${(props) => props.theme.space.space1};
 `;
 
 const Space3 = styled.View`
-    height: 24px;
+    height: ${(props) => props.theme.space.space3}
     width: 1px;
 `;
 const Space2 = styled.View`
-    height: 16px
+    height: ${(props) => props.theme.space.space2}
     width: 1px;
 `;
 
 const RecentItem = styled.TouchableOpacity`
-  padding-bottom: 8px;
-  padding-top: 8px;
+  padding-bottom: ${(props) => props.theme.space.space1};
+  padding-top: ${(props) => props.theme.space.space1};
   border-bottom-width: 0.5px;
-  border-color: "#E6E7E8";
+  border-color: ${(props) => props.theme.colors.secondLightColor};
 `;
 
 const Search = (props) => {
@@ -114,7 +111,7 @@ const Search = (props) => {
                 key={index}
                 onPress={() => dispatch(handleChangeFilteringText(item, false))}
               >
-                <Subtitle2 color={"#6D6E71"}>
+                <Subtitle2 color={props.theme.colors.secondDarkColor}>
                   {item}
                 </Subtitle2>
               </RecentItem>

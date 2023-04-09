@@ -1,8 +1,5 @@
 import Storage from "../../utils/storage"
 import { openLoginPopup } from "./user"
-import React from 'react'
-import { H4, H3 } from "../../components/Typography"
-import { API_URI } from "../../graphql/client"
 import { handleLoadShelves } from "./shelves"
 import { handleShowNotification } from "./notification"
 import { customFilter } from "../../graphql"

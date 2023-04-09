@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import InformationBox from '../../../components/InformationBox'
 import styled from 'styled-components'
 import OrderBox from './OrderBox'
-import { openLoginPopup } from '../../../store/actions/user'
 import { useDispatch, useSelector } from 'react-redux'
 import { handleLoadOrders } from '../../../store/actions/orders'
 import { useNavigation } from '@react-navigation/native'
@@ -14,7 +13,6 @@ const Container = styled.View`
 `
 
 const noResultTitle = (type) => {
-
     if (type == 'History') return 'oldOrders'
     return 'currentOrders'
 }
@@ -29,15 +27,12 @@ export default (props) => {
     const navigation = useNavigation();
     const { isLogged = false } = useSelector(state => state.user)
     const { orders = {} } = useSelector(state => state.orders)
-
-
-    
+   
     const ordersList = Object.keys(orders)
         .map(key => orders[key])
         .filter(order => ( props.type == "History" && !order.current )
                          || (props.type != "History" && order.current ))
 
-    // return null;
     if (ordersList.length == 0)
         return <InformationBox
             img={require('../../../assets/img/open-box.png')}

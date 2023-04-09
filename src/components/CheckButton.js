@@ -1,6 +1,6 @@
-import React from 'react'
-import styled, { withTheme } from 'styled-components';
-import { EvilIcons } from '@expo/vector-icons';
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
 
 export const Radio = styled.TouchableOpacity`
     margin-top: ${props => props.theme.space.space1};
@@ -13,7 +13,6 @@ export const Radio = styled.TouchableOpacity`
     border: 1.5px solid ${props => props.isSelected ? props.theme.colors.primaryColor : props.theme.colors.secondColor};
     background-color:   ${props => props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
 `;
-//color={props.isSelected ? props.theme.colors.textSelectedColor : props.theme.colors.textColor }
 
 const CloseButton = styled.TouchableOpacity`
     background-color: ${props => props.theme.colors.secondLightColor};
@@ -30,8 +29,6 @@ font-size: 14px;
 font-family:  ${props => props.isSelected ? 'Nunito' : 'Nunito'};
 color: ${props => props.isSelected ? props.theme.colors.primaryDarkColor : props.theme.colors.darkColor};
 `;
-
-
 
 export const CheckButton = (props) => (<Radio {...props} onPress={() => props.onPress && props.onPress()}>
     <Text {...props} >{props.children}</Text>

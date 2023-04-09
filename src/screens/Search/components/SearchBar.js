@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useNavigation } from '@react-navigation/native'
-import { useSelector, useDispatch } from 'react-redux'
-import SearchBar from '../../../components/SearchBar'
-import { handleChangeFilteringText } from '../../../store/actions/filters'
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import SearchBar from '../../../components/SearchBar';
+import { handleChangeFilteringText } from '../../../store/actions/filters';
 
 const SearchButton = styled.TouchableOpacity`
-   
     min-width: 25%;
     border-left-width: .5px;
     margin-top: 8px;
@@ -15,26 +15,26 @@ const SearchButton = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    
-    border-color: #414042;
-`
+    border-color: ${props => props.theme.colors.primaryDarkColor};
+`;
 
 const SearchButtonText = styled.Text`
-    font-size: 14px;
-    color: #414042;
-`
+    font-size: ${props => props.theme.sizes.subtitle2};
+    color: ${props => props.theme.colors.primaryDarkColor};
+`;
 
 const SearchFiltersNumber = styled.View`
-    background: #414042;
-    padding-left: 8px;
-    padding-right: 8px;
+    background: ${props => props.theme.colors.primaryDarkColor};
+    padding-left: ${props => props.theme.space.space1};
+    padding-right: ${props => props.theme.space.space1};
     border-radius: ${props => props.theme.borderRadius.tag};
     margin-right: 2px;
-`
+`;
+
 const SearchFiltersNumberText = styled.Text`
-    font-size: 14px;
-    color: "#FAFAFA";
-`
+    font-size: ${props => props.theme.sizes.subtitle2};
+    color: ${props => props.theme.colors.lightColor};
+`;
 
 
 export default () => {

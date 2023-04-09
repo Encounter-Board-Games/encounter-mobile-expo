@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import Circle from './Circle';
 
@@ -14,15 +15,16 @@ export const Radio = styled.TouchableOpacity`
     border: 1.5px solid ${props => props.isSelected ?  props.theme.colors.primaryColor :  props.theme.colors.secondColor};
     background-color:   ${props => props.isSelected ?  props.theme.colors.primaryLightColor :  'transparent'};
 `;
-//color={props.isSelected ? props.theme.colors.textSelectedColor : props.theme.colors.textColor }
-
 
 export const Text = styled.Text`
-font-size: 14px;
-font-family:  ${props => props.isSelected ? 'Nunito-Bold' : 'Nunito'};
-color: ${props => props.isSelected ? props.theme.colors.primaryDarkColor : props.theme.colors.darkColor };
+    font-size: 14px;
+    font-family: Nunito${props => props.isSelected ? '-Bold' : ''};
+    color: ${props => props.isSelected ? props.theme.colors.primaryDarkColor : props.theme.colors.darkColor};
 `;
-export const RadioButton = (props) => <Radio {...props} onPress={() => props.onPress && props.onPress() }>
-    <Circle  {...props} />
-    <Text {...props} >{props.children}</Text> 
+
+export const RadioButton = (props) => (
+    <Radio {...props} onPress={() => props.onPress && props.onPress()}>
+        <Circle  {...props} />
+        <Text {...props}>{props.children}</Text>
     </Radio>
+)

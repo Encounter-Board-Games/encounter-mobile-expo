@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Bottom } from "../../components/Space";
+import { Space, Bottom } from "../../components/Space";
 import { H1, H4, H3 } from "../../components/Typography";
 import { Image, Linking } from "react-native";
 import { Button } from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
+import { API_URI } from "../../graphql/client";
 import { Platform } from "react-native";
 import Constants from "expo-constants";
 import { handleCancelUpdate } from "../../store/actions/app";
@@ -12,17 +13,21 @@ import { handleCancelUpdate } from "../../store/actions/app";
 const MainContainer = styled.View`
 flex: 1;
 width: 100%;
-padding-left: 24px;
-padding-right: 24px;
-padding-top: 24px
+padding-left: ${(props) => props.theme.space.space3}
+padding-right: ${(props) => props.theme.space.space3}
+padding-top: ${(props) =>
+  Platform.OS == "ios"
+    ? Constants.statusBarHeight + "px"
+    : props.theme.space.space2};
 `;
 const TextLine = styled.View`
   width: 100%;
   flex-flow: row;
-  margin-bottom: 16px;
+  margin-bottom: ${(props) => props.theme.space.space2};
 `;
 const TextItemList = styled.View`
   width: 20px;
+
   align-items: flex-start;
   justify-content: center;
 `;
@@ -30,7 +35,7 @@ const TextItemListIcon = styled.View`
   width: 12px;
   height: 12px;
   border-radius: 12px;
-  backgroundcolor: #414042;
+  backgroundcolor: ${(props) => props.theme.colors.primaryDarkColor};
 `;
 const TextContent = styled.Text`
   flex: 1;
@@ -46,7 +51,10 @@ const ImageContent = styled.View`
 `;
 
 const PaddingTop = styled.View`
-  height: 16px;
+  height: ${(props) =>
+    Platform.OS == "ios"
+      ? Constants.statusBarHeight + "px"
+      : props.theme.space.space2};
   width: 100%;
 `;
 const Content = styled.View`
@@ -73,10 +81,13 @@ export default () => {
   return (
     <MainContainer>
       <Content>
+        <Space n={3} />
         <H1>{title}</H1>
+        <Space n={3} />
         {texts.map((text, i) => (
           <TextLine key={i}>
             <TextContent>
+              
               {text
                 .split("*")
                 .map((text, index) =>
@@ -86,10 +97,12 @@ export default () => {
                     <H3 key={index}>{text}</H3>
                   )
                 )}
+                
             </TextContent>
           </TextLine>
         ))}
 
+        <Space n={4} />
         <ImageContent>
           <Image
             resizeMode={"contain"}
@@ -99,6 +112,7 @@ export default () => {
         </ImageContent>
       </Content>
       <Footer>
+        <Space n={4} />
 
         <ButtonsRow>
           <Button width={"100%"} type="CallToAction-Light" onPress={onNext}>
@@ -108,6 +122,7 @@ export default () => {
 
         {btnCancel && (
           <React.Fragment>
+            <Space n={2} />
             <ButtonsRow>
               <Button
                 width={"100%"}

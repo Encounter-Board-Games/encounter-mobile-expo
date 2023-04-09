@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-
 const Circle = styled.View`
     height: 18px;
     width: 18px;

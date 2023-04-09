@@ -1,32 +1,31 @@
-import React, {  } from 'react'
-import styled from 'styled-components'
+import React from 'react';
 import Modal from 'react-native-modal';
+import { KeyboardAvoidingView } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { closePopupModal } from '../../store/actions/info';
+import styled from "styled-components/native";
+
 import Evaluate from '../Product/components/Evaluate';
 import PopupLogin from './components/PopupLogin';
 import WppRedirect from './components/WppRedirect';
 import InfoPopup from './components/InfoPopup';
 import ConfirmModal from './components/ConfirmModal';
 import TextModal from './components/TextModal';
-import { KeyboardAvoidingView } from 'react-native';
 import OptionsModal from './components/OptionsModal';
 
+import { closePopupModal } from '../../store/actions/info';
 
-
-//
 const Container = styled.View`
-    padding: 16px;
-    background: "#FAFAFA";
+    padding: ${props => props.theme.space.space2};
+    background: ${props => props.theme.colors.lightColor};
     width: 100%;
     flex-wrap: wrap;
 
-    border-radius: '8px';
+    border-radius: ${props => props.theme.borderRadius.button}
     
-    shadow-color: 'rgb(0, 0, 0)';
+    shadow-color: ${props => props.theme.shadow.shadowColor};
     shadow-offset: ${props => props.theme.shadow.shadowOffset.width} ${props => props.theme.shadow.shadowOffset.width};
-    shadow-opacity: .16;
-    shadow-radius: 3px;
+    shadow-opacity: ${props => props.theme.shadow.shadowOpacity};
+    shadow-radius: ${props => props.theme.shadow.shadowRadius};
 `
 
 function getBody(type){
@@ -48,23 +47,22 @@ function getBody(type){
 }
 
 export default () => {
-    const info = useSelector(state => state.info)
-    const dispatch = useDispatch()
-    
-    const isVisible = info.popup && info.popup.open;
-    const type  = info.popup && info.popup.type ? info.popup.type : '';
+    const info = useSelector((state) => state.info || {});
+    const dispatch = useDispatch();
 
-    return <Modal 
-                isVisible={isVisible} 
-                animationIn="fadeIn"
-                animationOut="fadeOut"
-                onBackdropPress={() => dispatch(closePopupModal())}>
-                <KeyboardAvoidingView behavior="padding" >
-        <Container>
-            {
-                getBody(type)
-            }
-        </Container>
+    const isVisible = info.popup?.open ?? false;
+    const type = info.popup && info.popup.type ? info.popup.type : "";
+
+    return (
+        <Modal
+            isVisible={isVisible}
+            animationIn="fadeIn"
+            animationOut="fadeOut"
+            onBackdropPress={() => dispatch(closePopupModal())}
+        >
+            <KeyboardAvoidingView behavior="padding">
+                <Container>{getBody(type)}</Container>
             </KeyboardAvoidingView>
-    </Modal>
-}
+        </Modal>
+    );
+};

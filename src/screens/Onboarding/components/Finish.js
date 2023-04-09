@@ -18,21 +18,23 @@ const MainContainer = styled.View`
 flex: 1;
 width: 100%;
 height: 100%
-padding-left: 24px;
-padding-right: 24px;
-padding-top: 16px;
-`;
+padding-left: ${(props) => props.theme.space.space3}
+padding-right: ${(props) => props.theme.space.space3}
+padding-top: ${(props) =>
+  Platform.OS == "ios"
+    ? Constants.statusBarHeight + "px"
+    : props.theme.space.space2};
 
+`;
 const Line = styled.View`
   width: 100%;
   flex-flow: row;
   align-items: center;
 `;
-
 const Icon = styled.View`
     min-height: 20px;
-    width: 16px
-    margin-right: 8px;
+    width: ${(props) => props.theme.space.space2}
+    margin-right: ${(props) => props.theme.space.space1}
 `;
 
 const ImageContent = styled.View`
@@ -46,9 +48,7 @@ const ImageContent = styled.View`
 const Content = styled.View`
   flex: 1;
 `;
-
 const Footer = styled.View``;
-
 const ButtonsRow = styled.View`
   flex-flow: column;
   align-items: flex-end;
@@ -68,12 +68,17 @@ export default (props) => {
   return (
     <MainContainer>
       <Content>
+        <Space n={3} />
         <H1>Pronto, chega de perguntas!</H1>
+        <Space n={3} />
         <H2>Na verdade, só mais uma coisinha…</H2>
-        <H4>
+        <Space n={3} />
+        <H4 noBold>
           Para realizar o seu 1º aluguel, você precisa completar o seu cadastro
           com:
         </H4>
+
+        <Space n={3} />
         <Line>
           <Icon>
             <Image
@@ -88,7 +93,7 @@ export default (props) => {
             </Subtitle2>
           </Content>
         </Line>
-       
+        <Space n={2} />
         <Line>
           <Icon>
             <Image
@@ -104,7 +109,7 @@ export default (props) => {
           </Content>
         </Line>
 
-       
+        <Space n={4} />
 
         <H4>
           Essas informações passarão por análise e seu{" "}
@@ -112,7 +117,7 @@ export default (props) => {
         </H4>
         <ImageContent></ImageContent>
         <H2>Bora completar seu cadastro agora?</H2>
-       
+        <Space n={3} />
       </Content>
       <Footer>
         <ButtonsRow>
@@ -126,7 +131,7 @@ export default (props) => {
               Bora!
             </Button>
           </View>
-         
+          <Space n={2} />
           <View>
             <Button
               width="auto"

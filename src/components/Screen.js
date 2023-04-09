@@ -1,29 +1,34 @@
 import React from "react";
-import styled from "styled-components";
-import { ScrollView } from "react-native";
+import styled from "styled-components/native";
 import CartMarker from "../screens/Cart/components/CartMarker";
 import { useSelector } from "react-redux";
 
 const Container = styled.View`
   background-color: ${(props) => props.theme.colors.lightColor};
   flex: 1;
-  height: 100%;
-  width: 100%;
 `;
 
-export default (props) => {
+const ScrollContainer = styled.ScrollView`
+  flex: 1;
+  background-color: blue;
+`;
+
+const MainContainer = ({ children, noScroll }) => {
   const cart = useSelector((state) => state.cart);
   const hasCart = cart.products.length !== 0 && !cart.renew;
+
   return (
     <Container>
-      {props.noScroll ? (
-        props.children
+      {noScroll ? (
+        children
       ) : (
-        <ScrollView style={{ flex: 1, background: "blue" }}>
-          {props.children}
-        </ScrollView>
+        <ScrollContainer>
+          {children}
+        </ScrollContainer>
       )}
       {hasCart && <CartMarker />}
     </Container>
   );
 };
+
+export default MainContainer;

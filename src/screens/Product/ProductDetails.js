@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from "styled-components";
 import ProductStatus from "./components/ProductStatus";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -9,7 +10,7 @@ import Carrossel from "../../components/Carrossel";
 import { useSelector, useDispatch } from "react-redux";
 import ScreePopup from "../../components/ScreePopup";
 import VideoPlayerScreen from "./components/VideoPlayer";
-import { Image, ScrollView } from "react-native";
+import { Image, Dimensions, ScrollView } from "react-native";
 
 import {
   handleAddProduct,
@@ -23,17 +24,18 @@ import {
   Fade,
 } from "rn-placeholder";
 import { H2, Subtitle3 } from "../../components/Typography";
+import { Space } from "../../components/Space";
 import {
   handleToggleLike,
   handleRememberProduct,
 } from "../../store/actions/user";
 import { useNavigation } from "@react-navigation/native";
 import { handleOpenEvaluationProduct } from "../../store/actions/product";
-import config from "../../../config";
+import config from "../../config";
 import Icons from "../../components/Icons";
 
 const Container = styled.View`
-  padding: 16px;
+  padding: ${(props) => props.theme.space.space2};
   padding-top: 0;
   width: 100%;
   min-height: 100%;
@@ -42,7 +44,7 @@ const Tags = styled.View`
   width: 100%;
   flex-flow: row;
   flex-wrap: wrap;
-  margin-top: 8px;
+  margin-top: ${(props) => props.theme.space.space1};
 `;
 
 const Line = styled.View`
@@ -57,9 +59,10 @@ const MainLine = styled.View`
 
 const ToolBar = styled.View`
     flex-flow: row;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    align-items: center;
+    margin-top: ${(props) => props.theme.space.space2}
+    margin-bottom: ${(props) => props.theme.space.space2};
+    
+    align-items: center;;
     justify-content: flex-start;
     position: relative;
 `;
@@ -67,63 +70,65 @@ const ToolBar = styled.View`
 const Dices = styled.View`
     flex-flow: row;
     align-items: center;
-    flex: 1;
-    margin-right: 24px;
+    flex: 1
+    margin-right: ${(props) => props.theme.space.space3}
 `;
 
 const DicesNumber = styled.Text`
   font-size: 12px;
-  color: "#6D6E71";
-  margin-left: 4px;
+  color: ${(props) => props.theme.colors.secondDarkColor};
+  margin-left: ${(props) => props.theme.space.space0};
 `;
-
 const Icon = styled.TouchableOpacity`
-    padding-right: 8px;
+    padding-right: ${(props) => props.theme.space.space1}
     align-items:center;
     justify-content: center;
 `;
-
 const Price = styled.Text`
   font-size: 16px;
-  color:  #414042;
+  color: ${(props) => props.theme.colors.darkColor};
   text-align: right;
   font-family: Nunito-Bold;
 `;
 
 const VideoPlayer = styled.TouchableOpacity`
   flex-flow: row;
-  margin-top: 16px;
+  margin-top: ${(props) => props.theme.space.space2};
   align-items: center;
   height: 24px;
 `;
-
 const VideoPlayerText = styled.Text`
   font-size: 12px;
   font-family: Nunito;
-  margin-left: 8px;
-  color: "#6D6E71";
+  margin-left: ${(props) => props.theme.space.space1};
+  color: ${(props) => props.theme.colors.secondDarkColor};
   text-decoration: underline;
-  text-decoration-color: "#6D6E71";
+  text-decoration-color: ${(props) => props.theme.colors.secondDarkColor};
 `;
 
 const Description = styled.View`
-  margin-top: 16px;
+  margin-top: ${(props) => props.theme.space.space2};
   font-family: Nunito;
 `;
 
 const CarrosselContainer = styled.View`
-  height: auto;
-  align-items: center;
-  justify-content: center;
+  height: ${(props) =>
+    Math.floor(
+      Dimensions.get("window").height * props.theme.elements.productDetailsImage
+    )}px;
+  ${(props) =>
+    props.isPlaceholder ?
+    `
+    align-items: center;
+    justify-content: center;` : ''}
 `;
 
 const Header = styled.View`
-  padding: 16px;
+  padding: ${(props) => props.theme.space.space2};
 `;
-
 const ButtonContent = styled.View`
   width: 100%;
-  padding: 16px;
+  padding: ${(props) => props.theme.space.space2};
   padding-top: 0;
 `;
 
@@ -146,7 +151,7 @@ const ProductDetails = (props) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
 
-  const h2Size = "18px";
+  const h2Size = +props.theme.sizes.h2.replace("px", "");
 
   if (!product) return <H2>Carregando...</H2>;
   if (!product.isLoad && false)
@@ -157,14 +162,14 @@ const ProductDetails = (props) => {
             <CarrosselContainer isPlaceholder>
               <PlaceholderMedia size={"100%"} />
             </CarrosselContainer>
-           
+            <Space n={1} />
 
             <PlaceholderLine noMargin height={h2Size * 2} />
-           
+            <Space n={1} />
             <PlaceholderLine noMargin height={h2Size} />
-           
+            <Space n={1} />
             <PlaceholderLine noMargin height={32} />
-           
+            <Space n={3} />
             <ScrollView flex={1}>
               <PlaceholderLine height={h2Size} />
               <PlaceholderLine height={h2Size} />
@@ -175,8 +180,6 @@ const ProductDetails = (props) => {
         </Container>
       </ScreePopup>
     );
-  // const contentOffset = (width - Title.WIDTH) / 2;
-  // const contentOffset = (width - CustomComponent.WIDTH) / 2;
 
   const tags_ = [
     product.age,
@@ -268,7 +271,7 @@ const ProductDetails = (props) => {
               ))}
             </Carrossel>
           </CarrosselContainer>
-         
+          <Space n={1} />
           <Line>
             {config.favorites && (
               <Icon
@@ -276,7 +279,7 @@ const ProductDetails = (props) => {
               >
                 <Ionicons
                   name={isFavorite ? "ios-heart" : "ios-heart-empty"}
-                  color= '#414042'
+                  color={props.theme.colors.darkColor}
                   size={18}
                 />
               </Icon>
@@ -284,7 +287,7 @@ const ProductDetails = (props) => {
             <H2>{product.name}</H2>
           </Line>
 
-         
+          <Space n={1} />
           <Line style={{ alignItems: "center" }}>
             <MainLine>
               <ProductStatus available={product.available} />
@@ -295,7 +298,7 @@ const ProductDetails = (props) => {
           </Line>
           {config.evaluation && (
             <React.Fragment>
-             
+              <Space n={1} />
               <Line>
                 <MainLine>
                   <Dices>
@@ -333,7 +336,7 @@ const ProductDetails = (props) => {
             <VideoPlayer onPress={() => setShowVideo(true)}>
               <MaterialCommunityIcons
                 size={24}
-                color= '#414042'
+                color={props.theme.colors.darkColor}
                 name="play-circle"
               />
               <VideoPlayerText>Vídeo do jogo</VideoPlayerText>

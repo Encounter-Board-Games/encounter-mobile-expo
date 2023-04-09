@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { Subtitle1, H3 } from './Typography';
 
@@ -19,6 +20,6 @@ const Header = styled.View`
 export default withTheme((props) => <Header>
 <H3>{props.title}</H3>
 {
-    props.showSeeAll && <ToolItem onPress={() => props.onSeeAllPress && props.onSeeAllPress()}><Subtitle1 underline color={props.theme.colors.primaryDarkColor}>Ver todos</Subtitle1></ToolItem>
+    props.showSeeAll && <ToolItem onPress={() => props?.onSeeAllPress()}><Subtitle1 underline color={props.theme.colors.primaryDarkColor}>Ver todos</Subtitle1></ToolItem>
 }
 </Header>)

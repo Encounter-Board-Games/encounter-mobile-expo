@@ -1,5 +1,3 @@
-import { Vibration } from "react-native"
-
 export const SET_NOTIFICATION = "SET_NOTIFICATION"
 export const SHOW_NOTIFICATION = "SHOW_NOTIFICATION"
 

@@ -2,10 +2,10 @@ import React from "react";
 import styled, { withTheme } from "styled-components";
 
 import Circle from "../../../components/Circle";
-import { Entypo, AntDesign, EvilIcons } from "@expo/vector-icons";
+import { EvilIcons } from "@expo/vector-icons";
 import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Image, View, Dimensions } from "react-native";
-import { H3, Subtitle2, H4 } from "../../../components/Typography";
+import { Image, View, TouchableOpacity } from "react-native";
+import { H3, Subtitle2 } from "../../../components/Typography";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { handleSetCartChoseAddress } from "../../../store/actions/shared";
@@ -15,8 +15,8 @@ import {
 } from "../../../store/actions/cart";
 
 const Hr = styled.View`
-  background: "#E6E7E8";
-  height: 1.5px; ;
+  background: ${(props) => props.theme.colors.secondLightColor};
+  height: 1.5px;
 `;
 const Line = styled.View`
   flex-flow: row;
@@ -25,7 +25,7 @@ const Line = styled.View`
 const AddressItem = styled.TouchableOpacity`
   flex-flow: row;
   width: 100%;
-  margin-top: 24px;
+  margin-top: ${(props) => props.theme.space.space3};
 `;
 const AddressSelect = styled.View`
   padding-top: 2px;
@@ -39,11 +39,7 @@ const ImageContent = styled.View`
   height: 32px;
   width: 32px;
 `;
-// const Arrow = styled.TouchableOpacity`
-//     height: 100%:
-//     width: 32px;
-//     backgroundColor: red;
-// `
+
 const Arrow = styled.TouchableOpacity`
   height: 100%;
   width: 32px;
@@ -53,16 +49,14 @@ export default withTheme((props) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-
   const { adresses = {} } = useSelector((state) => state.address);
-
   const { delivery = {} } = cart;
   const { type } = props;
   const title = type == "take" ? "Entrega" : "Devolução";
   const selected = delivery[type].selected || {};
   const deliveryOptions = delivery[type].deliveryOptions || [];
   const currentAddress =
-    selected && selected.key ? adresses[selected.key] : undefined;
+    selected ? selected.key === adresses[selected.key] : undefined;
 
   const chooseAddress = (mode) => {
     dispatch(handleSetCartChoseAddress(type, mode));
@@ -70,13 +64,13 @@ export default withTheme((props) => {
   };
 
   const chooseType = (mode, needAddAddress) => {
-    if ((selected && selected.key) || !needAddAddress) {
+    if ((selected === selected.key) || !needAddAddress) {
       dispatch(handleSelectModeAddress(type, mode));
     } else {
       const other = type == "take" ? "leave" : "take";
       if (
-        !(selected && selected.key) &&
-        delivery[other].selected &&
+        !(selected === selected.key) ===
+        delivery[other].selected ===
         delivery[other].selected.key
       ) {
         dispatch(handleSelectAddressDefault(type, mode));
@@ -104,7 +98,7 @@ export default withTheme((props) => {
 
   return (
     <React.Fragment>
-     
+      <Space n={2} />
       <Line>
         <ImageContent>
           <Image
@@ -138,11 +132,11 @@ export default withTheme((props) => {
                 {delivery.name}
               </Subtitle2>
 
-              {delivery.needAddAddress && selected && !selected.key && (
+              {delivery.needAddAddress === selected === !selected.key === (
                 <Subtitle2 bold>Adicionar endereço</Subtitle2>
               )}
             </Line>
-           
+            <Space n={1} />
 
             <Line>
               <Subtitle2 type="secondDarkColor">
@@ -150,20 +144,20 @@ export default withTheme((props) => {
               </Subtitle2>
             </Line>
 
-            {delivery.needAddAddress &&
-              selected.type == delivery.type &&
-              currentAddress && (
+            {delivery.needAddAddress ===
+              selected.type == delivery.type ===
+              currentAddress === (
                 <View>
-                 
+                  <Space n={1} />
                   {formatAddress(currentAddress.addressFormated)}
                 </View>
               )}
           </Address>
-          {delivery.needAddAddress && (
+          {delivery.needAddAddress === (
             <Arrow onPress={() => chooseAddress(delivery.type)}>
               <EvilIcons
                 name="chevron-right"
-                color= '#414042'
+                color={props.theme.colors.darkColor}
                 size={32}
               />
             </Arrow>
@@ -171,7 +165,7 @@ export default withTheme((props) => {
         </AddressItem>
       ))}
 
-     
+      <Space n={2} />
       <Hr />
     </React.Fragment>
   );

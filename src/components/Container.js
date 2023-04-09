@@ -1,15 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { H2, Subtitle2 } from './Typography';
 
-
 import {
     Placeholder,
-    PlaceholderMedia,
     PlaceholderLine,
     Fade
 } from "rn-placeholder";
-import Texts from '../texts';
 
 const Box = styled.View`
     background-color: white;
@@ -39,30 +37,28 @@ const ToolText = styled.TouchableOpacity`
     top:0;
 `
 export default withTheme((props) => {
-
-
-    return (<Box>
+    const subtitle = props.subtitle ? <Subtitle2>{props.subtitle}</Subtitle2> : null;
+    const toolText = props.toolText ? (
+      <ToolText onPress={() => props?.onToolTextPress()}>
+        <Subtitle2 underline type="primaryDarkColor">{props.toolText}</Subtitle2>
+      </ToolText>
+    ) : null;
+  
+    return (
+      <Box>
         <Header>
-
-            {
-                props.isLoading ? <Placeholder
-                    style={{ flex: 1 }}
-                    Animation={Fade}
-                >
-
-                    <PlaceholderLine noMargin height={24} />
-                </Placeholder> :
-                <H2>{props.title}</H2>
-            }
-            
-            {props.subtitle && <Subtitle2>{props.subtitle}</Subtitle2>}
-
-
-            {props.toolText && <ToolText onPress={() => props.onToolTextPress && props.onToolTextPress()}>
-                <Subtitle2 underline type='primaryDarkColor'>{props.toolText}</Subtitle2>
-            </ToolText>}
+          {props.isLoading ? (
+            <Placeholder style={{ flex: 1 }} Animation={Fade}>
+              <PlaceholderLine noMargin height={24} />
+            </Placeholder>
+          ) : (
+            <H2>{props.title}</H2>
+          )}
+          {subtitle}
+          {toolText}
         </Header>
         {props.children}
-    </Box>
-    )
-})
+      </Box>
+    );
+  });
+  

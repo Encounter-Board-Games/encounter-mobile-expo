@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-
 import * as Animatable from 'react-native-animatable';
-import { H3, Subtitle2, H4 } from '../../../components/Typography'
-import CustomInput from '../../../components/Input'
-import { SocialButton, Button } from '../../../components/Button'
+import { H3, H4 } from '../../../components/Typography'
 import styled, { withTheme } from 'styled-components'
 import { Space, SpaceHorizontal } from '../../../components/Space'
 import { Ionicons } from '@expo/vector-icons';
-import { handleEmailAlreadyExists, hadleBackToLogin, handleSendPassword, handleSendConfirmCode, handleHideErrorCode } from '../../../store/actions/user'
+import { hadleBackToLogin, handleSendConfirmCode, handleHideErrorCode } from '../../../store/actions/user'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
-import { View, Dimensions, Animated } from 'react-native'
+import { View, Dimensions, TouchableOpacity } from 'react-native'
 import Numberpad from '../../../components/Numberpad';
 
 
@@ -23,7 +20,7 @@ const {
 
 const Container = styled.View`
 
-padding-top: 16px;
+padding-top: ${props => props.theme.space.space2};
 padding-bottom: 0px;
 width: 100%;
 align-items: center;
@@ -31,12 +28,10 @@ align-items: center;
 
 const Content = styled.View`
 
-padding: 24px;
+padding: ${props => props.theme.space.space3};
 padding-bottom: 0px;
 width: 100%;
 align-items: center;
-
-
 `
 
 const Line = styled.View`
@@ -50,9 +45,9 @@ const CodeNumberLine = styled.View`
     justify-content: center;
 `
 const CodeNumber = styled.View`
-    background: "#ebf7f4";
-    border: 1.5px  #c8e8e0;
-    border-radius: '8px';
+    background: ${props => props.theme.colors.primaryLightColor}
+    border: 1.5px ${props => props.theme.colors.primaryColor}
+    border-radius: ${props => props.theme.borderRadius.button}
     height: 56px
     width: 56px
     align-items:center;
@@ -61,7 +56,7 @@ const CodeNumber = styled.View`
 `
 
 const BackButton = styled.TouchableOpacity`
-    width: 40px;
+    width: 40px;;
     align-items:flex-start;
     justify-content:flex-end;
 `
@@ -72,17 +67,13 @@ const SafeSpace = styled.View`
 `
 
 export default withTheme((props) => {
-    // state = {
-    //     email : '',
-    //     isLoading: false
-    // }
-    const { login = {} } = useSelector(state => state.user)
-    const isLoading = login.loading
-    const errorMessage = login.errorMessage
+    
+    const { login = {} } = useSelector(state => state.user);
+    const isLoading = login.loading;
+    const errorMessage = login.errorMessage;
     const { email } = login;
     const dispatch = useDispatch();
-
-    const [code, setCode] = useState('')
+    const [code, setCode] = useState('');
 
     const codeSize = [1, 2, 3, 4, 5];
 
@@ -91,9 +82,6 @@ export default withTheme((props) => {
 
         if(code.length == codeSize.length - 1){
             dispatch(handleSendConfirmCode(code + '' + n))
-            
-            // setError(true)
-            // setTimeout(() => )
         }
 
         if(code.length >= codeSize.length)
@@ -101,13 +89,10 @@ export default withTheme((props) => {
         else
             setCode(code + '' + n)
 
-        dispatch(handleHideErrorCode())
-
-        
+        dispatch(handleHideErrorCode()) 
     }
 
     const cleanCode = () => {
-
         dispatch(handleHideErrorCode())
         setCode(code.slice(0, code.length-1))
     }
@@ -124,33 +109,27 @@ export default withTheme((props) => {
         <Content>
             <Line>
                 <BackButton onPress={() => dispatch(hadleBackToLogin())}>
-                    <Ionicons name="ios-arrow-round-back" color= '#414042' size={32} />
+                    <Ionicons name="ios-arrow-round-back" color={props.theme.colors.darkColor} size={32} />
                 </BackButton>
             </Line>
             <View style={{ width: '100%' }}>
-               
+                <Space n={1} />
                 <H4 center>
                     Digite o código de 5 dígitos que enviamos
                 para <H3>{email}</H3>
-                </H4>
-               
+                </H4>        
                 {
                     (errorMessage) && <Animatable.View animation="shake">
-                       
+                        <Space n={1} />
 
                         <H3 center type='danger'>
                             {errorMessage}
                         </H3>
                     </Animatable.View>
                 }
-               
-
-
-               
-
-
+                <Space n={3} />
+                <Space n={1} />
             </View>
-
             <CodeNumberLine>
                 {
                     codeSize.map(item => (
@@ -161,24 +140,10 @@ export default withTheme((props) => {
                         </React.Fragment>
                     ))
                 }
-
             </CodeNumberLine>
-
-           
-            {/* <Button
-                // disabled={minLengthPassword > password.length}
-                type="CallToAction-Light">Continuar</Button> */}
-
+            <Space n={3} />  
         </Content>
-       
+        <Space n={3} />
         <Numberpad disabled={isLoading} onPress={(n) => addNumber(n)} onCleanPress={() => cleanCode() } />
-        {/* <Subtitle2 center type='secondDarkColor'>-ou entre com-</Subtitle2>
-
-        
-       
-        <SocialButton backgroundColor={"#3b5998"}> Entrar com Facebook </SocialButton>
-       
-        <SocialButton backgroundColor={"#2b83fc"}> Entrar com Google </SocialButton> */}
-
     </Container>)
 })

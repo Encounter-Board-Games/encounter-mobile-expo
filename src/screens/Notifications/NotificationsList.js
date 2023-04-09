@@ -1,59 +1,57 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import { View } from 'react-native'
-import { H3, Subtitle2 } from '../../components/Typography'
-import { Space } from '../../components/Space'
-import ScreePopup from '../../components/ScreePopup'
-import { Box } from '../../components/Box'
-import NotLoggedBox from '../User/components/NotLoggedBox'
-import InformationBox from '../../components/InformationBox'
-import { useSelector, useDispatch } from 'react-redux'
-import { handleLoadNotifications } from '../../store/actions/user'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { TouchableOpacity } from 'react-native';
+import { H3, Subtitle2 } from '../../components/Typography';
+import { Space } from '../../components/Space';
+import ScreePopup from '../../components/ScreePopup';
+import { Box } from '../../components/Box';
+import NotLoggedBox from '../User/components/NotLoggedBox';
+import InformationBox from '../../components/InformationBox';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleLoadNotifications } from '../../store/actions/user';
 import {
     Placeholder,
     PlaceholderMedia,
     PlaceholderLine,
     Fade
 } from "rn-placeholder";
-import { isLoading } from 'expo-font'
-import { useNavigation } from '@react-navigation/native'
-import { handleOpenNotification } from '../../store/actions/shared'
+import { useNavigation } from '@react-navigation/native';
+import { handleOpenNotification } from '../../store/actions/shared';
 
 
 const Container = styled.View`
-    min-height:100%;
-    padding: 16px;
-`
-
+    min-height: 100%;
+    padding: ${props => props.theme.space.space2};
+`;
 
 const Info = styled.View`
     flex: 1;
-    margin-bottom:  4px;
-`
+    margin-bottom:  ${props => props.theme.space.space0};
+`;
 
 const Notification = styled.TouchableOpacity`
-    padding: 16px
+    padding: ${props => props.theme.space.space2}
     padding-bottom:  0px;
-
     ${props => props.isActive ? 'background: ' + props.theme.colors.primaryColor : ''}
-`
+`;
 
 const NotificationBody = styled.View`
     flex-flow: row;
     width: 100%;
-`
+`;
 
 const Hr = styled.View`
-    background: "#E6E7E8";
+    background: ${props => props.theme.colors.secondLightColor};
     height: 1.5px;
-`
+`;
+
 const Date = styled.View`
     max-height: 56px;
     min-width: 56px;
     min-height: 100%;
     align-items: center;
     justify-content: center;
-`
+`;
 
 const Notifications = ({ notifications, isLoading }) => {
     useEffect(() => {
@@ -83,17 +81,15 @@ const Notifications = ({ notifications, isLoading }) => {
                                 <NotificationBody>
                                     <Info >
                                         <PlaceholderLine noMargin width={40} height={18} />
-                                       
+                                        <Space n={0} />
                                         <PlaceholderLine noMargin width={80} height={16} />
 
                                     </Info>
                                     <Date>
                                         <PlaceholderMedia noMargin size={36} />
-                                        {/* <Subtitle2 type={"secondDarkColor"}>{n.dateTimeFormated}</Subtitle2>
-                                <Subtitle2 type={"secondDarkColor"}>{n.dateFormated}</Subtitle2> */}
                                     </Date>
                                 </NotificationBody>
-                               
+                                <Space n={1} />
                                 <Hr />
                             </Notification>
 
@@ -108,7 +104,7 @@ const Notifications = ({ notifications, isLoading }) => {
                     <NotificationBody>
                         <Info>
                             <H3>{n.title}</H3>
-                           
+                            <Space n={0} />
                             <Subtitle2 type={"secondDarkColor"}>{n.body}</Subtitle2>
 
                         </Info>
@@ -117,7 +113,7 @@ const Notifications = ({ notifications, isLoading }) => {
                             <Subtitle2 type={"secondDarkColor"}>{n.dateFormated}</Subtitle2>
                         </Date>
                     </NotificationBody>
-                   
+                    <Space n={1} />
                     <Hr />
                 </Notification>
             ))}

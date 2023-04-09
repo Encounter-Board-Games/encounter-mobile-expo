@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-
 import styled from "styled-components";
 import { Subtitle2, Subtitle3 } from "../../components/Typography";
-import { Bottom } from "../../components/Space";
+import { Space, Bottom } from "../../components/Space";
 import Input from "../../components/Input";
 import { Button } from "../../components/Button";
 import { connect } from "react-redux";
@@ -11,6 +10,7 @@ import {
   Platform,
   Keyboard,
   Linking,
+  TouchableOpacity
 } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { handleEditUserInfo } from "../../store/actions/user";
@@ -19,7 +19,7 @@ import { View } from "react-native-animatable";
 
 const Content = styled.ScrollView`
   flex: 1;
-  padding: 16px;
+  padding: ${(props) => props.theme.space.space2};
 `;
 const ContainerInputs = styled.View`
   flex: 1;
@@ -29,21 +29,21 @@ const Opacity = styled.View`
 `;
 
 const CustomInput = styled.TextInput`
-    border: 1.5px solid;
-    background: "#ebf7f4";
-    padding-left: 16px;
-    border-radius: 8px;
-    height: '48px';
+    border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
+    background: ${(props) => props.theme.colors.primaryLightColor};
+    padding-left: ${(props) => props.theme.space.space2};
+    border-radius: ${(props) => props.theme.borderRadius.button};
+    height: 48px;
     width: 50%;
     justify-content: center;
 `;
 
 const InputDate = styled.TouchableOpacity`
-    border: 1.5px solid  #c8e8e0;
-    background: "#ebf7f4";
-    padding-left: 16px;
-    border-radius: 8px;
-    height: '48px';
+    border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
+    background: ${(props) => props.theme.colors.primaryLightColor};
+    padding-left: ${(props) => props.theme.space.space2};
+    border-radius: ${(props) => props.theme.borderRadius.button};
+    height: 48px;
     width: 50%;
     justify-content: center;
 `;
@@ -65,30 +65,33 @@ const CheckLine = styled.TouchableOpacity`
 `;
 
 const Check = styled.View`
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    border: 1px  #414042;
+    width: ${(props) => props.theme.space.space2};
+    height: ${(props) => props.theme.space.space2};
+    margin-right: ${(props) => props.theme.space.space1};
+    border: 1px ${(props) => props.theme.colors.primaryDarkColor};
     borderRadius: 2px;
-    margin-top: 4px;
-    background:  #414042;
+    margin-top: ${(props) => props.theme.space.space0};
+    background: ${(props) =>
+      props.selected ? props.theme.colors.primaryDarkColor : "transparent"};
 `;
 
 const CustomInputText = styled.Text`
-    font-size: 16px;
-    opacity: ".5";
-    color: "#BCBEC0";
+    font-size: ${(props) => props.theme.sizes.h3};
+    opacity: ${(props) => (props.disabled ? ".5" : "1")};
+    color: ${(props) =>
+      props.hasValue
+        ? props.theme.colors.darkColor
+        : props.theme.colors.secondColor};
 `;
 
 const TermsAndConditions = styled.TouchableOpacity`
   flex-flow: row;
 `;
-
 const LineButtons = styled.View`
   flex-flow: row;
   flex-wrap: wrap;
   width: 100%;
-  margin-top: 24px;
+  margin-top: ${(props) => props.theme.space.space3};
 `;
 
 class EditProfileContent extends Component {
@@ -188,8 +191,6 @@ class EditProfileContent extends Component {
       name.length >= 3 &&
       lastname.length >= 3 &&
       aka.length >= 3 &&
-      // birthday !== null &&
-      // gender !== '' &&
       document.length == 14 &&
       ((hasTerms && terms) || !hasTerms) &&
       this.initialState !== JSON.stringify(this.state)
@@ -200,7 +201,7 @@ class EditProfileContent extends Component {
     const toDate = (date) => {
       const day = date.getDate().toString();
       const dayF = day.length == 1 ? "0" + day : day;
-      const month = (date.getMonth() + 1).toString(); //+1 pois no getMonth Janeiro começa com zero.
+      const month = (date.getMonth() + 1).toString();
       const monthF = month.length == 1 ? "0" + month : month;
       const yearF = date.getFullYear();
       return dayF + "/" + monthF + "/" + yearF;
@@ -266,7 +267,7 @@ class EditProfileContent extends Component {
     const hasTerms = this.props.hasTerms;
 
     const { user = {} } = this.props.user;
-    // <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+
     return (
       <View flex={1}>
         <KeyboardAvoidingView
@@ -279,51 +280,51 @@ class EditProfileContent extends Component {
             <ContainerInputs>
               <React.Fragment>
                 <Subtitle2>Nome</Subtitle2>
-               
+                <Space n={1} />
                 <Input
                   field
                   value={this.state.name}
                   onChangeText={(value) => this.nameChange(value)}
                 />
-               
+                <Space n={2} />
               </React.Fragment>
 
               <React.Fragment>
                 <Subtitle2>Sobrenome</Subtitle2>
-               
+                <Space n={1} />
                 <Input
                   field
                   value={this.state.lastname}
                   onChangeText={(value) => this.setState({ lastname: value })}
                 />
-               
+                <Space n={2} />
               </React.Fragment>
 
               <React.Fragment>
                 <Subtitle2>Como prefere ser chamado</Subtitle2>
-               
+                <Space n={1} />
                 <Input
                   field
                   value={this.state.aka}
                   onChangeText={(value) => this.setState({ aka: value })}
                 />
-               
+                <Space n={2} />
               </React.Fragment>
 
               <React.Fragment>
                 <Opacity>
                   <Subtitle2>E-mail</Subtitle2>
                 </Opacity>
-               
+                <Space n={1} />
                 <Input field value={user.email} disabled />
-               
+                <Space n={2} />
               </React.Fragment>
 
               <React.Fragment>
                 <Opacity>
                   <Subtitle2>CPF</Subtitle2>
                 </Opacity>
-               
+                <Space n={1} />
 
                 <Input
                   field
@@ -341,12 +342,12 @@ class EditProfileContent extends Component {
                   value={this.state.document}
                   onChangeText={(value) => this.setState({ document: value })}
                 />
-               
+                <Space n={2} />
               </React.Fragment>
 
               <React.Fragment>
                 <Subtitle2>{"Número de telefone"}</Subtitle2>
-               
+                <Space n={1} />
                 <CustomInput
                   placeholder="(xx) xxxxx-xxxx"
                   keyboardType="number-pad"
@@ -355,7 +356,7 @@ class EditProfileContent extends Component {
                   value={cellphone}
                   onChangeText={(value) => this.cellphoneChange(value)}
                 />
-               
+                <Space n={2} />
               </React.Fragment>
 
               <DateTimePickerModal
@@ -366,14 +367,13 @@ class EditProfileContent extends Component {
                 maximumDate={new Date()}
                 onConfirm={(date) => this.handleConfirmDate(date)}
                 onCancel={() => this.handleCancelDate()}
-                // onCancel={hideDatePicker}
               />
 
               <React.Fragment>
                 <Subtitle2>
                   {"Data de nascimento"} <Subtitle3>(Opcional)</Subtitle3>{" "}
                 </Subtitle2>
-               
+                <Space n={1} />
                 <InputDate onPress={() => this.setState({ showDate: true })}>
                   {this.state.birthday ? (
                     <CustomInputText hasValue>
@@ -383,7 +383,7 @@ class EditProfileContent extends Component {
                     <CustomInputText>dd/mm/aaaa</CustomInputText>
                   )}
                 </InputDate>
-               
+                <Space n={2} />
               </React.Fragment>
 
               <React.Fragment>
@@ -391,7 +391,7 @@ class EditProfileContent extends Component {
                   {"Gênero que mais se identifica"}{" "}
                   <Subtitle3>(Opcional)</Subtitle3>
                 </Subtitle2>
-               
+                <Space n={1} />
                 <Line>
                   {["Feminino", "Masculino", "Outro"].map((gender) => (
                     <RadioButton
@@ -405,10 +405,10 @@ class EditProfileContent extends Component {
                   ))}
                 </Line>
 
-               
+                <Space n={2} />
               </React.Fragment>
 
-             
+              <Space n={3} />
 
               {hasTerms && (
                 <Line>
@@ -434,7 +434,7 @@ class EditProfileContent extends Component {
                 </Line>
               )}
 
-             
+              <Space n={3} />
             </ContainerInputs>
             <LineButtons>
               <Button

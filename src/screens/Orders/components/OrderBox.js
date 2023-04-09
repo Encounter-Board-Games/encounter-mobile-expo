@@ -12,7 +12,7 @@ import {
   handleOpenOrderHelp,
 } from "../../../store/actions/orders";
 import { translation } from "../../../texts";
-import config from "../../../../config";
+import config from "../../../config";
 import { renewOrder } from "../../../store/actions/cart";
 
 const Line = styled.View`
@@ -42,7 +42,6 @@ export default withTheme((props) => {
   const canRenew = order.canRenew;
 
   const openOrderDetails = (key) => {
-    // dispatch here
     dispatch(handleSelectOrder(key));
     navigation.navigate("Billing");
   };
@@ -62,40 +61,40 @@ export default withTheme((props) => {
           <H3>{order.status}</H3>
         </Line>
 
-       
+        <Space n={1} />
 
         <Line flexFlow="column">
           {config.rentTimeBox && (
             <React.Fragment>
-              <Subtitle2 color={"#6D6E71"}>
+              <Subtitle2 color={props.theme.colors.secondDarkColor}>
                 Tempo de {translation("orders.order").toLowerCase()}:{" "}
                 {order.rentDays} dias
               </Subtitle2>
-             
+              <Space n={0} />
             </React.Fragment>
           )}
 
-          <Subtitle2 color={"#6D6E71"}>
+          <Subtitle2 color={props.theme.colors.secondDarkColor}>
             {translation("orders.order")} #{order.key.toUpperCase()}
           </Subtitle2>
         </Line>
 
-       
+        <Space n={0} />
         <Hr />
         {/**/}
-       
+        <Space n={1} />
         {order.products.map((product, index) => (
           <React.Fragment key={index}>
             <Line flexFlow="column">
               <H4>{product.name}</H4>
             </Line>
-           
+            <Space n={1} />
           </React.Fragment>
         ))}
 
         <Hr />
 
-       
+        <Space n={2} />
         <Line>
           {canRenew ? (
             <Button
@@ -120,7 +119,7 @@ export default withTheme((props) => {
             <H3>{currencyFormat(order.total)}</H3>
           </Price>
         </Line>
-       
+        <Space n={2} />
         <Line>
           <Button
             type="CallToAction-Outline-Flex"

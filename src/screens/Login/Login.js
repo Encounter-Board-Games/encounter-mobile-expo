@@ -7,7 +7,7 @@ import {
   KeyboardAvoidingView,
   Keyboard,
 } from "react-native";
-// Keyboard.
+
 import { connect } from "react-redux";
 import * as Animatable from "react-native-animatable";
 import LoginFlow from "./components/LoginFlow";
@@ -15,9 +15,9 @@ import { hideLoginPopup } from "../../store/actions/user";
 import { Animated } from "react-native";
 
 const Container = styled.KeyboardAvoidingView`
-  background: "#FAFAFA";
-  border-top-right-radius: '48px';
-  border-top-left-radius: '48px';
+  background: ${(props) => props.theme.colors.lightColor};
+  border-top-right-radius: 48px;
+  border-top-left-radius: 48px;
 `;
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -32,7 +32,6 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.user.loginPopup) this.open(!!this.props.user.loginPopup);
-    // this.setState({ show: true })
   }
 
   open(show) {
@@ -52,15 +51,13 @@ class Login extends Component {
   shouldComponentUpdate(prevProps, prevState, snapshot) {
     if (this.state.show !== !!prevProps.user.loginPopup)
       this.open(!!this.props.user.loginPopup);
-    // this.setState({ show: !!prevProps.user.loginPopup })
     return true;
   }
 
   render() {
     const { showAll, show } = this.state;
     const { dispatch } = this.props;
-    // if(!this.state.topAnimation)
-    // return null
+
     if (!showAll) return null;
 
     return (
