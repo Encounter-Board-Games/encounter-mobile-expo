@@ -51,10 +51,7 @@ const ImageContent = styled.View`
 `;
 
 const PaddingTop = styled.View`
-  height: ${(props) =>
-    Platform.OS == "ios"
-      ? Constants.statusBarHeight + "px"
-      : props.theme.space.space2};
+
   width: 100%;
 `;
 const Content = styled.View`

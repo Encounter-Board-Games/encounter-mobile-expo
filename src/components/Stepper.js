@@ -12,7 +12,7 @@ const Container = styled.View`
 const Circle = styled.View`
   flex-flow: row;
   width: ${props => props.size * 2}px;
-  height: ${props => props.size * 2}px;
+  
   margin-left: ${props => props.isFirst ? '0px' : `${props.size}px`};
   border-radius: 8px;
   background: ${props => {

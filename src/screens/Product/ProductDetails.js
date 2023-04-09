@@ -112,15 +112,9 @@ const Description = styled.View`
 `;
 
 const CarrosselContainer = styled.View`
-  height: ${(props) =>
-    Math.floor(
-      Dimensions.get("window").height * props.theme.elements.productDetailsImage
-    )}px;
-  ${(props) =>
-    props.isPlaceholder ?
-    `
+ 
     align-items: center;
-    justify-content: center;` : ''}
+   
 `;
 
 const Header = styled.View`
@@ -154,7 +148,7 @@ const ProductDetails = (props) => {
   const h2Size = +props.theme.sizes.h2.replace("px", "");
 
   if (!product) return <H2>Carregando...</H2>;
-  if (!product.isLoad && false)
+  if (!product.isLoad && false);
     return (
       <ScreePopup noScroll>
         <Container>

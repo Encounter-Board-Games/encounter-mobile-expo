@@ -64,7 +64,9 @@ export default ({ quickSearch }) => {
                 {
                     quickSearch.image && <React.Fragment>
                         <ImageContent>
-                            <Image resizeMode={"contain"} style={{ height: '100%', width: '70%' }} source={{ uri: quickSearch.image }} />
+                            <Image resizeMode={"contain"} 
+                            style={{ height: '100%', width: '70%' }} 
+                            source={{ uri: quickSearch.image }} />
                         </ImageContent>
                         <Space n={3} />
                     </React.Fragment>

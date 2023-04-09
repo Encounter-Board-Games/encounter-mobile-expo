@@ -22,7 +22,7 @@ const Timer = styled.TouchableOpacity`
     width: ${props => props.theme.space.space3}
     justify-content: center;
     align-items: center;
-    height: ${props => props.theme.space.space3};
+  
     background-color: ${props => !props.hasAlert ? 'transparent' : props.theme.colors.complementColor};
     border-radius: ${props => props.theme.space.space3};
     border: .5px solid ${props => props.theme.colors.complementColor};

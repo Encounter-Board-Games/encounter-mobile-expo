@@ -68,7 +68,10 @@ export default withTheme((props) => {
     
     const isLoggedContent = () => (<MenuOption onPress={ () => navigation.navigate('User')}>
             <UserImage>
-                <Image  borderRadius={128} style={{ width: '100%', height: '100%' }} resizeMode={"cover"} source={user.image ?{ uri : user.image }  : require('../../assets/img/profile.png')} />
+                <Image  
+                borderRadius={128} 
+                style={{ width: '100%', height: '100%' }}
+                resizeMode={"cover"} source={user.image ?{ uri : user.image }  : require('../../assets/img/profile.png')} />
             </UserImage>
            <MenuItemText>
                 {
@@ -77,7 +80,10 @@ export default withTheme((props) => {
                     ) :
                     (
                         <Placeholder Animation={Fade} >
-                            <PlaceholderLine noMargin width={40} height={20} />
+                            <PlaceholderLine noMargin 
+                                width={40} 
+                                height={20}
+                            />
                         </Placeholder>
                     )
                 }
@@ -104,7 +110,9 @@ export default withTheme((props) => {
                 <Subtitle2 type="secondDarkColor">{translation("settings.notLogged")}</Subtitle2>
             </MenuItemText>
             <MenuItemImage>
-                <Image resizeMode={"contain"} style={{ width: '100%', height: '100%'}} source={config.notLoggedImg} />
+                <Image resizeMode={"contain"}
+                 style={{ width: '100%', height: '100%'}} 
+                 source={config.notLoggedImg} />
             </MenuItemImage>
         </MenuItemHeader>
         <Button type="CallToAction-Outline" width={'100%'} onPress={() =>  dispatch(openLoginPopup())}>Entrar ou cadastrar</Button>

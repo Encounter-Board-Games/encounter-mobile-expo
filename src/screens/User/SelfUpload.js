@@ -16,7 +16,7 @@ import { handleUploadSelfDocument } from "../../store/actions/user";
 const MainContainer = styled.View`
   flex: 1;
   width: 100%;
-  height: 100%
+  height: 100%;
   padding-left: ${(props) => props.theme.space.space3};
   padding-right: ${(props) => props.theme.space.space3};
   padding-top: ${(props) =>
@@ -232,10 +232,7 @@ export default () => {
   return (
     <Animatable.View
       animation="fadeIn"
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
+      style={{ width: "100%", height: "100%" }}
     >
       {!camera ? (
         <ScreenOne loading={loading} onCameraPress={() => openCamera()} />

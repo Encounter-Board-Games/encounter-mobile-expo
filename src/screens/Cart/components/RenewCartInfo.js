@@ -62,7 +62,7 @@ export default withTheme(({ theme }) => {
         </Header>
       )}
       ref={modalRef}
-      adjustToContentHeight={true}
+      //adjustToContentHeight={true}
     >
       <SafeAreaView>
         Pedro

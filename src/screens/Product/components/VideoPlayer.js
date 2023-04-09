@@ -7,7 +7,7 @@ import * as Animatable from 'react-native-animatable';
 
 const Container = styled.View`
     width: 100%
-    height: ${Dimensions.get('window').height}px;
+   
     position: absolute;
     z-index: 1;
     top: -${Constants.statusBarHeight + 46}px;

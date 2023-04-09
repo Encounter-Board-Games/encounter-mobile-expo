@@ -83,7 +83,9 @@ A cada pergunta a seguir, marque quantas respostas quiser. */}
                 {/* tags here */}
                 <Space n={4} />
                 <ImageContent>
-                    <Image resizeMode={"contain"} style={{ height: '100%', width: '70%' }} source={{ uri: API_URI + "/encounter.png"}} />
+                    <Image resizeMode={"contain"} 
+                        style={{ height: '100%', width: '70%' }} 
+                        source={{ uri: API_URI + "/encounter.png"}} />
                 </ImageContent>
                 <Space n={3} />
             </Content>

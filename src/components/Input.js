@@ -14,7 +14,7 @@ export const CustomInput = styled.TextInput`
     background: ${props => props.theme.colors.primaryLightColor}
     padding-left: ${props => props.theme.space.space2}
     border-radius: ${props => props.theme.borderRadius.button}
-    height: ${props => props.field ? '48px' : '56px'}
+  
     font-size: ${props => props.theme.space.space2};
     opacity: ${props => props.disabled ? '.5' : '1'}
 `

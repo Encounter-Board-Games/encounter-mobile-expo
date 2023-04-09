@@ -26,7 +26,7 @@ const FlexContent = styled.View`
 `
 
 const SafeSpace = styled.View`
-    height: ${getBottomSpace()}px;
+
     width: 1px;
 `
 

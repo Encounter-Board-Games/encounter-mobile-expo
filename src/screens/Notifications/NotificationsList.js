@@ -80,9 +80,9 @@ const Notifications = ({ notifications, isLoading }) => {
                             <Notification>
                                 <NotificationBody>
                                     <Info >
-                                        <PlaceholderLine noMargin width={40} height={18} />
+                                        <PlaceholderLine noMargin width={40}  />
                                         <Space n={0} />
-                                        <PlaceholderLine noMargin width={80} height={16} />
+                                        <PlaceholderLine noMargin width={80}  />
 
                                     </Info>
                                     <Date>

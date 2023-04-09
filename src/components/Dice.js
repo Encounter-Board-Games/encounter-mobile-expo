@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.TouchableOpacity`
   width: ${(props) => props.size * 16}px;
-  height: ${(props) => props.size * 16}px;
+  h
   border-radius: ${(props) => props.size * 2}px;
   position: relative;
   margin-right: ${(props) => props.theme.space.space0};
@@ -14,7 +14,7 @@ const Container = styled.TouchableOpacity`
 
 const Pointer = styled.View`
   position: absolute;
-  height: ${(props) => props.size * 4}px;
+  
   width: ${(props) => props.size * 4}px;
   ${(props) => (props.top ? "top: " + props.top : "")};
   ${(props) => (props.left ? "left: " + props.left : "")};

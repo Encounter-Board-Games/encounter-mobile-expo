@@ -49,7 +49,7 @@ export default withTheme((props) => {
         <Header>
           {props.isLoading ? (
             <Placeholder style={{ flex: 1 }} Animation={Fade}>
-              <PlaceholderLine noMargin height={24} />
+              <PlaceholderLine noMargin  />
             </Placeholder>
           ) : (
             <H2>{props.title}</H2>

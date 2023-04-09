@@ -65,7 +65,9 @@ export default () => {
             <Animatable.View duration={500} animation={"fadeInUp"} style={{ flex: 1 }}>
 
                 <Arrow>
-                    <Image resizeMode="contain" style={{ width: '100%', height: 80 }} source={require('../../assets/img/undo.png')} />
+                    <Image resizeMode="contain" 
+                    style={{ width: '100%', height: 80 }} 
+                    source={require('../../assets/img/undo.png')} />
                 </Arrow>
                 <H2 type="lightColor">Filtros de busca</H2>
                 <Space n={3} />
@@ -75,7 +77,9 @@ export default () => {
             </Animatable.View>
 
             <ContentArea>
-                <TouchableWithoutFeedback onPress={close} flex={1} style={{ width: '100%', height: '100%' }}>
+                <TouchableWithoutFeedback onPress={close} flex={1} 
+                style={{ width: '100%', height: '100%' }}
+                >
                     <View flex={1}></View>
                 </TouchableWithoutFeedback>
             </ContentArea>

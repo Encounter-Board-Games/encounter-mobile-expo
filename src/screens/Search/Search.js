@@ -30,7 +30,7 @@ const FlexContent = styled.View`
 `;
 
 const Space = styled.View`
-  height: ${(props) => props.theme.space.space2};
+
   width: 100%;
   color: ${(props) => props.theme.colors.secondColor};
 `;
@@ -41,11 +41,11 @@ const Chips = styled.ScrollView`
 `;
 
 const Space3 = styled.View`
-    height: ${(props) => props.theme.space.space3}
+
     width: 1px;
 `;
 const Space2 = styled.View`
-    height: ${(props) => props.theme.space.space2}
+
     width: 1px;
 `;
 

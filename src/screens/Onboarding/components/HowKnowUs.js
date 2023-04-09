@@ -26,7 +26,6 @@ flex-grow: 1;
 `
 
 const PaddingTop = styled.View`
-height:  ${props => Platform.OS == "ios" ? Constants.statusBarHeight + 'px' :props.theme.space.space2 };
 width: 100%;
 `;
 

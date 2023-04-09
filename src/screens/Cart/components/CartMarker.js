@@ -37,7 +37,7 @@ const Button = styled.TouchableOpacity`
   padding-right: ${(props) => props.theme.space.space3};
   margin-top: ${(props) => props.theme.space.space1};
   margin-bottom: ${(props) => props.theme.space.space1};
-  height: ${(props) => props.theme.space.space5};
+
   justify-content: center;
   align-items: center;
   border-radius: ${(props) => props.theme.borderRadius.button};

@@ -62,7 +62,7 @@ const BackButton = styled.TouchableOpacity`
 `
 
 const SafeSpace = styled.View`
-    height: ${getBottomSpace()}px;
+
     width: 1px;
 `
 

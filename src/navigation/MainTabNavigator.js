@@ -84,7 +84,7 @@ function HomeStackScreen() {
             top: 0,
             left: 0,
             width: Dimensions.get("window").width,
-            height: Dimensions.get("window").height,
+           
             zIndex: 100,
           }}
         >
@@ -98,7 +98,7 @@ function HomeStackScreen() {
             top: 0,
             left: 0,
             width: Dimensions.get("window").width,
-            height: Dimensions.get("window").height,
+            
             zIndex: 100,
           }}
         >

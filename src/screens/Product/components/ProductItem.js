@@ -18,7 +18,7 @@ import { handleRememberProduct } from "../../../store/actions/user";
 import { View } from "react-native-animatable";
 
 const ProductImage = styled.View`
-  height: ${(props) => (props.spotlight ? 200 : 140)}px;
+
   width: ${(props) => (props.spotlight ? 200 : 140)}px;
   min-height: ${(props) => (props.spotlight ? 200 : 140)}px;
   min-width: ${(props) => (props.spotlight ? 200 : 140)}px;

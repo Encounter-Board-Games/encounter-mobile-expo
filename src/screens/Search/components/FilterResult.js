@@ -28,7 +28,7 @@ const Space = styled.View`
 `;
 
 const Space2 = styled.View`
-    height: ${(props) => props.theme.space.space2}
+
     width: 1px;
 `;
 

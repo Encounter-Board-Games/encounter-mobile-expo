@@ -66,7 +66,7 @@ const CheckLine = styled.TouchableOpacity`
 
 const Check = styled.View`
     width: ${(props) => props.theme.space.space2};
-    height: ${(props) => props.theme.space.space2};
+    
     margin-right: ${(props) => props.theme.space.space1};
     border: 1px ${(props) => props.theme.colors.primaryDarkColor};
     borderRadius: 2px;

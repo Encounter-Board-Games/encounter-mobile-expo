@@ -22,7 +22,7 @@ function actuatedNormalize(size) {
   if (Platform.OS === 'ios') {
     return ( Math.round(PixelRatio.roundToNearestPixel(newSize))) + 'px'
   } else {
-    return (Math.round(PixelRatio.roundToNearestPixel(newSize))   )+ 'px'
+    return (Math.round(PixelRatio.roundToNearestPixel(newSize)))+ 'px'
   }
 }
 
@@ -80,7 +80,7 @@ export default {
     button1: actuatedNormalize(16),
     button2: actuatedNormalize(14),
     button3: actuatedNormalize(12),
-    button4: '11px',
+    button4: actuatedNormalize(11),
 
   },
   space: {

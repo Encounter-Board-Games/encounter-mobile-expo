@@ -8,7 +8,7 @@ import { H3, Subtitle1 } from './Typography';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 const SafeSpace = styled.View`
-  height: ${getBottomSpace() + 'px'};
+
   width: 100%;
 `;
 

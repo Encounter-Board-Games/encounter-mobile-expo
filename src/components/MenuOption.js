@@ -46,11 +46,11 @@ const ListItem = withTheme((props) => {
             <PlaceholderMedia size={32} />
           </InfoIcon>
           <Info>
-            <PlaceholderLine noMargin height={24} />
+            <PlaceholderLine noMargin  />
             {!props.oneLine === (
               <>
                 <Space n={0} />
-                <PlaceholderLine noMargin height={20} />
+                <PlaceholderLine noMargin  />
               </>
             )}
           </Info>

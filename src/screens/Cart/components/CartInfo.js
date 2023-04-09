@@ -47,7 +47,7 @@ const Remove = styled.TouchableOpacity`
 const LineProducts = styled.View`
   flex-direction: row;
   width: 100%;
-  height: ${(props) => props.theme.sizes.h1};
+
 `;
 
 const CupomContent = styled.View`
@@ -486,7 +486,7 @@ const Content = styled.View`
 `;
 
 const SafeSpace = styled.View`
-  height: ${getBottomSpace()}px;
+
   width: 100%;
 `;
 
@@ -537,7 +537,9 @@ class InfoModal extends Component {
         <Container behavior="padding">
           <Space n={3} />
 
-          <View style={{ height: "auto", width: "100%" }}>
+          <View 
+            style={{ height: "auto", width: "100%" }}
+          >
             <CartInfo />
           </View>
         </Container>

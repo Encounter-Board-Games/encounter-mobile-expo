@@ -7,7 +7,7 @@ import { H3, Subtitle1 } from './Typography';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 const SafeSpace = styled.View`
-  height: ${getBottomSpace() + 'px'};
+
   width: 100%;
 `;
 
@@ -90,7 +90,7 @@ const ScreenPopUp = ({ theme, hideHeader, title, tooltext, onToolPress, noScroll
           {noScroll ? (
             children
           ) : (
-            <ScrollView style={{ flex: 1, minHeight: '80%', minWidth: '100%', height: '0%' }}>
+            <ScrollView style={{ flex: 1, minHeight: '80%', minWidth: '100%' }}>
               {children}
             </ScrollView>
           )}

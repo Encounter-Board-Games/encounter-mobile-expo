@@ -37,7 +37,7 @@ export const Content = styled.View`
 `;
 
 export const SafeSpace = styled.View`
-  height: ${getBottomSpace()}px;
+
   width: 1px;
 `;
 
