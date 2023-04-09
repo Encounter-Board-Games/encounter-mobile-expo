@@ -21,7 +21,7 @@ export const Bottom = styled.View`
     android: `${Constants.statusBarHeight + 16}px`,
   })};
 `;
-
+/*
 Bottom.propTypes = {
   theme: PropTypes.object.isRequired,
-};
+};*/

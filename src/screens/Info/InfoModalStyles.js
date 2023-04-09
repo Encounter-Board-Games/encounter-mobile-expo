@@ -1,6 +1,6 @@
 import { TouchableOpacity } from 'react-native';
 import { getBottomSpace } from "react-native-iphone-x-helper";
-import styled from "styled-components/native";
+import styled from "styled-components";
 
 
 export const Container = styled.View`

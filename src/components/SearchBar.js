@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';

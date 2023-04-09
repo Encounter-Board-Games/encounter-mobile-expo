@@ -1,6 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import styled, { withTheme } from 'styled-components/native';
+import { TouchableWithoutFeedback } from 'react-native';
+import styled, { withTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 
 const Container = styled.View`

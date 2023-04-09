@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-native-modal';
 import { KeyboardAvoidingView } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from "styled-components/native";
+import styled from "styled-components";
 
 import Evaluate from '../Product/components/Evaluate';
 import PopupLogin from './components/PopupLogin';

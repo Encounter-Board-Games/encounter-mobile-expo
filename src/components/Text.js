@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 const StyledText = styled(Text)`
   font-family: Nunito;

@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity } from 'react-native';
-import styled from "styled-components/native";
+import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { currencyFormat } from "../../../utils/helpers";
 import { translation } from "../../../texts";

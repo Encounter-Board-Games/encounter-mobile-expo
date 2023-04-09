@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from "styled-components";
 
 const BadgeContainer = styled.View`
   margin-top: ${(props) => props.theme.space.space0};

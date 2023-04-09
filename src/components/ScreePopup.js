@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { ScrollView, KeyboardAvoidingView, View, Platform, TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
+import { ScrollView, KeyboardAvoidingView, View, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { H3, Subtitle1 } from './Typography';
