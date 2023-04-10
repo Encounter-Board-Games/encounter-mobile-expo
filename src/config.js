@@ -1,5 +1,5 @@
 export default {
-  API_URI: "https://encounter-backend.fly.dev/graphql",
+  API_URI: "https://encounter-api-prd.herokuapp.com",
 
   translation: "encounter",
   facebookAppId: "707085366783241",

@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux'
-// import { reducer as i18n } from 'react-native-redux-i18n'
 
 import products from './product'
 import shelves from './shelves'
 import filters from './filters'
-import user from './user'
+import userReducer from './userReducer'
 import info from './info'
 import onboarding from './onboarding'
 import cart from './cart'
@@ -21,7 +20,7 @@ export default combineReducers({
     products,
     shelves,
     filters,
-    user,
+    userReducer,
     info,
     onboarding,
     cart,
@@ -33,5 +32,4 @@ export default combineReducers({
     address,
     cupons,
     quickSearchs
-    // i18n
 })

@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import MenuOption from '../../components/MenuOption';
 import styled, { withTheme } from 'styled-components';
 import ScreePopup from '../../components/ScreePopup';

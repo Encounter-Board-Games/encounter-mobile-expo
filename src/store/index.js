@@ -1,5 +1,7 @@
 import { legacy_createStore as createStore } from 'redux';
-import reducers from './reducers'
-import middleware from './middleware'
+import Reducers from './reducers'
+import Middleware from './middleware'
 
-export default createStore(reducers, middleware)
+const store = createStore(Reducers, Middleware);
+
+export default store;

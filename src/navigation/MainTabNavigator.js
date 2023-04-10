@@ -73,7 +73,6 @@ function HomeStackScreen() {
     <SafeAreaView>
       <RedirectComponent />
       <CartInfo />
-      {/* <RenewCartInfo /> */}
 
       {user.needCompleteInfos && <CompleteInfos />}
       {tutorial && <Tutorial />}
@@ -84,7 +83,6 @@ function HomeStackScreen() {
             top: 0,
             left: 0,
             width: Dimensions.get("window").width,
-           
             zIndex: 100,
           }}
         >

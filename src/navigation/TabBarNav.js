@@ -3,20 +3,14 @@ import styled from 'styled-components'
 import { withTheme } from 'styled-components'
 import { translation } from '../texts';
 import Icons from '../components/Icons';
-// import { Text } from '../'
-// import Text from '../components/Text'
-// shadow-color: #000000;
-// shadow-offset: {width: 0, height: 3px};
-// shadow-opacity: 0.2;
-// shadow-radius: 2px;
+
 const TabNav = styled.View`
   height: 56px;
   background: #fff;
   width: 100%;
   flex-flow: row;
   elevation: 1;
-`
-
+`;
 
 export const Text = styled.Text`
 font-size: 13px;
@@ -29,7 +23,7 @@ const NavItem = styled.TouchableOpacity`
   height: 100%;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const icons = {
   "Início": "home",
@@ -45,7 +39,6 @@ const Icon = (props) => {
 
 export default withTheme((props) => {
   
-  // const { index: activeRouteIndex, } = props.navigation.navigate;
   const activeRouteIndex = props.state.index
   
   return (<TabNav>

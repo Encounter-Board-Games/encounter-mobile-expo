@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 import "react-native-gesture-handler";
 import { Image } from "react-native-animatable";
 import { Provider, useDispatch, useSelector } from "react-redux";
-import { Notifications } from 'expo-notifications';
+import * as Notifications from 'expo-notifications';
 import * as Font from "expo-font";
 import theme from "./src/styles/theme";
 import MainNavigation from "./src/navigation/MainTabNavigator";
@@ -17,7 +17,6 @@ import store from "./src/store";
 import { handleInitApp } from "./src/store/actions/shared";
 import { handleSetNotificationToken } from "./src/store/actions/user";
 import config from "./config";
-
  
 
 const Container = styled.View`
