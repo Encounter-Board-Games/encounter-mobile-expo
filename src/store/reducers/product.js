@@ -1,8 +1,3 @@
-import {
-  SET_PRODUCTS,
-  SET_CURRENT_PRODUCT,
-  SET_EVALUATIONS_PRODUCTS,
-} from "../actions/product";
 import { arrayToObj } from "../../utils/helpers";
 
 export default function product(
@@ -10,12 +5,12 @@ export default function product(
   action
 ) {
   switch (action.type) {
-    case SET_EVALUATIONS_PRODUCTS:
+    case 'SET_EVALUATIONS_PRODUCTS':
       return {
         ...state,
         evaluationsProducts: action.evaluationsProducts,
       };
-    case SET_PRODUCTS:
+    case 'SET_PRODUCTS':
       return {
         ...state,
         products: {
@@ -28,7 +23,7 @@ export default function product(
           ),
         },
       };
-    case SET_CURRENT_PRODUCT:
+    case 'SET_CURRENT_PRODUCT':
       return {
         ...state,
         currentProductKey: action.currentProductKey,

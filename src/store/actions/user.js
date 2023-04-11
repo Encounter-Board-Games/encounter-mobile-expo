@@ -88,13 +88,13 @@ export function openLoginPopup() {
 
 function showLoginPopup(show) {
   return {
-    type: SHOW_LOGIN_POPUP,
+    type: 'SHOW_LOGIN_POPUP',
     show,
   };
 }
 function setAutocompleteRegister(name, lastname) {
   return {
-    type: SET_AUTO_COMPLETE_REGISTER,
+    type: 'SET_AUTO_COMPLETE_REGISTER',
     name,
     lastname,
   };
@@ -102,46 +102,47 @@ function setAutocompleteRegister(name, lastname) {
 
 function setUserInfo(userInfo) {
   return {
-    type: SET_USER_INFO,
+    type: 'SET_USER_INFO',
     userInfo,
   };
 }
 function setFavorites(favorites) {
   return {
-    type: SET_USER_FAVORITES,
+    type: 'SET_USER_FAVORITES',
     favorites,
   };
 }
 
 function addUserFavorite(favorite) {
   return {
-    type: ADD_USER_FAVORITE,
+    type: 'ADD_USER_FAVORITE',
     favorite,
   };
 }
 function removeUserFavorite(favorite) {
   return {
-    type: REMOVE_USER_FAVORITE,
+    type: 'REMOVE_USER_FAVORITE',
     favorite,
   };
 }
 
 function setLoginUser(user) {
   return {
-    type: SET_LOGIN_USER,
+    type: 'SET_LOGIN_USER',
     user,
   };
 }
+
 function setNeedCompleteInfos(needCompleteInfos) {
   return {
-    type: SET_NEED_COMPLETE_INFOS,
+    type: 'SET_NEED_COMPLETE_INFOS',
     needCompleteInfos,
   };
 }
 
 function setIsCodeSent(isCodeSent, isForgot) {
   return {
-    type: SET_IS_CODE_SENT,
+    type: 'SET_IS_CODE_SENT',
     isCodeSent,
     isForgot: !!isForgot,
   };
@@ -149,7 +150,7 @@ function setIsCodeSent(isCodeSent, isForgot) {
 
 function setIsChangePassword(changePassword, code) {
   return {
-    type: SET_IS_CHANGE_PASSWORD,
+    type: 'SET_IS_CHANGE_PASSWORD',
     changePassword,
     code,
   };
@@ -157,13 +158,13 @@ function setIsChangePassword(changePassword, code) {
 
 function setLoginLoading(loading) {
   return {
-    type: SET_LOGIN_LOADING,
+    type: 'SET_LOGIN_LOADING',
     loading,
   };
 }
 function setEmailLoginProcess(email, isLogin) {
   return {
-    type: SET_EMAIL_LOGIN_PROCESS,
+    type: 'SET_EMAIL_LOGIN_PROCESS',
     email,
     isRegister: !isLogin,
     isLogin: isLogin,
@@ -172,50 +173,47 @@ function setEmailLoginProcess(email, isLogin) {
 
 function setErroLoginProcessMessage(errorMessage) {
   return {
-    type: SET_ERROR_LOGIN_PROCESS_MESSAGE,
+    type: 'SET_ERROR_LOGIN_PROCESS_MESSAGE',
     errorMessage,
   };
 }
 
 function setPendences(pendences) {
   return {
-    type: SET_PENDENCES,
+    type: 'SET_PENDENCES',
     pendences,
   };
 }
 
 function setUserNotification(notifications) {
   return {
-    type: SET_USER_NOTIFICATION,
+    type: 'SET_USER_NOTIFICATION',
     notifications,
   };
 }
 
-// export const SET_USER_REMEMBER_PRODUCTS = "SET_USER_REMEMBER_PRODUCTS"
-// export const ADD_USER_REMEMBER_PRODUCTS = "ADD_USER_REMEMBER_PRODUCTS"
-// export const REMOVE_USER_REMEMBER_PRODUCTS = "REMOVE_USER_REMEMBER_PRODUCTS"
 function setUserRememberProducts(rememberProductKeys) {
   return {
-    type: SET_USER_REMEMBER_PRODUCTS,
+    type: 'SET_USER_REMEMBER_PRODUCTS',
     rememberProductKeys,
   };
 }
 function addUserRememberProducts(key) {
   return {
-    type: ADD_USER_REMEMBER_PRODUCTS,
+    type: 'ADD_USER_REMEMBER_PRODUCTS',
     key,
   };
 }
 function removeUserRememberProducts(key) {
   return {
-    type: REMOVE_USER_REMEMBER_PRODUCTS,
+    type: 'REMOVE_USER_REMEMBER_PRODUCTS',
     key,
   };
 }
 
 export function hadleBackToLogin() {
   return {
-    type: SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS,
+    type: 'SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS',
   };
 }
 
@@ -424,7 +422,7 @@ const USER_TOKEN = "USER_TOKEN";
 
 function logout() {
   return {
-    type: SET_LOGOUT_USER,
+    type: 'SET_LOGOUT_USER',
   };
 }
 
@@ -573,13 +571,6 @@ export function handleToggleLike(productId) {
   };
 }
 
-// export function handleToggleFavorite(productId){
-//     return dispatch => {
-//         const { user } = getState();
-
-//     }
-// }
-
 export function handleUploadSelfDocument(image) {
   return async (dispatch, getState) => {
     const { user } = getState();
@@ -644,13 +635,15 @@ export function handleUploadImage(file) {
       });
 
       const { filename } = await response.json();
-
+      dispatch({ type: 'UPLOAD_IMAGE_SUCCESS', payload: filename });
       return filename;
     } catch (error) {
+      dispatch({ type: 'UPLOAD_IMAGE_FAILURE', payload: error });
       return false;
     }
   };
 }
+
 
 export function handleForgotPassword() {
   return async (dispatch, getState) => {
@@ -672,23 +665,32 @@ export function handleForgotPassword() {
 }
 
 export function handleSetNotificationToken(token) {
-  return (dispatch) => {
-    storage.setItem("NOTIFICATION_TOKEN", { token });
+  return async (dispatch) => {
+    await storage.setItem("NOTIFICATION_TOKEN", token);
+    dispatch({ type: 'SET_NOTIFICATION_TOKEN', payload: token });
   };
 }
+
 
 export function handleLoadNotifications() {
   return async (dispatch, getState) => {
     const { user } = getState();
-
     const { isLogged = false } = user;
-    if (!isLogged) return;
 
-    const { notifications } = await UserNotifications();
+    if (!isLogged) {
+      return;
+    }
 
-    dispatch(setUserNotification(notifications));
+    try {
+      const notifications = await UserNotifications();
+      dispatch(setUserNotification(notifications));
+    } catch (error) {
+      console.error(error);
+      dispatch(setUserNotification([]));
+    }
   };
 }
+
 
 export function handleSetNotificationViewed(key) {
   return async (dispatch, getState) => {
@@ -747,6 +749,7 @@ export function handleNotFoundProductSuggestion() {
 export function handleRespondQuestion(value) {
   return async (dispatch) => {
     const deviceID = await getUniqueDeviceId();
-    respondQuestion(deviceID, value);
+    const response = await respondQuestion(deviceID, value);
+    dispatch({ type: 'RESPOND_QUESTION', payload: response });
   };
 }

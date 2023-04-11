@@ -1,8 +1,6 @@
-import { ORDERS_SET_ORDERS, ORDERS_SET_ORDER_SELECTED } from '../actions/orders'
-
 export default function orders(state = {}, action){
     switch (action.type) {
-        case ORDERS_SET_ORDERS:
+        case 'ORDERS_SET_ORDERS':
             return {
                 ...state,
                 orders: {
@@ -10,7 +8,7 @@ export default function orders(state = {}, action){
                     ...action.orders
                 }
             }
-        case ORDERS_SET_ORDER_SELECTED:
+        case 'ORDERS_SET_ORDER_SELECTED':
             return {
                 ...state,
                 order_selected: action.key

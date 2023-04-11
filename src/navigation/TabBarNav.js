@@ -33,12 +33,10 @@ const icons = {
 }
 
 const Icon = (props) => {
-  return <Icons name={props.name} size={16} color={props.color} />
-       
+  return <Icons name={props.name} size={16} color={props.color} />     
 }
 
 export default withTheme((props) => {
-  
   const activeRouteIndex = props.state.index
   
   return (<TabNav>

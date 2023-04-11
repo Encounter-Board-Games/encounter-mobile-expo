@@ -73,7 +73,6 @@ function HomeStackScreen() {
     <SafeAreaView>
       <RedirectComponent />
       <CartInfo />
-
       {user.needCompleteInfos && <CompleteInfos />}
       {tutorial && <Tutorial />}
       {quickSearch && (
@@ -96,14 +95,12 @@ function HomeStackScreen() {
             top: 0,
             left: 0,
             width: Dimensions.get("window").width,
-            
             zIndex: 100,
           }}
         >
           {discoveryIsOpened ? <Discovery /> : <Onboarding />}
         </View>
       )}
-
       <HomeStack.Navigator
         initialRouteName="Início"
         tabBar={(props) => <TabNav {...props} />}
@@ -121,7 +118,6 @@ function HomeStackScreen() {
 }
 
 const Tab = createBottomTabNavigator();
-
 const SettingsStack = createStackNavigator();
 const T = createStackNavigator();
 

@@ -1,14 +1,12 @@
-import { SET_SELECT_FILTER_TOGGLE_ONBOARDING, SET_ONBOARDING_STEPS, SET_FILTERS_ONBOARDING, OPEN_ONBOARD, CLOSE_ONBOARD, SET_SELECT_QUESTION_TOGGLE_ONBOARDING, RESTART_ONBOARDING } from "../actions/onboarding"
-
 export default function onboarding(state = { filters: {}, questions: {} }, action) {
   
     switch (action.type) {
-        case SET_ONBOARDING_STEPS:
+        case 'SET_ONBOARDING_STEPS':
             return {
                 ...state,
                 steps: action.steps
             }
-        case SET_SELECT_QUESTION_TOGGLE_ONBOARDING:
+        case 'SET_SELECT_QUESTION_TOGGLE_ONBOARDING':
             return {
                 ...state,
                 questions: {
@@ -21,7 +19,7 @@ export default function onboarding(state = { filters: {}, questions: {} }, actio
                     )
                 }
             }
-            case SET_SELECT_FILTER_TOGGLE_ONBOARDING:
+            case 'SET_SELECT_FILTER_TOGGLE_ONBOARDING':
             return {
                 ...state,
                 filters: {
@@ -33,23 +31,23 @@ export default function onboarding(state = { filters: {}, questions: {} }, actio
                     )
                 }
             }
-        case OPEN_ONBOARD:
+        case 'OPEN_ONBOARD':
             return {
                 ...state,
                 open: true
             }
-        case CLOSE_ONBOARD:
+        case 'CLOSE_ONBOARD':
             return {
                 ...state,
                 open: false
             }
-        case RESTART_ONBOARDING:
+        case 'RESTART_ONBOARDING':
             return {
                 ...state,
                 restart: action.restart 
             }
             
-        case SET_FILTERS_ONBOARDING:
+        case 'SET_FILTERS_ONBOARDING':
             return  {
                 ...state,
                 filters: {

@@ -1,9 +1,7 @@
-import { SET_NOTIFICATION, SHOW_NOTIFICATION } from "../actions/notification";
-
 export default function notification(state = {}, action) {
 
     switch (action.type) {
-        case SET_NOTIFICATION:
+        case 'SET_NOTIFICATION':
             return {
                 ...state,
                 notificationText: action.notificationText,
@@ -11,7 +9,7 @@ export default function notification(state = {}, action) {
                 notificationKey: action.notificationKey,
                 type: action.notificationType,
             }
-        case SHOW_NOTIFICATION:
+        case 'SHOW_NOTIFICATION':
             return {
                 ...state,
                 show: action.show

@@ -13,13 +13,13 @@ import config from '../../config';
 const Container = styled.View`
     padding: ${props => props.theme.space.space2};
     padding-top: ${props => props.theme.space.space1};
-`
+`;
 
 const Logout = styled.TouchableOpacity`
     flex-flow: row;
     margin-top: ${props => props.theme.space.space3}
     align-items:center;
-`
+`;
 
 
 export default withTheme((props) => {

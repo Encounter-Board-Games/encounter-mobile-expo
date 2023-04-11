@@ -35,7 +35,6 @@ export default () => {
             <Line>
                 <Button onPress={() =>dispatch(closePopupModal())} type="ComplementButton-Big" width={'auto'}>Ok</Button>
             </Line>
-
         </Container>
     )
 }

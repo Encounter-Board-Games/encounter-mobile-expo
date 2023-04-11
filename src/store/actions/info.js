@@ -6,7 +6,7 @@ export const OPEN_CART = "OPEN_CART";
 
 export function openInfoModal(content, title) {
   return {
-    type: OPEN_INFO_MODAL,
+    type: 'OPEN_INFO_MODAL',
     content,
     title,
   };
@@ -14,20 +14,20 @@ export function openInfoModal(content, title) {
 
 export function openCart(show = true) {
   return {
-    type: OPEN_CART,
+    type: 'OPEN_CART',
     show,
   };
 }
 
 export function closeInfoModal() {
   return {
-    type: CLOSE_INFO_MODAL,
+    type: 'CLOSE_INFO_MODAL',
   };
 }
 
 export function openPopupModal(typeOfModal, data) {
   return {
-    type: OPEN_POPUP_MODAL,
+    type: 'OPEN_POPUP_MODAL',
     typeOfModal,
     data,
   };
@@ -35,6 +35,6 @@ export function openPopupModal(typeOfModal, data) {
 
 export function closePopupModal() {
   return {
-    type: CLOSE_POPUP_MODAL,
+    type: 'CLOSE_POPUP_MODAL',
   };
 }

@@ -3,7 +3,6 @@ import { validateCPF } from "../../utils/helpers";
 import { handleShowNotification } from "./notification";
 import { handleSelectPaymentMethod } from "./cart";
 import { openPopupModal } from "./info";
-import { Alert } from "react-native";
 
 // PAYMENT METHODS
 export const SET_PAYMENT_LOADING = "SET_PAYMENT_LOADING"

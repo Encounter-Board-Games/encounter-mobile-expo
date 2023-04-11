@@ -29,39 +29,39 @@ export const CART_CLEAR = "CART_CLEAR";
 
 function addProduct(key, size) {
   return {
-    type: CART_ADD_PRODUCT,
+    type: 'CART_ADD_PRODUCT',
     key,
     size,
   };
 }
 function setCupom(cupom) {
   return {
-    type: CART_SET_CUPOM,
+    type: 'CART_SET_CUPOM',
     cupom,
   };
 }
 function setRenew(renewOrderId) {
   return {
-    type: CART_SET_RENEW,
+    type: 'CART_SET_RENEW',
     renewOrderId,
   };
 }
 
 function setDeliveryTaxes(value) {
   return {
-    type: CART_SET_DELIVERY_TAXES,
+    type: 'CART_SET_DELIVERY_TAXES',
     value,
   };
 }
 function setPaymentMethods(key) {
   return {
-    type: CART_SET_PAYMENT_METHODS,
+    type: 'CART_SET_PAYMENT_METHODS',
     key,
   };
 }
 function clear() {
   return {
-    type: CART_CLEAR,
+    type: 'CART_CLEAR',
   };
 }
 
@@ -72,21 +72,21 @@ export function handleClearCart() {
 }
 function cartSetDeliveryOptions(deliveryType, options) {
   return {
-    type: CART_SET_DELIVERY_OPTIONS,
+    type: 'CART_SET_DELIVERY_OPTIONS',
     deliveryType,
     options,
   };
 }
 function cartIsLoading(isLoading) {
   return {
-    type: CART_IS_LOADING,
+    type: 'CART_IS_LOADING',
     isLoading,
   };
 }
 
 export function cartSetDelivery(type, mode, value) {
   return {
-    type: CART_SET_DELIVERY,
+    type: 'CART_SET_DELIVERY',
     deliveryType: type,
     deliveryTypeMode: mode,
     value,
@@ -94,7 +94,7 @@ export function cartSetDelivery(type, mode, value) {
 }
 export function cartSetDeliveryTypeOpened(type, mode) {
   return {
-    type: CART_SET_DELIVERY_TYPE_OPENED,
+    type: 'CART_SET_DELIVERY_TYPE_OPENED',
     deliveryType: type,
     deliveryTypeMode: mode,
   };
@@ -102,20 +102,20 @@ export function cartSetDeliveryTypeOpened(type, mode) {
 
 function cartLogout() {
   return {
-    type: CART_LOGOUT,
+    type: 'CART_LOGOUT',
   };
 }
 
 function removeProduct(productKey) {
   return {
-    type: CART_REMOVE_PRODUCT,
+    type: 'CART_REMOVE_PRODUCT',
     productKey,
   };
 }
 
 function setSubtotalAndTotal(total, subtotal, time) {
   return {
-    type: CART_SET_SUBTOTAL_AND_TOTAL,
+    type: 'CART_SET_SUBTOTAL_AND_TOTAL',
     total,
     subtotal,
     time,
@@ -178,19 +178,6 @@ export function handleAddProduct(productKey, options) {
           title: "Escolha o tamanho:",
         })
       );
-
-      // Alert.alert(
-      //     'Qual tamanho?',
-      //     'Estolha o tamanho da sua peça:',
-      //     [
-      //         ...options.map(text => ({
-      //             text,
-      //             onPress: () => {  chooseOption(text); r()}
-      //         })),
-      //         { text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel', },
-      //     ],
-      //     { cancelable: false }
-      // );
     });
   };
 }

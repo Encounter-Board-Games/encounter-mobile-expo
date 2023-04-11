@@ -66,7 +66,8 @@ export default withTheme((props) => {
     const dispatch = useDispatch();
     const hasPendences = pendences.length > 0
     
-    const isLoggedContent = () => (<MenuOption onPress={ () => navigation.navigate('User')}>
+    const isLoggedContent = () => (
+        <MenuOption onPress={ () => navigation.navigate('User')}>
             <UserImage>
                 <Image  
                 borderRadius={128} 
@@ -75,48 +76,43 @@ export default withTheme((props) => {
             </UserImage>
            <MenuItemText>
                 {
-                    (userInfo.preferenceName && userInfo.preferenceName != "")? (
-                        <H3>{userInfo.preferenceName}</H3>
-                    ) :
-                    (
-                        <Placeholder Animation={Fade} >
-                            <PlaceholderLine noMargin 
-                                width={40} 
-                                height={20}
-                            />
-                        </Placeholder>
-                    )
+                 (userInfo.preferenceName && userInfo.preferenceName != "")? (
+                    <H3>{userInfo.preferenceName}</H3>
+                 ) :
+                 (
+                    <Placeholder Animation={Fade} >
+                      <PlaceholderLine noMargin width={40} height={20} />
+                    </Placeholder>
+                 )
                 }
-                
-               
                 <Space n={0} />
-                <Line>
-                    
+                <Line>   
                     <Subtitle2 type="secondDarkColor">Editar perfil</Subtitle2>
                     <SpaceHorizontal n={1} />
-                    {
-                        hasPendences && <Ionicons color={props.theme.colors.danger} size={16}  name="ios-alert" />
+                    { hasPendences &&
+                        <Ionicons color={props.theme.colors.danger} size={16}  name="ios-alert" />
                     }
                     
                 </Line>
             </MenuItemText>
     </MenuOption>)
 
-    const isNotLoggedContent = () => (<MenuItem>
-        <MenuItemHeader>
-            <MenuItemText>
-                <H3>Você ainda não está na sua conta.</H3>
-                <Space n={1} />
-                <Subtitle2 type="secondDarkColor">{translation("settings.notLogged")}</Subtitle2>
-            </MenuItemText>
-            <MenuItemImage>
-                <Image resizeMode={"contain"}
-                 style={{ width: '100%', height: '100%'}} 
-                 source={config.notLoggedImg} />
-            </MenuItemImage>
-        </MenuItemHeader>
-        <Button type="CallToAction-Outline" width={'100%'} onPress={() =>  dispatch(openLoginPopup())}>Entrar ou cadastrar</Button>
-    </MenuItem>)
+    const isNotLoggedContent = () => (
+        <MenuItem>
+            <MenuItemHeader>
+                <MenuItemText>
+                    <H3>Você ainda não está na sua conta.</H3>
+                    <Space n={1} />
+                    <Subtitle2 type="secondDarkColor">{translation("settings.notLogged")}</Subtitle2>
+                </MenuItemText>
+                <MenuItemImage>
+                    <Image resizeMode={"contain"}
+                    style={{ width: '100%', height: '100%'}} 
+                    source={config.notLoggedImg} />
+                </MenuItemImage>
+            </MenuItemHeader>
+            <Button type="CallToAction-Outline" width={'100%'} onPress={() =>  dispatch(openLoginPopup())}>Entrar ou cadastrar</Button>
+        </MenuItem>)
 
     const menuItems = [
         { icon: "bell", title: "Notificações", description: "Minha central de notificações", onPress : () => navigation.navigate('Notifications') },
@@ -131,10 +127,7 @@ export default withTheme((props) => {
     return (<Screen>
         <Container>
             { isLogged ? isLoggedContent() : isNotLoggedContent()}
-            {
-                menuItems.map((item, index) =>  <MenuOption key={index} {...item} />)
-            }
-           
+            { menuItems.map((item, index) =>  <MenuOption key={index} {...item} />) }
         </Container>
     </Screen>
     )

@@ -3,7 +3,7 @@ export const SHOW_NOTIFICATION = "SHOW_NOTIFICATION"
 
 function setNotification(notificationText, notificationType, notificationAction, notificationKey) {
     return {
-        type: SET_NOTIFICATION,
+        type: 'SET_NOTIFICATION',
         notificationType,
         notificationText,
         notificationAction,
@@ -13,7 +13,7 @@ function setNotification(notificationText, notificationType, notificationAction,
 
 function showNotification(show) {
     return {
-        type: SHOW_NOTIFICATION,
+        type: 'SHOW_NOTIFICATION',
         show
     }
 }

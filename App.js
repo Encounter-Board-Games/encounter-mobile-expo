@@ -23,6 +23,7 @@ const Container = styled.View`
   flex: 1; background: #0e9577;
   padding-top: 14px;
 `;
+
 const LoadView = styled.View`
   background-color: #0e9577;
 `;
@@ -66,6 +67,7 @@ const App = () => {
         <NeedUpdate />
       </Container>
     );
+
   if (!already)
     return (
       <LoadView>
@@ -79,9 +81,7 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <StatusBar
-        barStyle={Platform.OS == "ios" ? "dark-content" : "light-content"}
-      />
+      <StatusBar barStyle={Platform.OS == "ios" ? "dark-content" : "light-content"}/>
       <MainNavigation />
       <InfoModal />
       <AppNotification />
@@ -93,6 +93,7 @@ const App = () => {
 
 export default () => {
   const [already, setAlready] = useState(false);
+  
   useEffect(() => {
     Font.loadAsync({
       Nunito: require("./src/assets/fonts/Nunito-Regular.ttf"),

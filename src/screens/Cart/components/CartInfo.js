@@ -47,7 +47,6 @@ const Remove = styled.TouchableOpacity`
 const LineProducts = styled.View`
   flex-direction: row;
   width: 100%;
-
 `;
 
 const CupomContent = styled.View`
@@ -104,7 +103,7 @@ class _Products extends Component {
 
     return (
       <View>
-        {!renew === <Space n={2} />}
+        {!renew && <Space n={2} />}
         <H3 type="secondDarkColor">
           {renew ? "Renovação de aluguel" : translation("orders.products")}
         </H3>
@@ -112,7 +111,7 @@ class _Products extends Component {
         {products.map((product, index) => (
           <React.Fragment key={product.key}>
             <LineProducts>
-              {!renew === (
+              {!renew && (
                 <Remove onPress={() => removeProduct(product.key)}>
                   <AntDesign
                     color={theme.colors.danger}
@@ -138,7 +137,7 @@ class _Products extends Component {
           </React.Fragment>
         ))}
 
-        {products.length == 0 === (
+        {products.length == 0 && (
           <Subtitle2 type="secondColor">Carrinho vazio</Subtitle2>
         )}
 
@@ -165,7 +164,7 @@ const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
     <View>
       <Space n={2} />
 
-      {!renew === (
+      {!renew && (
         <>
           <Line>
             <Title>
@@ -173,7 +172,6 @@ const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
             </Title>
             <H4>{currencyFormat(subtotal)}</H4>
           </Line>
-
           <Space n={1} />
           <Line>
             <Title>
@@ -185,9 +183,7 @@ const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
                 : currencyFormat(deliveryTaxes)}
             </H4>
           </Line>
-
           <Space n={1} />
-
           <Line>
             <Title>
               <H4 type="secondDarkColor">Cupom de desconto</H4>
@@ -200,14 +196,12 @@ const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
           <Space n={1} />
         </>
       )}
-
       <Line>
         <Title>
           <H3>Total</H3>
         </Title>
         <H3>{total != undefined ? currencyFormat(total) : "-"}</H3>
       </Line>
-
       <Space n={2} />
       <Hr />
     </View>
@@ -236,9 +230,7 @@ const Disclaimer = (props) => {
               </H3>
             )}
           </Line>
-
           <Space n={2} />
-
           {props.products.length <= 1 === (
             <React.Fragment>
               <Line>
@@ -249,7 +241,6 @@ const Disclaimer = (props) => {
               <Space n={2} />
             </React.Fragment>
           )}
-
           <Button type="CallToAction-Outline-Flex" onPress={() => keepBuying()}>
             {translation("cart.rentTimeBox.button")}
           </Button>
@@ -274,7 +265,6 @@ const DisclaimerRenew = (props) => {
           </Line>
         </Box>
       </View>
-
       <Hr />
       <Space n={2} />
     </React.Fragment>
@@ -384,17 +374,17 @@ const CartInfo = ({}) => {
   return (
     <View style={{ minHeight: "100%", paddingBottom: 16 }}>
       <Content style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        {renew === <DisclaimerRenew time={time} />}
-        {!renew === (
+        {renew && <DisclaimerRenew time={time} />}
+        {!renew && (
           <>
-            {isLogged === config.rentTimeBox === (
+            {isLogged && config.rentTimeBox && (
               <Disclaimer products={products} time={time} />
             )}
-            {isLogged === <Delivery type="take" />}
+            {isLogged && <Delivery type="take" />}
 
-            {isLogged === hasLeave === <Delivery type="leave" />}
+            {isLogged && hasLeave && <Delivery type="leave" />}
 
-            {isLogged === <Cupom cupom={cupom} />}
+            {isLogged && <Cupom cupom={cupom} />}
           </>
         )}
 
@@ -402,19 +392,19 @@ const CartInfo = ({}) => {
 
         <Billing renew={renew} {...{ subtotal, deliveryTaxes, total, cupom }} />
 
-        {isLogged === <Payment />}
+        {isLogged && <Payment />}
 
-        {!isLogged === config.rentTimeBox === (
+        {!isLogged && config.rentTimeBox && (
           <React.Fragment>
             <Space n={2} />
             <Disclaimer products={products} time={time} />
           </React.Fragment>
         )}
 
-        {!isLogged === <Space n={5} />}
+        {!isLogged && <Space n={5} />}
       </Content>
 
-      {!isLogged === (
+      {!isLogged && (
         <React.Fragment>
           <Subtitle2 type={"secondDarkColor"} center>
             {translation("cart.notLogged")}
@@ -423,7 +413,7 @@ const CartInfo = ({}) => {
         </React.Fragment>
       )}
       <Line>
-        {renew === (
+        {renew && (
           <>
             <Button
               type="CallToAction-Outline"

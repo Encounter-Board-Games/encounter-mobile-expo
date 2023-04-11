@@ -6,10 +6,8 @@ import { Space, SpaceHorizontal } from '../../../components/Space'
 import { Ionicons } from '@expo/vector-icons';
 import { hadleBackToLogin, handleSendConfirmCode, handleHideErrorCode } from '../../../store/actions/user'
 import { useDispatch, useSelector } from 'react-redux'
-import { getBottomSpace } from 'react-native-iphone-x-helper'
-import { View, Dimensions, TouchableOpacity } from 'react-native'
+import { View, Dimensions } from 'react-native'
 import Numberpad from '../../../components/Numberpad';
-
 
 
 const {
@@ -24,7 +22,7 @@ padding-top: ${props => props.theme.space.space2};
 padding-bottom: 0px;
 width: 100%;
 align-items: center;
-`
+`;
 
 const Content = styled.View`
 
@@ -32,18 +30,20 @@ padding: ${props => props.theme.space.space3};
 padding-bottom: 0px;
 width: 100%;
 align-items: center;
-`
+`;
 
 const Line = styled.View`
     flex-flow:row;
     width: 100%
-`
+`;
+
 const CodeNumberLine = styled.View`
     flex-flow:row;
     width: 100%
     align-items:center;
     justify-content: center;
-`
+`;
+
 const CodeNumber = styled.View`
     background: ${props => props.theme.colors.primaryLightColor}
     border: 1.5px ${props => props.theme.colors.primaryColor}
@@ -53,18 +53,17 @@ const CodeNumber = styled.View`
     align-items:center;
     justify-content: center;
     opacity: ${props => props.disabled ? '.5' : '1'}   
-`
+`;
 
 const BackButton = styled.TouchableOpacity`
     width: 40px;;
     align-items:flex-start;
     justify-content:flex-end;
-`
+`;
 
 const SafeSpace = styled.View`
-
     width: 1px;
-`
+`;
 
 export default withTheme((props) => {
     
@@ -74,7 +73,6 @@ export default withTheme((props) => {
     const { email } = login;
     const dispatch = useDispatch();
     const [code, setCode] = useState('');
-
     const codeSize = [1, 2, 3, 4, 5];
 
     const addNumber = (n) => {
@@ -121,7 +119,6 @@ export default withTheme((props) => {
                 {
                     (errorMessage) && <Animatable.View animation="shake">
                         <Space n={1} />
-
                         <H3 center type='danger'>
                             {errorMessage}
                         </H3>

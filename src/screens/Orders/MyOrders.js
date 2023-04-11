@@ -10,6 +10,7 @@ import { translation } from "../../texts";
 const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};
 `;
+
 const TabContent = styled.View`
   flex: 1;
   padding-top: ${(props) => props.theme.space.space2};

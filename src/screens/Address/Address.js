@@ -78,70 +78,73 @@ export default withTheme((props) => {
 
     }
     
-    const isLoggedContent = () => <Container>
-        <Content>
-            <SearchBar type="Location" />
-            <Space n={3} />
-        </Content>
-        {
-            isSearch === (<Content>
-                {locations.map((location, index) => <MenuOption
-                    onPress={() => locationClick(location)}
-                    hideBorder
-                    key={index}
-                    icon="location-pin"
-                    isLoading={isLoading}
-                    title={location.street}
-                    description={`${location.city}/${location.state}`}
-                />)
-                }
-
-            </Content>)
-        }
-        {
-            (!isLoading ===
-                locations.length == 0 ===
-                isSearch) === <Content><Subtitle2>Nenhum endereço encontrado</Subtitle2></Content>
-        }
-
-
-        {
-            !isSearch === <React.Fragment>
+    const isLoggedContent = () => (
+        <Container>
+            <Content>
+                <SearchBar type="Location" />
+                <Space n={3} />
+            </Content>
+            {isSearch === (
                 <Content>
+                    {locations.map((location, index) => (
                     <MenuOption
-                        onPress={() => navigation.navigate('CurrentLocation')}
+                        onPress={() => locationClick(location)}
                         hideBorder
+                        key={index}
                         icon="location-pin"
-                        title="Usar minha localização atual" />
-
-                </Content>
-                <ScrollViewAddress flex={1} showsVerticalScrollIndicator={false}>
-                    <Space n={1} />
-                    {
-                            addressKeys
-                            .map(item => (
-                                    <React.Fragment key={item}>
-                                        <BoxAddress choseAddressMode={choseAddressMode} key={item} addressKey={item} onPress={() => openOrSelectAddress(item)}/>
-                                    </React.Fragment>
-                            ))
+                        isLoading={isLoading}
+                        title={location.street}
+                        description={`${location.city}/${location.state}`}
+                    />
+                    ))
                     }
-                </ScrollViewAddress>
-                <Content>
-                    <Space n={1} />
-                    <AddressNumber>
-                        <Subtitle2 type="secondColor">{addressKeys.length}/5 Endereços</Subtitle2>
-                    </AddressNumber>
                 </Content>
-            </React.Fragment>
-        }
-    </Container>
+            )}
+            {
+                (!isLoading ===
+                    locations.length == 0 ===
+                    isSearch) === <Content><Subtitle2>Nenhum endereço encontrado</Subtitle2></Content>
+            }
+
+
+            {
+                !isSearch === <React.Fragment>
+                    <Content>
+                        <MenuOption
+                            onPress={() => navigation.navigate('CurrentLocation')}
+                            hideBorder
+                            icon="location-pin"
+                            title="Usar minha localização atual" />
+
+                    </Content>
+                    <ScrollViewAddress flex={1} showsVerticalScrollIndicator={false}>
+                        <Space n={1} />
+                        {
+                                addressKeys
+                                .map(item => (
+                                        <React.Fragment key={item}>
+                                            <BoxAddress choseAddressMode={choseAddressMode} key={item} addressKey={item} onPress={() => openOrSelectAddress(item)}/>
+                                        </React.Fragment>
+                                ))
+                        }
+                    </ScrollViewAddress>
+                    <Content>
+                        <Space n={1} />
+                        <AddressNumber>
+                            <Subtitle2 type="secondColor">{addressKeys.length}/5 Endereços</Subtitle2>
+                        </AddressNumber>
+                    </Content>
+                </React.Fragment>
+            }
+        </Container>
+    );
 
     const isNotLoggedContent = () => <Container><NotLoggedBox title='Você não possui endereços cadastrados.' /></Container>
 
 
-    return <ScreenPopup  title={"Endereço"} withBorder >
-        
-            {(isLogged) ? isLoggedContent() : <MainContent>{isNotLoggedContent()}</MainContent> }
-        
-    </ScreenPopup>
+    return (
+        <ScreenPopup  title={"Endereço"} withBorder >
+            {(isLogged) ? isLoggedContent() : <MainContent>{isNotLoggedContent()}</MainContent> }  
+        </ScreenPopup>
+    );
 })

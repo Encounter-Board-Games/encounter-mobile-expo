@@ -8,7 +8,7 @@ import { getBottomSpace } from "react-native-iphone-x-helper";
 import Constants from "expo-constants";
 import { Button } from "../../components/Button";
 import { useDispatch } from "react-redux";
-import { Camera } from "expo-camera";
+import * as Camera from "expo-camera";
 import CameraScreen from "./components/CameraScreen";
 import { useNavigation } from "@react-navigation/native";
 import { handleUploadSelfDocument } from "../../store/actions/user";
@@ -208,7 +208,7 @@ export default () => {
   const [loading, setLoading] = useState();
 
   const openCamera = async () => {
-    const { status } = await Camera.requestPermissionsAsync();
+    const { status } = await Camera.useCameraPermissions();
 
     if (status === "granted") setOpenCamera(true);
   };

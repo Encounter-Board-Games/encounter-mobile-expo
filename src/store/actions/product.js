@@ -8,21 +8,21 @@ export const SET_EVALUATIONS_PRODUCTS = "SET_EVALUATIONS_PRODUCTS";
 
 export function setProducts(products) {
   return {
-    type: SET_PRODUCTS,
+    type: 'SET_PRODUCTS',
     products,
   };
 }
 
 export function setEvaluationsProducts(evaluationsProducts) {
   return {
-    type: SET_EVALUATIONS_PRODUCTS,
+    type: 'SET_EVALUATIONS_PRODUCTS',
     evaluationsProducts,
   };
 }
 
 function setCurrentProduct(currentProductKey) {
   return {
-    type: SET_CURRENT_PRODUCT,
+    type: 'SET_CURRENT_PRODUCT',
     currentProductKey,
   };
 }

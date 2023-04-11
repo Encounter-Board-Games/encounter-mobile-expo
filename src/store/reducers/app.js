@@ -1,8 +1,6 @@
-import { APP_SET_CONFIGURATION, APP_SET_TERMS, APP_SET_NEED_UPDATE_VERSION } from "../actions/app";
-
 export default function app(state = {}, action){
     switch (action.type ) {
-        case APP_SET_TERMS:
+        case 'APP_SET_TERMS':
             return {
                 ...state,
                 terms: {
@@ -11,7 +9,7 @@ export default function app(state = {}, action){
                 }
             }
     
-        case APP_SET_CONFIGURATION:
+        case 'APP_SET_CONFIGURATION':
             return {
                 ...state,
                 about: {
@@ -20,7 +18,7 @@ export default function app(state = {}, action){
                 }
             }
     
-        case APP_SET_NEED_UPDATE_VERSION:
+        case 'APP_SET_NEED_UPDATE_VERSION':
             return {
                 ...state,
                 update: {

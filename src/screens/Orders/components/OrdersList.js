@@ -10,23 +10,22 @@ import { translation } from '../../../texts'
 
 const Container = styled.View`
     flex: 1;
-`
+`;
 
 const noResultTitle = (type) => {
-    if (type == 'History') return 'oldOrders'
-    return 'currentOrders'
-}
+    if (type == 'History') return 'oldOrders';
+    return 'currentOrders';
+};
 
 export default (props) => {
-
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(handleLoadOrders())
-    }, [])
+        dispatch(handleLoadOrders());
+    }, []);
     
     const navigation = useNavigation();
-    const { isLogged = false } = useSelector(state => state.user)
-    const { orders = {} } = useSelector(state => state.orders)
+    const { isLogged = false } = useSelector(state => state.user);
+    const { orders = {} } = useSelector(state => state.orders);
    
     const ordersList = Object.keys(orders)
         .map(key => orders[key])
@@ -34,19 +33,18 @@ export default (props) => {
                          || (props.type != "History" && order.current ))
 
     if (ordersList.length == 0)
-        return <InformationBox
-            img={require('../../../assets/img/open-box.png')}
-            title={translation("orders." + noResultTitle(props.type) )}
-            buttonText={translation("orders.buttonText")}
-            onPressButton={() => navigation.navigate('Início')}
-        />
+        return ( 
+            <InformationBox
+                img={require('../../../assets/img/open-box.png')}
+                title={translation("orders." + noResultTitle(props.type) )}
+                buttonText={translation("orders.buttonText")}
+                onPressButton={() => navigation.navigate('Início')}
+            />
+        );
     
     return (
         <Container>
-            {
-                ordersList.map(order => <OrderBox order={order} key={order.key} />)
-            }
+            {ordersList.map(order => <OrderBox order={order} key={order.key} />)}
         </Container>
-
-    )
+    );
 }

@@ -5,13 +5,14 @@ import { Button } from '../../../components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { H4, H3 } from '../../../components/Typography';
 import { closePopupModal } from '../../../store/actions/info';
-import { Keyboard, TouchableOpacity, View } from 'react-native';
+import { Keyboard, View } from 'react-native';
 
 const Container = styled.View`
     align-items: center;
     justify-content: center;
     width: 100%;
-`
+`;
+
  const TextInput = styled.TextInput`
      height: 40px;
      width: 100%;
@@ -21,17 +22,18 @@ const Container = styled.View`
      padding-right: ${props => props.theme.space.space2}
      border-radius: ${props => props.theme.borderRadius.button}
      font-size: ${props => props.theme.space.space2};
- `
+ `;
 
 const Line = styled.View`
     flex-flow: row;
     align-items: flex-start;
     justify-content: center;
-`
+`;
 
 const Btn = styled.View`
     flex:  1 1 0px
-`
+`;
+
 const Option_ = styled.TouchableOpacity`
     margin-top: ${props => props.theme.space.space1};
     align-items: center;
@@ -42,7 +44,7 @@ const Option_ = styled.TouchableOpacity`
     height: 40px;
     margin-left:  ${props => props.theme.space.space1};
     margin-right:  ${props => props.theme.space.space1};
-`
+`;
 
 const Option = ({children, onPress}) => {
     return <Option_ onPress={onPress}>

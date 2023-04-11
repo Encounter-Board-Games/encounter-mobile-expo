@@ -1,5 +1,5 @@
 const defaultState = {
-  isLogged: false,
+  isLogged: true,
 };
 
 export default (state = defaultState, action) => {
@@ -19,7 +19,7 @@ export default (state = defaultState, action) => {
           lastname: action.lastname,
         },
       };
-    case 'SET_NEED_COMPLETE_INFOS':
+   case 'SET_NEED_COMPLETE_INFOS':
       return {
         ...state,
         needCompleteInfos: action.needCompleteInfos,

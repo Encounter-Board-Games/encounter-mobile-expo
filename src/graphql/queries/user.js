@@ -1,32 +1,32 @@
 import gql from 'graphql-tag'
 
 export const EmailIsRegisteryQuery = gql`
-query($email: String!){
+  query($email: String!){
     emailIsRegistery(email: $email)
   }
 `;
 
 export const CreateAuthMutation = gql`
-mutation($type: String!, $email: String!, $notificationToken: String, $password: String!, $platform: String!, $os: String!){
-  createAuth(user: {
-    type: $type,
-    email:$email,
-    password: $password,
-    notificationToken: $notificationToken,
-      deviceInfo: {
-        platform: $platform,
-        os: $os
+  mutation($type: String!, $email: String!, $notificationToken: String, $password: String!, $platform: String!, $os: String!){
+    createAuth(user: {
+      type: $type,
+      email:$email,
+      password: $password,
+      notificationToken: $notificationToken,
+        deviceInfo: {
+          platform: $platform,
+          os: $os
+        }
+    }){
+      token
+      user{
+        key
+        email
       }
-  }){
-    token
-    user{
-      key
-      email
+      success
+      action
     }
-  	success
-    action
   }
-}
 `;
 
 export const LoginMutation = gql`

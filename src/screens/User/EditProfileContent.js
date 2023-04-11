@@ -9,9 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
-  Linking,
-  TouchableOpacity
-} from "react-native";
+  Linking} from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { handleEditUserInfo } from "../../store/actions/user";
 import { RadioButton } from "../../components/RadioButton";
@@ -21,9 +19,11 @@ const Content = styled.ScrollView`
   flex: 1;
   padding: ${(props) => props.theme.space.space2};
 `;
+
 const ContainerInputs = styled.View`
   flex: 1;
 `;
+
 const Opacity = styled.View`
   opacity: 0.5;
 `;
@@ -87,6 +87,7 @@ const CustomInputText = styled.Text`
 const TermsAndConditions = styled.TouchableOpacity`
   flex-flow: row;
 `;
+
 const LineButtons = styled.View`
   flex-flow: row;
   flex-wrap: wrap;

@@ -28,7 +28,7 @@ function Home(props) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const shelvesState = useSelector((state) => state.shelves);
-  const { isLogged } = useSelector((state) => state.user);
+  const { isLogged = false } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(handleInitHome());

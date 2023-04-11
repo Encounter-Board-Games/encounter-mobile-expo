@@ -26,7 +26,7 @@ const Container = styled.View`
     shadow-offset: ${props => props.theme.shadow.shadowOffset.width} ${props => props.theme.shadow.shadowOffset.width};
     shadow-opacity: ${props => props.theme.shadow.shadowOpacity};
     shadow-radius: ${props => props.theme.shadow.shadowRadius};
-`
+`;
 
 function getBody(type){
     

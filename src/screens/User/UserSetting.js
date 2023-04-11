@@ -2,7 +2,7 @@ import React from 'react';
 import MenuOption from '../../components/MenuOption';
 import styled , { withTheme } from 'styled-components';
 import ScreePopup from '../../components/ScreePopup';
-import { Linking, TouchableOpacity } from 'react-native';
+import { Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Subtitle1 } from '../../components/Typography';
 import { SpaceHorizontal } from '../../components/Space';
@@ -20,13 +20,13 @@ import Icons from '../../components/Icons';
 const Container = styled.View`
     padding: ${props => props.theme.space.space2};
     padding-top: ${props => props.theme.space.space1};
-`
+`;
 
 const Logout = styled.TouchableOpacity`
     flex-flow: row;
     margin-top: ${props => props.theme.space.space3}
     align-items:center;
-`
+`;
 
 
 export default withTheme( (props) => {
