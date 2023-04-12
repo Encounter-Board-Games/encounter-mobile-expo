@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 
 export const Radio = styled.TouchableOpacity`
@@ -14,7 +13,7 @@ export const Radio = styled.TouchableOpacity`
     background-color:   ${props => props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
 `;
 
-const CloseButton = styled.TouchableOpacity`
+export const CloseButton = styled.TouchableOpacity`
     background-color: ${props => props.theme.colors.secondLightColor};
     height: 16px;
     width: 16px;

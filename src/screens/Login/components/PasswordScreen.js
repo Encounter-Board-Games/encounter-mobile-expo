@@ -14,9 +14,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { View, Dimensions } from "react-native";
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
+export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
-const Container = styled.View`
+export const Container = styled.View`
   padding: ${(props) => props.theme.space.space3};
   padding-top: ${(props) => props.theme.space.space2};
   width: 100%;
@@ -25,24 +25,24 @@ const Container = styled.View`
     props.minHeight ? props.minHeight : SCREEN_HEIGHT * 0.5}px;
 `;
 
-const Line = styled.View`
+export const Line = styled.View`
   flex-flow: row;
   width: 100%;
 `;
 
-const BackButton = styled.TouchableOpacity`
+export const BackButton = styled.TouchableOpacity`
   width: 40px;
   align-items: flex-start;
   justify-content: flex-end;
 `;
 
-const Forgot = styled.TouchableOpacity``;
+export const Forgot = styled.TouchableOpacity``;
 
-const SafeSpace = styled.View`
+export const SafeSpace = styled.View`
   width: 1px;
 `;
 
-export default withTheme((props) => {
+function PasswordScreen(props) {
   
   const { login = {} } = useSelector((state) => state.user);
   const isLoading = login.loading;
@@ -121,4 +121,6 @@ export default withTheme((props) => {
       <SafeSpace />
     </Container>
   );
-});
+};
+
+export default withTheme(PasswordScreen);

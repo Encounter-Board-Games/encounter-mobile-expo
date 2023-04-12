@@ -3,23 +3,22 @@ import { TouchableWithoutFeedback } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 
-const Container = styled.View`
+export const Container = styled.View`
     width: 100%;
     position: relative;
     padding-right: ${props => props.withButton ? '28px' : '0px'};
-`
+`;
 
 export const CustomInput = styled.TextInput`
     border: 1.5px solid ${props => props.theme.colors.primaryColor}
     background: ${props => props.theme.colors.primaryLightColor}
     padding-left: ${props => props.theme.space.space2}
     border-radius: ${props => props.theme.borderRadius.button}
-  
     font-size: ${props => props.theme.space.space2};
     opacity: ${props => props.disabled ? '.5' : '1'}
-`
+`;
 
-const Button = styled.View`
+export const Button = styled.View`
     height: 56px;
     align-items:center;
     justify-content:center;
@@ -27,18 +26,18 @@ const Button = styled.View`
     border-radius: 56px;
     background: ${props => props.theme.colors.primaryDarkColor};
     opacity: ${props => props.disabledButton ? '.5' : '1'}
-`
+`;
 
-const ButtonSpace = styled.View`
+export const ButtonSpace = styled.View`
     height: 56px;
     width: 56px;
     border-radius: 56px;
     background: ${props => props.theme.colors.lightColor};
     position: absolute;
     right: 0;
-`
+`;
 
-const TouchRightIcon = styled.TouchableOpacity`
+export const TouchRightIcon = styled.TouchableOpacity`
     height: 56px;
     width: 56px;
     border-radius: 56px;
@@ -47,9 +46,9 @@ const TouchRightIcon = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     opacity: ${props => props.disabled ? '.5' : '1'}
-`
+`;
 
-const CustomTextInput = (props) => {
+function CustomTextInput(props) {
 
     const format = (value) => {
         if(!props.format) return value

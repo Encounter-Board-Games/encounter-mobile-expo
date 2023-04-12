@@ -3,17 +3,17 @@ import styled from "styled-components";
 import CartMarker from "../screens/Cart/components/CartMarker";
 import { useSelector } from "react-redux";
 
-const Container = styled.View`
+export const Container = styled.View`
   background-color: ${(props) => props.theme.colors.lightColor};
   flex: 1;
 `;
 
-const ScrollContainer = styled.ScrollView`
+export const ScrollContainer = styled.ScrollView`
   flex: 1;
   background-color: blue;
 `;
 
-const MainContainer = ({ children, noScroll }) => {
+export default function MainContainer ({ children, noScroll }) {
   const cart = useSelector((state) => state.cart);
   const hasCart = cart.products.length !== 0 && !cart.renew;
 
@@ -30,5 +30,3 @@ const MainContainer = ({ children, noScroll }) => {
     </Container>
   );
 };
-
-export default MainContainer;

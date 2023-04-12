@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import SearchBar from './components/SearchBar'
-import Constants from 'expo-constants';
 import { Space } from '../../components/Space';
 import * as Animatable from 'react-native-animatable';
-import { H3, H2 } from '../../components/Typography';
+import { H2 } from '../../components/Typography';
 import { View, TouchableWithoutFeedback, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { handleCloseTutorial } from '../../store/actions/filters';
@@ -12,7 +11,7 @@ import { translation } from '../../texts';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
-const Tutorial = styled.View`
+export const TutorialView = styled.View`
     width: 100%;
     height: 120%;
     position: absolute;
@@ -21,13 +20,13 @@ const Tutorial = styled.View`
     padding: ${props => props.theme.space.space2};
 `;
 
-const Content = styled.View`
+export const Content = styled.View`
     position: relative;
     width: 100%;
     height: 100%;
 `;
 
-const ContentArea = styled.View`
+export const ContentArea = styled.View`
     position: absolute;
     top: 0;
     left:0;
@@ -35,7 +34,8 @@ const ContentArea = styled.View`
     height: 100%;
     z-index: 99
 `;
-const Arrow = styled.View`
+
+export const Arrow = styled.View`
     position: absolute;
     right: 8px;
     width: 20%;
@@ -46,7 +46,7 @@ const Arrow = styled.View`
     justify-content: flex-start;
 `;
 
-export default () => {
+export default function Tutorial() {
 
     const dispatch = useDispatch();
     const [taps, setTaps] = useState(0);
@@ -57,13 +57,12 @@ export default () => {
             dispatch(handleCloseTutorial())
         setTaps(taps + 1)
     }
-    return (<Tutorial>
+    return (<TutorialView>
        <SafeAreaView>
        <Content>
             <SearchBar disabled type="Filter" />
             <Space n={3} />
             <Animatable.View duration={500} animation={"fadeInUp"} style={{ flex: 1 }}>
-
                 <Arrow>
                     <Image resizeMode="contain" 
                     style={{ width: '100%', height: 80 }} 
@@ -85,5 +84,5 @@ export default () => {
             </ContentArea>
         </Content>
        </SafeAreaView>
-    </Tutorial >)
-}
+    </TutorialView >)
+};

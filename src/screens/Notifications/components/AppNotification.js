@@ -7,7 +7,7 @@ import { handleOpenNotification } from "../../../store/actions/shared";
 import { handleLoadOrders } from "../../../store/actions/orders";
 import { Container, Notification, Message } from "./AppNotificationStyles";
 
-const AppNotification = () => {
+export default function AppNotification() {
   const [bottom, setBottom] = useState(new Animated.Value(-200));
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
@@ -96,5 +96,3 @@ const AppNotification = () => {
     </Animated.View>
   );
 };
-
-export default AppNotification;

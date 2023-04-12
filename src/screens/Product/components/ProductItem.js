@@ -17,8 +17,7 @@ import { Subtitle3 } from "../../../components/Typography";
 import { handleRememberProduct } from "../../../store/actions/user";
 import { View } from "react-native-animatable";
 
-const ProductImage = styled.View`
-
+export const ProductImage = styled.View`
   width: ${(props) => (props.spotlight ? 200 : 140)}px;
   min-height: ${(props) => (props.spotlight ? 200 : 140)}px;
   min-width: ${(props) => (props.spotlight ? 200 : 140)}px;
@@ -26,24 +25,25 @@ const ProductImage = styled.View`
   max-width: ${(props) => (props.spotlight ? 200 : 140)}px;
 `;
 
-const Container = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity`
   width: ${(props) => (props.spotlight ? 200 : 140)}px;
   min-height: 10px;
   ${(props) =>
     props.flex ? "flex: 1;" : `margin-left: ${props.theme.space.space2}`}
 `;
-const Content = styled.View``;
 
-const ProductPrice = styled.Text`
+export const Content = styled.View``;
+
+export const ProductPrice = styled.Text`
   max-width: 100%;
   font-size: ${(props) => props.theme.sizes.subtitle2};
   font-family: Nunito;
   color: ${(props) => props.theme.colors.darkColor};
 `;
 
-const ProductStatusContent = styled.Text``;
+export const ProductStatusContent = styled.Text``;
 
-export default withTheme((props) => {
+function ProductItem(props) {
   const products = useSelector((state) => state.products.products);
   const { rememberProductKeys = [] } = useSelector((state) => state.user);
   const product = products[props.id];
@@ -130,4 +130,6 @@ export default withTheme((props) => {
       )}
     </Container>
   );
-});
+};
+
+export default withTheme(ProductItem);

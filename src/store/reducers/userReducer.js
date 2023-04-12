@@ -1,17 +1,43 @@
+import {
+  SHOW_LOGIN_POPUP,
+  SET_IS_CHANGE_PASSWORD,
+  SET_LOGOUT_USER,
+  SET_IS_CODE_SENT,
+  SET_EMAIL_LOGIN_PROCESS,
+  SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS,
+  SET_LOGIN_LOADING,
+  SET_ERROR_LOGIN_PROCESS_MESSAGE,
+  SET_LOGIN_USER,
+  SET_NEED_COMPLETE_INFOS,
+  SET_USER_FAVORITES,
+  ADD_USER_FAVORITE,
+  REMOVE_USER_FAVORITE,
+  SET_USER_INFO,
+  SET_PENDENCES,
+  SET_USER_NOTIFICATION,
+  REMOVE_USER_REMEMBER_PRODUCTS,
+  ADD_USER_REMEMBER_PRODUCTS,
+  SET_AUTO_COMPLETE_REGISTER,
+  SET_USER_REMEMBER_PRODUCTS,
+} from "../actions/user";
+
+import { arrayToObj } from "../../utils/helpers";
+
+
 const defaultState = {
-  isLogged: true,
+  isLogged: false,
 };
 
-export default (state = defaultState, action) => {
+export default function users(state = defaultState, action) {
   switch (action.type) {
-    case 'SET_LOGIN_USER':
+    case SET_LOGIN_USER:
       return {
         ...state,
         isLogged: true,
         user: action.user,
         loginPopup: false,
       };
-    case 'SET_AUTO_COMPLETE_REGISTER':
+    case SET_AUTO_COMPLETE_REGISTER:
       return {
         ...state,
         autoCompleteRegister: {
@@ -19,19 +45,19 @@ export default (state = defaultState, action) => {
           lastname: action.lastname,
         },
       };
-   case 'SET_NEED_COMPLETE_INFOS':
+    case SET_NEED_COMPLETE_INFOS:
       return {
         ...state,
         needCompleteInfos: action.needCompleteInfos,
       };
-    case 'SET_LOGOUT_USER':
+    case SET_LOGOUT_USER:
       return defaultState;
-    case 'SHOW_LOGIN_POPUP':
+    case SHOW_LOGIN_POPUP:
       return {
         ...state,
         loginPopup: action.show,
       };
-    case 'SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS':
+    case SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS:
       return {
         ...state,
         login: {
@@ -41,7 +67,7 @@ export default (state = defaultState, action) => {
           errorMessage: undefined,
         },
       };
-    case 'SET_LOGIN_LOADING':
+    case SET_LOGIN_LOADING:
       return {
         ...state,
         login: {
@@ -49,7 +75,7 @@ export default (state = defaultState, action) => {
           loading: action.loading,
         },
       };
-    case 'SET_EMAIL_LOGIN_PROCESS':
+    case SET_EMAIL_LOGIN_PROCESS:
       return {
         ...state,
         login: {
@@ -58,7 +84,7 @@ export default (state = defaultState, action) => {
           isLogin: action.isLogin,
         },
       };
-    case 'SET_ERROR_LOGIN_PROCESS_MESSAGE':
+    case SET_ERROR_LOGIN_PROCESS_MESSAGE:
       return {
         ...state,
         login: {
@@ -66,7 +92,7 @@ export default (state = defaultState, action) => {
           errorMessage: action.errorMessage,
         },
       };
-    case 'SET_IS_CODE_SENT':
+    case SET_IS_CODE_SENT:
       return {
         ...state,
         login: {
@@ -75,7 +101,7 @@ export default (state = defaultState, action) => {
           isForgot: action.isForgot,
         },
       };
-    case 'SET_IS_CHANGE_PASSWORD':
+    case SET_IS_CHANGE_PASSWORD:
       return {
         ...state,
         login: {
@@ -85,14 +111,14 @@ export default (state = defaultState, action) => {
         },
       };
 
-    case 'SET_USER_INFO':
+    case SET_USER_INFO:
       return {
         ...state,
         userInfo: {
           ...action.userInfo,
         },
       };
-    case 'SET_USER_FAVORITES':
+    case SET_USER_FAVORITES:
       return {
         ...state,
         userInfo: {
@@ -100,7 +126,7 @@ export default (state = defaultState, action) => {
           favorites: action.favorites,
         },
       };
-    case 'ADD_USER_FAVORITE':
+    case ADD_USER_FAVORITE:
       return {
         ...state,
         userInfo: {
@@ -111,7 +137,7 @@ export default (state = defaultState, action) => {
           ],
         },
       };
-    case 'REMOVE_USER_FAVORITE':
+    case REMOVE_USER_FAVORITE:
       return {
         ...state,
         userInfo: {
@@ -122,7 +148,7 @@ export default (state = defaultState, action) => {
         },
       };
 
-    case 'SET_USER_NOTIFICATION':
+    case SET_USER_NOTIFICATION:
       return {
         ...state,
         notifications:
@@ -130,25 +156,22 @@ export default (state = defaultState, action) => {
             ? action.notifications.reverse()
             : action.notifications,
       };
-    case 'SET_PENDENCES':
+    case SET_PENDENCES:
       return {
         ...state,
         pendences: action.pendences,
       };
-
-    // SET_USER_REMEMBER_PRODUCTS = "SET_USER_REMEMBER_PRODUCTS"
-
-    case 'SET_USER_REMEMBER_PRODUCTS':
+    case SET_USER_REMEMBER_PRODUCTS:
       return {
         ...state,
         rememberProductKeys: action.rememberProductKeys,
       };
-    case 'ADD_USER_REMEMBER_PRODUCTS':
+    case ADD_USER_REMEMBER_PRODUCTS:
       return {
         ...state,
         rememberProductKeys: [...state.rememberProductKeys, action.key],
       };
-    case 'REMOVE_USER_REMEMBER_PRODUCTS':
+    case REMOVE_USER_REMEMBER_PRODUCTS:
       return {
         ...state,
         rememberProductKeys: state.rememberProductKeys.filter(

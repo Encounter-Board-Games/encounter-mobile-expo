@@ -1,9 +1,8 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { Subtitle1, H3 } from './Typography';
 
-const ToolItem = styled.TouchableOpacity`
+export const ToolItem = styled.TouchableOpacity`
     position: absolute;
     top:0;
     right:0;
@@ -11,11 +10,10 @@ const ToolItem = styled.TouchableOpacity`
     align-items:center;
 `;
 
-
-const Header = styled.View`
+export const Header = styled.View`
     flex-flow: row;
     position: relative;
-`
+`;
 
 export default withTheme((props) => <Header>
 <H3>{props.title}</H3>

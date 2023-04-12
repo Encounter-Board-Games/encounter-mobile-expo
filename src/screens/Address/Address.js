@@ -13,33 +13,28 @@ import { handleCloseCartChoseAddress } from '../../store/actions/shared';
 import { handleSelectAddress } from '../../store/actions/cart';
 import BoxAddress from './component/BoxAddress';
 
-const Container = styled.View`
+export const Container = styled.View`
     flex: 1;
     height:100%;
     padding-top: ${props => props.theme.space.space2};
-`
+`;
 
-const MainContent = styled.View`
-    
-`
+export const MainContent = styled.View`  
+`;
 
-const Content = styled.View`
+export const Content = styled.View`
     padding-left: ${props => props.theme.space.space2};
-    padding-right: ${props => props.theme.space.space2};
-    
-`
+    padding-right: ${props => props.theme.space.space2}; 
+`;
 
-const AddressNumber = styled.View`
+export const AddressNumber = styled.View`
     flex-flow: row
     align-items: flex-end;
     justify-content: flex-end;
-`
+`;
 
-
-
-const ScrollViewAddress = styled.ScrollView`
-    
-`
+export const ScrollViewAddress = styled.ScrollView`
+`;
 
 export default withTheme((props) => {
     const navigation = useNavigation()
@@ -70,12 +65,9 @@ export default withTheme((props) => {
     }
 
     const locationClick = location => {
-
-
         dispatch(handleSetCurrentLocation(undefined, location))
         dispatch(handleSearchLocationByTerm(''))
         navigation.navigate('AddNewAddress')
-
     }
     
     const isLoggedContent = () => (

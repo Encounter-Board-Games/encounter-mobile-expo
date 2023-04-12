@@ -7,13 +7,13 @@ import { H4, H3 } from '../../../components/Typography';
 import { closePopupModal } from '../../../store/actions/info';
 import { Keyboard, View } from 'react-native';
 
-const Container = styled.View`
+export const Container = styled.View`
     align-items: center;
     justify-content: center;
     width: 100%;
 `;
 
- const TextInput = styled.TextInput`
+export const TextInput = styled.TextInput`
      height: 40px;
      width: 100%;
      border: 1.5px solid ${props => props.theme.colors.primaryColor}
@@ -24,17 +24,17 @@ const Container = styled.View`
      font-size: ${props => props.theme.space.space2};
  `;
 
-const Line = styled.View`
+ export const Line = styled.View`
     flex-flow: row;
     align-items: flex-start;
     justify-content: center;
 `;
 
-const Btn = styled.View`
+export const Btn = styled.View`
     flex:  1 1 0px
 `;
 
-const Option_ = styled.TouchableOpacity`
+export const Option_ = styled.TouchableOpacity`
     margin-top: ${props => props.theme.space.space1};
     align-items: center;
     justify-content: center;

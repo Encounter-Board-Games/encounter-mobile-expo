@@ -10,41 +10,39 @@ import { View, Dimensions } from 'react-native'
 import Numberpad from '../../../components/Numberpad';
 
 
-const {
+export const {
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
 } = Dimensions.get('window');
 
 
-const Container = styled.View`
-
+export const Container = styled.View`
 padding-top: ${props => props.theme.space.space2};
 padding-bottom: 0px;
 width: 100%;
 align-items: center;
 `;
 
-const Content = styled.View`
-
+export const Content = styled.View`
 padding: ${props => props.theme.space.space3};
 padding-bottom: 0px;
 width: 100%;
 align-items: center;
 `;
 
-const Line = styled.View`
+export const Line = styled.View`
     flex-flow:row;
     width: 100%
 `;
 
-const CodeNumberLine = styled.View`
+export const CodeNumberLine = styled.View`
     flex-flow:row;
     width: 100%
     align-items:center;
     justify-content: center;
 `;
 
-const CodeNumber = styled.View`
+export const CodeNumber = styled.View`
     background: ${props => props.theme.colors.primaryLightColor}
     border: 1.5px ${props => props.theme.colors.primaryColor}
     border-radius: ${props => props.theme.borderRadius.button}
@@ -55,13 +53,13 @@ const CodeNumber = styled.View`
     opacity: ${props => props.disabled ? '.5' : '1'}   
 `;
 
-const BackButton = styled.TouchableOpacity`
+export const BackButton = styled.TouchableOpacity`
     width: 40px;;
     align-items:flex-start;
     justify-content:flex-end;
 `;
 
-const SafeSpace = styled.View`
+export const SafeSpace = styled.View`
     width: 1px;
 `;
 

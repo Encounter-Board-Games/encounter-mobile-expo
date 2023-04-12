@@ -29,7 +29,7 @@ const LoadView = styled.View`
 `;
 
 
-const App = () => {
+function App () {
   const dispatch = useDispatch();
   const { update = undefined } = useSelector((state) => state.app);
   const [already, setAlready] = useState(false);

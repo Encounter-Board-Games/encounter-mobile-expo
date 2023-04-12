@@ -2,12 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { H3 } from "../../../components/Typography";
 import styled, { withTheme } from "styled-components";
 import { Modalize } from "react-native-modalize";
-import { Text, TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { translation } from "../../../texts";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Container = styled.View`
+export const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};
   padding-top: 0;
   background: ${(props) => props.theme.colors.lightColor};
@@ -62,11 +61,8 @@ export default withTheme(({ theme }) => {
         </Header>
       )}
       ref={modalRef}
-      //adjustToContentHeight={true}
     >
-      <SafeAreaView>
-        Pedro
-      </SafeAreaView>
+      <SafeAreaView />
     </Modalize>
   );
 });

@@ -1,17 +1,16 @@
 import React from "react";
-import { TouchableOpacity } from 'react-native';
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { currencyFormat } from "../../../utils/helpers";
 import { translation } from "../../../texts";
 import { handleOpenCart } from "../../../store/actions/cart";
 
-const PriceContent = styled.View`
+export const PriceContent = styled.View`
   flex: 1;
   flex-flow: row;
 `;
 
-const Container = styled.View`
+export const Container = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -20,29 +19,31 @@ const Container = styled.View`
   background: ${(props) => props.theme.colors.primaryDarkColor};
   flex-flow: row;
 `;
-const Price = styled.Text`
+
+export const Price = styled.Text`
   font-family: Nunito-Bold;
   font-size: ${(props) => props.theme.sizes.h3};
   color: ${(props) => props.theme.colors.lightColor};
 `;
-const PriceItem = styled.Text`
+
+export const PriceItem = styled.Text`
   font-family: Nunito;
   font-size: ${(props) => props.theme.sizes.h3};
   color: ${(props) => props.theme.colors.lightColor};
 `;
 
-const Button = styled.TouchableOpacity`
+export const Button = styled.TouchableOpacity`
   background: ${(props) => props.theme.colors.lightColor};
   padding-left: ${(props) => props.theme.space.space3};
   padding-right: ${(props) => props.theme.space.space3};
   margin-top: ${(props) => props.theme.space.space1};
   margin-bottom: ${(props) => props.theme.space.space1};
-
   justify-content: center;
   align-items: center;
   border-radius: ${(props) => props.theme.borderRadius.button};
 `;
-const ButtonText = styled.Text`
+
+export const ButtonText = styled.Text`
   font-family: Nunito;
   font-size: ${(props) => props.theme.sizes.h3};
   color: ${(props) => props.theme.colors.darkColor};

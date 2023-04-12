@@ -7,12 +7,12 @@ import PropTypes from 'prop-types';
 import { H3, Subtitle1 } from './Typography';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-const SafeSpace = styled.View`
+export const SafeSpace = styled.View`
 
   width: 100%;
 `;
 
-const Container = styled.View`
+export const Container = styled.View`
   background-color: ${props => props.theme.colors.lightColor};
   flex: 1;
   height: 100%;
@@ -21,7 +21,7 @@ const Container = styled.View`
     Platform.OS === 'ios' ? props.theme.space.space4 : 0};
 `;
 
-const Header = styled.View`
+export const Header = styled.View`
   background-color: ${props => props.theme.colors.lightColor};
   margin-top: ${props => (props.noPadding ? 0 : props.theme.space.space2)};
   margin-left: ${props => props.theme.space.space2};
@@ -35,7 +35,7 @@ const Header = styled.View`
   border-bottom-width: 1px;
 `;
 
-const CloseButton = styled.TouchableOpacity`
+export const CloseButton = styled.TouchableOpacity`
   position: absolute;
   top: 0;
   left: -8px;
@@ -46,7 +46,7 @@ const CloseButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const ToolItem = styled.TouchableOpacity`
+export const ToolItem = styled.TouchableOpacity`
   position: absolute;
   top: 0;
   right: 0;
@@ -56,7 +56,7 @@ const ToolItem = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const ScreenPopUp = props => {
+function ScreenPopUp(props) {
   const navigate = useNavigation();
 
   const goBack = () => {

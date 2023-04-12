@@ -13,7 +13,7 @@ import CameraScreen from "./components/CameraScreen";
 import { useNavigation } from "@react-navigation/native";
 import { handleUploadSelfDocument } from "../../store/actions/user";
 
-const MainContainer = styled.View`
+export const MainContainer = styled.View`
   flex: 1;
   width: 100%;
   height: 100%;
@@ -27,19 +27,19 @@ const MainContainer = styled.View`
   background: ${(props) => props.theme.colors.lightColor};
 `;
 
-const Line = styled.View`
+export const Line = styled.View`
   width: 100%;
   flex-flow: row;
   align-items: center;
 `;
 
-const Icon = styled.View`
+export const Icon = styled.View`
     min-height: 20px;
     width: ${(props) => props.theme.space.space2};
     margin-right: ${(props) => props.theme.space.space1};
 `;
 
-const ImageContent = styled.View`
+export const ImageContent = styled.View`
   flex: 1;
   min-height: 88px;
   width: 100%;
@@ -47,20 +47,20 @@ const ImageContent = styled.View`
   justify-content: center;
 `;
 
-const Content = styled.View`
+export const Content = styled.View`
   flex: 1;
 `;
 
-const Footer = styled.View`
+export const Footer = styled.View`
   padding-bottom: ${(props) => props.theme.space.space2};
 `;
 
-const ButtonsRow = styled.View`
+export const ButtonsRow = styled.View`
   flex-flow: row;
   justify-content: flex-end;
 `;
 
-const ScreenOne = (props) => {
+function ScreenOne(props) {
   const navigation = useNavigation();
 
   return (
@@ -142,7 +142,7 @@ const ScreenOne = (props) => {
   );
 };
 
-const ScreenTwo = (props) => {
+function ScreenTwo(props) {
   const navigation = useNavigation();
 
   return (
@@ -200,7 +200,8 @@ const ScreenTwo = (props) => {
     </MainContainer>
   );
 };
-export default () => {
+
+export default function SelfUpload() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [camera, setOpenCamera] = useState();
@@ -209,14 +210,12 @@ export default () => {
 
   const openCamera = async () => {
     const { status } = await Camera.useCameraPermissions();
-
     if (status === "granted") setOpenCamera(true);
   };
 
   const addPhoto = (photo) => {
     setLoading(true);
     setOpenCamera(false);
-
     dispatch(handleUploadSelfDocument(photo)).then((_) => {
       setOk(true);
     });

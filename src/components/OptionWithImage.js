@@ -1,10 +1,9 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { H4, H3 } from './Typography';
 import { Image } from 'react-native';
 
-const OptionWithImage = styled.TouchableOpacity`
+export const OptionWithImageTouch = styled.TouchableOpacity`
     padding: ${props => props.theme.space.space2};
     padding-top: ${props => props.theme.space.space2};
     padding-bottom: ${props => props.theme.space.space2};
@@ -14,29 +13,29 @@ const OptionWithImage = styled.TouchableOpacity`
     margin-bottom: ${props => props.theme.space.space2};
     background-color: ${props => props.isActive ? props.theme.colors.primaryLightColor : 'transparent'};
     height: 120px;
-`
+`;
 
-const Content = styled.View`
+export const Content = styled.View`
     flex: 1;
     height: 100%;
     justify-content: center;
     flex-wrap: wrap;
-`
+`;
 
-const Line = styled.View`
+export const Line = styled.View`
     flex-flow: row;
     align-items: flex-start;
-`
+`;
 
-const ImageContent = styled.View`
+export const ImageContent = styled.View`
     align-items: flex-start;
     justify-content: flex-end;
     height: 100%;
     padding-right: ${props => props.theme.space.space2};
     width: 50%;
-`
+`;
 
-export default ({isActive, text, image, onPress}) => {
+export default function OptionWithImage({isActive, text, image, onPress}) {
     return (
         <OptionWithImage isActive={isActive} onPress={onPress}>
             <Line>
@@ -58,5 +57,5 @@ export default ({isActive, text, image, onPress}) => {
                 </Content>
             </Line>
         </OptionWithImage>
-    )
-}
+    );
+};

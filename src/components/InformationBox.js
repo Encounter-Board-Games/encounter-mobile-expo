@@ -6,14 +6,14 @@ import { Image } from 'react-native'
 import { Box } from './Box'
 import { Space } from './Space'
 
-const ImageContent = styled.View`
+export const ImageContent = styled.View`
 flex: 1;
 min-height: 88px;
 width: 100%;
 align-items: center;
-`
+`;
 
-export default withTheme((props) => {
+function InformationBox(props) {
   const imgContent = props.img ? (
     <>
       <ImageContent>
@@ -62,4 +62,6 @@ export default withTheme((props) => {
       <Space n={1} />
     </Box>
   );
-})
+};
+
+export default withTheme(InformationBox);

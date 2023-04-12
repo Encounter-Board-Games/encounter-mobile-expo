@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FlatList } from "react-native";
 import ProductItem from "./ProductItem";
 
-export default (props) => {
+export default function ProductShelf(props) {
   const [productsShow, setProductsShow] = useState([]);
 
   const onViewRef = React.useRef(({ viewableItems }) => {

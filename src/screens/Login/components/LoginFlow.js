@@ -6,12 +6,12 @@ import PasswordScreen from './PasswordScreen'
 import CodeSentScreen from './CodeSentScreen'
 
 
-const Container = styled.View`
+export const Container = styled.View`
     padding: ${props => props.theme.space.space3};
     width: 100%;
 `;
 
-export default () => {
+export default function LoginFlow () {
     const [minHeight, setHeight] = useState(undefined)
     const { login = {} } = useSelector(state => state.user)
 

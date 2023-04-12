@@ -1,11 +1,6 @@
 import styled from 'styled-components';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
-import Constants from 'expo-constants';
-import { Platform } from 'react-native';
-import PropTypes from 'prop-types';
 
 export const Space = styled.View`
-
   width: 1px;
 `;
 
@@ -18,7 +13,3 @@ export const Bottom = styled.View`
   width: 100%;
   
 `;
-/*
-Bottom.propTypes = {
-  theme: PropTypes.object.isRequired,
-};*/

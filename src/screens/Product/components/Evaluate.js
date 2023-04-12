@@ -8,25 +8,25 @@ import { closePopupModal } from "../../../store/actions/info";
 import { H3, Subtitle2 } from "../../../components/Typography";
 import { handleEvaluationProduct } from "../../../store/actions/product";
 
-const Container = styled.View`
+export const Container = styled.View`
   align-items: center;
   justify-content: center;
   width: 100%;
 `;
 
-const Dices = styled.View`
+export const Dices = styled.View`
   flex-flow: row;
   align-items: center;
   justify-content: center;
 `;
 
-const Line = styled.View`
+export const Line = styled.View`
   flex-flow: row;
   align-items: flex-start;
   justify-content: center;
 `;
 
-export default () => {
+export default function Evaluate() {
   const dispatch = useDispatch();
   const { evaluationsProducts = [], products = {} } = useSelector(
     (state) => state.products

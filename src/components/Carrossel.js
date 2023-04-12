@@ -11,7 +11,7 @@ import {
   StepperHeaderBack,
 } from './CarrosselStyles';
 
-const Carrossel = ({
+function Carrossel ({
   children,
   current: initialCurrent = 0,
   enablePages,
@@ -24,7 +24,7 @@ const Carrossel = ({
   paddingRight,
   padding = 0,
   theme,
-}) => {
+}) {
   const [current, setCurrent] = useState(initialCurrent);
   const forceToRef = useRef(undefined);
   const myScrollRef = useRef(null);

@@ -6,12 +6,11 @@ import { useNavigation } from '@react-navigation/native';
 import { H3, Subtitle1 } from './Typography';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-const SafeSpace = styled.View`
-
+export const SafeSpace = styled.View`
   width: 100%;
 `;
 
-const Container = styled.View`
+export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.lightColor};
   flex: 1;
   height: 100%;
@@ -20,7 +19,7 @@ const Container = styled.View`
   padding-bottom: ${getBottomSpace()}px;
 `;
 
-const Header = styled.View`
+export const Header = styled.View`
   background-color: ${({ theme }) => theme.colors.lightColor};
   margin-top: ${({ noPadding, theme }) => noPadding ? 0 : theme.space.space2};
   margin-left: ${({ theme }) => theme.space.space2};
@@ -33,7 +32,7 @@ const Header = styled.View`
   border-bottom-width: 1px;
 `;
 
-const CloseButton = styled.TouchableOpacity`
+export const CloseButton = styled.TouchableOpacity`
   position: absolute;
   top: 0;
   left: -8px;
@@ -44,7 +43,7 @@ const CloseButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const ToolItem = styled.TouchableOpacity`
+export const ToolItem = styled.TouchableOpacity`
   position: absolute;
   top: 0;
   right: 0;
@@ -54,9 +53,8 @@ const ToolItem = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const ScreenPopUp = ({ theme, hideHeader, title, tooltext, onToolPress, noScroll, footer, children }) => {
+export default function ScreenPopUp ({ theme, hideHeader, title, tooltext, onToolPress, noScroll, footer, children }) {
   const navigation = useNavigation();
-
   const goBack = () => {
     navigation.goBack();
     return onBack === onBack();

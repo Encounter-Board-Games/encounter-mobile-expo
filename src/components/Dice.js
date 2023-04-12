@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity`
   width: ${(props) => props.size * 16}px;
   h
   border-radius: ${(props) => props.size * 2}px;
@@ -12,7 +12,7 @@ const Container = styled.TouchableOpacity`
     props.isSelected ? props.theme.colors.warming : "transparent"};
 `;
 
-const Pointer = styled.View`
+export const Pointer = styled.View`
   position: absolute;
   
   width: ${(props) => props.size * 4}px;
@@ -27,35 +27,38 @@ const Pointer = styled.View`
       : props.theme.colors.warming};
 `;
 
-const topLeft = (size) => ({ top: `${size * 2}px`, left: `${size * 2}px` });
-const topRight = (size) => ({ top: `${size * 2}px`, right: `${size * 2}px` });
-const bottomLeft = (size) => ({
+export const topLeft = (size) => ({ top: `${size * 2}px`, left: `${size * 2}px` });
+export const topRight = (size) => ({ top: `${size * 2}px`, right: `${size * 2}px` });
+export const bottomLeft = (size) => ({
   bottom: `${size * 2}px`,
   left: `${size * 2}px`,
 });
-const bottomRight = (size) => ({
+export const bottomRight = (size) => ({
   bottom: `${size * 2}px`,
   right: `${size * 2}px`,
 });
-const middle = (size) => ({
+export const middle = (size) => ({
   top: `${size * 6 - 0.5}px`,
   left: `${size * 6 - 0.5}px`,
 });
 
-const dices = [
+export const dices = [
   [middle],
   [topLeft, bottomRight],
   [topLeft, middle, bottomRight],
   [topLeft, topRight, bottomLeft, bottomRight],
   [topLeft, topRight, bottomLeft, bottomRight, middle],
 ];
-export default (props) => (
-  <Container
-    {...props}
-    onPress={() => props.onPress && props.onPress(props.number)}
-  >
-    {dices[props.number - 1].map((n, index) => (
-      <Pointer key={index} {...props} {...n(props.size)} />
-    ))}
-  </Container>
-);
+export default function Dice(props) {
+  
+  return (
+    <Container
+      {...props}
+      onPress={() => props.onPress && props.onPress(props.number)}
+    >
+      {dices[props.number - 1].map((n, index) => (
+        <Pointer key={index} {...props} {...n(props.size)} />
+      ))}
+    </Container>
+  );
+};

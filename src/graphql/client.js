@@ -14,7 +14,6 @@ const authLink = setContext(async (_, { headers }) => {
  
   const token = await storage.getItem("USER_TOKEN");
 
-
   return {
     headers: {
       ...headers,

@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { EvilIcons } from '@expo/vector-icons';
 import {
@@ -12,7 +11,7 @@ import { Space, SpaceHorizontal } from './Space';
 import { H4, Subtitle2 } from './Typography';
 import Icons from './Icons';
 
-const Container = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity`
   flex-flow: row;
   align-items: center;
   padding-top: ${({ theme }) => theme.space.space2};
@@ -22,21 +21,21 @@ const Container = styled.TouchableOpacity`
   border-bottom-width: 1.5px;
 `;
 
-const Info = styled.View`
+export const Info = styled.View`
   flex: 1;
 `;
 
-const InfoIcon = styled.View`
+export const InfoIcon = styled.View`
   min-width: 40px;
   margin-right: ${({ theme }) => theme.space.space2};
   padding-left: ${({ theme }) => theme.space.space0};
 `;
 
-const PlaceholderContainer = styled(Placeholder)`
+export const PlaceholderContainer = styled(Placeholder)`
   padding: ${({ theme }) => theme.space.space2};
 `;
 
-const ListItem = withTheme((props) => {
+function ListItem(props) {
   let content;
   if (props.isLoading) {
     content = (
@@ -101,6 +100,6 @@ const ListItem = withTheme((props) => {
       {content}
     </Container>
   );
-});
+};
 
-export default ListItem;
+export default withTheme(ListItem);

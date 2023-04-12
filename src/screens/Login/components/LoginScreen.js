@@ -8,26 +8,25 @@ import styled from 'styled-components'
 import { Space } from '../../../components/Space'
 import { handleEmailAlreadyExists, loginFB, loginGoogle, loginApple } from '../../../store/actions/user'
 import { useDispatch, useSelector } from 'react-redux'
-import { getBottomSpace } from 'react-native-iphone-x-helper'
 import { View, Platform } from 'react-native'
 import config from '../../../config';
 
 
-const Container = styled.KeyboardAvoidingView`
+export const Container = styled.KeyboardAvoidingView`
 padding: ${props => props.theme.space.space3};
 padding-top: ${props => props.theme.space.space4};
 width: 100%;
 `;
 
-const FlexContent = styled.View`
+export const FlexContent = styled.View`
     flex: 1;
 `;
 
-const SafeSpace = styled.View`
+export const SafeSpace = styled.View`
     width: 1px;
 `;
 
-export default (props) => {
+export default function LoginScreen(props) {
     const { login = {} } = useSelector(state => state.user);
     const [email, setEmail] = useState(login.email || '');
     const [isValidEmail, setIsValidEmail] = useState(login.email || '');

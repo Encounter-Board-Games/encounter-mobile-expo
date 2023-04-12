@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled, { withTheme } from "styled-components";
-import { H1 } from "../../components/Typography";
 import Welcome from "./components/Welcome";
 import FilterCustom from "../../components/FilterCustom";
 import { useDispatch, useSelector } from "react-redux";
-import { handleLoadFilters } from "../../store/actions/filters";
 import Carrossel from "../../components/Carrossel";
 import FisrtQuestion from "./components/FisrtQuestion";
 import {
@@ -16,14 +14,14 @@ import Finish from "./components/Finish";
 import HowKnowUs from "./components/HowKnowUs";
 import config from "../../config";
 
-const Container = styled.View`
+export const Container = styled.View`
   flex: 1;
   background: ${(props) => props.theme.colors.lightColor};
   padding-top: ${(props) =>
     Platform.OS === "ios" ? props.theme.space.space4 : 0};
 `;
 
-export default withTheme((props) => {
+function Onboarding(props) {
   const dispatch = useDispatch();
   const onboarding = useSelector((state) => state.onboarding);
 
@@ -110,4 +108,6 @@ export default withTheme((props) => {
       </Carrossel>
     </Container>
   );
-});
+};
+
+export default withTheme(Onboarding);

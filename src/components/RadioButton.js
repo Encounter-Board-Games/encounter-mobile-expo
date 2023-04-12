@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import Circle from './Circle';
 
@@ -22,9 +21,11 @@ export const Text = styled.Text`
     color: ${props => props.isSelected ? props.theme.colors.primaryDarkColor : props.theme.colors.darkColor};
 `;
 
-export const RadioButton = (props) => (
-    <Radio {...props} onPress={() => props.onPress && props.onPress()}>
-        <Circle  {...props} />
-        <Text {...props}>{props.children}</Text>
-    </Radio>
-)
+export default function RadioButton(props) {
+    return (
+        <Radio {...props} onPress={() => props.onPress && props.onPress()}>
+            <Circle  {...props} />
+            <Text {...props}>{props.children}</Text>
+        </Radio>
+    );
+};

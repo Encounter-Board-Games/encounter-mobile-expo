@@ -5,12 +5,11 @@ import { H1, H4, H3 } from "../../components/Typography";
 import { Image, Linking } from "react-native";
 import { Button } from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { API_URI } from "../../graphql/client";
 import { Platform } from "react-native";
 import Constants from "expo-constants";
 import { handleCancelUpdate } from "../../store/actions/app";
 
-const MainContainer = styled.View`
+export const MainContainer = styled.View`
 flex: 1;
 width: 100%;
 padding-left: ${(props) => props.theme.space.space3}
@@ -21,31 +20,31 @@ padding-top: ${(props) =>
     : props.theme.space.space2};
 `;
 
-const TextLine = styled.View`
+export const TextLine = styled.View`
   width: 100%;
   flex-flow: row;
   margin-bottom: ${(props) => props.theme.space.space2};
 `;
 
-const TextItemList = styled.View`
+export const TextItemList = styled.View`
   width: 20px;
   align-items: flex-start;
   justify-content: center;
 `;
 
-const TextItemListIcon = styled.View`
+export const TextItemListIcon = styled.View`
   width: 12px;
   height: 12px;
   border-radius: 12px;
   backgroundcolor: ${(props) => props.theme.colors.primaryDarkColor};
 `;
 
-const TextContent = styled.Text`
+export const TextContent = styled.Text`
   flex: 1;
   flex-flow-: row;
 `;
 
-const ImageContent = styled.View`
+export const ImageContent = styled.View`
   flex: 1;
   min-height: 88px;
   width: 100%;
@@ -53,17 +52,17 @@ const ImageContent = styled.View`
   justify-content: center;
 `;
 
-const PaddingTop = styled.View`
+export const PaddingTop = styled.View`
   width: 100%;
 `;
 
-const Content = styled.View`
+export const Content = styled.View`
   flex: 1;
 `;
 
-const Footer = styled.View``;
+export const Footer = styled.View``;
 
-const ButtonsRow = styled.View`
+export const ButtonsRow = styled.View`
   flex-flow: row;
   justify-content: flex-end;
 `;

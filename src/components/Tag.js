@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { EvilIcons } from '@expo/vector-icons';
 
@@ -14,7 +13,7 @@ export const Radio = styled.View`
   background-color: ${props => props.theme.colors.primaryLightColor};
 `;
 
-const CloseButtonArea = styled.TouchableOpacity`
+export const CloseButtonArea = styled.TouchableOpacity`
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -22,7 +21,7 @@ const CloseButtonArea = styled.TouchableOpacity`
   width: 30px;
 `;
 
-const CloseButton = styled.View`
+export const CloseButton = styled.View`
   background-color: ${props => props.theme.colors.secondLightColor};
   height: 16px;
   width: 16px;

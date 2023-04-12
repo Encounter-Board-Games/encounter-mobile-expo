@@ -1,4 +1,5 @@
 import * as React from "react";
+import { connect } from 'react-redux';
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -34,14 +35,14 @@ import { registerRedirectComponent } from "../store/actions/shared";
 import { translation } from "../texts";
 import QuickSearchs from "../screens/QuickSearchs/QuickSearchs";
 
-const SafeAreaView = styled.SafeAreaView`
+export const SafeAreaView = styled.SafeAreaView`
   flex: 1;
   background-color: white;
 `;
 
-const HomeStack = createBottomTabNavigator();
+export const HomeStack = createBottomTabNavigator();
 
-function HomeStackScreen() {
+export function HomeStackScreen() {
   const user = useSelector((state) => state.user);
 
   const quickSearchs = useSelector((state) => state.quickSearchs);
@@ -120,8 +121,9 @@ function HomeStackScreen() {
 const Tab = createBottomTabNavigator();
 const SettingsStack = createStackNavigator();
 const T = createStackNavigator();
+const action = useSelector((state) => state.action);
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <SettingsStack.Navigator
@@ -148,3 +150,11 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+function mapStateToProps(){
+  return {
+    needCompleteInfos: action.needCompleteInfos
+  }
+}
+
+export default connect(mapStateToProps)(App)

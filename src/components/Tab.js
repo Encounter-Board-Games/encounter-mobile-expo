@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { H3 } from './Typography';
 
-const Container = styled.View`
+export const Container = styled.View`
   flex: 1;
 `;
 
-const Tab = styled.View`
+export const Tab = styled.View`
   width: 100%;
   flex-flow: row;
 `;
 
-const TabItem = styled.TouchableOpacity`
+export const TabItem = styled.TouchableOpacity`
   flex: 1;
   border-color: ${(props) =>
     props.isActive

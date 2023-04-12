@@ -4,7 +4,7 @@ import styled, { withTheme } from "styled-components";
 import Circle from "../../../components/Circle";
 import { EvilIcons } from "@expo/vector-icons";
 import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Image, View, TouchableOpacity } from "react-native";
+import { Image, View } from "react-native";
 import { H3, Subtitle2 } from "../../../components/Typography";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";

@@ -60,9 +60,7 @@ const FilterItem = withTheme(({ type, image, selects, theme, full }) => {
                     <Image resizeMode={"contain"} style={{ height: '100%', width: "100%", maxWidth: '100%' }} source={{ uri: image }} />
                 </ImageContent>
             </ImageContent2>
-
         }
-
     </View>)
 })
 

@@ -13,26 +13,25 @@ import { FlatList } from "react-native-gesture-handler";
 import { View } from "react-native-animatable";
 import { translation } from "../../../texts";
 
-const Content = styled.View`
+export const Content = styled.View`
   flex: 1;
 `;
 
-const ContentLine = styled.View`
+export const ContentLine = styled.View`
   flex-flow: row;
   flex: 1;
 `;
 
-const Space = styled.View`
+export const Space = styled.View`
     width: ${(props) => props.theme.space.space2}
     height: 1px;
 `;
 
-const Space2 = styled.View`
-
+export const Space2 = styled.View`
     width: 1px;
 `;
 
-export default (props) => {
+export default function FilterResult(props) {
   const filters = useSelector((state) => state.filters);
   const dispatch = useDispatch();
   const { results = [], isLoading = false } = filters;

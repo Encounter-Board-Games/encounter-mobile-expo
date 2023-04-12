@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { Space, Bottom } from '../../../components/Space';
 import { H1, H4, H3 } from '../../../components/Typography';
@@ -7,71 +6,68 @@ import { Button } from '../../../components/Button';
 import { useDispatch } from 'react-redux';
 import { API_URI } from '../../../graphql/client';
 import OptionWithImage from '../../../components/OptionWithImage';
-import { Platform } from 'react-native';
-import Constants from 'expo-constants';
 import { handleRespondQuestion } from '../../../store/actions/user';
 
 
-const Container = styled.View`
+export const Container = styled.View`
     flex: 1;
     width: 100%;
     position:relative;
     padding-left: ${props => props.theme.space.space3}
     padding-right: ${props => props.theme.space.space3}
-`
+`;
 
-const Content = styled.ScrollView`
+export const Content = styled.ScrollView`
 flex-grow: 1;
+`;
 
-`
-
-const PaddingTop = styled.View`
+export const PaddingTop = styled.View`
 width: 100%;
 `;
 
-const ImageContent = styled.View`
+export const ImageContent = styled.View`
 flex: 1;
 align-items: center;
 justify-content: center;
 `;
 
-const Itens = styled.ScrollView`
+export const Itens = styled.ScrollView`
     flex-grow: 1;
 `;
 
-const ButtonSpace = styled.View`
+export const ButtonSpace = styled.View`
   height: ${props => props.theme.sizes.btnBig}
 `;
 
-const ButtonWrap = styled.View`
+export const ButtonWrap = styled.View`
   background-color: ${props => props.theme.colors.lightColor};
   border-radius: ${props => props.theme.borderRadius.button};
 `;
 
-const Footer = styled.View`
+export const Footer = styled.View`
     width: 100%;
     position:absolute;
     bottom:0;
     left: ${props => props.theme.space.space3};
 `;
 
-const Tags = styled.View`
+export const Tags = styled.View`
     flex-flow: row;
     flex-wrap: wrap;
 `;
 
-const KnowInfo = styled.TouchableOpacity`
+export const KnowInfo = styled.TouchableOpacity`
     flex-flow: row;
     width: 100%;
     justify-content: center;
     align-items: center;
 `;
 
-const Line = styled.View`
+export const Line = styled.View`
     flex-flow: row
 `;
 
-export default withTheme((props) => {
+function HowKnowUs(props) {
   
   const [select, setSelect] = useState()
   const dispatch = useDispatch();
@@ -136,6 +132,6 @@ export default withTheme((props) => {
           </Footer>
           
       </Container>)
-}
+};
 
-)
+export default withTheme(HowKnowUs);

@@ -7,18 +7,19 @@ import { Button } from "../../../components/Button";
 import { SpaceHorizontal } from "../../../components/Space";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Screen = styled.View`
+export const Screen = styled.View`
     flex: 1;
     justify-content: flex-end
     align-items: flex-end
     padding: ${(props) => props.theme.space.space2}
 `;
-const Line = styled.View`
+
+export const Line = styled.View`
   width: 100%;
   flex-flow: row;
 `;
 
-export default (props) => {
+export default function CameraScreen(props) {
   const [type, setType] = useState(Camera.Constants.Type.front);
   const [camera, setCamera] = useState();
   const [photo, setPhoto] = useState();

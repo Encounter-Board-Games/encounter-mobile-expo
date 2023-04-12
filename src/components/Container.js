@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { H2, Subtitle2 } from './Typography';
 
@@ -9,14 +8,12 @@ import {
     Fade
 } from "rn-placeholder";
 
-const Box = styled.View`
+export const Box = styled.View`
     background-color: white;
     margin-bottom: ${props => props.theme.space.space2};
     width: 100%;
     padding-top:  ${props => props.theme.space.space2};
     padding-bottom:  ${props => props.theme.space.space2};
-
-
     shadow-color: ${props => props.theme.shadow.shadowColor};
     shadow-offset: ${props => props.theme.shadow.shadowOffset.width} ${props => props.theme.shadow.shadowOffset.width};
     shadow-opacity: ${props => props.theme.shadow.shadowOpacity};
@@ -24,19 +21,20 @@ const Box = styled.View`
     elevation: ${props => props.theme.shadow.elevation};
 `;
 
-const Header = styled.View`
+export const Header = styled.View`
     padding-left: ${props => props.theme.space.space2};
     padding-right: ${props => props.theme.space.space2};
     margin-bottom: ${props => props.theme.space.space2};
     position: relative;
-`
+`;
 
-const ToolText = styled.TouchableOpacity`
+export const ToolText = styled.TouchableOpacity`
     position: absolute;
     right: ${props => props.theme.space.space2};
     top:0;
-`
-export default withTheme((props) => {
+`;
+
+function Container(props) {
     const subtitle = props.subtitle ? <Subtitle2>{props.subtitle}</Subtitle2> : null;
     const toolText = props.toolText ? (
       <ToolText onPress={() => props?.onToolTextPress()}>
@@ -60,5 +58,7 @@ export default withTheme((props) => {
         {props.children}
       </Box>
     );
-  });
+  };
+
+  export default withTheme(Container);
   
