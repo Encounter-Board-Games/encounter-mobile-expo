@@ -1,102 +1,45 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Subtitle2, Subtitle3 } from "../../components/Typography";
-import { Space, Bottom } from "../../components/Space";
-import Input from "../../components/Input";
-import { Button } from "../../components/Button";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
-  Linking} from "react-native";
+  Linking,
+} from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { handleEditUserInfo } from "../../store/actions/user";
 import { RadioButton } from "../../components/RadioButton";
 import { View } from "react-native-animatable";
+import {
+  Content,
+  ContainerInputs,
+  CustomInput,
+  InputDate,
+  Line,
+  LineRow,
+  CheckLine,
+  Check,
+  CustomInputText,
+  TermsAndConditions,
+  LineButtons,
+} from "./EditProfileContentStyles";
+import {
+  Subtitle2,
+  Subtitle3,
+} from "../../components/Typography";
+import { Space, Bottom } from "../../components/Space";
+import Input from "../../components/Input";
+import { Button } from "../../components/Button";
 
-const Content = styled.ScrollView`
-  flex: 1;
-  padding: ${(props) => props.theme.space.space2};
-`;
+export default function EditProfileContent ({ navigation }) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const autoCompleteRegister =
+    useSelector((state) => state.user && state.user.autoCompleteRegister) || {};
+  const terms = useSelector((state) => state.app.terms);
+  const hasTerms = user.hasTerms;
 
-const ContainerInputs = styled.View`
-  flex: 1;
-`;
-
-const Opacity = styled.View`
-  opacity: 0.5;
-`;
-
-const CustomInput = styled.TextInput`
-    border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
-    background: ${(props) => props.theme.colors.primaryLightColor};
-    padding-left: ${(props) => props.theme.space.space2};
-    border-radius: ${(props) => props.theme.borderRadius.button};
-    height: 48px;
-    width: 50%;
-    justify-content: center;
-`;
-
-const InputDate = styled.TouchableOpacity`
-    border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
-    background: ${(props) => props.theme.colors.primaryLightColor};
-    padding-left: ${(props) => props.theme.space.space2};
-    border-radius: ${(props) => props.theme.borderRadius.button};
-    height: 48px;
-    width: 50%;
-    justify-content: center;
-`;
-
-const Line = styled.View`
-  flex-flow: row;
-  flex-wrap: wrap;
-`;
-
-const LineRow = styled.View`
-    flex-flow: row;
-    flex-wrap: wrap;
-    flex: 1;
-`;
-
-const CheckLine = styled.TouchableOpacity`
-  flex-flow: row;
-  height: 100%;
-`;
-
-const Check = styled.View`
-    width: ${(props) => props.theme.space.space2};
-    
-    margin-right: ${(props) => props.theme.space.space1};
-    border: 1px ${(props) => props.theme.colors.primaryDarkColor};
-    borderRadius: 2px;
-    margin-top: ${(props) => props.theme.space.space0};
-    background: ${(props) =>
-      props.selected ? props.theme.colors.primaryDarkColor : "transparent"};
-`;
-
-const CustomInputText = styled.Text`
-    font-size: ${(props) => props.theme.sizes.h3};
-    opacity: ${(props) => (props.disabled ? ".5" : "1")};
-    color: ${(props) =>
-      props.hasValue
-        ? props.theme.colors.darkColor
-        : props.theme.colors.secondColor};
-`;
-
-const TermsAndConditions = styled.TouchableOpacity`
-  flex-flow: row;
-`;
-
-const LineButtons = styled.View`
-  flex-flow: row;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-top: ${(props) => props.theme.space.space3};
-`;
-
-class EditProfileContent extends Component {
-  state = {
+  const [state, setState] = useState({
     name: "",
     lastname: "",
     aka: "",
@@ -106,12 +49,12 @@ class EditProfileContent extends Component {
     birthday: null,
     showDate: false,
     terms: false,
-  };
+  });
 
-  componentDidMount() {
-    const { name: autocompleteName, lastname: autocompleteLastname } =
-      this.props.autoCompleteRegister || {};
-    if (this.props.user && this.props.user.userInfo) {
+  const initialState = useRef();
+
+  useEffect(() => {
+    if (user && user.userInfo) {
       const {
         name,
         lastname,
@@ -120,38 +63,32 @@ class EditProfileContent extends Component {
         birthdayFormatted: birthday,
         gender,
         document,
-      } = this.props.user.userInfo;
+      } = user.userInfo;
 
-      this.setState(
-        {
-          name: name ? name : autocompleteName || "",
-          lastname: lastname ? lastname : autocompleteLastname || "",
-          aka: aka ? aka : "",
-          cellphone: cellphone ? cellphone : "",
-          birthday: birthday ? birthday : "",
-          gender: gender ? gender : "",
-          document: document ? document : "",
-        },
-        () => {
-          this.initialState = JSON.stringify(this.state);
-          this.forceUpdate();
-        }
-      );
+      setState((prevState) => ({
+        ...prevState,
+        name: name ? name : autoCompleteRegister.name || "",
+        lastname: lastname ? lastname : autoCompleteRegister.lastname || "",
+        aka: aka ? aka : "",
+        cellphone: cellphone ? cellphone : "",
+        birthday: birthday ? birthday : "",
+        gender: gender ? gender : "",
+        document: document ? document : "",
+      }));
+
+      initialState.current = JSON.stringify(state);
     } else {
-      this.setState(
-        {
-          name: autocompleteName || "",
-          lastname: autocompleteLastname || "",
-        },
-        () => {
-          this.initialState = JSON.stringify(this.state);
-          this.forceUpdate();
-        }
-      );
-    }
-  }
+      setState((prevState) => ({
+        ...prevState,
+        name: autoCompleteRegister.name || "",
+        lastname: autoCompleteRegister.lastname || "",
+      }));
 
-  cellphoneChange = (value) => {
+      initialState.current = JSON.stringify(state);
+    }
+  }, [user]);
+
+  const cellphoneChange = (value) => {
     var numberPattern = /\d+/g;
     var valueToFormat =
       value.length !== 0
@@ -161,7 +98,10 @@ class EditProfileContent extends Component {
     var result = "";
 
     if (value.length == 4)
-      return this.setState({ cellphone: valueToFormat[0] });
+      return setState((prevState) => ({
+        ...prevState,
+        cellphone: valueToFormat[0],
+      }));
 
     if (valueToFormat.length >= 2)
       result += "(" + valueToFormat.substring(0, 2) + ") ";
@@ -171,10 +111,13 @@ class EditProfileContent extends Component {
     if (valueToFormat.length > 7)
       result += "-" + valueToFormat.substring(7, 11);
 
-    return this.setState({ cellphone: result == "" ? valueToFormat : result });
+    return setState((prevState) => ({
+      ...prevState,
+      cellphone: result == "" ? valueToFormat : result,
+    }));
   };
 
-  enableButton = () => {
+  const enableButton = () => {
     const {
       cellphone,
       name,
@@ -184,283 +127,268 @@ class EditProfileContent extends Component {
       terms,
       gender,
       document,
-    } = this.state;
-    const hasTerms = this.props.hasTerms;
+  } = state;
 
     return (
-      cellphone.length == 15 &&
+      cellphone.length === 15 &&
       name.length >= 3 &&
       lastname.length >= 3 &&
       aka.length >= 3 &&
-      document.length == 14 &&
+      document.length === 14 &&
       ((hasTerms && terms) || !hasTerms) &&
-      this.initialState !== JSON.stringify(this.state)
+      initialState.current !== JSON.stringify(state)
     );
   };
 
-  handleConfirmDate = (date) => {
-    const toDate = (date) => {
-      const day = date.getDate().toString();
-      const dayF = day.length == 1 ? "0" + day : day;
-      const month = (date.getMonth() + 1).toString();
-      const monthF = month.length == 1 ? "0" + month : month;
-      const yearF = date.getFullYear();
-      return dayF + "/" + monthF + "/" + yearF;
-    };
-
-    this.setState({ birthday: toDate(date), showDate: false });
+  const handleConfirmDate = (date) => {
+  const toDate = (date) => {
+  const day = date.getDate().toString();
+  const dayF = day.length === 1 ? "0" + day : day;
+  const month = (date.getMonth() + 1).toString();
+  const monthF = month.length === 1 ? "0" + month : month;
+  const yearF = date.getFullYear();
+  return dayF + "/" + monthF + "/" + yearF;
+  };
+    
+  setState((prevState) => ({
+    ...prevState,
+    birthday: toDate(date),
+    showDate: false,
+  }));
   };
 
-  handleCancelDate = () => {
-    this.setState({ showDate: false });
+  const handleCancelDate = () => {
+  setState((prevState) => ({
+  ...prevState,
+  showDate: false,
+  }));
   };
 
-  saveInfo = () => {
-    const {
-      cellphone,
+  const saveInfo = () => {
+  const {
+  cellphone,
+  name,
+  lastname,
+  aka,
+  birthday,
+  terms,
+  gender,
+  document,
+  } = state;
+
+  dispatch(
+    handleEditUserInfo(
       name,
       lastname,
       aka,
       birthday,
+      cellphone,
       terms,
       gender,
-      document,
-    } = this.state;
-    this.props
-      .dispatch(
-        handleEditUserInfo(
-          name,
-          lastname,
-          aka,
-          birthday,
-          cellphone,
-          terms,
-          gender,
-          document
-        )
-      )
-      .then((_) => {
-        if (
-          this.props.user &&
-          this.props.user.pendences &&
-          this.props.hasTerms &&
-          this.props.user.pendences.length > 0
-        )
-          this.props.navigation.navigate("SelfUpload");
-      });
-    Keyboard.dismiss();
-    this.initialState = JSON.stringify(this.state);
+      document
+    )
+  ).then((_) => {
+    if (
+      user &&
+      user.pendences &&
+      hasTerms &&
+      user.pendences.length > 0
+    )
+      navigation.navigate("SelfUpload");
+  });
+  Keyboard.dismiss();
+  initialState.current = JSON.stringify(state);
   };
 
-  nameChange = (value) => {
-    this.setState({ name: value });
-
-    if (this.state.aka == "" || this.state.aka == this.state.name)
-      this.setState({ aka: value });
+  const nameChange = (value) => {
+  setState((prevState) => ({
+  ...prevState,
+  name: value,
+  aka: prevState.aka === "" || prevState.aka === prevState.name ? value : prevState.aka,
+  }));
   };
 
-  openTerms(type) {
-    Linking.openURL(this.props.terms[type]);
-  }
+  const openTerms = (type) => {
+  Linking.openURL(terms[type]);
+  };
 
-  render() {
-    const { cellphone, terms } = this.state;
-    const hasTerms = this.props.hasTerms;
+  const { cellphone } = state;
 
-    const { user = {} } = this.props.user;
+  return (
+  <View flex={1}>
+  <KeyboardAvoidingView
+  style={{ flex: 1, flexDirection: "column", justifyContent: "center" }}
+  behavior={Platform.OS === "ios" ? "padding" : undefined}
+  enabled
+  keyboardVerticalOffset={100}
+  >
+  <Content contentContainerStyle={{ flexGrow: 1 }}>
+  <ContainerInputs>
+  <>
+  <Subtitle2>Nome</Subtitle2>
+  <Space n={1} />
+  <Input
+  field
+  value={state.name}
+  onChangeText={(value) => nameChange(value)}
+  />
+  <Space n={2} />
+  </>
+  <>
+            <Subtitle2>Sobrenome</Subtitle2>
+            <Space n={1} />
+            <Input
+              field
+              value={state.lastname}
+              onChangeText={(value) => setState({ ...state, lastname: value })}
+            />
+            <Space n={2} />
+          </>
 
-    return (
-      <View flex={1}>
-        <KeyboardAvoidingView
-          style={{ flex: 1, flexDirection: "column", justifyContent: "center" }}
-          behavior={Platform.OS == "ios" ? "padding" : undefined}
-          enabled
-          keyboardVerticalOffset={100}
-        >
-          <Content contentContainerStyle={{ flexGrow: 1 }}>
-            <ContainerInputs>
-              <React.Fragment>
-                <Subtitle2>Nome</Subtitle2>
-                <Space n={1} />
-                <Input
-                  field
-                  value={this.state.name}
-                  onChangeText={(value) => this.nameChange(value)}
-                />
-                <Space n={2} />
-              </React.Fragment>
+          <>
+            <Subtitle2>Como prefere ser chamado</Subtitle2>
+            <Space n={1} />
+            <Input
+              field
+              value={state.aka}
+              onChangeText={(value) => setState({ ...state, aka: value })}
+            />
+            <Space n={2} />
+          </>
 
-              <React.Fragment>
-                <Subtitle2>Sobrenome</Subtitle2>
-                <Space n={1} />
-                <Input
-                  field
-                  value={this.state.lastname}
-                  onChangeText={(value) => this.setState({ lastname: value })}
-                />
-                <Space n={2} />
-              </React.Fragment>
+          <>
+            <Subtitle2>E-mail</Subtitle2>
+            <Space n={1} />
+            <Input field value={user.email} disabled />
+            <Space n={2} />
+          </>
 
-              <React.Fragment>
-                <Subtitle2>Como prefere ser chamado</Subtitle2>
-                <Space n={1} />
-                <Input
-                  field
-                  value={this.state.aka}
-                  onChangeText={(value) => this.setState({ aka: value })}
-                />
-                <Space n={2} />
-              </React.Fragment>
+          <>
+            <Subtitle2>CPF</Subtitle2>
+            <Space n={1} />
+            <Input
+              field
+              placeholder="XXX.XXX.XXX-XX"
+              format={(value) => {
+                value = value.replace(/(\.|\/|\-)/g, "");
+                return value.replace(
+                  /(\d{3})(\d{3})(\d{3})(\d{2})/g,
+                  "$1.$2.$3-$4"
+                );
+              }}
+              maxLength={18}
+              keyboardType="number-pad"
+              disabled={isEdit}
+              value={state.document}
+              onChangeText={(value) => setState({ ...state, document: value })}
+            />
+            <Space n={2} />
+          </>
 
-              <React.Fragment>
-                <Opacity>
-                  <Subtitle2>E-mail</Subtitle2>
-                </Opacity>
-                <Space n={1} />
-                <Input field value={user.email} disabled />
-                <Space n={2} />
-              </React.Fragment>
+          <>
+            <Subtitle2>{"Número de telefone"}</Subtitle2>
+            <Space n={1} />
+            <CustomInput
+              placeholder="(xx) xxxxx-xxxx"
+              keyboardType="number-pad"
+              autoCorrect={false}
+              maxLength={15}
+              value={cellphone}
+              onChangeText={(value) => cellphoneChange(value)}
+            />
+            <Space n={2} />
+          </>
 
-              <React.Fragment>
-                <Opacity>
-                  <Subtitle2>CPF</Subtitle2>
-                </Opacity>
-                <Space n={1} />
+          <DateTimePickerModal
+            isVisible={state.showDate}
+            mode="date"
+            locale="pt-br"
+            headerTextIOS="Data de nascimento"
+            maximumDate={new Date()}
+            onConfirm={(date) => handleConfirmDate(date)}
+            onCancel={() => handleCancelDate()}
+          />
 
-                <Input
-                  field
-                  placeholder="XXX.XXX.XXX-XX"
-                  format={(value) => {
-                    value = value.replace(/(\.|\/|\-)/g, "");
-                    return value.replace(
-                      /(\d{3})(\d{3})(\d{3})(\d{2})/g,
-                      "$1.$2.$3-$4"
-                    );
-                  }}
-                  maxLength={18}
-                  keyboardType="number-pad"
-                  disabled={this.props.isEdit}
-                  value={this.state.document}
-                  onChangeText={(value) => this.setState({ document: value })}
-                />
-                <Space n={2} />
-              </React.Fragment>
-
-              <React.Fragment>
-                <Subtitle2>{"Número de telefone"}</Subtitle2>
-                <Space n={1} />
-                <CustomInput
-                  placeholder="(xx) xxxxx-xxxx"
-                  keyboardType="number-pad"
-                  autoCorrect={false}
-                  maxLength={15}
-                  value={cellphone}
-                  onChangeText={(value) => this.cellphoneChange(value)}
-                />
-                <Space n={2} />
-              </React.Fragment>
-
-              <DateTimePickerModal
-                isVisible={this.state.showDate}
-                mode="date"
-                locale="pt-br"
-                headerTextIOS="Data de nascimento"
-                maximumDate={new Date()}
-                onConfirm={(date) => this.handleConfirmDate(date)}
-                onCancel={() => this.handleCancelDate()}
-              />
-
-              <React.Fragment>
-                <Subtitle2>
-                  {"Data de nascimento"} <Subtitle3>(Opcional)</Subtitle3>{" "}
-                </Subtitle2>
-                <Space n={1} />
-                <InputDate onPress={() => this.setState({ showDate: true })}>
-                  {this.state.birthday ? (
-                    <CustomInputText hasValue>
-                      {this.state.birthday}
-                    </CustomInputText>
-                  ) : (
-                    <CustomInputText>dd/mm/aaaa</CustomInputText>
-                  )}
-                </InputDate>
-                <Space n={2} />
-              </React.Fragment>
-
-              <React.Fragment>
-                <Subtitle2>
-                  {"Gênero que mais se identifica"}{" "}
-                  <Subtitle3>(Opcional)</Subtitle3>
-                </Subtitle2>
-                <Space n={1} />
-                <Line>
-                  {["Feminino", "Masculino", "Outro"].map((gender) => (
-                    <RadioButton
-                      key={gender}
-                      isLast={gender == "Outro"}
-                      isSelected={this.state.gender == gender}
-                      onPress={() => this.setState({ gender })}
-                    >
-                      {gender}
-                    </RadioButton>
-                  ))}
-                </Line>
-
-                <Space n={2} />
-              </React.Fragment>
-
-              <Space n={3} />
-
-              {hasTerms && (
-                <Line>
-                  <CheckLine onPress={() => this.setState({ terms: !terms })}>
-                    <Check selected={terms} />
-                  </CheckLine>
-                  <LineRow>
-                    <Subtitle2 width="auto">Li e concordo com os </Subtitle2>
-                    <TermsAndConditions onPress={() => this.openTerms("terms")}>
-                      <Subtitle2 width="auto" underline>
-                        Termos e Condições
-                      </Subtitle2>
-                    </TermsAndConditions>
-                    <Subtitle2 width="auto"> e </Subtitle2>
-                    <TermsAndConditions
-                      onPress={() => this.openTerms("policy")}
-                    >
-                      <Subtitle2 width="auto" underline>
-                        Política de Privacidade
-                      </Subtitle2>
-                    </TermsAndConditions>
-                  </LineRow>
-                </Line>
+          <>
+            <Subtitle2>
+              {"Data de nascimento"} <Subtitle3>(Opcional)</Subtitle3>{" "}
+            </Subtitle2>
+            <Space n={1} />
+            <InputDate onPress={() => setState({ ...state, showDate: true })}>
+              {state.birthday ? (
+                <CustomInputText hasValue>
+                  {state.birthday}
+                </CustomInputText>
+              ) : (
+                <CustomInputText>dd/mm/aaaa</CustomInputText>
               )}
+            </InputDate>
+            <Space n={2} />
+          </>
 
-              <Space n={3} />
-            </ContainerInputs>
-            <LineButtons>
-              <Button
-                disabled={!this.enableButton()}
-                onPress={() => this.saveInfo()}
-                type="CallToAction-Light"
-              >
-                {hasTerms ? "Confirmar" : "Salvar"}
-              </Button>
-            </LineButtons>
-            <Bottom />
-          </Content>
-          {/* <Numberpad /> */}
-        </KeyboardAvoidingView>
-      </View>
-    );
-  }
+          <>
+            <Subtitle2>
+              {"Gênero que mais se identifica"}{" "}
+              <Subtitle3>(Opcional)</Subtitle3>
+            </Subtitle2>
+            <Space n={1} />
+            <Line>
+              {["Feminino", "Masculino", "Outro"].map((gender) => (
+                <RadioButton
+                  key={gender}
+                  isLast={gender === "Outro"}
+                  isSelected={state.gender === gender}
+                  onPress={() => setState({ ...state, gender })}
+                >
+                  {gender}
+                </RadioButton>
+              ))}
+            </Line>
+
+            <Space n={2} />
+          </>
+
+          <Space n={3} />
+
+          {hasTerms && (
+            <Line>
+              <CheckLine onPress={() => setState({ ...state, terms: !state.terms })}>
+                <Check selected={state.terms} />
+              </CheckLine>
+              <LineRow>
+                <Subtitle2 width="auto">Li e concordo com os </Subtitle2>
+                <TermsAndConditions onPress={() => openTerms("terms")}>
+                  <Subtitle2 width="auto" underline>
+                    Termos e Condições
+                  </Subtitle2>
+                </TermsAndConditions>
+                <Subtitle2 width="auto"> e </Subtitle2>
+                <TermsAndConditions
+                  onPress={() => openTerms("policy")}
+                >
+                  <Subtitle2 width="auto" underline>
+                    Política de Privacidade
+                  </Subtitle2>
+                </TermsAndConditions>
+              </LineRow>
+            </Line>
+          )}
+
+          <Space n={3} />
+        </ContainerInputs>
+        <LineButtons>
+          <Button
+            disabled={!enableButton()}
+            onPress={()           => saveInfo()}
+            type="CallToAction-Light"
+          >
+            {hasTerms ? "Confirmar" : "Salvar"}
+          </Button>
+        </LineButtons>
+        <Bottom />
+      </Content>
+    </KeyboardAvoidingView>
+  </View>
+  );
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-    autoCompleteRegister: state.user && state.user.autoCompleteRegister,
-    terms: state.app.terms,
-  };
-}
-
-export default connect(mapStateToProps)(EditProfileContent);

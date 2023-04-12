@@ -107,11 +107,5 @@ const CurrentLocation = ({ navigation }) => {
         );
         };
 
-        function mapStateToProps({ address }){
-            return {
-                currentLocation: address.currentLocation
-            }
         
-        }
-        
-        export default withTheme(connect(mapStateToProps)(CurrentLocation));
+        export default withTheme(CurrentLocation);

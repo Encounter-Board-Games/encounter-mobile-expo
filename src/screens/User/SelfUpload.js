@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Animatable from "react-native-animatable";
 import styled from "styled-components";
 import { Space } from "../../components/Space";
-import { H1, H4, H2, Subtitle2 } from "../../components/Typography";
+import { H2, Subtitle2 } from "../../components/Typography";
 import { Image } from "react-native";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import Constants from "expo-constants";

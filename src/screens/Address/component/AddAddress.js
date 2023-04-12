@@ -1,219 +1,203 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react';
 
-import styled, { withTheme } from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { withTheme } from 'styled-components';
 import { Subtitle2, H3 } from '../../../components/Typography';
 import { Space, SpaceHorizontal, Bottom } from '../../../components/Space';
 import Input from '../../../components/Input';
 import { Button } from '../../../components/Button';
-import { connect } from 'react-redux';
 import ScreenPopup from '../../../components/ScreenPopup';
 import { Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
 import { handleAddOrEditAddress, handleRemoveAddressConfirmModal } from '../../../store/actions/address';
-
 import { View } from 'react-native-animatable';
 import Icons from '../../../components/Icons';
+import { Content, ContainerInputs, Line, LineButtons, LineAddress, Column } from './AddAddressStyles';
 
-const Content = styled.ScrollView`
-    flex: 1;
-padding: ${props => props.theme.space.space2};
-`
-const ContainerInputs = styled.View`
-    flex:1;
-`
-const Line = styled.View`
-    flex-flow: row;
-    flex-wrap: wrap;
-    width: 100%;
-`
-const LineButtons = styled.View`
-    flex-flow: row;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: ${props => props.theme.space.space3}
-`
-const LineAddress = styled.View`
-    flex-flow: row;
-    align-items: center;
-`
+const AddAddress = (props) => {
+  const [state, setState] = useState({
+    cep: '',
+    number: '',
+    complement: '',
+    reference: '',
+    name: '',
+    isEdit: false,
+  });
 
-const Column = styled.View`
+  const dispatch = useDispatch();
+  const currentLocation = useSelector((state) => state.address.currentLocation);
+  const choseAddressMode = useSelector((state) => !!state.address.choseAddressMode);
 
-    flex-flow: column;
-    flex: 1;
-    
-`
-
-
-class AddAddress extends Component {
-
-    state = {
-        cep: '',
-        number: '',
-        complement: '',
-        reference: '',
-        name: '',
-        isEdit: false
+  useEffect(() => {
+    if (currentLocation.cep) {
+      setState((prevState) => ({ ...prevState, cep: currentLocation.cep }));
     }
 
+    if (currentLocation.key) {
+      const { name, complement, number, reference, cep } = currentLocation;
 
-    componentDidMount() {
-
-        if (this.props.currentLocation.cep)
-            this.setState({ cep: this.props.currentLocation.cep })
-
-        if (this.props.currentLocation.key) {
-            const { name, complement, number, reference, cep } = this.props.currentLocation
-
-            this.setState({ name, complement, number, reference, cep, isEdit: true }, () => {
-                this.initialState = JSON.stringify(this.state)
-                this.forceUpdate()
-            })
-
-        }
-
+      setState((prevState) => ({
+        ...prevState,
+        name,
+        complement,
+        number,
+        reference,
+        cep,
+        isEdit: true,
+      }));
     }
+  }, [currentLocation]);
 
+  const enableButton = () => {
+    const { number } = state;
+    return number.length > 0;
+  };
 
-    enableButton = () => {
+  const formatCep = (value) => {
+    var numberPattern = /\d+/g;
+    var valueToFormat = value.length !== 0 ? value.match(numberPattern).join('').substring(0, 11) : value;
 
-        const { number } = this.state;
-        return number.length > 0 &&
-            JSON.stringify(this.state) != this.initialState
-
+    if (valueToFormat.length >= 6) {
+      setState((prevState) => ({ ...prevState, cep: valueToFormat.substring(0, 5) + '-' + valueToFormat.substring(5) }));
+    } else {
+      setState((prevState) => ({ ...prevState, cep: valueToFormat }));
     }
+  };
 
-    formatCep = (value) => {
-        var numberPattern = /\d+/g;
-        var valueToFormat = value.length !== 0 ? value.match(numberPattern).join('').substring(0, 11) : value
+  const deleteAddress = () => {
+    dispatch(handleRemoveAddressConfirmModal()).then((r) => r && props.navigation.goBack());
+  };
 
-        if (valueToFormat.length >= 6)
-            this.setState({ cep: valueToFormat.substring(0, 5) + "-" + valueToFormat.substring(5) })
-        else
-            this.setState({ cep: valueToFormat })
-    }
+  const saveInfo = () => {
+    Keyboard.dismiss();
 
-    delete = () => {
-        this.props.dispatch(handleRemoveAddressConfirmModal())
-            .then(r => r && this.props.navigation.goBack())
+    const { name, complement, number, reference, cep } = state;
 
-    }
+    dispatch(handleAddOrEditAddress(number, complement, reference, name, cep)).then((result) => {
+      if (result) {
+        props.navigation.navigate('Address');
+      }
 
-    saveInfo = () => {
+      if (choseAddressMode) {
+        props.navigation.goBack();
+      }
+    });
+  };
 
-        Keyboard.dismiss()
+  return (
+    <ScreenPopup noScroll withBorder title={'Endereços'}>
+      <KeyboardAvoidingView
+        style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        enabled
+        keyboardVerticalOffset={100}
+      >
+        <Content contentContainerStyle={{ flexGrow: 1 }}>
+          <ContainerInputs>
+            <LineAddress>
+              <Icons name="location-pin" color={props.theme.colors.darkColor} size={24} />
+              <SpaceHorizontal n={2} />
+              <Column>
+            <H3>{currentLocation.street}</H3>
+            <Subtitle2>
+              {currentLocation.neighborhood} - {currentLocation.city}/{currentLocation.state}
+            </Subtitle2>
+          </Column>
+        </LineAddress>
+        <Space n={4} />
 
-        const { name, complement, number, reference, cep } = this.state
+        <Line>
+          <ContainerInputs>
+            <Subtitle2>CEP*</Subtitle2>
+            <Space n={1} />
+            <Input
+              field
+              placeholder="CEP"
+              disabled={state.isEdit}
+              keyboardType="number-pad"
+              maxLength={9}
+              value={state.cep}
+              onChangeText={(value) => formatCep(value)}
+            />
+          </ContainerInputs>
+          <SpaceHorizontal n={2} />
 
-        this.props.dispatch(handleAddOrEditAddress(number, complement, reference, name, cep))
-            .then(result => {
-                if (result)
-                    this.props.navigation.navigate("Address")
+          <ContainerInputs>
+            <Subtitle2>Número*</Subtitle2>
+            <Space n={1} />
+            <Input
+              field
+              placeholder="Insira o número"
+              value={state.number}
+              onChangeText={(value) => setState((prevState) => ({ ...prevState, number: value }))}
+            />
+          </ContainerInputs>
+        </Line>
+        <Space n={2} />
+        <Subtitle2>Complemento</Subtitle2>
+        <Space n={1} />
+        <Input
+          field
+          placeholder="Apto/Bloco/Casa"
+          value={state.complement}
+          onChangeText={(value) => setState((prevState) => ({ ...prevState, complement: value }))}
+        />
+        <Space n={2} />
+        <Line>
+          <ContainerInputs>
+            <Subtitle2>Ponto de referência</Subtitle2>
+            <Space n={1} />
+            <Input
+              field
+              placeholder="Ponto de referência"
+              value={state.reference}
+              onChangeText={(value) => setState((prevState) => ({ ...prevState, reference: value }))}
+            />
+          </ContainerInputs>
+        </Line>
+        <Space n={2} />
 
-                if (this.props.choseAddressMode)
-                    this.props.navigation.goBack()
+        <Line>
+          <ContainerInputs>
+            <Subtitle2>Nomear como</Subtitle2>
+            <Space n={1} />
+            <Input
+              field
+              placeholder="Ex: casa, trabalho"
+              value={state.name}
+              onChangeText={(value) => setState((prevState) => ({ ...prevState, name: value }))}
+            />
+            <Space n={2} />
+          </ContainerInputs>
+          <SpaceHorizontal n={2} />
+          <ContainerInputs />
+        </Line>
+      </ContainerInputs>
 
-            })
-
-    }
-
-
-    render() {
-
-        return (<ScreenPopup noScroll withBorder title={"Endereços"}>
-
-            <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', }} behavior={Platform.OS == "ios" ? "padding": undefined} enabled keyboardVerticalOffset={100}>
-
-                <Content contentContainerStyle={{ flexGrow: 1, }}>
-
-                    <ContainerInputs>
-                        <LineAddress>
-
-                            <Icons name="location-pin" color={this.props.theme.colors.darkColor} size={24} />
-                            <SpaceHorizontal n={2} />
-                            <Column>
-                                <H3>{this.props.currentLocation.street}</H3>
-                                <Subtitle2>{this.props.currentLocation.neighborhood} - {this.props.currentLocation.city}/{this.props.currentLocation.state}</Subtitle2>
-                            </Column>
-                        </LineAddress>
-                        <Space n={4} />
-
-                        <Line>
-                            <ContainerInputs>
-                                <Subtitle2>CEP*</Subtitle2>
-                                <Space n={1} />
-                                <Input
-                                    field
-                                    placeholder="CEP"
-                                    disabled={this.state.isEdit}
-                                    keyboardType="number-pad"
-                                    maxLength={9}
-                                    value={this.state.cep}
-                                    onChangeText={(value) => this.formatCep(value)} />
-
-                            </ContainerInputs>
-                            <SpaceHorizontal n={2} />
-
-                            <ContainerInputs>
-                                <Subtitle2>Número*</Subtitle2>
-                                <Space n={1} />
-                                <Input field placeholder="Insira o número" value={this.state.number} onChangeText={(value) => this.setState({ number: value })} />
-
-                            </ContainerInputs>
-
-                        </Line>
-                        <Space n={2} />
-                        <Subtitle2>Complemento</Subtitle2>
-                        <Space n={1} />
-                        <Input field placeholder="Apto/Bloco/Casa" value={this.state.complement} onChangeText={(value) => this.setState({ complement: value })} />
-                        <Space n={2} />
-                        <Line>
-                            <ContainerInputs>
-                                <Subtitle2>Ponto de referência</Subtitle2>
-                                <Space n={1} />
-                                <Input field placeholder="Ponto de referência" value={this.state.reference} onChangeText={(value) => this.setState({ reference: value })} />
-
-                            </ContainerInputs>
-                        </Line>
-                        <Space n={2} />
-
-                        <Line>
-                            <ContainerInputs>
-                                <Subtitle2>Nomear como</Subtitle2>
-                                <Space n={1} />
-                                <Input field placeholder="Ex: casa, trabalho" value={this.state.name} onChangeText={(value) => this.setState({ name: value })} />
-                                <Space n={2} />
-                            </ContainerInputs>
-                            <SpaceHorizontal n={2} />
-                            <ContainerInputs />
+      {state.isEdit ? (
+        <LineButtons>
+          <View flex={1}>
+            <Button onPress={() => deleteAddress()} type="CallToAction-Outline-Flex">
+              Excluir
+            </Button>
+          </View>
+          <SpaceHorizontal n={2} />
+          <View flex={1}>
+            <Button disabled={!enableButton()} onPress={() => saveInfo()} type="CallToAction-Light-Small">
+              Salvar
+            </Button>
+          </View>
+        </LineButtons>
+      ) : (
+        <Button disabled={!enableButton()} onPress={() => saveInfo()} type="CallToAction-Light-Small">
+          Salvar
+        </Button>
+      )}
+      <Bottom />
+    </Content>
+  </KeyboardAvoidingView>
+</ScreenPopup>
+);
+};
 
 
-                        </Line>
-                    </ContainerInputs>
-
-                    {
-                        this.state.isEdit ? <LineButtons>
-                            <View flex={1}>
-                                <Button onPress={() => this.delete()} type="CallToAction-Outline-Flex" >Excluir</Button>
-                            </View>
-                            <SpaceHorizontal n={2} />
-                            <View flex={1}>
-                                <Button disabled={!this.enableButton()} onPress={() => this.saveInfo()} type="CallToAction-Light-Small">Salvar</Button>
-                            </View>
-                        </LineButtons> : <Button disabled={!this.enableButton()} onPress={() => this.saveInfo()} type="CallToAction-Light-Small">Salvar</Button>
-                    }
-                    <Bottom/>
-                </Content>
-            </KeyboardAvoidingView>
-        </ScreenPopup>)
-    }
-
-}
-
-function mapStateToProps(state) {
-    return {
-        currentLocation: state.address.currentLocation,
-        choseAddressMode: !!state.address.choseAddressMode
-    }
-}
-
-export default withTheme(connect(mapStateToProps)(AddAddress))
+export default withTheme(AddAddress);          
