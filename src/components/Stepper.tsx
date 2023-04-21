@@ -22,8 +22,7 @@ interface CircleProps {
 const Circle = styled.View<CircleProps>`
   flex-flow: row;
   width: ${(props) => props.size * 2}px;
-  margin-left: ${(props) =>
-    props.isFirst ? '0px' : `${props.size}px`};
+  margin-left: ${(props) => (props.isFirst ? '0px' : `${props.size}px`)};
   border-radius: 8px;
   background: ${(props) => {
     if (props.customColor) {

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Dice from "../../../components/Dice";
-import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Button } from "../../../components/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { closePopupModal } from "../../../store/actions/info";
-import { H3, Subtitle2 } from "../../../components/Typography";
-import { handleEvaluationProduct } from "../../../store/actions/product";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Dice from '../../../components/Dice';
+import { Space, SpaceHorizontal } from '../../../components/Space';
+import { Button } from '../../../components/Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { closePopupModal } from '../../../store/actions/info';
+import { H3, Subtitle2 } from '../../../components/Typography';
+import { handleEvaluationProduct } from '../../../store/actions/product';
 
 export const Container = styled.View`
   align-items: center;
@@ -89,7 +89,7 @@ export default function Evaluate() {
         <Button
           disabled={!enable()}
           type="CallToAction-Orange"
-          width={"auto"}
+          width={'auto'}
           onPress={() => dispatch(handleEvaluationProduct(evalutaion))}
         >
           Avaliar
@@ -97,4 +97,4 @@ export default function Evaluate() {
       </Line>
     </Container>
   );
-};
+}

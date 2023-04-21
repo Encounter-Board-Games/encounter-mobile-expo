@@ -1,11 +1,11 @@
-import React from "react";
-import { View, TouchableWithoutFeedback, Image } from "react-native";
-import { Camera } from "expo-camera";
-import { useState } from "react";
-import styled from "styled-components";
-import { Button } from "../../../components/Button/Button";
-import { SpaceHorizontal } from "../../../components/Space";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React from 'react';
+import { View, TouchableWithoutFeedback, Image } from 'react-native';
+import { Camera } from 'expo-camera';
+import { useState } from 'react';
+import styled from 'styled-components';
+import { Button } from '../../../components/Button/Button';
+import { SpaceHorizontal } from '../../../components/Space';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const Screen = styled.View`
     flex: 1;
@@ -35,12 +35,12 @@ export default function CameraScreen(props) {
         <Image
           source={photo}
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
-            width: "100%",
-            height: "100%",
-            transform: [{ rotateY: "180deg" }],
+            width: '100%',
+            height: '100%',
+            transform: [{ rotateY: '180deg' }],
           }}
         />
         <Screen>
@@ -93,4 +93,4 @@ export default function CameraScreen(props) {
       </Camera>
     </TouchableWithoutFeedback>
   );
-};
+}

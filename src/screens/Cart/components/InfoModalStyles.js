@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import _Products from "./_Products";
+import styled from 'styled-components';
+import _Products from './_Products';
 
 export const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};

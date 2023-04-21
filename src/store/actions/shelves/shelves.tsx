@@ -2,8 +2,16 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getShelves, getBanners } from '../../../graphql';
 import { setProducts } from '../product';
-import { Shelf, Banner, State, ShelvesAction, BannersAction, LoadingAction, CurrentBannerAction, Props } from './shelvesTypes';
-
+import {
+  Shelf,
+  Banner,
+  State,
+  ShelvesAction,
+  BannersAction,
+  LoadingAction,
+  CurrentBannerAction,
+  Props,
+} from './shelvesTypes';
 
 const SET_LOADING = 'SET_LOADING';
 const SET_SHELVES = 'SET_SHELVES';
@@ -44,26 +52,37 @@ export function handleLoadShelves() {
 
     const { onboarding } = getState();
 
-    const filters = Object.keys(onboarding.filters || {}).map(key => ({
-      [key]: onboarding.filters[key].flat(),
-    })).reduce((a, b) => ({ ...b, ...a }), {});
+    const filters = Object.keys(onboarding.filters || {})
+      .map((key) => ({
+        [key]: onboarding.filters[key].flat(),
+      }))
+      .reduce((a, b) => ({ ...b, ...a }), {});
 
     const shelves: Shelf[] = await getShelves(filters);
 
-    const shelvesFormated = shelves.reduce<{ [key: string]: Shelf }>((a, b) => ({
-      [b.key]: {
-        ...b,
-        title: b.title,
-        subtitle: b.subtitle?.length ? b.subtitle : undefined,
-        products: (b.products || []).map(p => p.key),
-      },
-      ...a,
-    }), {});
-    
-    const products = shelves.map(c => c.products || []).flat().reduce<{ [key: string]: any }>((a, b) => ({
-      [b.key]: b,
-      ...a,
-    }), {});
+    const shelvesFormated = shelves.reduce<{ [key: string]: Shelf }>(
+      (a, b) => ({
+        [b.key]: {
+          ...b,
+          title: b.title,
+          subtitle: b.subtitle?.length ? b.subtitle : undefined,
+          products: (b.products || []).map((p) => p.key),
+        },
+        ...a,
+      }),
+      {}
+    );
+
+    const products = shelves
+      .map((c) => c.products || [])
+      .flat()
+      .reduce<{ [key: string]: any }>(
+        (a, b) => ({
+          [b.key]: b,
+          ...a,
+        }),
+        {}
+      );
 
     dispatch(setProducts(products));
     dispatch(setShelves(shelvesFormated));
@@ -78,7 +97,10 @@ export function handleInitBanner() {
   };
 }
 
-function reducer(state = { shelves: {}, banners: [], isLoading: false, currentBanner: null }, action: Action) {
+function reducer(
+  state = { shelves: {}, banners: [], isLoading: false, currentBanner: null },
+  action: Action
+) {
   switch (action.type) {
     case SET_SHELVES:
       return {
@@ -90,30 +112,30 @@ function reducer(state = { shelves: {}, banners: [], isLoading: false, currentBa
         ...state,
         banners: action.banners,
       };
-      case SET_LOADING:
-        return {
-          ...state,
-          isLoading: action.loading,
-        };
-      case SET_CURRENT_BANNER:
-        return {
-          ...state,
-          currentBanner: action.current,
-        };
-      default:
-        return state;
-      }
-    }
-    
-    function App({ children }: Props) {
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
+    case SET_LOADING:
+      return {
+        ...state,
+        isLoading: action.loading,
+      };
+    case SET_CURRENT_BANNER:
+      return {
+        ...state,
+        currentBanner: action.current,
+      };
+    default:
+      return state;
+  }
+}
+
+function App({ children }: Props) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
     dispatch(handleLoadShelves());
     dispatch(handleInitBanner());
-    }, [dispatch]);
-    
-    return <>{children}</>;
-    }
-    
-    export default App;      
+  }, [dispatch]);
+
+  return <>{children}</>;
+}
+
+export default App;

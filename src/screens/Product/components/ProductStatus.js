@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
@@ -6,10 +5,10 @@ import { Ionicons } from '@expo/vector-icons';
 import config from '../../../config';
 
 const ProductEnable = styled.View`
-    flex-flow: row;
-    justify-content: flex-start;
-    align-items: flex-end;
-    width: 100%
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
 `;
 
 const Content = styled.View`
@@ -19,55 +18,59 @@ const Content = styled.View`
 `;
 
 const Timer = styled.TouchableOpacity`
-    width: ${props => props.theme.space.space3}
+    width: ${(props) => props.theme.space.space3}
     justify-content: center;
     align-items: center;
   
-    background-color: ${props => !props.hasAlert ? 'transparent' : props.theme.colors.complementColor};
-    border-radius: ${props => props.theme.space.space3};
-    border: .5px solid ${props => props.theme.colors.complementColor};
+    background-color: ${(props) =>
+      !props.hasAlert ? 'transparent' : props.theme.colors.complementColor};
+    border-radius: ${(props) => props.theme.space.space3};
+    border: .5px solid ${(props) => props.theme.colors.complementColor};
 `;
 
 const ProductEnableText = styled.Text`
-    max-width: 100%;
-    font-size: 12px;
-    font-family: Nunito;
-    color: ${props => props.theme.colors.secondDarkColor};
+  max-width: 100%;
+  font-size: 12px;
+  font-family: Nunito;
+  color: ${(props) => props.theme.colors.secondDarkColor};
 `;
 
 const Space = styled.View`
-    width: ${props => props.theme.space.space0};
-    height: 1px;
+  width: ${(props) => props.theme.space.space0};
+  height: 1px;
 `;
 
 const ProductEnableBall = styled.View`
-    width: ${props => props.theme.space.space1};
-    height: ${props => props.theme.space.space1};
-    border-radius:  ${props => props.theme.space.space1};
-    background: ${props => props.available ? props.theme.colors.success : props.theme.colors.danger};
+  width: ${(props) => props.theme.space.space1};
+  height: ${(props) => props.theme.space.space1};
+  border-radius: ${(props) => props.theme.space.space1};
+  background: ${(props) =>
+    props.available ? props.theme.colors.success : props.theme.colors.danger};
 `;
 
-export default withTheme(({ available, rememberMe, hasAlert, theme, onPress, company }) => <ProductEnable>
-    {
-        (config.showCompanyOnAvaiable && company) ? <Content>
-            <ProductEnableText>{company}</ProductEnableText>
-        </Content> :
-            <Content>
-                <ProductEnableBall available={available} />
-                <Space />
-                <ProductEnableText>{available ? 'Disponível' : 'Insdisponível'}</ProductEnableText>
-            </Content>
-    }
+export default withTheme(
+  ({ available, rememberMe, hasAlert, theme, onPress, company }) => (
+    <ProductEnable>
+  {
+    (config.showCompanyOnAvaiable && company) ? <Content>
+      <ProductEnableText>{company}</ProductEnableText>
+    </Content>
+      <Content>
+        <ProductEnableBall available={available} />
+        <Space />
+        <ProductEnableText>{available ? 'Disponível' : 'Insdisponível'}</ProductEnableText>
+      </Content>
+  }
 
-    {
-        rememberMe && <Timer hasAlert={hasAlert} onPress={() => onPress && onPress()}>
-            {
-                !hasAlert ? <Ionicons name="ios-notifications-outline" color={theme.colors.complementColor} size={16} /> :
-                    <Ionicons name="ios-notifications-outline" color={theme.colors.lightColor} size={16} />
-            }
+  {
+    rememberMe && <Timer hasAlert={hasAlert} onPress={() => onPress && onPress()}>
+      {
+        !hasAlert ? <Ionicons name="ios-notifications-outline" color={theme.colors.complementColor} size={16} /> :
+          <Ionicons name="ios-notifications-outline" color={theme.colors.lightColor} size={16} />
+      }
 
-        </Timer>
-    }
-
-
-</ProductEnable>)
+    </Timer>
+  }
+    </ProductEnable>
+  )
+);

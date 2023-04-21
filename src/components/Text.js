@@ -7,8 +7,5 @@ export const StyledText = styled(Text)`
 `;
 
 export default (props) => {
-  
-  return (
-  <StyledText {...props}>{props.children}</StyledText>
-  );
-}
+  return <StyledText {...props}>{props.children}</StyledText>;
+};

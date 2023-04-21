@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Numberpad from "./Numberpad";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Numberpad from './Numberpad';
 
 export const Content = styled.View`
   width: 100%;
@@ -23,24 +23,24 @@ export const ContainerInputs = styled.ScrollView`
 `;
 
 export const CustomInput = styled.TouchableOpacity`
-    border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
-    background: ${(props) => props.theme.colors.primaryLightColor};
-    padding-left: ${(props) => props.theme.space.space3};
-    border-radius: ${(props) => props.theme.borderRadius.button};
-    height: 56px;
-    width: 100%;
-    justify-content: center;
+  border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
+  background: ${(props) => props.theme.colors.primaryLightColor};
+  padding-left: ${(props) => props.theme.space.space3};
+  border-radius: ${(props) => props.theme.borderRadius.button};
+  height: 56px;
+  width: 100%;
+  justify-content: center;
 `;
 
 export const CustomInputText = styled.Text`
     font-size: ${(props) => props.theme.space.space2};
-    opacity: ${(props) => (props.disabled ? ".5" : "1")}
+    opacity: ${(props) => (props.disabled ? '.5' : '1')}
     color: ${(props) => props.theme.colors.secondColor}
 `;
 
 export default function CelphoneInput() {
   const [typing, setTyping] = useState(false);
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
   const addText = (t) => {
     setContent(content + t);
@@ -61,4 +61,4 @@ export default function CelphoneInput() {
       <Numberpad onPress={(n) => addText(n)} />
     </Content>
   );
-};
+}

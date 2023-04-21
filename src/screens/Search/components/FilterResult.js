@@ -1,17 +1,13 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import ProductItem from "../../Product/components/ProductItem";
-import { handleSetRecentsFilteringText } from "../../../store/actions/filters/filters";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  Placeholder,
-  PlaceholderLine,
-  Fade,
-} from "rn-placeholder";
-import { Subtitle3 } from "../../../components/Typography";
-import { FlatList } from "react-native-gesture-handler";
-import { View } from "react-native-animatable";
-import { translation } from "../../../texts";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import ProductItem from '../../Product/components/ProductItem';
+import { handleSetRecentsFilteringText } from '../../../store/actions/filters/filters';
+import { useSelector, useDispatch } from 'react-redux';
+import { Placeholder, PlaceholderLine, Fade } from 'rn-placeholder';
+import { Subtitle3 } from '../../../components/Typography';
+import { FlatList } from 'react-native-gesture-handler';
+import { View } from 'react-native-animatable';
+import { translation } from '../../../texts';
 
 export const Content = styled.View`
   flex: 1;
@@ -28,7 +24,7 @@ export const Space = styled.View`
 `;
 
 export const Space2 = styled.View`
-    width: 1px;
+  width: 1px;
 `;
 
 export default function FilterResult(props) {
@@ -60,12 +56,12 @@ export default function FilterResult(props) {
     <React.Fragment>
       {results.length > 0 && !isLoading && (
         <Subtitle3 type="secondDarkColor">
-          {results.length} resultado{results == 1 ? "" : "s"}
+          {results.length} resultado{results == 1 ? '' : 's'}
         </Subtitle3>
       )}
       {results.length == 0 && !isLoading && (
         <Subtitle3 type="secondDarkColor">
-          {translation("search.noResult")}
+          {translation('search.noResult')}
         </Subtitle3>
       )}
       {isLoading && (
@@ -75,7 +71,7 @@ export default function FilterResult(props) {
       )}
 
       <FlatList
-        style={{ flex: 1, width: "100%" }}
+        style={{ flex: 1, width: '100%' }}
         showsVerticalScrollIndicator={false}
         data={idsLines}
         onViewableItemsChanged={onViewRef.current}
@@ -108,8 +104,8 @@ export default function FilterResult(props) {
             </ContentLine>
           </View>
         )}
-        keyExtractor={(item, index) => "" + item.index}
+        keyExtractor={(item, index) => '' + item.index}
       />
     </React.Fragment>
   );
-};
+}

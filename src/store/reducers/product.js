@@ -1,4 +1,4 @@
-import { arrayToObj } from "../../utils/helpers";
+import { arrayToObj } from '../../utils/helpers';
 
 export default function product(
   state = { products: {}, currentProductKey: undefined },

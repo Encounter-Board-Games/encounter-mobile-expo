@@ -10,88 +10,110 @@ import { useDispatch, useSelector } from 'react-redux';
 import { API_URI } from '../../../graphql/client';
 import Constants from 'expo-constants';
 
-
 export const Container = styled.View`
     flex: 1;
     width: 100%;
-    padding-left: ${props => props.theme.space.space3}
-    padding-right: ${props => props.theme.space.space3}
-    padding-top: ${props => Platform.OS == "ios" ? Constants.statusBarHeight + 'px' :props.theme.space.space2 };
+    padding-left: ${(props) => props.theme.space.space3}
+    padding-right: ${(props) => props.theme.space.space3}
+    padding-top: ${(props) =>
+    Platform.OS == 'ios'
+      ? Constants.statusBarHeight + 'px'
+      : props.theme.space.space2};
 `;
 
 export const Content = styled.View`
-flex: 1;
+  flex: 1;
 `;
 
 export const ImageContent = styled.View`
-flex: 1;
-align-items: center;
-justify-content: center;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Footer = styled.View`
-    width: 100%;
+  width: 100%;
 `;
 
 export const Tags = styled.View`
-    flex-flow: row;
-    flex-wrap: wrap;
+  flex-flow: row;
+  flex-wrap: wrap;
 `;
 
 export const KnowInfo = styled.TouchableOpacity`
-    flex-flow: row;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  flex-flow: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Line = styled.View`
-    flex-flow: row
+  flex-flow: row;
 `;
 
-
 export default (props) => {
-    const dispatch = useDispatch()
-    const onboarding = useSelector(state => state.onboarding)
-    const type = 'firstQuestion'
-    const selects =  onboarding.questions && onboarding.questions[type] ? onboarding.questions[type] : undefined
-    const options = ["Opa, claro!","Ainda não"]
-    return (
-        <Container>
-            <Content>
-                <Space n={3} />
-                {/* Queremos te conhecer melhor!
+  const dispatch = useDispatch();
+  const onboarding = useSelector((state) => state.onboarding);
+  const type = 'firstQuestion';
+  const selects =
+    onboarding.questions && onboarding.questions[type]
+      ? onboarding.questions[type]
+      : undefined;
+  const options = ['Opa, claro!', 'Ainda não'];
+  return (
+    <Container>
+      <Content>
+        <Space n={3} />
+        {/* Queremos te conhecer melhor!
 A cada pergunta a seguir, marque quantas respostas quiser. */}
-                <H4>Queremos <H3>te conhecer</H3> melhor.</H4>
-                <H4>A cada pergunta a seguir, marque <H3>quantas respostas quiser</H3>.</H4>
-                <Space n={3} />
-                <H4>Mas, antes, diz pra gente: você já visitou a Encounter?</H4>
-                <Space n={3} />
-                <Line>
-                    {
-                        options.map((option, index) => <RadioButton key={option}
-                                                           isLast={(index + 1)== options.length}
-                                                           isSelected={selects == option} 
-                                                           isFlex 
-                                                           onPress={() => dispatch(setSelectQuestionToggleOnboarding(type, option))}>{option}</RadioButton>)
-                    }
-                    
-                </Line>
-                {/* tags here */}
-                <Space n={4} />
-                <ImageContent>
-                    <Image resizeMode={"contain"} 
-                        style={{ height: '100%', width: '70%' }} 
-                        source={{ uri: API_URI + "/encounter.png"}} />
-                </ImageContent>
-                <Space n={3} />
-            </Content>
-            <Footer>
-                <Space n={2} />
-                <Button disabled={!selects} type="CallToAction-Light" width={"100%"} onPress={() => props.onNext() }>Continuar</Button>
-            </Footer>
-            <Bottom />
-        </Container>
-    )
-}
-
+        <H4>
+          Queremos <H3>te conhecer</H3> melhor.
+        </H4>
+        <H4>
+          A cada pergunta a seguir, marque <H3>quantas respostas quiser</H3>.
+        </H4>
+        <Space n={3} />
+        <H4>Mas, antes, diz pra gente: você já visitou a Encounter?</H4>
+        <Space n={3} />
+        <Line>
+          {options.map((option, index) => (
+            <RadioButton
+              key={option}
+              isLast={index + 1 == options.length}
+              isSelected={selects == option}
+              isFlex
+              onPress={() =>
+                dispatch(setSelectQuestionToggleOnboarding(type, option))
+              }
+            >
+              {option}
+            </RadioButton>
+          ))}
+          {option}
+        </Line>
+        {/* tags here */}
+        <Space n={4} />
+        <ImageContent>
+          <Image
+            resizeMode={'contain'}
+            style={{ height: '100%', width: '70%' }}
+            source={{ uri: API_URI + '/encounter.png' }}
+          />
+        </ImageContent>
+        <Space n={3} />
+      </Content>
+      <Footer>
+        <Space n={2} />
+        <Button
+          disabled={!selects}
+          type="CallToAction-Light"
+          width={'100%'}
+          onPress={() => props.onNext()}
+        >
+          Continuar
+        </Button>
+      </Footer>
+      <Bottom />
+    </Container>
+  );
+};

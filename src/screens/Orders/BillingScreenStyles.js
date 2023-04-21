@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.View`
     padding: ${(props) => props.theme.space.space2}
@@ -32,8 +32,8 @@ export const ProgressBar_ = styled.View`
 
   ${(props) =>
     props.border
-      ? "border-top-right-radius: 5px;border-bottom-right-radius: 5px;"
-      : ""}
+      ? 'border-top-right-radius: 5px;border-bottom-right-radius: 5px;'
+      : ''}
 
   width: ${(props) => props.width};
   margin-bottom: ${(prop) => prop.theme.space.space2};

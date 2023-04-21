@@ -1,8 +1,8 @@
-import { orders } from "../../graphql";
-import { arrayToObj } from "../../utils/helpers";
-import { openPopupModal } from "./info";
-import { translation } from "../../texts";
-import { Linking } from "react-native";
+import { orders } from '../../graphql';
+import { arrayToObj } from '../../utils/helpers';
+import { openPopupModal } from './info';
+import { translation } from '../../texts';
+import { Linking } from 'react-native';
 
 export interface Order {
   key: string;
@@ -14,8 +14,8 @@ export interface OrdersState {
   selectedOrderKey: string | null;
 }
 
-export const ORDERS_SET_ORDERS = "ORDERS_SET_ORDERS";
-export const ORDERS_SET_ORDER_SELECTED = "ORDERS_SET_ORDER_SELECTED";
+export const ORDERS_SET_ORDERS = 'ORDERS_SET_ORDERS';
+export const ORDERS_SET_ORDER_SELECTED = 'ORDERS_SET_ORDER_SELECTED';
 
 interface SetOrdersAction {
   type: typeof ORDERS_SET_ORDERS;
@@ -29,7 +29,9 @@ interface SetSelectedOrderAction {
 
 export type OrdersActionTypes = SetOrdersAction | SetSelectedOrderAction;
 
-export function ordersSetOrders(orders: Record<string, Order>): SetOrdersAction {
+export function ordersSetOrders(
+  orders: Record<string, Order>
+): SetOrdersAction {
   return {
     type: ORDERS_SET_ORDERS,
     payload: orders,
@@ -71,8 +73,8 @@ export function addOrderAndSelect(order: Order) {
 export function handleOpenOrderHelp(key: string) {
   return (dispatch: Function) => {
     dispatch(
-      openPopupModal("WPP_POPUP", {
-        text: translation("orders.helpWPP", { key }),
+      openPopupModal('WPP_POPUP', {
+        text: translation('orders.helpWPP', { key }),
       })
     );
   };
@@ -85,17 +87,17 @@ export function handleEvaluateExperience() {
     const { phone } = about;
     return await new Promise<string>((resolve) => {
       dispatch(
-        openPopupModal("TEXT_MODAL", {
+        openPopupModal('TEXT_MODAL', {
           callBack: (text) => {
             if (text)
               Linking.openURL(
-                "whatsapp://send?phone=" + phone + "&text=" + text
+                'whatsapp://send?phone=' + phone + '&text=' + text
               );
             resolve(text);
           },
-          title: "Avalie sua experiência",
-          description: "Sua avaliação é muito importante para a gente!",
-          confirmBtn: "Avaliar",
+          title: 'Avalie sua experiência',
+          description: 'Sua avaliação é muito importante para a gente!',
+          confirmBtn: 'Avaliar',
         })
       );
     });

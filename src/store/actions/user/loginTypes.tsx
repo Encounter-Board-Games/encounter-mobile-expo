@@ -40,4 +40,3 @@ export interface ErrorLoginProcessMessageProps {
   type: string;
   errorMessage: string;
 }
-

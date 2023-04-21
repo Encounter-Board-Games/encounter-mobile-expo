@@ -17,21 +17,21 @@ import cupons from './cupons';
 import quickSearchs from './quickSearch';
 
 export const rootReducer = combineReducers({
-    products,
-    shelves,
-    filters,
-    userReducer,
-    info,
-    onboarding,
-    cart,
-    notification,
-    payments,
-    orders,
-    app,
-    discovery,
-    address,
-    cupons,
-    quickSearchs
+  products,
+  shelves,
+  filters,
+  userReducer,
+  info,
+  onboarding,
+  cart,
+  notification,
+  payments,
+  orders,
+  app,
+  discovery,
+  address,
+  cupons,
+  quickSearchs,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

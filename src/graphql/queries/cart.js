@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const getLastPaymentIdQuery = gql`
   query {
@@ -7,7 +7,7 @@ export const getLastPaymentIdQuery = gql`
 `;
 
 export const deliveryOptionsQuery = gql`
-  query($nOfProducts: Float, $takeMethod: String) {
+  query ($nOfProducts: Float, $takeMethod: String) {
     deliveryOptions(nOfProducts: $nOfProducts, takeMethod: $takeMethod) {
       take {
         type
@@ -26,7 +26,7 @@ export const deliveryOptionsQuery = gql`
 `;
 
 export const deliveryTaxesQuery = gql`
-  query(
+  query (
     $leaveType: String
     $takeType: String!
     $takeZipcode: String
@@ -84,7 +84,7 @@ export const ordersQuery = gql`
 `;
 
 export const createOrderMutation = gql`
-  mutation(
+  mutation (
     $productKeys: [String!]!
     $totalSumCart: Float!
     $paymentKey: String!
@@ -146,7 +146,7 @@ export const createOrderMutation = gql`
 `;
 
 export const renewOrderMudation = gql`
-  mutation($key: String!, $payment: String!) {
+  mutation ($key: String!, $payment: String!) {
     renewOrderOcurring(key: $key, paymentKey: $payment) {
       success
       message

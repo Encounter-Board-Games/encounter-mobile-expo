@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from "react";
-import { H3 } from "../../../components/Typography";
-import styled, { withTheme } from "styled-components";
-import { Modalize } from "react-native-modalize";
-import { Entypo } from "@expo/vector-icons";
-import { translation } from "../../../texts";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useEffect, useRef } from 'react';
+import { H3 } from '../../../components/Typography';
+import styled, { withTheme } from 'styled-components';
+import { Modalize } from 'react-native-modalize';
+import { Entypo } from '@expo/vector-icons';
+import { translation } from '../../../texts';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};
@@ -57,7 +57,7 @@ export default withTheme(({ theme }) => {
               size={16}
             />
           </CloseButton>
-          <H3 center>{translation("cart.cartName")}</H3>
+          <H3 center>{translation('cart.cartName')}</H3>
         </Header>
       )}
       ref={modalRef}

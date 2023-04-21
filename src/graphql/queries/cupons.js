@@ -1,21 +1,20 @@
-import gql from 'graphql-tag'
-
+import gql from 'graphql-tag';
 
 export const cuponsQuery = gql`
-query{
-  cupons{
-    key
-    title
-    description
-    searchId
-    expirationDate
-    allUsers
-    type
-    value
-    progressBar
-    progressBarText
-    search{
-      order
+  query {
+    cupons {
+      key
+      title
+      description
+      searchId
+      expirationDate
+      allUsers
+      type
+      value
+      progressBar
+      progressBarText
+      search {
+        order
         searchGroup
         categories
         tags
@@ -25,20 +24,19 @@ query{
         language
         price
         age
-      
+      }
     }
   }
-}
-`
+`;
 export const applyCuponMutation = gql`
-mutation($productSum: Float!, $keys: [String!]! ){
-  applyCupon(productSum: $productSum, keys: $keys){
-    key
-    title
-    description
-    searchId
-    expirationDate
-    discount
+  mutation ($productSum: Float!, $keys: [String!]!) {
+    applyCupon(productSum: $productSum, keys: $keys) {
+      key
+      title
+      description
+      searchId
+      expirationDate
+      discount
+    }
   }
-}
-`
+`;

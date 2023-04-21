@@ -1,6 +1,6 @@
-import * as AppleAuthentication from "expo-apple-authentication";
-import * as Crypto from "expo-crypto";
-import { useState } from "react";
+import * as AppleAuthentication from 'expo-apple-authentication';
+import * as Crypto from 'expo-crypto';
+import { useState } from 'react';
 
 interface LoginProps {
   setLoginLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,12 +11,11 @@ interface LoginProps {
   setIsCodeSent: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-
 export default function LoginApple({
   setLoginLoading,
   setAutocompleteRegister,
 }: LoginProps) {
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   async function handleAppleLogin() {
     try {
@@ -39,28 +38,25 @@ export default function LoginApple({
       const { fullName } = result;
       const { familyName, givenName } = fullName || {};
       if (givenName) setAutocompleteRegister({ givenName, familyName });
-      handleSocialLogin("apple", result.identityToken);
+      handleSocialLogin('apple', result.identityToken);
     } catch (error) {
       console.log(error);
       setLoginLoading(false);
-      if (error.code === "ERR_CANCELED") {
-        setError("Login canceled");
+      if (error.code === 'ERR_CANCELED') {
+        setError('Login canceled');
       } else {
-        setError("An error occurred");
+        setError('An error occurred');
       }
     }
   }
 
   return (
-  <>
-  {error && (
-  <div className="error-message">{error}</div>
-  )}
-  <button onClick={handleAppleLogin}>Login with Apple</button>
-  </>
+    <>
+      {error && <div className="error-message">{error}</div>}
+      <button onClick={handleAppleLogin}>Login with Apple</button>
+    </>
   );
-  }
-function handleSocialLogin(arg0: string, identityToken: string) {
-  throw new Error("Function not implemented.");
 }
-
+function handleSocialLogin(arg0: string, identityToken: string) {
+  throw new Error('Function not implemented.');
+}

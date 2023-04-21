@@ -46,7 +46,11 @@ export interface CurrentBannerAction {
   current: Banner;
 }
 
-export type Action = ShelvesAction | BannersAction | LoadingAction | CurrentBannerAction;
+export type Action =
+  | ShelvesAction
+  | BannersAction
+  | LoadingAction
+  | CurrentBannerAction;
 
 export interface Props {
   children: React.ReactNode;

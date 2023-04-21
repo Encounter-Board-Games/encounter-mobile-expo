@@ -1,16 +1,16 @@
-import React from "react";
-import { H3, H4 } from "../../../components/Typography";
-import { Space } from "../../../components/Space";
-import { Button } from "../../../components/Button/Button";
-import { View } from "react-native";
-import { useDispatch } from "react-redux";
-import { currencyFormat } from "../../../utils/helpers";
-import { useNavigation } from "@react-navigation/native";
-import { Box } from "../../../components/Box";
-import { translation } from "../../../texts";
-import { handleOpenCart } from "../../../store/actions/cart";
+import React from 'react';
+import { H3, H4 } from '../../../components/Typography';
+import { Space } from '../../../components/Space';
+import { Button } from '../../../components/Button/Button';
+import { View } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { currencyFormat } from '../../../utils/helpers';
+import { useNavigation } from '@react-navigation/native';
+import { Box } from '../../../components/Box';
+import { translation } from '../../../texts';
+import { handleOpenCart } from '../../../store/actions/cart';
 import { Line, Title, CupomContent, Hr } from './CartInfoStyles';
-import _Products from "./_Products";
+import _Products from './_Products';
 
 export const Cupom = ({ cupom }) => {
   return (
@@ -48,7 +48,7 @@ export const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
             </Title>
             <H4 type="secondDarkColor">
               {deliveryTaxes == undefined
-                ? "a calcular"
+                ? 'a calcular'
                 : currencyFormat(deliveryTaxes)}
             </H4>
           </Line>
@@ -58,7 +58,7 @@ export const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
               <H4 type="secondDarkColor">Cupom de desconto</H4>
             </Title>
             <H4 type="primaryDarkColor">
-              {cupom === cupom.discount ? currencyFormat(cupom.discount) : "-"}
+              {cupom === cupom.discount ? currencyFormat(cupom.discount) : '-'}
             </H4>
           </Line>
 
@@ -69,7 +69,7 @@ export const Billing = ({ renew, subtotal, deliveryTaxes, total, cupom }) => {
         <Title>
           <H3>Total</H3>
         </Title>
-        <H3>{total != undefined ? currencyFormat(total) : "-"}</H3>
+        <H3>{total != undefined ? currencyFormat(total) : '-'}</H3>
       </Line>
       <Space n={2} />
       <Hr />
@@ -83,7 +83,7 @@ export const Disclaimer = (props) => {
 
   const keepBuying = () => {
     dispatch(handleOpenCart(false));
-    navigation.navigate("Início");
+    navigation.navigate('Início');
   };
   return (
     <React.Fragment>
@@ -91,27 +91,29 @@ export const Disclaimer = (props) => {
         <Box>
           <Line>
             <H3 flex type="secondDarkColor">
-              {translation("cart.rentTimeBox.title")}
+              {translation('cart.rentTimeBox.title')}
             </H3>
-            {props.time === (
+            {props.time ===
+            (
               <H3>
-                {translation("cart.rentTimeBox.time", { time: props.time })}
+                {translation('cart.rentTimeBox.time', { time: props.time })}
               </H3>
             )}
           </Line>
           <Space n={2} />
-          {props.products.length <= 1 === (
+          {props.products.length <= 1 ===
+          (
             <React.Fragment>
               <Line>
                 <H4 flex type="secondDarkColor">
-                  {translation("cart.rentTimeBox.description")}
+                  {translation('cart.rentTimeBox.description')}
                 </H4>
               </Line>
               <Space n={2} />
             </React.Fragment>
           )}
           <Button type="CallToAction-Outline-Flex" onPress={() => keepBuying()}>
-            {translation("cart.rentTimeBox.button")}
+            {translation('cart.rentTimeBox.button')}
           </Button>
         </Box>
       </View>

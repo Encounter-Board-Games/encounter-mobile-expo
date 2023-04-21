@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { handleHideNotification, handleShowNotification } from "../../../store/actions/notification";
-import { Animated, TouchableWithoutFeedback, Vibration } from "react-native";
-import { Notifications } from "expo";
-import { handleOpenNotification } from "../../../store/actions/shared";
-import { handleLoadOrders } from "../../../store/actions/orders";
-import { Container, Notification, Message } from "./AppNotificationStyles";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  handleHideNotification,
+  handleShowNotification,
+} from '../../../store/actions/notification';
+import { Animated, TouchableWithoutFeedback, Vibration } from 'react-native';
+import { Notifications } from 'expo';
+import { handleOpenNotification } from '../../../store/actions/shared';
+import { handleLoadOrders } from '../../../store/actions/orders';
+import { Container, Notification, Message } from './AppNotificationStyles';
 
 export default function AppNotification() {
   const [bottom, setBottom] = useState(new Animated.Value(-200));
@@ -17,16 +20,16 @@ export default function AppNotification() {
     const id = Math.random();
     open(!!notification?.show);
     const subscription = Notifications.addListener(handleNotification);
-  
+
     return () => {
       subscription.remove();
     };
-  }, [notification?.show]);  
+  }, [notification?.show]);
 
   const handleNotification = (notification) => {
-    if (notification.data.action && notification.data.action.includes("order"))
+    if (notification.data.action && notification.data.action.includes('order'))
       dispatch(handleLoadOrders());
-    if (notification.origin === "received")
+    if (notification.origin === 'received')
       dispatch(
         handleShowNotification({
           text: notification.data.body,
@@ -34,7 +37,7 @@ export default function AppNotification() {
           key: notification.data.key,
         })
       );
-    if (notification.origin === "selected") {
+    if (notification.origin === 'selected') {
       openNotification(
         notification.data ? notification.data.key : undefined,
         notification.data ? notification.data.action : undefined
@@ -68,7 +71,7 @@ export default function AppNotification() {
     }).start();
   };
 
-  const type = notification?.type || "success";
+  const type = notification?.type || 'success';
   open(!!notification?.show);
   openNotification(
     notification?.notificationKey,
@@ -80,10 +83,10 @@ export default function AppNotification() {
       type={type}
       style={{
         top: bottom,
-        position: "absolute",
+        position: 'absolute',
         left: 0,
         zIndex: 999,
-        width: "100%",
+        width: '100%',
       }}
     >
       <TouchableWithoutFeedback onPress={hideNotification}>
@@ -95,4 +98,4 @@ export default function AppNotification() {
       </TouchableWithoutFeedback>
     </Animated.View>
   );
-};
+}

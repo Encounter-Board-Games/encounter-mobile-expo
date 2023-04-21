@@ -20,7 +20,10 @@ const CurrentLocation = ({ navigation }) => {
   const onPressMap = (e) => {
     if (mapRef.current && e.nativeEvent.coordinate) {
       setMoving(true);
-      mapRef.current.animateCamera({ center: e.nativeEvent.coordinate, pitch: 10, altitude: 800 }, 500);
+      mapRef.current.animateCamera(
+        { center: e.nativeEvent.coordinate, pitch: 10, altitude: 800 },
+        500
+      );
     }
   };
 
@@ -47,7 +50,10 @@ const CurrentLocation = ({ navigation }) => {
       }
 
       let currentLocation = await Location.getCurrentPositionAsync({});
-      mapRef.current.animateCamera({ center: currentLocation.coords, pitch: 10, altitude: 800, zoom: 17 }, 500);
+      mapRef.current.animateCamera(
+        { center: currentLocation.coords, pitch: 10, altitude: 800, zoom: 17 },
+        500
+      );
       requestStreeName(currentLocation.coords);
       setStarted(true);
       setMoving(false);
@@ -65,7 +71,11 @@ const CurrentLocation = ({ navigation }) => {
     <>
       <Header>
         <CloseButton onPress={() => navigation.goBack()}>
-          <Ionicons name="ios-arrow-round-back" color={theme.colors.darkColor} size={32} />
+          <Ionicons
+            name="ios-arrow-round-back"
+            color={theme.colors.darkColor}
+            size={32}
+          />
         </CloseButton>
       </Header>
       <Footer>
@@ -95,17 +105,25 @@ const CurrentLocation = ({ navigation }) => {
         pitchEnabled={false}
         ref={mapRef}
         loadingEnabled
-        style={{ flex: 1, width: Dimensions.get('window').width, height: Dimensions.get('window').height }}
-        >
+        style={{
+          flex: 1,
+          width: Dimensions.get('window').width,
+          height: Dimensions.get('window').height,
+        }}
+      >
         {currentLocation && (
-        <Marker coordinate={{ latitude: currentLocation.latitude, longitude: currentLocation.longitude }}>
-        <Image source={require('../../assets/img/map-pin.png')} />
-        </Marker>
+          <Marker
+            coordinate={{
+              latitude: currentLocation.latitude,
+              longitude: currentLocation.longitude,
+            }}
+          >
+            <Image source={require('../../assets/img/map-pin.png')} />
+          </Marker>
         )}
-        </MapView>
-        </>
-        );
-        };
+      </MapView>
+    </>
+  );
+};
 
-        
-        export default withTheme(CurrentLocation);
+export default withTheme(CurrentLocation);

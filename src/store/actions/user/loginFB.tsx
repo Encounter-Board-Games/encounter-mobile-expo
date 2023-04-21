@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "react-native";
-import * as Facebook from "expo-facebook";
+import React from 'react';
+import { Button } from 'react-native';
+import * as Facebook from 'expo-facebook';
 
 interface LoginProps {
   setLoginLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,20 +13,19 @@ export function Login({ setLoginLoading, setError }: LoginProps) {
     setLoginLoading(true);
     try {
       await Facebook.initializeAsync({
-        appId: "<your-app-id>",
+        appId: '<your-app-id>',
       });
       const { type } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ["public_profile", "email"],
+        permissions: ['public_profile', 'email'],
       });
-      if (type === "success") {
-  
+      if (type === 'success') {
       } else {
         setLoginLoading(false);
       }
     } catch (error) {
       console.log(error);
       setLoginLoading(false);
-      setError("An error occurred");
+      setError('An error occurred');
     }
   }
 

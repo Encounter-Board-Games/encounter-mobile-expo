@@ -8,7 +8,6 @@ import { closePopupModal } from '../../../store/actions/info';
 import theme from '../../../styles/theme';
 import { Container, Line } from './PopupLoginStyles';
 
-
 const LoginPopup: React.FC = () => {
   const dispatch = useDispatch();
   const [evaluation, setEvaluation] = useState<string | undefined>();
@@ -23,7 +22,11 @@ const LoginPopup: React.FC = () => {
       <Subtitle2>Você precisa estar logado para essa ação!</Subtitle2>
       <Space n={2} />
       <Line>
-        <Button onPress={handleOpenLogin} type="CallToAction-Outline" theme={theme}>
+        <Button
+          onPress={handleOpenLogin}
+          type="CallToAction-Outline"
+          theme={theme}
+        >
           Entrar ou cadastrar
         </Button>
       </Line>

@@ -1,12 +1,12 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 
-import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Button } from "../../../components/Button/Button";
-import { H4, H3 } from "../../../components/Typography";
+import { Space, SpaceHorizontal } from '../../../components/Space';
+import { Button } from '../../../components/Button/Button';
+import { H4, H3 } from '../../../components/Typography';
 
-import { closePopupModal } from "../../../store/actions/info";
+import { closePopupModal } from '../../../store/actions/info';
 
 const Container = styled.View`
   align-items: center;
@@ -59,14 +59,14 @@ export default () => {
       <Space n={2} />
       <Line>
         <Btn>
-          <Button onPress={cancel} type="CallToAction-Outline" width={"auto"}>
-            {cancelBtn || "Cancelar"}
+          <Button onPress={cancel} type="CallToAction-Outline" width={'auto'}>
+            {cancelBtn || 'Cancelar'}
           </Button>
         </Btn>
         <SpaceHorizontal n={4} />
         <Btn>
-          <Button onPress={remove} type="ComplementButton-Big" width={"auto"}>
-            {confirmBtn || "Sim, excluir"}
+          <Button onPress={remove} type="ComplementButton-Big" width={'auto'}>
+            {confirmBtn || 'Sim, excluir'}
           </Button>
         </Btn>
       </Line>

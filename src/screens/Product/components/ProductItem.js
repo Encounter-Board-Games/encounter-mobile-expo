@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import styled, { withTheme } from "styled-components";
-import { Text, Image, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import ProductStatus from "./ProductStatus";
-import { useSelector, useDispatch } from "react-redux";
-import { handleSetCurrentProduct } from "../../../store/actions/product";
+import React, { useEffect, useState } from 'react';
+import styled, { withTheme } from 'styled-components';
+import { Text, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import ProductStatus from './ProductStatus';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleSetCurrentProduct } from '../../../store/actions/product';
 
 import {
   Placeholder,
   PlaceholderMedia,
   PlaceholderLine,
   Fade,
-} from "rn-placeholder";
-import { Space } from "../../../components/Space";
-import { Subtitle3 } from "../../../components/Typography";
-import { handleRememberProduct } from "../../../store/actions/user/handlers";
-import { View } from "react-native-animatable";
+} from 'rn-placeholder';
+import { Space } from '../../../components/Space';
+import { Subtitle3 } from '../../../components/Typography';
+import { handleRememberProduct } from '../../../store/actions/user/handlers';
+import { View } from 'react-native-animatable';
 
 export const ProductImage = styled.View`
   width: ${(props) => (props.spotlight ? 200 : 140)}px;
@@ -29,7 +29,7 @@ export const Container = styled.TouchableOpacity`
   width: ${(props) => (props.spotlight ? 200 : 140)}px;
   min-height: 10px;
   ${(props) =>
-    props.flex ? "flex: 1;" : `margin-left: ${props.theme.space.space2}`}
+    props.flex ? 'flex: 1;' : `margin-left: ${props.theme.space.space2}`}
 `;
 
 export const Content = styled.View``;
@@ -55,21 +55,21 @@ function ProductItem(props) {
   const openProduct = () => {
     props.onPress && props.onPress();
     dispatch(handleSetCurrentProduct(props.id));
-    navigation.navigate("ProductDetails");
+    navigation.navigate('ProductDetails');
   };
 
   useEffect(() => {
     if (props.showImage) setShowImage(props.showImage);
   }, [props.showImage]);
-  const Subtitle3Size = +props.theme.sizes.subtitle3.replace("px", "");
-  
+  const Subtitle3Size = +props.theme.sizes.subtitle3.replace('px', '');
+
   if (props.isLoading)
     return (
       <Container {...props}>
         <Placeholder style={{ flex: 1 }} Animation={Fade}>
-          <View style={{ alignItems: "center" }}>
+          <View style={{ alignItems: 'center' }}>
             <ProductImage>
-              <PlaceholderMedia size={"100%"} />
+              <PlaceholderMedia size={'100%'} />
             </ProductImage>
           </View>
           <Space n={0} />
@@ -86,21 +86,16 @@ function ProductItem(props) {
       </Container>
     );
 
-  if (!product)
-    return (
-      <Container {...props}>
-        
-      </Container>
-    );
+  if (!product) return <Container {...props}></Container>;
 
   return (
     <Container {...props} onPress={() => openProduct()}>
-      <View style={{ alignItems: "center" }}>
+      <View style={{ alignItems: 'center' }}>
         <ProductImage spotlight={props.spotlight}>
           {showImage && (
             <Image
               resizeMode="center"
-              style={{ height: "100%", width: "100%" }}
+              style={{ height: '100%', width: '100%' }}
               source={{ uri: product.mainImage }}
             />
           )}
@@ -130,6 +125,6 @@ function ProductItem(props) {
       )}
     </Container>
   );
-};
+}
 
 export default withTheme(ProductItem);

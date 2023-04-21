@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.TouchableOpacity`
   align-items: center;
@@ -17,7 +17,7 @@ export const TextInput = styled.TextInput`
   font-size: ${(props) => props.theme.space.space2};
  `;
 
- export const Line = styled.View`
+export const Line = styled.View`
   flex-flow: row;
   align-items: flex-start;
   justify-content: center;

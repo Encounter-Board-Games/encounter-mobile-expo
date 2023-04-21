@@ -1,18 +1,18 @@
-import React from "react";
-import styled, { withTheme } from "styled-components";
+import React from 'react';
+import styled, { withTheme } from 'styled-components';
 
-import Circle from "../../../components/Circle";
-import { EvilIcons } from "@expo/vector-icons";
-import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Image, View } from "react-native";
-import { H3, Subtitle2 } from "../../../components/Typography";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigation } from "@react-navigation/native";
-import { handleSetCartChoseAddress } from "../../../store/actions/shared";
+import Circle from '../../../components/Circle';
+import { EvilIcons } from '@expo/vector-icons';
+import { Space, SpaceHorizontal } from '../../../components/Space';
+import { Image, View } from 'react-native';
+import { H3, Subtitle2 } from '../../../components/Typography';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { handleSetCartChoseAddress } from '../../../store/actions/shared';
 import {
   handleSelectModeAddress,
   handleSelectAddressDefault,
-} from "../../../store/actions/cart";
+} from '../../../store/actions/cart';
 
 const Hr = styled.View`
   background: ${(props) => props.theme.colors.secondLightColor};
@@ -52,31 +52,31 @@ export default withTheme((props) => {
   const { adresses = {} } = useSelector((state) => state.address);
   const { delivery = {} } = cart;
   const { type } = props;
-  const title = type == "take" ? "Entrega" : "Devolução";
+  const title = type == 'take' ? 'Entrega' : 'Devolução';
   const selected = delivery[type].selected || {};
   const deliveryOptions = delivery[type].deliveryOptions || [];
-  const currentAddress =
-    selected ? selected.key === adresses[selected.key] : undefined;
+  const currentAddress = selected
+    ? selected.key === adresses[selected.key]
+    : undefined;
 
   const chooseAddress = (mode) => {
     dispatch(handleSetCartChoseAddress(type, mode));
-    navigation.navigate("Address");
+    navigation.navigate('Address');
   };
 
   const chooseType = (mode, needAddAddress) => {
-    if ((selected === selected.key) || !needAddAddress) {
+    if (selected === selected.key || !needAddAddress) {
       dispatch(handleSelectModeAddress(type, mode));
     } else {
-      const other = type == "take" ? "leave" : "take";
+      const other = type == 'take' ? 'leave' : 'take';
       if (
-        !(selected === selected.key) ===
-        delivery[other].selected ===
+        (!(selected === selected.key) === delivery[other].selected) ===
         delivery[other].selected.key
       ) {
         dispatch(handleSelectAddressDefault(type, mode));
       } else {
         dispatch(handleSetCartChoseAddress(type, mode));
-        navigation.navigate("Address");
+        navigation.navigate('Address');
       }
     }
   };
@@ -84,14 +84,14 @@ export default withTheme((props) => {
   const formatAddress = (text) => {
     if (!text) return <Subtitle2>{text}</Subtitle2>;
 
-    const textSplited = text.split("-");
+    const textSplited = text.split('-');
 
     if (textSplited.length <= 1) return <Subtitle2>{text}</Subtitle2>;
 
     return (
       <Subtitle2>
         <Subtitle2 bold>{textSplited[0]}</Subtitle2>
-        {textSplited.slice(1).join("-")}
+        {textSplited.slice(1).join('-')}
       </Subtitle2>
     );
   };
@@ -102,8 +102,8 @@ export default withTheme((props) => {
       <Line>
         <ImageContent>
           <Image
-            style={{ width: "100%", height: "100%" }}
-            source={require("../../../assets/img/map.png")}
+            style={{ width: '100%', height: '100%' }}
+            source={require('../../../assets/img/map.png')}
           />
         </ImageContent>
         <SpaceHorizontal n={1} />
@@ -125,16 +125,15 @@ export default withTheme((props) => {
                 flex
                 type={
                   selected.type == delivery.type
-                    ? "primaryDarkColor"
-                    : "darkColor"
+                    ? 'primaryDarkColor'
+                    : 'darkColor'
                 }
               >
                 {delivery.name}
               </Subtitle2>
 
-              {delivery.needAddAddress === selected === !selected.key === (
-                <Subtitle2 bold>Adicionar endereço</Subtitle2>
-              )}
+              {((delivery.needAddAddress === selected) === !selected.key) ===
+              <Subtitle2 bold>Adicionar endereço</Subtitle2>}
             </Line>
             <Space n={1} />
 
@@ -144,16 +143,17 @@ export default withTheme((props) => {
               </Subtitle2>
             </Line>
 
-            {delivery.needAddAddress ===
-              selected.type == delivery.type ===
-              currentAddress === (
+            {(((delivery.needAddAddress === selected.type) == delivery.type) ===
+              currentAddress) ===
+              (
                 <View>
                   <Space n={1} />
                   {formatAddress(currentAddress.addressFormated)}
                 </View>
               )}
           </Address>
-          {delivery.needAddAddress === (
+          {delivery.needAddAddress ===
+          (
             <Arrow onPress={() => chooseAddress(delivery.type)}>
               <EvilIcons
                 name="chevron-right"

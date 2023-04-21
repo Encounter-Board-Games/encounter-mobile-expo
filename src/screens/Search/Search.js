@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
-import { View, TouchableOpacity } from "react-native";
-import Screen from "../../components/Screen";
+import React, { useEffect } from 'react';
+import { View, TouchableOpacity } from 'react-native';
+import Screen from '../../components/Screen';
 
-import styled, { withTheme } from "styled-components";
-import SearchBar from "./components/SearchBar";
-import { H3, Subtitle2 } from "../../components/Typography";
-import { useSelector, useDispatch } from "react-redux";
-import { Tag } from "../../components/Tag";
+import styled, { withTheme } from 'styled-components';
+import SearchBar from './components/SearchBar';
+import { H3, Subtitle2 } from '../../components/Typography';
+import { useSelector, useDispatch } from 'react-redux';
+import { Tag } from '../../components/Tag';
 import {
   handleClearSelects,
   handleChangeFilteringText,
   handleSetMyFavorites,
   handleNeedTutorial,
-} from "../../store/actions/filters/filters";
-import ProductShelf from "../Product/components/ProductShelf";
-import HeaderSeeAll from "../../components/HeaderSeeAll";
-import FilterResult from "./components/FilterResult";
-import { translation } from "../../texts";
-import config from "../../config";
+} from '../../store/actions/filters/filters';
+import ProductShelf from '../Product/components/ProductShelf';
+import HeaderSeeAll from '../../components/HeaderSeeAll';
+import FilterResult from './components/FilterResult';
+import { translation } from '../../texts';
+import config from '../../config';
 
 const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};
@@ -30,7 +30,6 @@ const FlexContent = styled.View`
 `;
 
 const Space = styled.View`
-
   width: 100%;
   color: ${(props) => props.theme.colors.secondColor};
 `;
@@ -41,12 +40,10 @@ const Chips = styled.ScrollView`
 `;
 
 const Space3 = styled.View`
-
-    width: 1px;
+  width: 1px;
 `;
 const Space2 = styled.View`
-
-    width: 1px;
+  width: 1px;
 `;
 
 const RecentItem = styled.TouchableOpacity`
@@ -125,7 +122,7 @@ const Search = (props) => {
       {isLogged && config.favorites && (
         <FlexContent>
           <HeaderSeeAll
-            title={"Meus Favoritos"}
+            title={'Meus Favoritos'}
             showSeeAll={favorites.length > 0}
             onSeeAllPress={() => dispatch(handleSetMyFavorites())}
           ></HeaderSeeAll>
@@ -136,7 +133,7 @@ const Search = (props) => {
             </View>
           ) : (
             <Subtitle2 type="secondColor">
-              {translation("search.favorites")}{" "}
+              {translation('search.favorites')}{' '}
             </Subtitle2>
           )}
         </FlexContent>

@@ -12,7 +12,10 @@ const Button: React.FC<ButtonProps> = (props) => {
       {...props}
       onPress={() => !props.disabled && props.onPress && props.onPress()}
     >
-      <Text isOutline={props.isOutline} {...getConfigs(props.theme, props.type)}>
+      <Text
+        isOutline={props.isOutline}
+        {...getConfigs(props.theme, props.type)}
+      >
         {props.children}
       </Text>
     </Button_>

@@ -22,6 +22,5 @@ export interface RemoveQuickSearchsAction {
 
 export type AppAction = SetQuickSearchsAction | RemoveQuickSearchsAction;
 
-export const SET_QUICK_SEARCHS = "SET_QUICK_SEARCHS";
-export const REMOVE_QUICK_SEARCHS = "REMOVE_QUICK_SEARCHS";
-
+export const SET_QUICK_SEARCHS = 'SET_QUICK_SEARCHS';
+export const REMOVE_QUICK_SEARCHS = 'REMOVE_QUICK_SEARCHS';

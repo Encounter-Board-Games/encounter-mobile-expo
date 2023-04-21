@@ -41,7 +41,9 @@ const CuponContainer = styled.View`
 const Cupons: FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const { cupons = undefined } = useSelector<RootState, CuponsState>((state) => state.cupons);
+  const { cupons = undefined } = useSelector<RootState, CuponsState>(
+    (state) => state.cupons
+  );
 
   useEffect(() => {
     dispatch(handleLoadCupons());
@@ -63,7 +65,10 @@ const Cupons: FC = () => {
             <Space n={2} />
             <Subtitle2 type="secondDarkColor">{cupon.description}</Subtitle2>
             <Space n={2} />
-            <Button type="CallToAction-Outline" onPress={() => openFilter(cupon.search)}>
+            <Button
+              type="CallToAction-Outline"
+              onPress={() => openFilter(cupon.search)}
+            >
               {translation('cupon.btn')}
             </Button>
             <Space n={2} />
@@ -77,14 +82,21 @@ const Cupons: FC = () => {
       ))}
     </View>
   ) : (
-    <InformationBox title="Você não possui cupons ativos." description="Assim que receber, poderá ver tudo por aqui!" />
+    <InformationBox
+      title="Você não possui cupons ativos."
+      description="Assim que receber, poderá ver tudo por aqui!"
+    />
   );
 };
 
 const CuponsScreen: FC = () => {
-  const { isLogged = false } = useSelector<RootState, { isLogged: boolean }>((state) => state.user);
+  const { isLogged = false } = useSelector<RootState, { isLogged: boolean }>(
+    (state) => state.user
+  );
 
-  const isNotLoggedContent = () => <NotLoggedBox title="Você não possui cupons ativos." />;
+  const isNotLoggedContent = () => (
+    <NotLoggedBox title="Você não possui cupons ativos." />
+  );
 
   return (
     <ScreePopup title="Cupons" withBorder>

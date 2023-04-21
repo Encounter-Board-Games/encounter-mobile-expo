@@ -1,25 +1,31 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import LoginScreen from './LoginScreen'
-import { useSelector } from 'react-redux'
-import PasswordScreen from './PasswordScreen'
-import CodeSentScreen from './CodeSentScreen'
-
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import LoginScreen from './LoginScreen';
+import { useSelector } from 'react-redux';
+import PasswordScreen from './PasswordScreen';
+import CodeSentScreen from './CodeSentScreen';
 
 export const Container = styled.View`
-    padding: ${props => props.theme.space.space3};
-    width: 100%;
+  padding: ${(props) => props.theme.space.space3};
+  width: 100%;
 `;
 
-export default function LoginFlow () {
-    const [minHeight, setHeight] = useState(undefined)
-    const { login = {} } = useSelector(state => state.user)
+export default function LoginFlow() {
+  const [minHeight, setHeight] = useState(undefined);
+  const { login = {} } = useSelector((state) => state.user);
 
-    if ((login.isLogin || login.isRegister || login.changePassword) && !login.isCodeSent)
-        return <PasswordScreen minHeight={minHeight} />
+  if (
+    (login.isLogin || login.isRegister || login.changePassword) &&
+    !login.isCodeSent
+  )
+    return <PasswordScreen minHeight={minHeight} />;
 
-    if ((login.isLogin || login.isRegister) && login.isCodeSent)
-        return <CodeSentScreen minHeight={minHeight} />
+  if ((login.isLogin || login.isRegister) && login.isCodeSent)
+    return <CodeSentScreen minHeight={minHeight} />;
 
-    return (<LoginScreen onLayout={(event) => setHeight(event.nativeEvent.layout.height)} />)
+  return (
+    <LoginScreen
+      onLayout={(event) => setHeight(event.nativeEvent.layout.height)}
+    />
+  );
 }

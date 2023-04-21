@@ -26,7 +26,8 @@ const InfoModal = ({ theme }) => {
     }
   }, [show]);
 
-  const height = Dimensions.get('window').height - (32 + Constants.statusBarHeight);
+  const height =
+    Dimensions.get('window').height - (32 + Constants.statusBarHeight);
 
   return (
     <Modalize
@@ -35,7 +36,11 @@ const InfoModal = ({ theme }) => {
       HeaderComponent={() => (
         <Header onPress={() => dispatch(handleOpenCart(false))}>
           <CloseButton>
-            <Entypo name="chevron-thin-down" color={theme.colors.darkColor} size={16} />
+            <Entypo
+              name="chevron-thin-down"
+              color={theme.colors.darkColor}
+              size={16}
+            />
           </CloseButton>
           <H3 center>{translation('cart.cartName')}</H3>
         </Header>

@@ -1,13 +1,19 @@
-import React, { useRef, useEffect } from "react";
-import { Modalize } from "react-native-modalize";
-import { useDispatch, useSelector } from "react-redux";
-import { Entypo } from "@expo/vector-icons";
-import { Space } from "../../components/Space";
-import { H3, Subtitle2 } from "../../components/Typography";
-import { closeInfoModal } from "../../store/actions/info";
-import { Container, Header, CloseButton, Content, SafeSpace } from "./InfoModalStyles";
-import { Theme } from "../../styles/theme-types";
-import { RootState } from "../../store/Store";
+import React, { useRef, useEffect } from 'react';
+import { Modalize } from 'react-native-modalize';
+import { useDispatch, useSelector } from 'react-redux';
+import { Entypo } from '@expo/vector-icons';
+import { Space } from '../../components/Space';
+import { H3, Subtitle2 } from '../../components/Typography';
+import { closeInfoModal } from '../../store/actions/info';
+import {
+  Container,
+  Header,
+  CloseButton,
+  Content,
+  SafeSpace,
+} from './InfoModalStyles';
+import { Theme } from '../../styles/theme-types';
+import { RootState } from '../../store/Store';
 
 interface InfoModalProps {
   theme: Theme;
@@ -35,7 +41,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ theme }) => {
     }
   }, [info.open]);
 
-  const { content = [], title = "" } = info;
+  const { content = [], title = '' } = info;
 
   return (
     <Modalize

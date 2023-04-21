@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
 
 export const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};
@@ -35,7 +34,5 @@ export const Content = styled.View`
 `;
 
 export const SafeSpace = styled.View`
-
   width: 1px;
 `;
-

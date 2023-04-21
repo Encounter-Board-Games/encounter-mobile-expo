@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import EditProfileContent from "./EditProfileContent";
-import { H2 } from "../../components/Typography";
-import { Space } from "../../components/Space";
-import * as Animatable from "react-native-animatable";
-import { useNavigation } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
-import { handleOpenCart } from "../../store/actions/cart";
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import EditProfileContent from './EditProfileContent';
+import { H2 } from '../../components/Typography';
+import { Space } from '../../components/Space';
+import * as Animatable from 'react-native-animatable';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { handleOpenCart } from '../../store/actions/cart';
 
 const Container = styled.View`
   width: 100%;
@@ -30,7 +30,7 @@ export default () => {
   return (
     <Animatable.View
       animation="fadeInUp"
-      style={{ height: "100%", width: "100%" }}
+      style={{ height: '100%', width: '100%' }}
     >
       <Container>
         <Header>

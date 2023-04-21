@@ -5,7 +5,7 @@ export const Button_ = styled.TouchableOpacity<ButtonProps>`
   justify-content: center;
   height: ${(props) => props.height || 'auto'};
   width: ${(props) => props.width || 'auto'};
-  flex: ${(props) => props.flex ? 1 : 'none'};
+  flex: ${(props) => (props.flex ? 1 : 'none')};
   padding-left: ${(props) => props.paddingSides || '0'};
   padding-right: ${(props) => props.paddingSides || '0'};
   align-items: center;
@@ -22,14 +22,7 @@ export const Text = styled.Text<TextProps>`
   color: ${(props) =>
     props.isOutline ? props.textColorIsOutline : props.textColor || 'black'};
 `;
-      
+
 export const SocialButton_ = styled.TouchableOpacity<SocialButtonProps>`
-  background: ${(props) =>
-  props.backgroundColor || props.theme.colors}
+  background: ${(props) => props.backgroundColor || props.theme.colors};
 `;
-        
-        
-        
-        
-        
-        

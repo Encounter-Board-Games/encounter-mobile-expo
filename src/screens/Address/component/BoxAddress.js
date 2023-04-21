@@ -8,7 +8,7 @@ import { AddressBox, AddressBoxInfo } from './BoxAddressStyles';
 
 const BoxAddress = ({ addressKey, choseAddressMode }) => {
   const dispatch = useDispatch();
-  const address = useSelector(state => state.address.adresses[addressKey]);
+  const address = useSelector((state) => state.address.adresses[addressKey]);
 
   const handlePress = () => {
     dispatch(setAddressSelected(addressKey));

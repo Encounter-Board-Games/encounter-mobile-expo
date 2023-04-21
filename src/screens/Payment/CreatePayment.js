@@ -126,169 +126,165 @@ const CreatePayment = (props) => {
         behavior={Platform.OS == 'ios' ? 'padding' : undefined}
         enabled
         keyboardVerticalOffset={100}
-        >
+      >
         <Content contentContainerStyle={{ flexGrow: 1 }}>
-        <ContentInput>
-        <Space n={3} />
-        <React.Fragment>
-        <Subtitle2>
-        Número do cartão
-        </Subtitle2>
-        <Space n={1} />
-        {isEdit ? (
-        <CustomInput>
-        <HideInfo size={3} n={4} />
-        <SpaceHorizontal n={1} />
-        <HideInfo size={3} n={4} />
-        <SpaceHorizontal n={1} />
-        <HideInfo size={3} n={4} />
-        <SpaceHorizontal n={1} />
-        <CustomInputText>{cardNumber}</CustomInputText>
-        </CustomInput>
-        ) : (
-        <Input
-        field
-        placeholder="XXXX XXXX XXXX XXXX"
-        value={cardNumber}
-        format={(value) => {
-        let valueToFormat = value.split(' ').join('');
-        return chunk(
-        valueToFormat.split(''),
-        4
-        )
-        .map((i) => i.join(''))
-        .join(' ');
-        }}
-        keyboardType="number-pad"
-        maxLength={19}
-        onChangeText={(value) => setCardNumber(value)}
-        />
-        )}
-        <Space n={2} />
-        </React.Fragment>
-        <Line>
-        <FlexItem>
-        <Subtitle2>Validade</Subtitle2>
-        <Space n={1} />
-        <Input
-        field
-        placeholder="mm/aa"
-        disabled={isEdit}
-        value={cardExpirationDate}
-        format={(value) => {
-        let valueToFormat = value.split('/').join('');
-        if (valueToFormat.length > 2)
-        valueToFormat =
-        valueToFormat.slice(0, 2) +
-        '/' +
-        valueToFormat.slice(2);
-        return valueToFormat;
-        }}
-        keyboardType="number-pad"
-        maxLength={5}
-        onChangeText={(value) =>
-        setCardExpirationDate(value)
-        }
-        />
-        <Space n={2} />
-        </FlexItem>
-        <SpaceHorizontal n={2} />
-        <FlexItem>
-        <Subtitle2>CVV</Subtitle2>
-        <Space n={1} />
-        {isEdit ? (
-        <CustomInput>
-        <HideInfo size={3} n={3} />
-        </CustomInput>
-        ) : (
-        <Input
-        field
-        placeholder="CVV"
-        keyboardType="number-pad"
-        maxLength={3}
-        value={cardCvv}
-        onChangeText={(value) => setCardCvv(value)}
-        />
-        )}
-        <Space n={2} />
-        </FlexItem>
-        </Line>
-        <React.Fragment>
-        <Subtitle2>Nome do titular</Subtitle2>
-        <Space n={1} />
-        <Input
-        field
-        placeholder="Nome igual ao cartão"
-        autoCapitalize="characters"
-        disabled={isEdit}
-        value={cardHolderName}
-        onChangeText={(value) => setCardHolderName(value)}
-        />
-        <Space n={2} />
-        </React.Fragment>
-        <Line>
-        <FlexItem>
-        <Subtitle2>CPF/CNPJ do titular</Subtitle2>
-        <Space n={1} />
-        <Input
-            field
-            placeholder="XXX.XXX.XXX-XX"
-            value={cardDocument}
-            format={(value) => {
-                value = value.replace(/(\.|\/|\-)/g, '');
-                if (value.length <= 11)
-                return value.replace(
-                    /(\d{3})(\d{3})(\d{3})(\d{2})/g,
-                    '$1.$2.$3-$4'
-                );
-                return value.replace(
-                /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g,
-                '$1.$2.$3/$4-$5'
-                );
-            }}
-            maxLength={18}
-            keyboardType="number-pad"
-            disabled={isEdit}
-            onChangeText={(value) => setCardDocument(value)}
-        />
+          <ContentInput>
+            <Space n={3} />
+            <React.Fragment>
+              <Subtitle2>Número do cartão</Subtitle2>
+              <Space n={1} />
+              {isEdit ? (
+                <CustomInput>
+                  <HideInfo size={3} n={4} />
+                  <SpaceHorizontal n={1} />
+                  <HideInfo size={3} n={4} />
+                  <SpaceHorizontal n={1} />
+                  <HideInfo size={3} n={4} />
+                  <SpaceHorizontal n={1} />
+                  <CustomInputText>{cardNumber}</CustomInputText>
+                </CustomInput>
+              ) : (
+                <Input
+                  field
+                  placeholder="XXXX XXXX XXXX XXXX"
+                  value={cardNumber}
+                  format={(value) => {
+                    let valueToFormat = value.split(' ').join('');
+                    return chunk(valueToFormat.split(''), 4)
+                      .map((i) => i.join(''))
+                      .join(' ');
+                  }}
+                  keyboardType="number-pad"
+                  maxLength={19}
+                  onChangeText={(value) => setCardNumber(value)}
+                />
+              )}
+              <Space n={2} />
+            </React.Fragment>
+            <Line>
+              <FlexItem>
+                <Subtitle2>Validade</Subtitle2>
+                <Space n={1} />
+                <Input
+                  field
+                  placeholder="mm/aa"
+                  disabled={isEdit}
+                  value={cardExpirationDate}
+                  format={(value) => {
+                    let valueToFormat = value.split('/').join('');
+                    if (valueToFormat.length > 2)
+                      valueToFormat =
+                        valueToFormat.slice(0, 2) +
+                        '/' +
+                        valueToFormat.slice(2);
+                    return valueToFormat;
+                  }}
+                  keyboardType="number-pad"
+                  maxLength={5}
+                  onChangeText={(value) => setCardExpirationDate(value)}
+                />
+                <Space n={2} />
+              </FlexItem>
+              <SpaceHorizontal n={2} />
+              <FlexItem>
+                <Subtitle2>CVV</Subtitle2>
+                <Space n={1} />
+                {isEdit ? (
+                  <CustomInput>
+                    <HideInfo size={3} n={3} />
+                  </CustomInput>
+                ) : (
+                  <Input
+                    field
+                    placeholder="CVV"
+                    keyboardType="number-pad"
+                    maxLength={3}
+                    value={cardCvv}
+                    onChangeText={(value) => setCardCvv(value)}
+                  />
+                )}
+                <Space n={2} />
+              </FlexItem>
+            </Line>
+            <React.Fragment>
+              <Subtitle2>Nome do titular</Subtitle2>
+              <Space n={1} />
+              <Input
+                field
+                placeholder="Nome igual ao cartão"
+                autoCapitalize="characters"
+                disabled={isEdit}
+                value={cardHolderName}
+                onChangeText={(value) => setCardHolderName(value)}
+              />
+              <Space n={2} />
+            </React.Fragment>
+            <Line>
+              <FlexItem>
+                <Subtitle2>CPF/CNPJ do titular</Subtitle2>
+                <Space n={1} />
+                <Input
+                  field
+                  placeholder="XXX.XXX.XXX-XX"
+                  value={cardDocument}
+                  format={(value) => {
+                    value = value.replace(/(\.|\/|\-)/g, '');
+                    if (value.length <= 11)
+                      return value.replace(
+                        /(\d{3})(\d{3})(\d{3})(\d{2})/g,
+                        '$1.$2.$3-$4'
+                      );
+                    return value.replace(
+                      /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g,
+                      '$1.$2.$3/$4-$5'
+                    );
+                  }}
+                  maxLength={18}
+                  keyboardType="number-pad"
+                  disabled={isEdit}
+                  onChangeText={(value) => setCardDocument(value)}
+                />
 
-        <Space n={2} />
-        </FlexItem>
-        <FlexItem />
-        </Line>
-        </ContentInput>
-        <ContentButton>
-        {isEdit ? (
-        <Button onPress={() => deletePayment()} type="CallToAction-Outline-Flex">
-        Excluir
-        </Button>
-        ) : (
-        <Button
-        disabled={!enableButton() || loading}
-        onPress={() => submit()}
-        type="CallToAction-Light"
-        >
-        Salvar
-        </Button>
-        )}
-        </ContentButton>
-        <Bottom />
+                <Space n={2} />
+              </FlexItem>
+              <FlexItem />
+            </Line>
+          </ContentInput>
+          <ContentButton>
+            {isEdit ? (
+              <Button
+                onPress={() => deletePayment()}
+                type="CallToAction-Outline-Flex"
+              >
+                Excluir
+              </Button>
+            ) : (
+              <Button
+                disabled={!enableButton() || loading}
+                onPress={() => submit()}
+                type="CallToAction-Light"
+              >
+                Salvar
+              </Button>
+            )}
+          </ContentButton>
+          <Bottom />
         </Content>
-        </KeyboardAvoidingView>
-        </ScreenPopup>
-        );
-        };
-        
-        function mapStateToProps({ user, payments }) {
-        return {
-        user,
-        choseMode: !!payments.choseMode,
-        loading: !!payments.loading,
-        isEdit: !!payments.currentPaymentKey,
-        currentPayment: payments.currentPaymentKey
-        ? payments.paymentMethods.find((f) => f.key == payments.currentPaymentKey)
-        : undefined,
-        };
-        }
-        
-        export default CreatePayment;
+      </KeyboardAvoidingView>
+    </ScreenPopup>
+  );
+};
+
+function mapStateToProps({ user, payments }) {
+  return {
+    user,
+    choseMode: !!payments.choseMode,
+    loading: !!payments.loading,
+    isEdit: !!payments.currentPaymentKey,
+    currentPayment: payments.currentPaymentKey
+      ? payments.paymentMethods.find((f) => f.key == payments.currentPaymentKey)
+      : undefined,
+  };
+}
+
+export default CreatePayment;

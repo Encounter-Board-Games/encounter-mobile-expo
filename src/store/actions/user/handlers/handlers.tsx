@@ -1,23 +1,21 @@
-import { openPopupModal } from "../../info";
+import { openPopupModal } from '../../info';
 import {
   emailExists,
   toggleFavorite,
   forgotPassword,
   respondQuestion,
-} from "../../../../graphql";
-import { handleShowNotification } from "../../notification";
-import { 
-  SetAutocompleteRegisterAction,
-  UserAction
-} from '../userTypes'
-import { setLoginLoading, setErroLoginProcessMessage } from "../login";
-import { UserState } from "../../../../types/globals";
+} from '../../../../graphql';
+import { handleShowNotification } from '../../notification';
+import { SetAutocompleteRegisterAction, UserAction } from '../userTypes';
+import { setLoginLoading, setErroLoginProcessMessage } from '../login';
+import { UserState } from '../../../../types/globals';
 
+export const SET_PENDENCES = 'SET_PENDENCES';
 
-export const SET_PENDENCES = "SET_PENDENCES";
-
-
-export function setAutocompleteRegister(name: string, lastname: string): SetAutocompleteRegisterAction {
+export function setAutocompleteRegister(
+  name: string,
+  lastname: string
+): SetAutocompleteRegisterAction {
   return {
     type: 'SET_AUTO_COMPLETE_REGISTER',
     name,
@@ -47,7 +45,7 @@ export function setEmailLoginProcess(email: string, isLogin: boolean) {
     isLogin,
   };
 }
-  
+
 export function setIsCodeSent(isCodeSent: boolean, loginLoading: boolean) {
   return {
     type: 'SET_IS_CODE_SENT',
@@ -55,8 +53,7 @@ export function setIsCodeSent(isCodeSent: boolean, loginLoading: boolean) {
     loginLoading,
   };
 }
-  
-  
+
 export function setFavorites(favorites: string[]) {
   return {
     type: 'SET_FAVORITES',
@@ -68,13 +65,14 @@ export function handleEmailAlreadyExists(email: string) {
   return async (dispatch: (action: UserAction) => void) => {
     dispatch(setLoginLoading(true));
     const validateEmail = (email: string) => {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+      var re =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
     };
 
     if (!validateEmail(email)) {
       dispatch(setLoginLoading(false));
-      return dispatch(setErroLoginProcessMessage("E-mail inválido"));
+      return dispatch(setErroLoginProcessMessage('E-mail inválido'));
     }
 
     const isLogin = await emailExists(email);
@@ -84,12 +82,15 @@ export function handleEmailAlreadyExists(email: string) {
 }
 
 export function handleToggleLike(productId: string) {
-  return async (dispatch: (action: UserAction) => void, getState: () => { user: UserState }) => {
+  return async (
+    dispatch: (action: UserAction) => void,
+    getState: () => { user: UserState }
+  ) => {
     const { user } = getState();
-    if (!user.isLogged) return dispatch(openPopupModal("LOGIN_POPUP"));
-      const { userInfo = {} } = user;
-      const { favorites = [] } = userInfo;
-      const isAdd = !favorites.includes(productId);
+    if (!user.isLogged) return dispatch(openPopupModal('LOGIN_POPUP'));
+    const { userInfo = {} } = user;
+    const { favorites = [] } = userInfo;
+    const isAdd = !favorites.includes(productId);
     if (isAdd) {
       dispatch(addUserFavorite(productId));
     } else {
@@ -98,8 +99,8 @@ export function handleToggleLike(productId: string) {
     try {
       await toggleFavorite(productId);
       if (isAdd)
-        dispatch(handleShowNotification("Adicionado aos Meus Favoritos."));
-      else dispatch(handleShowNotification("Removido dos Meus Favoritos."));
+        dispatch(handleShowNotification('Adicionado aos Meus Favoritos.'));
+      else dispatch(handleShowNotification('Removido dos Meus Favoritos.'));
     } catch (error) {
       if (isAdd) dispatch(removeUserFavorite(productId));
       else dispatch(addUserFavorite(productId));
@@ -108,7 +109,10 @@ export function handleToggleLike(productId: string) {
 }
 
 export function handleForgotPassword() {
-  return async (dispatch: (action: UserAction) => void, getState: () => { user: UserState }) => {
+  return async (
+    dispatch: (action: UserAction) => void,
+    getState: () => { user: UserState }
+  ) => {
     const { user } = getState();
     const { login = {} } = user;
     dispatch(setLoginLoading(true));
@@ -117,7 +121,7 @@ export function handleForgotPassword() {
       dispatch(setIsCodeSent(true, true));
     } else {
       dispatch(
-        handleShowNotification("Ocorreu um erro. Tente novamente.", "danger")
+        handleShowNotification('Ocorreu um erro. Tente novamente.', 'danger')
       );
     }
     dispatch(setLoginLoading(false));
@@ -133,5 +137,5 @@ export function handleRespondQuestion(value: string) {
 }
 
 function getUniqueDeviceId() {
-  throw new Error("Function not implemented.");
+  throw new Error('Function not implemented.');
 }

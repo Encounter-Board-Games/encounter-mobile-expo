@@ -1,10 +1,10 @@
-import client from "./client";
+import client from './client';
 import {
   getShelvesQuery,
   getProductQuery,
   ProductsQuery,
   bannersQuery,
-} from "./queries/shelves";
+} from './queries/shelves';
 import {
   EmailIsRegisteryQuery,
   forgotMutation,
@@ -27,9 +27,9 @@ import {
   rememberMeMutation,
   SetNotificationViewedMutation,
   respondQuestionMutation,
-} from "./queries/user";
-import { getFiltersQuery, getFilterQuery } from "./queries/filter";
-import { aboutQuery, updateVersionQuery } from "./queries/app";
+} from './queries/user';
+import { getFiltersQuery, getFilterQuery } from './queries/filter';
+import { aboutQuery, updateVersionQuery } from './queries/app';
 import {
   deliveryOptionsQuery,
   deliveryTaxesQuery,
@@ -37,19 +37,19 @@ import {
   ordersQuery,
   getLastPaymentIdQuery,
   renewOrderMudation,
-} from "./queries/cart";
+} from './queries/cart';
 import {
   paymentMethodsQuery,
   createPaymentMethodMutation,
   removePaymentMethodMutation,
-} from "./queries/payment";
-import { evaluateProductMutation, customFilterQuery } from "./queries/product";
-import { gql } from "apollo-boost";
-import { cuponsQuery, applyCuponMutation } from "./queries/cupons";
+} from './queries/payment';
+import { evaluateProductMutation, customFilterQuery } from './queries/product';
+import { gql } from 'apollo-boost';
+import { cuponsQuery, applyCuponMutation } from './queries/cupons';
 import {
   quickSearchsQuery,
   answerQuestionMutation,
-} from "./queries/quickSearchs";
+} from './queries/quickSearchs';
 
 export function getFilters() {
   return client
@@ -57,7 +57,7 @@ export function getFilters() {
       query: getFiltersQuery,
     })
     .then((resp) => resp.data.getFilters);
-};
+}
 
 export function getFilter(key) {
   return client
@@ -66,7 +66,7 @@ export function getFilter(key) {
       variables: { key },
     })
     .then((resp) => resp.data.getFilter);
-};
+}
 
 export async function getShelves(filter) {
   return client
@@ -76,7 +76,7 @@ export async function getShelves(filter) {
     })
     .then((resp) => resp.data.shelves)
     .catch(console.log);
-};
+}
 
 export async function getBanners() {
   return client
@@ -84,7 +84,7 @@ export async function getBanners() {
       query: bannersQuery,
     })
     .then((resp) => resp.data.banners);
-};
+}
 
 export async function getProduct(id) {
   const result = await client
@@ -99,7 +99,7 @@ export async function getProduct(id) {
     .catch(console.log);
 
   return result;
-};
+}
 
 export async function emailExists(email) {
   const result = await client
@@ -172,11 +172,11 @@ export function createAuth(
     });
 }
 export function sendErros(errors) {
-  console.log("a", errors);
+  console.log('a', errors);
   return client
     .mutate({
       mutation: gql`
-        mutation($errors: String!) {
+        mutation ($errors: String!) {
           logErrors(errors: $errors)
         }
       `,
@@ -243,41 +243,41 @@ export async function UserInfo() {
     .query({
       query: UserInfoQuery,
     })
-    .catch((e) => console.log("error", e))
+    .catch((e) => console.log('error', e))
     .then((resp) => {
       return resp.data;
     })
-    .catch((e) => console.log("error", e));
+    .catch((e) => console.log('error', e));
 }
 export async function registerAccessLog(deviceId) {
   return client
     .mutate({
       mutation: gql`
-        mutation($deviceId: String!) {
+        mutation ($deviceId: String!) {
           registerAccessLog(deviceId: $deviceId)
         }
       `,
       variables: { deviceId },
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
     })
-    .catch((e) => console.log("error", e))
+    .catch((e) => console.log('error', e))
     .then((resp) => {
       return resp.data;
     })
-    .catch((e) => console.log("error", e));
+    .catch((e) => console.log('error', e));
 }
 
 export async function UserNotifications() {
   return client
     .query({
       query: UserNotificationsQuery,
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
     })
-    .catch((e) => console.log("error", e))
+    .catch((e) => console.log('error', e))
     .then((resp) => {
       return resp.data.user;
     })
-    .catch((e) => console.log("error", e));
+    .catch((e) => console.log('error', e));
 }
 
 export async function SetUserNotificationViewed(key) {
@@ -286,11 +286,11 @@ export async function SetUserNotificationViewed(key) {
       mutation: SetNotificationViewedMutation,
       variables: { key },
     })
-    .catch((e) => console.log("error", e))
+    .catch((e) => console.log('error', e))
     .then((resp) => {
       return resp.data.setNotificationViewed;
     })
-    .catch((e) => console.log("error", e));
+    .catch((e) => console.log('error', e));
 }
 
 export function getProducts(filter, text) {
@@ -299,7 +299,7 @@ export function getProducts(filter, text) {
       query: ProductsQuery,
       variables: { ...filter, text },
     })
-    .catch((e) => console.log("error", e))
+    .catch((e) => console.log('error', e))
     .then((resp) => {
       return resp.data.products;
     });
@@ -310,7 +310,7 @@ export function customFilter(type) {
       query: customFilterQuery,
       variables: { type },
     })
-    .catch((e) => console.log("error", e))
+    .catch((e) => console.log('error', e))
     .then((resp) => {
       return resp.data.customFilter;
     });
@@ -614,7 +614,7 @@ export function applyCupon(productSum, keys) {
     .mutate({
       mutation: applyCuponMutation,
       variables: { productSum, keys },
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
     })
     .catch(console.log)
     .then((resp) => {
@@ -627,7 +627,7 @@ export function quickSearchs() {
   return client
     .query({
       query: quickSearchsQuery,
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
     })
     .catch(console.log)
     .then((resp) => {
@@ -639,7 +639,7 @@ export function answerQuestion(key, answer) {
   return client
     .mutate({
       mutation: answerQuestionMutation,
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
       variables: { key, answer },
     })
     .catch(console.log)

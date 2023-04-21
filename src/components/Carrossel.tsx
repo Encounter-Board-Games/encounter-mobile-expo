@@ -49,7 +49,7 @@ const Carrossel: React.FC<CarrosselProps> = ({
 
   const handleScroll = (event: any) => {
     const newCurrent = Math.max(
-      Math.floor((event.nativeEvent.contentOffset.x / deviceWidth) + 0.1),
+      Math.floor(event.nativeEvent.contentOffset.x / deviceWidth + 0.1),
       0
     );
     if (
@@ -114,15 +114,15 @@ const Carrossel: React.FC<CarrosselProps> = ({
               {child}
             </Content>
           ))}
-                </ScrollView>
-      {!!stepperDown && (
-        <React.Fragment>
-          <Space n={0} />
-          <Stepper width="auto" total={nPages} current={current} />
-        </React.Fragment>
-      )}
-    </Container>
-  </ThemeProvider>
+        </ScrollView>
+        {!!stepperDown && (
+          <React.Fragment>
+            <Space n={0} />
+            <Stepper width="auto" total={nPages} current={current} />
+          </React.Fragment>
+        )}
+      </Container>
+    </ThemeProvider>
   );
 };
 

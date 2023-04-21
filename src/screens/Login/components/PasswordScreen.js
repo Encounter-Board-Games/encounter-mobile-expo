@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import * as Animatable from "react-native-animatable";
-import { H3, Subtitle2, H4 } from "../../../components/Typography";
-import CustomInput from "../../../components/Input";
-import { Button } from "../../../components/Button/Button";
-import styled, { withTheme } from "styled-components";
-import { Space } from "../../../components/Space";
-import { Ionicons } from "@expo/vector-icons";
+import React, { useState } from 'react';
+import * as Animatable from 'react-native-animatable';
+import { H3, Subtitle2, H4 } from '../../../components/Typography';
+import CustomInput from '../../../components/Input';
+import { Button } from '../../../components/Button/Button';
+import styled, { withTheme } from 'styled-components';
+import { Space } from '../../../components/Space';
+import { Ionicons } from '@expo/vector-icons';
 import {
   hadleBackToLogin,
   handleSendPassword,
   handleForgotPassword,
-} from "../../../store/actions/user/handlers";
-import { useDispatch, useSelector } from "react-redux";
-import { View, Dimensions } from "react-native";
+} from '../../../store/actions/user/handlers';
+import { useDispatch, useSelector } from 'react-redux';
+import { View, Dimensions } from 'react-native';
 
-export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
+export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } =
+  Dimensions.get('window');
 
 export const Container = styled.View`
   padding: ${(props) => props.theme.space.space3};
@@ -43,28 +44,27 @@ export const SafeSpace = styled.View`
 `;
 
 function PasswordScreen(props) {
-  
   const { login = {} } = useSelector((state) => state.user);
   const isLoading = login.loading;
   const errorMessage = login.errorMessage;
   const minLengthPassword = 6;
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [hidePassword, setShowPassword] = useState(true);
   const dispatch = useDispatch();
 
   const hide = (text) => {
     return text
-      .split("")
-      .map((_) => "*")
-      .join("");
+      .split('')
+      .map((_) => '*')
+      .join('');
   };
 
   const title = login.isForgot
-    ? "Nova senha"
+    ? 'Nova senha'
     : login.isLogin
-    ? "Digite sua senha abaixo."
-    : "Crie sua senha abaixo.";
-  const placeholder = login.isForgot ? "Nova senha" : "Senha";
+    ? 'Digite sua senha abaixo.'
+    : 'Crie sua senha abaixo.';
+  const placeholder = login.isForgot ? 'Nova senha' : 'Senha';
 
   return (
     <Container {...props}>
@@ -77,12 +77,13 @@ function PasswordScreen(props) {
           />
         </BackButton>
       </Line>
-      <View flex={1} style={{ width: "100%" }}>
+      <View flex={1} style={{ width: '100%' }}>
         <Space n={1} />
         <H4 center>{title}</H4>
         <Space n={3} />
         <Subtitle2 type="secondDarkColor">Senha</Subtitle2>
-        {errorMessage === (
+        {errorMessage ===
+        (
           <Animatable.View animation="shake">
             <H3 center type="danger">
               {errorMessage}
@@ -97,13 +98,14 @@ function PasswordScreen(props) {
           secureTextEntry={hidePassword}
           showRightIcon
           onRightIconPress={() => setShowPassword(!hidePassword)}
-          rightIcon={hidePassword ? "ios-eye" : "ios-eye-off"}
+          rightIcon={hidePassword ? 'ios-eye' : 'ios-eye-off'}
           onChangeText={(password) => setPassword(password)}
           placeholder={placeholder}
         />
         <Space n={3} />
       </View>
-      {login.isLogin === !login.isForgot === (
+      {(login.isLogin === !login.isForgot) ===
+      (
         <Forgot onPress={() => dispatch(handleForgotPassword())}>
           <Subtitle2 underline type="primaryDarkColor">
             Esqueci minha senha
@@ -121,6 +123,6 @@ function PasswordScreen(props) {
       <SafeSpace />
     </Container>
   );
-};
+}
 
 export default withTheme(PasswordScreen);

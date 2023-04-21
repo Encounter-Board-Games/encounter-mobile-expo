@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { FlatList } from "react-native";
-import ProductItem from "./ProductItem";
+import React, { useState } from 'react';
+import { FlatList } from 'react-native';
+import ProductItem from './ProductItem';
 
 export default function ProductShelf(props) {
   const [productsShow, setProductsShow] = useState([]);
@@ -35,4 +35,4 @@ export default function ProductShelf(props) {
       }}
     />
   );
-};
+}

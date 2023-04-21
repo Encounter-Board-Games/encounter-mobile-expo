@@ -1,9 +1,9 @@
-import { FC, Key, ReactNode } from "react";
-import { useDispatch } from "react-redux";
-import { cupons } from "../../graphql";
+import { FC, Key, ReactNode } from 'react';
+import { useDispatch } from 'react-redux';
+import { cupons } from '../../graphql';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../Store';
-import { Action } from "redux";
+import { Action } from 'redux';
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
@@ -30,7 +30,7 @@ interface SetCuponsAction {
 
 type CuponsActionTypes = SetCuponsAction;
 
-const SET_CUPONS = "SET_CUPONS";
+const SET_CUPONS = 'SET_CUPONS';
 
 const setCupons = (cupons: Cupon[]): SetCuponsAction => ({
   type: SET_CUPONS,

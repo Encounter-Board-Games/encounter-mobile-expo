@@ -1,16 +1,16 @@
-import { ThunkAction } from "redux-thunk";
-import { Action } from "redux";
-import { quickSearchs, answerQuestion } from "../../../graphql";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { AppState } from "react-native/types";
-import { 
-  QuickSearch, 
-  SetQuickSearchsAction, 
-  RemoveQuickSearchsAction, 
-  REMOVE_QUICK_SEARCHS, 
-  SET_QUICK_SEARCHS 
-} from "./quickSearchTypes";
+import { ThunkAction } from 'redux-thunk';
+import { Action } from 'redux';
+import { quickSearchs, answerQuestion } from '../../../graphql';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { AppState } from 'react-native/types';
+import {
+  QuickSearch,
+  SetQuickSearchsAction,
+  RemoveQuickSearchsAction,
+  REMOVE_QUICK_SEARCHS,
+  SET_QUICK_SEARCHS,
+} from './quickSearchTypes';
 
 interface AppStateWithQuickSearch extends AppState {
   quickSearchs: QuickSearch[];
@@ -30,7 +30,12 @@ function removeQuickSearchs(key: string): RemoveQuickSearchsAction {
   };
 }
 
-export function handleSetQuickSearchs(): ThunkAction<void, AppState, null, Action<string>> {
+export function handleSetQuickSearchs(): ThunkAction<
+  void,
+  AppState,
+  null,
+  Action<string>
+  > {
   return async (dispatch, getState) => {
     const { user } = getState();
 
@@ -51,7 +56,9 @@ export function handleAnswer(key: string, value: string) {
 
 function QuickSearchComponent() {
   const dispatch = useDispatch();
-  const { quickSearchs } = useSelector((state: AppStateWithQuickSearch) => state.quickSearchs);
+  const { quickSearchs } = useSelector(
+    (state: AppStateWithQuickSearch) => state.quickSearchs
+  );
 
   useEffect(() => {
     dispatch(handleSetQuickSearchs());
@@ -66,7 +73,9 @@ function QuickSearchComponent() {
       {quickSearchs.map((search) => (
         <div key={search.key}>
           <span>{search.key}</span>
-          <button onClick={() => handleAnswerClick(search.key, search.value)}>Answer</button>
+          <button onClick={() => handleAnswerClick(search.key, search.value)}>
+            Answer
+          </button>
         </div>
       ))}
     </div>

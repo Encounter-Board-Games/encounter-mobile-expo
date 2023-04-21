@@ -1,7 +1,7 @@
-import translations from "./translations";
-import config from "../../config";
+import translations from './translations';
+import config from '../../config';
 export const translation = (textPath, props) => {
-  const pathSplited = textPath.split(".");
+  const pathSplited = textPath.split('.');
 
   let element = translations[config.translation];
 

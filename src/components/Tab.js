@@ -14,9 +14,7 @@ export const Tab = styled.View`
 export const TabItem = styled.TouchableOpacity`
   flex: 1;
   border-color: ${(props) =>
-    props.isActive
-      ? props.theme.colors.primaryDarkColor
-      : 'transparent'};
+    props.isActive ? props.theme.colors.primaryDarkColor : 'transparent'};
   border-bottom-width: 1.5px;
   justify-content: center;
   align-items: center;

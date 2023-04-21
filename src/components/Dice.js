@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export const Container = styled.TouchableOpacity`
   width: ${(props) => props.size * 16}px;
@@ -9,17 +9,17 @@ export const Container = styled.TouchableOpacity`
   margin-right: ${(props) => props.theme.space.space0};
   border: 0.5px solid ${(props) => props.theme.colors.warming};
   background-color: ${(props) =>
-    props.isSelected ? props.theme.colors.warming : "transparent"};
+    props.isSelected ? props.theme.colors.warming : 'transparent'};
 `;
 
 export const Pointer = styled.View`
   position: absolute;
-  
+
   width: ${(props) => props.size * 4}px;
-  ${(props) => (props.top ? "top: " + props.top : "")};
-  ${(props) => (props.left ? "left: " + props.left : "")};
-  ${(props) => (props.right ? "right: " + props.right : "")};
-  ${(props) => (props.bottom ? "bottom: " + props.bottom : "")};
+  ${(props) => (props.top ? 'top: ' + props.top : '')};
+  ${(props) => (props.left ? 'left: ' + props.left : '')};
+  ${(props) => (props.right ? 'right: ' + props.right : '')};
+  ${(props) => (props.bottom ? 'bottom: ' + props.bottom : '')};
   border-radius: ${(props) => props.size * 4}px;
   background-color: ${(props) =>
     props.isSelected
@@ -27,8 +27,14 @@ export const Pointer = styled.View`
       : props.theme.colors.warming};
 `;
 
-export const topLeft = (size) => ({ top: `${size * 2}px`, left: `${size * 2}px` });
-export const topRight = (size) => ({ top: `${size * 2}px`, right: `${size * 2}px` });
+export const topLeft = (size) => ({
+  top: `${size * 2}px`,
+  left: `${size * 2}px`,
+});
+export const topRight = (size) => ({
+  top: `${size * 2}px`,
+  right: `${size * 2}px`,
+});
 export const bottomLeft = (size) => ({
   bottom: `${size * 2}px`,
   left: `${size * 2}px`,
@@ -51,7 +57,6 @@ export const dices = [
 ];
 
 export default function Dice(props) {
-  
   return (
     <Container
       {...props}
@@ -62,4 +67,4 @@ export default function Dice(props) {
       ))}
     </Container>
   );
-};
+}

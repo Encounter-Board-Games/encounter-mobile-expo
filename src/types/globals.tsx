@@ -1,41 +1,41 @@
-import { UserRememberProducts } from "../store/actions/user/userTypes";
+import { UserRememberProducts } from '../store/actions/user/userTypes';
 
 export interface AppState {
-    app: {
-        about: {
-          phone: string;
-        };
-      };
+  app: {
     about: {
-        phone: string;
+      phone: string;
     };
-    update: {
-      show: boolean;
-    };
+  };
+  about: {
+    phone: string;
+  };
+  update: {
+    show: boolean;
+  };
 }
 
 export interface UserState {
-    isLogged: boolean;
-    userInfo?: {
-      favorites: {
-        key: string;
-      }[];
-      address: any[];
-      rememberProductKeys: string[];
-    };
-    rememberProducts: UserRememberProducts;
-    rememberProductKeys: any;
+  isLogged: boolean;
+  userInfo?: {
+    favorites: {
+      key: string;
+    }[];
+    address: any[];
+    rememberProductKeys: string[];
+  };
+  rememberProducts: UserRememberProducts;
+  rememberProductKeys: any;
 }
 
 export interface Update {
-    title: string;
-    texts: string[];
-    btnCancel?: string;
-    btnText: string;
-    img: string;
-    link: string;
+  title: string;
+  texts: string[];
+  btnCancel?: string;
+  btnText: string;
+  img: string;
+  link: string;
 }
 
 export interface TextProps {
-    text: string;
+  text: string;
 }

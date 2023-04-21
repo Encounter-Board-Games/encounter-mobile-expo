@@ -1,14 +1,13 @@
-import { UserInfo, Me } from "../../../../graphql";
-import storage from "../../../../utils/storage";
-import { setProducts } from "../../product";
-import { arrayToObj } from "../../../../utils/helpers";
-import { handleLoginCart } from "../../cart";
-import { setAdresses } from "../../address/address";
-import { UserAction } from '../userTypes'
-import { handleAccessLog, handleLogout } from "../login";
+import { UserInfo, Me } from '../../../../graphql';
+import storage from '../../../../utils/storage';
+import { setProducts } from '../../product';
+import { arrayToObj } from '../../../../utils/helpers';
+import { handleLoginCart } from '../../cart';
+import { setAdresses } from '../../address/address';
+import { UserAction } from '../userTypes';
+import { handleAccessLog, handleLogout } from '../login';
 
-
-export const USER_TOKEN = "USER_TOKEN";
+export const USER_TOKEN = 'USER_TOKEN';
 
 export function setUserInfo(user: any) {
   return {
@@ -16,20 +15,20 @@ export function setUserInfo(user: any) {
     user,
   };
 }
-  
+
 export function addUserFavorite(productId: string) {
   return {
     type: 'ADD_USER_FAVORITE',
     productId,
   };
 }
-  
+
 export function removeUserFavorite(productId: string) {
   return {
     type: 'REMOVE_USER_FAVORITE',
     productId,
   };
-}  
+}
 
 export function handleUserData(token = null) {
   return async (dispatch: (action: UserAction) => void) => {

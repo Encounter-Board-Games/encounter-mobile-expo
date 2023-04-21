@@ -9,7 +9,6 @@ import { H3, H4 } from '../../../components/Typography';
 import { closePopupModal } from '../../../store/actions/info';
 import { RootState } from '../../../store/reducers';
 
-
 interface OptionModalProps {}
 
 const Container = styled.TouchableOpacity`
@@ -62,7 +61,11 @@ const OptionsModal: FC<OptionModalProps> = () => {
     <Container onPress={() => Keyboard.dismiss()}>
       {title && <H3 center>{title}</H3>}
       <Space n={1} />
-      {description && <H4 noBold center>{description}</H4>}
+      {description && (
+        <H4 noBold center>
+          {description}
+        </H4>
+      )}
       <Space n={1} />
       <View style={{ width: '100%', flexDirection: 'row', flexWrap: 'wrap' }}>
         {options.map((option) => (

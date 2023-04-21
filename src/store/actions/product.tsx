@@ -1,7 +1,7 @@
-import { getProduct, evaluateProduct } from "../../graphql";
-import { openPopupModal, closePopupModal } from "./info";
-import { handleShowNotification } from "./notification";
-import { arrayToObj } from "../../utils/helpers";
+import { getProduct, evaluateProduct } from '../../graphql';
+import { openPopupModal, closePopupModal } from './info';
+import { handleShowNotification } from './notification';
+import { arrayToObj } from '../../utils/helpers';
 
 interface Product {
   [key: string]: {
@@ -14,9 +14,9 @@ interface Evaluation {
   [key: string]: number;
 }
 
-export const SET_PRODUCTS = "SET_PROCDUCTS";
-export const SET_CURRENT_PRODUCT = "SET_CURRENT_PRODUCT";
-export const SET_EVALUATIONS_PRODUCTS = "SET_EVALUATIONS_PRODUCTS";
+export const SET_PRODUCTS = 'SET_PROCDUCTS';
+export const SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT';
+export const SET_EVALUATIONS_PRODUCTS = 'SET_EVALUATIONS_PRODUCTS';
 
 interface SetProductsAction {
   type: typeof SET_PRODUCTS;
@@ -82,11 +82,11 @@ export function handleOpenEvaluationProduct(keys: string | string[]) {
     const { user } = getState();
     const { isLogged = false } = user;
 
-    if (!isLogged) return dispatch(openPopupModal("LOGIN_POPUP"));
+    if (!isLogged) return dispatch(openPopupModal('LOGIN_POPUP'));
 
     const keysArr = Array.isArray(keys) ? keys : [keys];
     dispatch(setEvaluationsProducts(keysArr));
-    dispatch(openPopupModal("EVALUATE"));
+    dispatch(openPopupModal('EVALUATE'));
   };
 }
 
@@ -111,6 +111,6 @@ export function handleEvaluationProduct(evaluations: Evaluation) {
       )
     );
 
-    dispatch(handleShowNotification("Avaliação salva!"));
+    dispatch(handleShowNotification('Avaliação salva!'));
   };
 }

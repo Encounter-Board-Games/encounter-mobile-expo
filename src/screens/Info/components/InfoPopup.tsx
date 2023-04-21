@@ -44,7 +44,11 @@ const PopupModal: FC = () => {
       </H4>
       <Space n={2} />
       <Line>
-        <Button onPress={handleOkPress} type="ComplementButton-Big" theme={theme} >
+        <Button
+          onPress={handleOkPress}
+          type="ComplementButton-Big"
+          theme={theme}
+        >
           Ok
         </Button>
       </Line>

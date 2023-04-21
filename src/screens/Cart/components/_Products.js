@@ -11,7 +11,9 @@ import { LineProducts, Remove, Title, Hr } from './CartInfoStyles';
 const _Products = ({ theme, renew }) => {
   const { cart, products } = useSelector((state) => state);
   const { sizes = {} } = cart;
-  const productList = (cart.products || []).map((key) => products.products[key]);
+  const productList = (cart.products || []).map(
+    (key) => products.products[key]
+  );
   const dispatch = useDispatch();
 
   const removeProduct = (key) => {
@@ -35,7 +37,11 @@ const _Products = ({ theme, renew }) => {
           <LineProducts>
             {!renew && (
               <Remove onPress={() => removeProduct(product.key)}>
-                <AntDesign color={theme.colors.danger} name="closecircleo" size={24} />
+                <AntDesign
+                  color={theme.colors.danger}
+                  name="closecircleo"
+                  size={24}
+                />
               </Remove>
             )}
 

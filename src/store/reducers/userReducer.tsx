@@ -1,27 +1,27 @@
-import { 
-  SET_LOGIN_USER, 
-  SET_NEED_COMPLETE_INFOS, 
-  SET_LOGOUT_USER, 
-  SHOW_LOGIN_POPUP, 
-  SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS, 
-  SET_LOGIN_LOADING, 
-  SET_EMAIL_LOGIN_PROCESS, 
-  SET_ERROR_LOGIN_PROCESS_MESSAGE, 
-  SET_IS_CODE_SENT, 
-  SET_IS_CHANGE_PASSWORD 
-} from "../actions/user/login";
-import { SET_USER_NOTIFICATION } from "../actions/user/notifications";
-import { 
-  SET_AUTO_COMPLETE_REGISTER, 
-  SET_USER_INFO, 
-  SET_USER_FAVORITES, 
-  ADD_USER_FAVORITE, 
-  REMOVE_USER_FAVORITE, 
-  SET_PENDENCES, 
-  SET_USER_REMEMBER_PRODUCTS, 
-  ADD_USER_REMEMBER_PRODUCTS, 
-  REMOVE_USER_REMEMBER_PRODUCTS 
-} from "../actions/user/userTypes";
+import {
+  SET_LOGIN_USER,
+  SET_NEED_COMPLETE_INFOS,
+  SET_LOGOUT_USER,
+  SHOW_LOGIN_POPUP,
+  SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS,
+  SET_LOGIN_LOADING,
+  SET_EMAIL_LOGIN_PROCESS,
+  SET_ERROR_LOGIN_PROCESS_MESSAGE,
+  SET_IS_CODE_SENT,
+  SET_IS_CHANGE_PASSWORD,
+} from '../actions/user/login';
+import { SET_USER_NOTIFICATION } from '../actions/user/notifications';
+import {
+  SET_AUTO_COMPLETE_REGISTER,
+  SET_USER_INFO,
+  SET_USER_FAVORITES,
+  ADD_USER_FAVORITE,
+  REMOVE_USER_FAVORITE,
+  SET_PENDENCES,
+  SET_USER_REMEMBER_PRODUCTS,
+  ADD_USER_REMEMBER_PRODUCTS,
+  REMOVE_USER_REMEMBER_PRODUCTS,
+} from '../actions/user/userTypes';
 
 interface AutoCompleteRegister {
   name: string;
@@ -158,7 +158,7 @@ export default function users(
         ...state,
         userInfo: {
           ...state.userInfo,
-          favorites: action.favorites
+          favorites: action.favorites,
         },
       };
     case ADD_USER_FAVORITE:
@@ -182,13 +182,12 @@ export default function users(
           ),
         },
       };
-    
+
     case SET_USER_NOTIFICATION:
       return {
         ...state,
         notifications:
-          action.notifications &&
-          action.notifications.reverse
+          action.notifications && action.notifications.reverse
             ? action.notifications.reverse()
             : action.notifications,
       };
@@ -220,4 +219,4 @@ export default function users(
     default:
       return state;
   }
-}  
+}

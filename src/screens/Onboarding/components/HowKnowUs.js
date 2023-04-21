@@ -8,130 +8,138 @@ import { API_URI } from '../../../graphql/client';
 import OptionWithImage from '../../../components/OptionWithImage';
 import { handleRespondQuestion } from '../../../store/actions/user/handlers';
 
-
 export const Container = styled.View`
     flex: 1;
     width: 100%;
     position:relative;
-    padding-left: ${props => props.theme.space.space3}
-    padding-right: ${props => props.theme.space.space3}
+    padding-left: ${(props) => props.theme.space.space3}
+    padding-right: ${(props) => props.theme.space.space3}
 `;
 
 export const Content = styled.ScrollView`
-flex-grow: 1;
+  flex-grow: 1;
 `;
 
 export const PaddingTop = styled.View`
-width: 100%;
+  width: 100%;
 `;
 
 export const ImageContent = styled.View`
-flex: 1;
-align-items: center;
-justify-content: center;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Itens = styled.ScrollView`
-    flex-grow: 1;
+  flex-grow: 1;
 `;
 
 export const ButtonSpace = styled.View`
-  height: ${props => props.theme.sizes.btnBig}
+  height: ${(props) => props.theme.sizes.btnBig};
 `;
 
 export const ButtonWrap = styled.View`
-  background-color: ${props => props.theme.colors.lightColor};
-  border-radius: ${props => props.theme.borderRadius.button};
+  background-color: ${(props) => props.theme.colors.lightColor};
+  border-radius: ${(props) => props.theme.borderRadius.button};
 `;
 
 export const Footer = styled.View`
-    width: 100%;
-    position:absolute;
-    bottom:0;
-    left: ${props => props.theme.space.space3};
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: ${(props) => props.theme.space.space3};
 `;
 
 export const Tags = styled.View`
-    flex-flow: row;
-    flex-wrap: wrap;
+  flex-flow: row;
+  flex-wrap: wrap;
 `;
 
 export const KnowInfo = styled.TouchableOpacity`
-    flex-flow: row;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  flex-flow: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Line = styled.View`
-    flex-flow: row
+  flex-flow: row;
 `;
 
 function HowKnowUs(props) {
-  
-  const [select, setSelect] = useState()
+  const [select, setSelect] = useState();
   const dispatch = useDispatch();
 
   const next = () => {
-    dispatch(handleRespondQuestion(select))
-    props.onNext()
-  }
+    dispatch(handleRespondQuestion(select));
+    props.onNext();
+  };
   const options = [
-      {
-          "text": "Mídias sociais da Zeero",
-          "image": API_URI + "/midias_zeero.png",
-          "value": "1"
-        },
-        {
-          "text": "Mídias sociais de outros",
-          "image":  API_URI +"/midias_outras.png",
-          "value": "2"
-        },
-        {
-          "text": "Indicação de amigos ou família",
-          "image":  API_URI +"/indicacao.png",
-          "value": "3"
-        },
-        {
-          "text": "Outra forma",
-          "image":  API_URI +"/outro.png",
-          "value": "4"
-        },
-  ]
-      
+    {
+      text: 'Mídias sociais da Zeero',
+      image: API_URI + '/midias_zeero.png',
+      value: '1',
+    },
+    {
+      text: 'Mídias sociais de outros',
+      image: API_URI + '/midias_outras.png',
+      value: '2',
+    },
+    {
+      text: 'Indicação de amigos ou família',
+      image: API_URI + '/indicacao.png',
+      value: '3',
+    },
+    {
+      text: 'Outra forma',
+      image: API_URI + '/outro.png',
+      value: '4',
+    },
+  ];
+
   return (
-      <Container>
-          <Content showsVerticalScrollIndicator={false}  >
-            <PaddingTop />
-            <Space n={3} />
-            <H1 color="secondDarkColor">Antes de conhecer o app...</H1>
-            <Space n={3} />
-            <H4 color="secondDarkColor">...só de curiosidade, <H3 color="secondDarkColor">como chegou até aqui?</H3></H4>
-            <Space n={3} />
-            <Itens>
-                {
-                  options.map((option, key) => <OptionWithImage
-                  key={key}
-                  {...option}
-                  isActive={select == option.value}
-                  onPress={() => setSelect(option.value)}
-              />
-              )}
-            </Itens>    
-            <ButtonSpace />  
-          
-            <Bottom />
-          </Content>
-          
-          <Footer>
-              <Space n={2} />
-              <ButtonWrap>
-                <Button disabled={!select} type="CallToAction-Light" width={"100%"} onPress={next}>Continuar</Button>
-              </ButtonWrap>
-          <Bottom />
-          </Footer>
-          
-      </Container>)
-};
+    <Container>
+      <Content showsVerticalScrollIndicator={false}>
+        <PaddingTop />
+        <Space n={3} />
+        <H1 color="secondDarkColor">Antes de conhecer o app...</H1>
+        <Space n={3} />
+        <H4 color="secondDarkColor">
+          ...só de curiosidade,{' '}
+          <H3 color="secondDarkColor">como chegou até aqui?</H3>
+        </H4>
+        <Space n={3} />
+        <Itens>
+          {options.map((option, key) => (
+            <OptionWithImage
+              key={key}
+              {...option}
+              isActive={select == option.value}
+              onPress={() => setSelect(option.value)}
+            />
+          ))}
+        </Itens>
+        <ButtonSpace />
+
+        <Bottom />
+      </Content>
+
+      <Footer>
+        <Space n={2} />
+        <ButtonWrap>
+          <Button
+            disabled={!select}
+            type="CallToAction-Light"
+            width={'100%'}
+            onPress={next}
+          >
+            Continuar
+          </Button>
+        </ButtonWrap>
+        <Bottom />
+      </Footer>
+    </Container>
+  );
+}
 
 export default withTheme(HowKnowUs);

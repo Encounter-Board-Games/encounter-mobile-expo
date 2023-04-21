@@ -42,7 +42,9 @@ const Line = styled.View`
 
 const WppRedirect: React.FC = () => {
   const dispatch = useDispatch();
-  const { popup = {} } = useSelector((state: { info: InfoState }) => state.info);
+  const { popup = {} } = useSelector(
+    (state: { info: InfoState }) => state.info
+  );
   const { about = {} } = useSelector((state: { app: AppState }) => state.app);
   const { phone = '' } = about;
   const { text = 'Olá' } = popup?.data ?? {};
@@ -58,11 +60,15 @@ const WppRedirect: React.FC = () => {
       <H3 noBold>Deseja continuar?</H3>
       <Space n={2} />
       <Line>
-        <Button onPress={() => dispatch(closePopupModal())} type="CallToAction-Outline" theme={theme}>
+        <Button
+          onPress={() => dispatch(closePopupModal())}
+          type="CallToAction-Outline"
+          theme={theme}
+        >
           Cancelar
         </Button>
         <SpaceHorizontal n={4} />
-        <Button onPress={openWpp} type="ComplementButton-Big" theme={theme} >
+        <Button onPress={openWpp} type="ComplementButton-Big" theme={theme}>
           Continuar
         </Button>
       </Line>

@@ -1,23 +1,23 @@
-import React from "react";
-import styled, { withTheme } from "styled-components";
-import { Box } from "../../../components/Box";
-import { H3, Subtitle2, H4 } from "../../../components/Typography";
-import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Button } from "../../../components/Button/Button";
-import { useNavigation } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
-import { currencyFormat } from "../../../utils/helpers";
+import React from 'react';
+import styled, { withTheme } from 'styled-components';
+import { Box } from '../../../components/Box';
+import { H3, Subtitle2, H4 } from '../../../components/Typography';
+import { Space, SpaceHorizontal } from '../../../components/Space';
+import { Button } from '../../../components/Button/Button';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { currencyFormat } from '../../../utils/helpers';
 import {
   handleSelectOrder,
   handleOpenOrderHelp,
-} from "../../../store/actions/orders";
-import { translation } from "../../../texts";
-import config from "../../../config";
-import { renewOrder } from "../../../store/actions/cart";
+} from '../../../store/actions/orders';
+import { translation } from '../../../texts';
+import config from '../../../config';
+import { renewOrder } from '../../../store/actions/cart';
 
 const Line = styled.View`
   flex: 1;
-  flex-flow: ${(props) => props.flexFlow || "row"};
+  flex-flow: ${(props) => props.flexFlow || 'row'};
   justify-content: flex-start;
   width: 100%;
 `;
@@ -43,7 +43,7 @@ export default withTheme((props) => {
 
   const openOrderDetails = (key) => {
     dispatch(handleSelectOrder(key));
-    navigation.navigate("Billing");
+    navigation.navigate('Billing');
   };
 
   const help = () => {
@@ -67,7 +67,7 @@ export default withTheme((props) => {
           {config.rentTimeBox && (
             <React.Fragment>
               <Subtitle2 color={props.theme.colors.secondDarkColor}>
-                Tempo de {translation("orders.order").toLowerCase()}:{" "}
+                Tempo de {translation('orders.order').toLowerCase()}:{' '}
                 {order.rentDays} dias
               </Subtitle2>
               <Space n={0} />
@@ -75,7 +75,7 @@ export default withTheme((props) => {
           )}
 
           <Subtitle2 color={props.theme.colors.secondDarkColor}>
-            {translation("orders.order")} #{order.key.toUpperCase()}
+            {translation('orders.order')} #{order.key.toUpperCase()}
           </Subtitle2>
         </Line>
 

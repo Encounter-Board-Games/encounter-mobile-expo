@@ -1,18 +1,18 @@
-import React from "react";
-import styled from "styled-components";
-import { Space, Bottom } from "../../../components/Space";
-import { H1, H4, H2, Subtitle2, H3 } from "../../../components/Typography";
-import { Image, Platform } from "react-native";
-import { getBottomSpace } from "react-native-iphone-x-helper";
-import Constants from "expo-constants";
-import { Button } from "../../../components/Button/Button";
-import { useNavigation } from "@react-navigation/native";
-import { View } from "react-native-animatable";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import styled from 'styled-components';
+import { Space, Bottom } from '../../../components/Space';
+import { H1, H4, H2, Subtitle2, H3 } from '../../../components/Typography';
+import { Image, Platform } from 'react-native';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+import Constants from 'expo-constants';
+import { Button } from '../../../components/Button/Button';
+import { useNavigation } from '@react-navigation/native';
+import { View } from 'react-native-animatable';
+import { useDispatch } from 'react-redux';
 import {
   handleLoginOnboard,
   handleFinishOnboarding,
-} from "../../../store/actions/onboarding";
+} from '../../../store/actions/onboarding';
 
 export const MainContainer = styled.View`
 flex: 1;
@@ -21,8 +21,8 @@ height: 100%
 padding-left: ${(props) => props.theme.space.space3}
 padding-right: ${(props) => props.theme.space.space3}
 padding-top: ${(props) =>
-  Platform.OS == "ios"
-    ? Constants.statusBarHeight + "px"
+  Platform.OS == 'ios'
+    ? Constants.statusBarHeight + 'px'
     : props.theme.space.space2};
 
 `;
@@ -86,9 +86,9 @@ export default (props) => {
         <Line>
           <Icon>
             <Image
-              resizeMode={"contain"}
+              resizeMode={'contain'}
               style={{ width: 20, height: 20 }}
-              source={require("../../../assets/img/dado.png")}
+              source={require('../../../assets/img/dado.png')}
             />
           </Icon>
           <Content>
@@ -101,9 +101,9 @@ export default (props) => {
         <Line>
           <Icon>
             <Image
-              resizeMode={"contain"}
+              resizeMode={'contain'}
               style={{ width: 20, height: 20 }}
-              source={require("../../../assets/img/dado.png")}
+              source={require('../../../assets/img/dado.png')}
             />
           </Icon>
           <Content>
@@ -116,7 +116,7 @@ export default (props) => {
         <Space n={4} />
 
         <H4>
-          Essas informações passarão por análise e seu{" "}
+          Essas informações passarão por análise e seu{' '}
           <H3>aluguel será efetivado depois da aprovação.</H3>
         </H4>
         <ImageContent></ImageContent>

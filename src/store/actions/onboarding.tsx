@@ -6,8 +6,10 @@ import { handleLoadShelves } from './shelves/shelves';
 import { handleShowNotification } from './notification';
 import { customFilter } from '../../graphql';
 
-export const SET_SELECT_FILTER_TOGGLE_ONBOARDING = 'SET_SELECT_FILTER_TOGGLE_ONBOARDING' as const;
-export const SET_SELECT_QUESTION_TOGGLE_ONBOARDING = 'SET_SELECT_QUESTION_TOGGLE_ONBOARDING' as const;
+export const SET_SELECT_FILTER_TOGGLE_ONBOARDING =
+  'SET_SELECT_FILTER_TOGGLE_ONBOARDING' as const;
+export const SET_SELECT_QUESTION_TOGGLE_ONBOARDING =
+  'SET_SELECT_QUESTION_TOGGLE_ONBOARDING' as const;
 export const RESTART_ONBOARDING = 'RESTART_ONBOARDING' as const;
 export const START_ONBOARDING = 'START_ONBOARDING' as const;
 export const OPEN_ONBOARD = 'OPEN_ONBOARD' as const;
@@ -15,17 +17,20 @@ export const CLOSE_ONBOARD = 'CLOSE_ONBOARD' as const;
 export const SET_ONBOARDING_STEPS = 'SET_ONBOARDING_STEPS' as const;
 export const SET_FILTERS_ONBOARDING = 'SET_FILTERS_ONBOARDING' as const;
 
-interface SetSelectFilterToggleOnboardingAction extends Action<typeof SET_SELECT_FILTER_TOGGLE_ONBOARDING> {
+interface SetSelectFilterToggleOnboardingAction
+  extends Action<typeof SET_SELECT_FILTER_TOGGLE_ONBOARDING> {
   filterType: string;
   value: boolean;
 }
 
-interface SetSelectQuestionToggleOnboardingAction extends Action<typeof SET_SELECT_QUESTION_TOGGLE_ONBOARDING> {
+interface SetSelectQuestionToggleOnboardingAction
+  extends Action<typeof SET_SELECT_QUESTION_TOGGLE_ONBOARDING> {
   questionType: string;
   value: boolean;
 }
 
-interface SetFiltersOnboardingAction extends Action<typeof SET_FILTERS_ONBOARDING> {
+interface SetFiltersOnboardingAction
+  extends Action<typeof SET_FILTERS_ONBOARDING> {
   filters: any;
 }
 
@@ -55,13 +60,19 @@ export type OnboardingAction =
   | OpenOnboardAction
   | CloseOnboardAction;
 
-export const setSelectFilterToggleOnboarding = (filterType: string, value: boolean): SetSelectFilterToggleOnboardingAction => ({
+export const setSelectFilterToggleOnboarding = (
+  filterType: string,
+  value: boolean
+): SetSelectFilterToggleOnboardingAction => ({
   type: SET_SELECT_FILTER_TOGGLE_ONBOARDING,
   filterType,
   value,
 });
 
-export const setSelectQuestionToggleOnboarding = (questionType: string, value: boolean): SetSelectQuestionToggleOnboardingAction => ({
+export const setSelectQuestionToggleOnboarding = (
+  questionType: string,
+  value: boolean
+): SetSelectQuestionToggleOnboardingAction => ({
   type: SET_SELECT_QUESTION_TOGGLE_ONBOARDING,
   questionType,
   value,
@@ -82,7 +93,9 @@ export const startOnboarding = (restart: boolean): StartOnboardingAction => ({
   restart,
 });
 
-export const restartOnboarding = (restart: boolean): RestartOnboardingAction => ({
+export const restartOnboarding = (
+  restart: boolean
+): RestartOnboardingAction => ({
   type: RESTART_ONBOARDING,
   restart,
 });
@@ -97,30 +110,46 @@ export const closeOnboard = (): CloseOnboardAction => ({
 
 const storageName = 'ONBOARDING_6';
 
-export const handleLoadOnboarding = (): ThunkAction<void, RootState, unknown, OnboardingAction> => {
+export const handleLoadOnboarding = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  OnboardingAction
+> => {
   return async (dispatch) => {
-  const onboardingFilters = await Storage.getItem(storageName);
-  const steps = await customFilter('onboarding');
-  dispatch(setOnboardingSteps(steps));
-  dispatch(setFilters(onboardingFilters));
-  if (!onboardingFilters) dispatch(openOnboard());
+    const onboardingFilters = await Storage.getItem(storageName);
+    const steps = await customFilter('onboarding');
+    dispatch(setOnboardingSteps(steps));
+    dispatch(setFilters(onboardingFilters));
+    if (!onboardingFilters) dispatch(openOnboard());
   };
 };
-  
-export const handleReopenOnboarding = (): ThunkAction<void, RootState, unknown, OnboardingAction> => {
+
+export const handleReopenOnboarding = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  OnboardingAction
+> => {
   return (dispatch) => {
-  dispatch(openOnboard());
-  dispatch(restartOnboarding(true));
+    dispatch(openOnboard());
+    dispatch(restartOnboarding(true));
   };
 };
-  
-export const handleFinishOnboarding = (): ThunkAction<void, RootState, unknown, OnboardingAction> => {
+
+export const handleFinishOnboarding = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  OnboardingAction
+> => {
   return async (dispatch, getState) => {
-  const { onboarding } = getState();
-  await Storage.setItem(storageName, onboarding.filters);
-  dispatch(handleLoadShelves());
-  dispatch(closeOnboard());
-  if (onboarding.restart) dispatch(handleShowNotification('Preferências alteradas.'));
-dispatch(restartOnboarding(false));
-};
+    const { onboarding } = getState();
+    await Storage.setItem(storageName, onboarding.filters);
+    dispatch(handleLoadShelves());
+    dispatch(closeOnboard());
+    if (onboarding.restart)
+      dispatch(handleShowNotification('Preferências alteradas.'));
+    dispatch(restartOnboarding(false));
+  };
 };

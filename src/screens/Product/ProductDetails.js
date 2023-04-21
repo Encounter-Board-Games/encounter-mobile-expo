@@ -1,37 +1,37 @@
-import React, { useState } from "react";
-import styled, { withTheme } from "styled-components";
-import ProductStatus from "./components/ProductStatus";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { Button } from "../../components/Button/Button";
-import { Badge } from "../../components/Badge";
-import Dice from "../../components/Dice";
-import Carrossel from "../../components/Carrossel";
-import { useSelector, useDispatch } from "react-redux";
-import ScreePopup from "../../components/ScreePopup";
-import VideoPlayerScreen from "./components/VideoPlayer";
-import { Image, ScrollView } from "react-native";
+import React, { useState } from 'react';
+import styled, { withTheme } from 'styled-components';
+import ProductStatus from './components/ProductStatus';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Button } from '../../components/Button/Button';
+import { Badge } from '../../components/Badge';
+import Dice from '../../components/Dice';
+import Carrossel from '../../components/Carrossel';
+import { useSelector, useDispatch } from 'react-redux';
+import ScreePopup from '../../components/ScreePopup';
+import VideoPlayerScreen from './components/VideoPlayer';
+import { Image, ScrollView } from 'react-native';
 
 import {
   handleAddProduct,
   handleLoadDeliveryMethods,
   handleRemoveProduct,
-} from "../../store/actions/cart";
+} from '../../store/actions/cart';
 import {
   Placeholder,
   PlaceholderMedia,
   PlaceholderLine,
   Fade,
-} from "rn-placeholder";
-import { H2, Subtitle3 } from "../../components/Typography";
-import { Space } from "../../components/Space";
+} from 'rn-placeholder';
+import { H2, Subtitle3 } from '../../components/Typography';
+import { Space } from '../../components/Space';
 import {
   handleToggleLike,
   handleRememberProduct,
-} from "../../store/actions/user/handlers";
-import { useNavigation } from "@react-navigation/native";
-import { handleOpenEvaluationProduct } from "../../store/actions/product";
-import config from "../../config";
-import Icons from "../../components/Icons";
+} from '../../store/actions/user/handlers';
+import { useNavigation } from '@react-navigation/native';
+import { handleOpenEvaluationProduct } from '../../store/actions/product';
+import config from '../../config';
+import Icons from '../../components/Icons';
 
 export const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};
@@ -115,7 +115,7 @@ export const Description = styled.View`
 `;
 
 export const CarrosselContainer = styled.View`
-    align-items: center;
+  align-items: center;
 `;
 
 export const Header = styled.View`
@@ -147,17 +147,17 @@ function ProductDetails(props) {
   const [currentImage, setCurrentImage] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
 
-  const h2Size = +props.theme.sizes.h2.replace("px", "");
-  
+  const h2Size = +props.theme.sizes.h2.replace('px', '');
+
   const loading = () => {
-  if (!product) return <H2>Carregando...</H2>;
-  if (!product.isLoad && false);
+    if (!product) return <H2>Carregando...</H2>;
+    if (!product.isLoad && false);
     return (
       <ScreePopup noScroll>
         <Container>
           <Placeholder style={{ flex: 1 }} Animation={Fade}>
             <CarrosselContainer isPlaceholder>
-              <PlaceholderMedia size={"100%"} />
+              <PlaceholderMedia size={'100%'} />
             </CarrosselContainer>
             <Space n={1} />
 
@@ -177,7 +177,7 @@ function ProductDetails(props) {
         </Container>
       </ScreePopup>
     );
-  }
+  };
 
   const tags_ = [
     product.age,
@@ -188,7 +188,7 @@ function ProductDetails(props) {
 
     ...(product.categories || []),
     ...(product.tags || []),
-  ].filter((value) => value && value !== "--");
+  ].filter((value) => value && value !== '--');
 
   const addProduct = () => {
     dispatch(handleLoadDeliveryMethods());
@@ -196,7 +196,7 @@ function ProductDetails(props) {
       handleAddProduct(
         product.key,
         [...product.categories, ...product.tags].filter(
-          (value) => value !== "--"
+          (value) => value !== '--'
         )
       )
     ).then((option) => option && navigation.goBack());
@@ -207,7 +207,7 @@ function ProductDetails(props) {
       if (rememberProductKeys.includes(product.key))
         return (
           <Button
-            type={"ComplementButton-Big"}
+            type={'ComplementButton-Big'}
             onPress={() => dispatch(handleRememberProduct(product.key))}
           >
             Cancelar aviso
@@ -216,7 +216,7 @@ function ProductDetails(props) {
 
       return (
         <Button
-          type={"ComplementButton-Outline"}
+          type={'ComplementButton-Outline'}
           onPress={() => dispatch(handleRememberProduct(product.key))}
         >
           Me avise quando disponível
@@ -226,16 +226,16 @@ function ProductDetails(props) {
 
     return onCart ? (
       <Button
-        type={"ComplementButton-Big"}
+        type={'ComplementButton-Big'}
         onPress={() => dispatch(handleRemoveProduct(product.key))}
       >
         Remover da sacola
       </Button>
     ) : (
-      <Button type={"CallToAction-Light"} onPress={() => addProduct()}>
-        {" "}
+      <Button type={'CallToAction-Light'} onPress={() => addProduct()}>
+        {' '}
         <Icons name="handbag" size={16} color="white" />
-        {"  "}Adicionar à sacola
+        {'  '}Adicionar à sacola
       </Button>
     );
   };
@@ -262,8 +262,8 @@ function ProductDetails(props) {
               {(product.images || [product.mainImage]).map((image, index) => (
                 <Image
                   key={index}
-                  resizeMode={"contain"}
-                  style={{ width: "100%", height: "100%" }}
+                  resizeMode={'contain'}
+                  style={{ width: '100%', height: '100%' }}
                   source={{ uri: image }}
                 />
               ))}
@@ -276,7 +276,7 @@ function ProductDetails(props) {
                 onPress={() => dispatch(handleToggleLike(currentProductKey))}
               >
                 <Ionicons
-                  name={isFavorite ? "ios-heart" : "ios-heart-empty"}
+                  name={isFavorite ? 'ios-heart' : 'ios-heart-empty'}
                   color={props.theme.colors.darkColor}
                   size={18}
                 />
@@ -286,7 +286,7 @@ function ProductDetails(props) {
           </Line>
 
           <Space n={1} />
-          <Line style={{ alignItems: "center" }}>
+          <Line style={{ alignItems: 'center' }}>
             <MainLine>
               <ProductStatus available={product.available} />
             </MainLine>
@@ -310,16 +310,16 @@ function ProductDetails(props) {
                     ))}
                     {product.numberOfEvaluation > 0 && (
                       <DicesNumber>
-                        {product.numberOfEvaluation}{" "}
+                        {product.numberOfEvaluation}{' '}
                         {product.numberOfEvaluation == 1
-                          ? "avaliação"
-                          : "avaliações"}
+                          ? 'avaliação'
+                          : 'avaliações'}
                       </DicesNumber>
                     )}
                   </Dices>
                 </MainLine>
                 <Button
-                  type={"CallToAction-Orange-Small"}
+                  type={'CallToAction-Orange-Small'}
                   onPress={() =>
                     dispatch(handleOpenEvaluationProduct(product.key))
                   }
@@ -350,7 +350,7 @@ function ProductDetails(props) {
           </Tags>
 
           <Description>
-            {(product.description || "").split("</br>").map((d, i) => (
+            {(product.description || '').split('</br>').map((d, i) => (
               <Subtitle3 key={i} type="secondDarkColor">
                 {d}
               </Subtitle3>
@@ -361,6 +361,6 @@ function ProductDetails(props) {
       <ButtonContent>{getButton()}</ButtonContent>
     </ScreePopup>
   );
-};
+}
 
 export default withTheme(ProductDetails);

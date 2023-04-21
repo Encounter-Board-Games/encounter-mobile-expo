@@ -27,7 +27,7 @@ export const Line = styled.View`
   width: 100%;
 `;
 
-function NumberPadComponent ({ onPress, onCleanPress, disabled, theme }) {
+function NumberPadComponent({ onPress, onCleanPress, disabled, theme }) {
   return (
     <NumberPad>
       <Line>
@@ -72,12 +72,16 @@ function NumberPadComponent ({ onPress, onCleanPress, disabled, theme }) {
         </Number>
         <Number disabled={disabled} isLast onPress={() => onCleanPress()}>
           <NumberText>
-            <Ionicons name="ios-arrow-back" color={theme.colors.primaryDarkColor} size={24} />
+            <Ionicons
+              name="ios-arrow-back"
+              color={theme.colors.primaryDarkColor}
+              size={24}
+            />
           </NumberText>
         </Number>
       </Line>
     </NumberPad>
   );
-};
+}
 
 export default withTheme(NumberPadComponent);

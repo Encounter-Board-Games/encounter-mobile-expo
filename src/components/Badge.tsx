@@ -9,8 +9,8 @@ interface BadgeContainerProps {
 const BadgeContainer = styled.View<BadgeContainerProps>`
   margin-top: ${(props) => props.theme.space.space0};
   margin-right: ${(props) => props.theme.space.space0};
-  padding: ${(props) => props.theme.space.space0} ${(props) =>
-  props.theme.space.space1};
+  padding: ${(props) => props.theme.space.space0}
+    ${(props) => props.theme.space.space1};
   border-radius: ${(props) =>
     props.isCircle ? '100px' : props.theme.borderRadius.tag};
   border: 1.5px solid
@@ -19,9 +19,7 @@ const BadgeContainer = styled.View<BadgeContainerProps>`
         ? props.theme.colors.primaryColor
         : props.theme.colors.secondColor};
   background-color: ${(props) =>
-    props.isSelected
-      ? props.theme.colors.primaryLightColor
-      : 'transparent'};
+    props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
 `;
 
 const BadgeText = styled.Text`

@@ -56,6 +56,6 @@ function Bar(props) {
       <ProgressBarBall running={props.running} active={props.active} />
     </ProgressBar_>
   );
-};
+}
 
 export default withTheme(Bar);

@@ -15,20 +15,22 @@ export const Container = styled.View`
   flex: 1;
   height: 100%;
   width: 100%;
-  padding-top: ${({ theme }) => Platform.OS === 'ios' ? theme.space.space4 : 0};
+  padding-top: ${({ theme }) =>
+    Platform.OS === 'ios' ? theme.space.space4 : 0};
   padding-bottom: ${getBottomSpace()}px;
 `;
 
 export const Header = styled.View`
   background-color: ${({ theme }) => theme.colors.lightColor};
-  margin-top: ${({ noPadding, theme }) => noPadding ? 0 : theme.space.space2};
+  margin-top: ${({ noPadding, theme }) => (noPadding ? 0 : theme.space.space2)};
   margin-left: ${({ theme }) => theme.space.space2};
   margin-right: ${({ theme }) => theme.space.space2};
   height: 42px;
   position: relative;
   justify-content: center;
   align-items: center;
-  border-color: ${({ withBorder, theme }) => withBorder ? theme.colors.secondColor : 'transparent'};
+  border-color: ${({ withBorder, theme }) =>
+    withBorder ? theme.colors.secondColor : 'transparent'};
   border-bottom-width: 1px;
 `;
 
@@ -53,7 +55,16 @@ export const ToolItem = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export default function ScreenPopUp ({ theme, hideHeader, title, tooltext, onToolPress, noScroll, footer, children }) {
+export default function ScreenPopUp({
+  theme,
+  hideHeader,
+  title,
+  tooltext,
+  onToolPress,
+  noScroll,
+  footer,
+  children,
+}) {
   const navigation = useNavigation();
   const goBack = () => {
     navigation.goBack();
@@ -69,17 +80,26 @@ export default function ScreenPopUp ({ theme, hideHeader, title, tooltext, onToo
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
-      }}>
+      }}
+    >
       <Container>
-        {!hideHeader === (
+        {!hideHeader ===
+        (
           <Header noPadding={!title} withBorder={!!tooltext}>
             <CloseButton onPress={goBack}>
-              <Ionicons name="ios-arrow-round-back" color={theme.colors.darkColor} size={32} />
+              <Ionicons
+                name="ios-arrow-round-back"
+                color={theme.colors.darkColor}
+                size={32}
+              />
             </CloseButton>
             {title === <H3>{title}</H3>}
-            {tooltext === (
+            {tooltext ===
+            (
               <ToolItem onPress={onToolPress}>
-                <Subtitle1 color={theme.colors.primaryDarkColor}>{tooltext}</Subtitle1>
+                <Subtitle1 color={theme.colors.primaryDarkColor}>
+                  {tooltext}
+                </Subtitle1>
               </ToolItem>
             )}
           </Header>
@@ -97,5 +117,4 @@ export default function ScreenPopUp ({ theme, hideHeader, title, tooltext, onToo
       </Container>
     </KeyboardAvoidingView>
   );
-};
-
+}

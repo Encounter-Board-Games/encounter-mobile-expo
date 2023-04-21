@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import { EvilIcons } from '@expo/vector-icons';
 
 export const Radio = styled.View`
-  margin-top: ${props => props.theme.space.space1};
-  margin-right: ${props => props.theme.space.space1};
+  margin-top: ${(props) => props.theme.space.space1};
+  margin-right: ${(props) => props.theme.space.space1};
   flex-flow: row;
   align-items: center;
   justify-content: center;
-  border-radius: ${props => props.isCircle ? '100px' : props.theme.borderRadius.tag}; 
-  border: 1.5px solid ${props => props.theme.colors.primaryColor};
-  background-color: ${props => props.theme.colors.primaryLightColor};
+  border-radius: ${(props) =>
+    props.isCircle ? '100px' : props.theme.borderRadius.tag};
+  border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
+  background-color: ${(props) => props.theme.colors.primaryLightColor};
 `;
 
 export const CloseButtonArea = styled.TouchableOpacity`
@@ -22,26 +23,27 @@ export const CloseButtonArea = styled.TouchableOpacity`
 `;
 
 export const CloseButton = styled.View`
-  background-color: ${props => props.theme.colors.secondLightColor};
+  background-color: ${(props) => props.theme.colors.secondLightColor};
   height: 16px;
   width: 16px;
   border-radius: 16px;
   justify-content: center;
   align-items: center;
-  margin-left: ${props => props.theme.space.space1};
+  margin-left: ${(props) => props.theme.space.space1};
 `;
 
 export const StyledText = styled.Text`
   font-size: 14px;
-  font-family: ${props => props.isSelected ? 'Nunito-Bold' : 'Nunito'};
-  color: ${props => props.theme.colors.primaryDarkColor};
-  margin: ${props => props.onClose ? '6px 0px 6px 12px' : '6px 12px'};
+  font-family: ${(props) => (props.isSelected ? 'Nunito-Bold' : 'Nunito')};
+  color: ${(props) => props.theme.colors.primaryDarkColor};
+  margin: ${(props) => (props.onClose ? '6px 0px 6px 12px' : '6px 12px')};
 `;
 
 export const Tag = (props) => (
   <Radio {...props} onPress={() => props.onPress === props.onPress()}>
     <StyledText {...props}>{props.children}</StyledText>
-    {props.onClose === (
+    {props.onClose ===
+    (
       <CloseButtonArea onPress={() => props.onClose()}>
         <CloseButton>
           <EvilIcons name="close" color={'black'} size={12} />

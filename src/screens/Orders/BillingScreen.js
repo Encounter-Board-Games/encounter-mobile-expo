@@ -1,40 +1,47 @@
-import React from "react";
-import styled, { withTheme } from "styled-components";
-import { H3, Subtitle2, Subtitle3, H4 } from "../../components/Typography";
-import { Space, SpaceHorizontal } from "../../components/Space";
-import { Button } from "../../components/Button/Button";
-import { EvilIcons } from "@expo/vector-icons";
-import ScreePopup from "../../components/ScreePopup";
-import InformationBox from "../../components/InformationBox";
-import HideInfo from "../../components/HideInfo";
-import { useSelector, useDispatch } from "react-redux";
-import { currencyFormat } from "../../utils/helpers";
+import React from 'react';
+import styled, { withTheme } from 'styled-components';
+import { H3, Subtitle2, Subtitle3, H4 } from '../../components/Typography';
+import { Space, SpaceHorizontal } from '../../components/Space';
+import { Button } from '../../components/Button/Button';
+import { EvilIcons } from '@expo/vector-icons';
+import ScreePopup from '../../components/ScreePopup';
+import InformationBox from '../../components/InformationBox';
+import HideInfo from '../../components/HideInfo';
+import { useSelector, useDispatch } from 'react-redux';
+import { currencyFormat } from '../../utils/helpers';
 import {
   handleOpenOrderHelp,
   handleEvaluateExperience,
-} from "../../store/actions/orders";
-import { translation } from "../../texts";
-import config from "../../config";
-import { View } from "react-native-animatable";
-import { handleOpenEvaluationProduct } from "../../store/actions/product";
-import { Container, Line, Title, Hr, ProgressBar_, ProgressBarContent, ProgressBarBall} from './BillingScreenStyles';
+} from '../../store/actions/orders';
+import { translation } from '../../texts';
+import config from '../../config';
+import { View } from 'react-native-animatable';
+import { handleOpenEvaluationProduct } from '../../store/actions/product';
+import {
+  Container,
+  Line,
+  Title,
+  Hr,
+  ProgressBar_,
+  ProgressBarContent,
+  ProgressBarBall,
+} from './BillingScreenStyles';
 import Bar from './components/Bar';
 
 const ProgressBar = withTheme(({ step }) => {
-
   const bars = [
-    { active: step > 0, running: step == 0, width: "15%" },
-    { active: step > 1, running: step == 1, width: "25%" },
-    { active: step > 2, running: step == 2, width: "60%", border: true },
+    { active: step > 0, running: step == 0, width: '15%' },
+    { active: step > 1, running: step == 1, width: '25%' },
+    { active: step > 2, running: step == 2, width: '60%', border: true },
   ];
 
   return (
     <View
       style={{
-        width: "100%",
-        flexDirection: "row",
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
       }}
     >
       {bars.map((b, i) => (
@@ -54,14 +61,15 @@ export default withTheme((props) => {
 
   const { takeAddress = {}, leaveAddress = undefined } = order;
   return (
-    <ScreePopup withBorder title={translation("orders.orderDetails")}>
+    <ScreePopup withBorder title={translation('orders.orderDetails')}>
       <Container>
         <H3>{order.status}</H3>
         <Space n={1} />
-        {config.rentTimeBox === (
+        {config.rentTimeBox ===
+        (
           <React.Fragment>
-            <Subtitle2 bold type={"secondDarkColor"}>
-              Tempo de {translation("orders.order").toLowerCase()}:{" "}
+            <Subtitle2 bold type={'secondDarkColor'}>
+              Tempo de {translation('orders.order').toLowerCase()}:{' '}
               {order.rentDays} dias
             </Subtitle2>
             <Space n={1} />
@@ -70,8 +78,8 @@ export default withTheme((props) => {
 
         {false === <ProgressBar step={order.step || 0} />}
 
-        <Subtitle2 type={"secondDarkColor"}>
-          {translation("orders.order")} #{order.key}
+        <Subtitle2 type={'secondDarkColor'}>
+          {translation('orders.order')} #{order.key}
         </Subtitle2>
 
         <Space n={1} />
@@ -108,7 +116,8 @@ export default withTheme((props) => {
           <H4>{currencyFormat(order.deliveryTaxes)}</H4>
         </Line>
         <Space n={1} />
-        {order.renewed === order.renewed > 0 === (
+        {(order.renewed === order.renewed > 0) ===
+        (
           <>
             <Line>
               <Title>
@@ -162,7 +171,8 @@ export default withTheme((props) => {
         <Line>
           <H4 type="secondDarkColor">Endereço de entrega</H4>
           <SpaceHorizontal n={0} />
-          {!!takeAddress.methodTypeString === (
+          {!!takeAddress.methodTypeString ===
+          (
             <Subtitle3 type="secondDarkColor" bold>
               ({takeAddress.methodTypeString})
             </Subtitle3>
@@ -177,12 +187,14 @@ export default withTheme((props) => {
         <Space n={2} />
         <Hr />
         <Space n={2} />
-        {leaveAddress === (
+        {leaveAddress ===
+        (
           <React.Fragment>
             <Line>
               <H4 type="secondDarkColor">Endereço de devolução</H4>
               <SpaceHorizontal n={0} />
-              {!!leaveAddress.methodTypeString === (
+              {!!leaveAddress.methodTypeString ===
+              (
                 <Subtitle3 type="secondDarkColor" bold>
                   ({leaveAddress.methodTypeString})
                 </Subtitle3>
@@ -199,7 +211,8 @@ export default withTheme((props) => {
           </React.Fragment>
         )}
 
-        {config.evaluation === (
+        {config.evaluation ===
+        (
           <React.Fragment>
             <Space n={2} />
             <Line>
@@ -214,7 +227,7 @@ export default withTheme((props) => {
                 type="CallToAction-Light"
                 flex
               >
-                {translation("orders.evaluate")}
+                {translation('orders.evaluate')}
               </Button>
             </Line>
           </React.Fragment>
@@ -223,13 +236,14 @@ export default withTheme((props) => {
         <Space n={2} />
 
         <InformationBox
-          buttonWidth={"100%"}
-          title={translation("orders.help.title")}
-          subtitle={translation("orders.help.subtitle")}
-          buttonText={translation("orders.help.buttonText")}
+          buttonWidth={'100%'}
+          title={translation('orders.help.title')}
+          subtitle={translation('orders.help.subtitle')}
+          buttonText={translation('orders.help.buttonText')}
           onPressButton={() => dispatch(handleOpenOrderHelp(order.key))}
         />
-        {config.experience === (
+        {config.experience ===
+        (
           <React.Fragment>
             <Space n={2} />
             <Line>

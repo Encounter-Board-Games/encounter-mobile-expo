@@ -1,5 +1,5 @@
-export const SET_NOTIFICATION = "SET_NOTIFICATION";
-export const SHOW_NOTIFICATION = "SHOW_NOTIFICATION";
+export const SET_NOTIFICATION = 'SET_NOTIFICATION';
+export const SHOW_NOTIFICATION = 'SHOW_NOTIFICATION';
 
 interface SetNotificationAction {
   type: typeof SET_NOTIFICATION;
@@ -14,7 +14,9 @@ interface ShowNotificationAction {
   show: boolean;
 }
 
-export type NotificationActionTypes = SetNotificationAction | ShowNotificationAction;
+export type NotificationActionTypes =
+  | SetNotificationAction
+  | ShowNotificationAction;
 
 export function setNotification(
   notificationText: string,
@@ -42,15 +44,15 @@ let showing: NodeJS.Timeout | undefined;
 
 export function handleShowNotification(
   notification: string | { text: string; action?: () => void; key?: string },
-  type: string = "success",
+  type: string = 'success',
   time: number = 3000
 ) {
   return async (dispatch: Function) => {
-    let notificationText = "";
+    let notificationText = '';
     let notificationAction;
     let notificationKey;
 
-    if (typeof notification === "string") {
+    if (typeof notification === 'string') {
       notificationText = notification;
     } else {
       notificationText = notification.text;
@@ -65,7 +67,14 @@ export function handleShowNotification(
       await new Promise((resolve) => setTimeout(resolve, 300));
     }
 
-    dispatch(setNotification(notificationText, type, notificationAction, notificationKey));
+    dispatch(
+      setNotification(
+        notificationText,
+        type,
+        notificationAction,
+        notificationKey
+      )
+    );
 
     dispatch(showNotification(true));
     showing = setTimeout(() => {

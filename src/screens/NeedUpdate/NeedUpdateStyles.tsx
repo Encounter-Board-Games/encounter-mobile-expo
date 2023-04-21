@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Platform } from "react-native";
-import Constants from "expo-constants";
+import styled from 'styled-components';
+import { Platform } from 'react-native';
+import Constants from 'expo-constants';
 
 export const MainContainer = styled.View`
 flex: 1;
@@ -8,8 +8,8 @@ width: 100%;
 padding-left: ${(props) => props.theme.space.space3}
 padding-right: ${(props) => props.theme.space.space3}
 padding-top: ${(props) =>
-  Platform.OS == "ios"
-    ? Constants.statusBarHeight + "px"
+  Platform.OS == 'ios'
+    ? Constants.statusBarHeight + 'px'
     : props.theme.space.space2};
 `;
 

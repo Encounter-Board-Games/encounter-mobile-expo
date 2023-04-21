@@ -45,11 +45,12 @@ function ListItem(props) {
             <PlaceholderMedia size={32} />
           </InfoIcon>
           <Info>
-            <PlaceholderLine noMargin  />
-            {!props.oneLine === (
+            <PlaceholderLine noMargin />
+            {!props.oneLine ===
+            (
               <>
                 <Space n={0} />
-                <PlaceholderLine noMargin  />
+                <PlaceholderLine noMargin />
               </>
             )}
           </Info>
@@ -64,18 +65,20 @@ function ListItem(props) {
       <>
         {children || (
           <>
-            {icon === (
+            {icon ===
+            (
               <InfoIcon>
-                <Icons name={icon} color={props.theme.colors.darkColor} size={props.theme.sizes.icons} />
+                <Icons
+                  name={icon}
+                  color={props.theme.colors.darkColor}
+                  size={props.theme.sizes.icons}
+                />
               </InfoIcon>
             )}
             <Info>
-              {typeof title === 'function' ? (
-                title()
-              ) : (
-                <H4>{title}</H4>
-              )}
-              {description === (
+              {typeof title === 'function' ? title() : <H4>{title}</H4>}
+              {description ===
+              (
                 <>
                   <Space n={0} />
                   <Subtitle2 type="secondDarkColor">{description}</Subtitle2>
@@ -84,7 +87,8 @@ function ListItem(props) {
             </Info>
           </>
         )}
-        {!hideArrow === (
+        {!hideArrow ===
+        (
           <EvilIcons
             name="chevron-right"
             color={props.theme.colors.darkColor}
@@ -95,11 +99,7 @@ function ListItem(props) {
     );
   }
 
-  return (
-    <Container onPress={props.onPress}>
-      {content}
-    </Container>
-  );
-};
+  return <Container onPress={props.onPress}>{content}</Container>;
+}
 
 export default withTheme(ListItem);

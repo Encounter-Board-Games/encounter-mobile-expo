@@ -1,22 +1,21 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const getFiltersQuery = gql`
-
-  query{
-    getFilters{
-      filters{
+  query {
+    getFilters {
+      filters {
         type
         title
         isSingle
         options
         values
-        info{
-            name
-            description
+        info {
+          name
+          description
         }
         isCircle
       }
-      selected{
+      selected {
         order
         searchGroup
         categories
@@ -30,12 +29,11 @@ export const getFiltersQuery = gql`
       }
     }
   }
-  `;
+`;
 
 export const getFilterQuery = gql`
-
-  query($key: String!){
-    getFilter(key: $key){
+  query ($key: String!) {
+    getFilter(key: $key) {
       searchGroup
       order
       categories
@@ -49,4 +47,4 @@ export const getFilterQuery = gql`
       text
     }
   }
-  `;
+`;

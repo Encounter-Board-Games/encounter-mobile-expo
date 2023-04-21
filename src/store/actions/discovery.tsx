@@ -4,7 +4,8 @@ import { handleSetSelects } from './filters/filters';
 import { API_URI } from '../../graphql/client';
 import { customFilter } from '../../graphql';
 
-export const SET_SELECT_FILTER_TOGGLE_DISCOVERY = 'SET_SELECT_FILTER_TOGGLE_DISCOVERY';
+export const SET_SELECT_FILTER_TOGGLE_DISCOVERY =
+  'SET_SELECT_FILTER_TOGGLE_DISCOVERY';
 export const START_DISCOVERY = 'START_DISCOVERY';
 export const OPEN_DISCOVERY = 'OPEN_DISCOVERY';
 export const CLOSE_DISCOVERY = 'CLOSE_DISCOVERY';
@@ -39,7 +40,6 @@ interface CloseDiscoveryAction {
   type: typeof CLOSE_DISCOVERY;
 }
 
-
 type DiscoveryActionTypes =
   | SetSelectFilterToggleDiscoveryAction
   | SetFiltersDiscoveryAction
@@ -48,7 +48,10 @@ type DiscoveryActionTypes =
   | OpenDiscoveryAction
   | CloseDiscoveryAction;
 
-export function setSelectFilterToggleDiscovery(filterType: string, value: boolean): SetSelectFilterToggleDiscoveryAction {
+export function setSelectFilterToggleDiscovery(
+  filterType: string,
+  value: boolean
+): SetSelectFilterToggleDiscoveryAction {
   return {
     type: SET_SELECT_FILTER_TOGGLE_DISCOVERY,
     filterType,
@@ -56,7 +59,9 @@ export function setSelectFilterToggleDiscovery(filterType: string, value: boolea
   };
 }
 
-function setFilters(filters: Record<string, unknown>): SetFiltersDiscoveryAction {
+function setFilters(
+  filters: Record<string, unknown>
+): SetFiltersDiscoveryAction {
   return {
     type: SET_FILTERS_DISCOVERY,
     filters,
@@ -69,7 +74,9 @@ export function startDiscovery(): StartDiscoveryAction {
   };
 }
 
-export function setDiscoverySteps(steps: Record<string, unknown>): SetDiscoveryStepsAction {
+export function setDiscoverySteps(
+  steps: Record<string, unknown>
+): SetDiscoveryStepsAction {
   return {
     type: SET_DISCOVERY_STEPS,
     steps,
@@ -88,7 +95,9 @@ export function closeDiscovery(): CloseDiscoveryAction {
   };
 }
 
-let discoveryResolve: ((value?: boolean | PromiseLike<boolean>) => void) | undefined;
+let discoveryResolve:
+  | ((value?: boolean | PromiseLike<boolean>) => void)
+  | undefined;
 
 export function handleOpenDiscovery() {
   return async (dispatch: Dispatch<DiscoveryActionTypes>) => {
@@ -109,7 +118,10 @@ export function handleLoadDiscovery() {
 }
 
 export function handleFinishDiscovery() {
-  return async (dispatch: Dispatch<DiscoveryActionTypes>, getState: () => { discovery: { filters: Record<string, unknown> } }) => {
+  return async (
+    dispatch: Dispatch<DiscoveryActionTypes>,
+    getState: () => { discovery: { filters: Record<string, unknown> } }
+  ) => {
     const { discovery } = getState();
 
     dispatch(handleSetSelects(discovery.filters));

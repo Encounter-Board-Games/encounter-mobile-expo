@@ -1,7 +1,7 @@
-import { UserNotifications, SetUserNotificationViewed } from "../../../graphql";
-import storage from "../../../utils/storage";
+import { UserNotifications, SetUserNotificationViewed } from '../../../graphql';
+import storage from '../../../utils/storage';
 
-export const SET_USER_NOTIFICATION = "SET_USER_NOTIFICATION";
+export const SET_USER_NOTIFICATION = 'SET_USER_NOTIFICATION';
 
 export interface Notification {
   id: string;
@@ -20,7 +20,9 @@ export interface SetUserNotificationAction {
 
 export type NotificationActionTypes = SetUserNotificationAction;
 
-export function setUserNotification(notifications: Notification[]): NotificationActionTypes {
+export function setUserNotification(
+  notifications: Notification[]
+): NotificationActionTypes {
   return {
     type: SET_USER_NOTIFICATION,
     notifications,

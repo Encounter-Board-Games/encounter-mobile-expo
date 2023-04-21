@@ -1,11 +1,11 @@
-import React from "react";
-import Screen from "../../components/Screen";
-import Tab from "../../components/Tab";
-import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import OrdersList from "./components/OrdersList";
-import NotLoggedBox from "../User/components/NotLoggedBox";
-import { translation } from "../../texts";
+import React from 'react';
+import Screen from '../../components/Screen';
+import Tab from '../../components/Tab';
+import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import OrdersList from './components/OrdersList';
+import NotLoggedBox from '../User/components/NotLoggedBox';
+import { translation } from '../../texts';
 
 const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};
@@ -22,7 +22,7 @@ export default () => {
   const isNotLoggedContent = () => (
     <React.Fragment>
       <TabContent>
-        <NotLoggedBox title={translation("orders.notLogged.title")} />
+        <NotLoggedBox title={translation('orders.notLogged.title')} />
       </TabContent>
     </React.Fragment>
   );
@@ -33,10 +33,10 @@ export default () => {
     return (
       <React.Fragment>
         <TabContent>
-          <OrdersList type={"Current"} />
+          <OrdersList type={'Current'} />
         </TabContent>
         <TabContent>
-          <OrdersList type={"History"} />
+          <OrdersList type={'History'} />
         </TabContent>
       </React.Fragment>
     );
@@ -45,7 +45,7 @@ export default () => {
   return (
     <Screen>
       <Container>
-        <Tab tabs={["Em andamento", "Anteriores"]}>
+        <Tab tabs={['Em andamento', 'Anteriores']}>
           {isLogged ? isLoggedContent() : isNotLoggedContent()}
         </Tab>
       </Container>

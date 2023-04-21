@@ -1,25 +1,27 @@
-import React from 'react'
-import styled, { withTheme } from 'styled-components'
-import { H3, H4, Subtitle2 } from './Typography'
-import { Button } from './Button/Button'
-import { Image } from 'react-native'
-import { Box } from './Box'
-import { Space } from './Space'
+import React from 'react';
+import styled, { withTheme } from 'styled-components';
+import { H3, H4, Subtitle2 } from './Typography';
+import { Button } from './Button/Button';
+import { Image } from 'react-native';
+import { Box } from './Box';
+import { Space } from './Space';
 
 export const ImageContent = styled.View`
-flex: 1;
-min-height: 88px;
-width: 100%;
-align-items: center;
+  flex: 1;
+  min-height: 88px;
+  width: 100%;
+  align-items: center;
 `;
 
 function InformationBox(props) {
   const imgContent = props.img ? (
     <>
       <ImageContent>
-        <Image resizeMode={"contain"} 
-        style={{ height: '100%' }} 
-        source={props.img} />
+        <Image
+          resizeMode={'contain'}
+          style={{ height: '100%' }}
+          source={props.img}
+        />
       </ImageContent>
       <Space n={2} />
     </>
@@ -35,7 +37,9 @@ function InformationBox(props) {
   const descriptionContent = props.description ? (
     <>
       <Space n={1} />
-      <Subtitle2 center type="secondDarkColor">{props.description}</Subtitle2>
+      <Subtitle2 center type="secondDarkColor">
+        {props.description}
+      </Subtitle2>
     </>
   ) : null;
 
@@ -45,7 +49,8 @@ function InformationBox(props) {
       <Button
         width={props.buttonWidth}
         onPress={() => props.onPressButton && props.onPressButton()}
-        type={'CallToAction-Outline'}>
+        type={'CallToAction-Outline'}
+      >
         {props.buttonText}
       </Button>
     </>
@@ -55,13 +60,15 @@ function InformationBox(props) {
     <Box>
       <Space n={1} />
       {imgContent}
-      <H3 center type={props.titleType}>{props.title}</H3>
+      <H3 center type={props.titleType}>
+        {props.title}
+      </H3>
       {subtitleContent}
       {descriptionContent}
       {buttonTextContent}
       <Space n={1} />
     </Box>
   );
-};
+}
 
 export default withTheme(InformationBox);

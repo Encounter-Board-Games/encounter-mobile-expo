@@ -15,26 +15,32 @@ const Container = styled.View`
 `;
 
 const Content = styled.TouchableOpacity`
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .6);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
 `;
 
-export default (props) => <Container>
+export default (props) => (
+  <Container>
     <Animatable.View duration={500} animation="fadeIn" style={{ flex: 1 }}>
-        <Content onPress={() =>  props.onBackgroundPress && props.onBackgroundPress() }>
-            <TouchableOpacity style={{
-                width: '100%',
-                height: '30%'
-            }}>
-                <WebView
-                    style={{ flex: 1 }}
-                    javaScriptEnabled={true}
-                    source={{ uri: props.video }}
-                />
-            </TouchableOpacity>
-        </Content>
+      <Content
+        onPress={() => props.onBackgroundPress && props.onBackgroundPress()}
+      >
+        <TouchableOpacity
+          style={{
+            width: '100%',
+            height: '30%',
+          }}
+        >
+          <WebView
+            style={{ flex: 1 }}
+            javaScriptEnabled={true}
+            source={{ uri: props.video }}
+          />
+        </TouchableOpacity>
+      </Content>
     </Animatable.View>
-</Container>
+  </Container>
+);

@@ -1,29 +1,28 @@
-import gql from 'graphql-tag'
-
+import gql from 'graphql-tag';
 
 export const aboutQuery = gql`
-query{
-  about{
-    name
-    instagram
-    description
-    terms
-    politics
+  query {
+    about {
+      name
+      instagram
+      description
+      terms
+      politics
+    }
+    help
   }
-  help
-}
-`
+`;
 export const updateVersionQuery = gql`
-query($currentVersion : String!){
-  updateVersion(currentVersion: $currentVersion){
-    key
-    title
-    img
-    link
-    texts
-    force
-    btnText
-    btnCancel
+  query ($currentVersion: String!) {
+    updateVersion(currentVersion: $currentVersion) {
+      key
+      title
+      img
+      link
+      texts
+      force
+      btnText
+      btnCancel
+    }
   }
-}
-`
+`;

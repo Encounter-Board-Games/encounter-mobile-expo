@@ -28,8 +28,16 @@ const TextModal: React.FC = () => {
   const dispatch = useDispatch();
   const [text, setText] = useState('');
 
-  const { popup = {} } = useSelector((state: { info: InfoState }) => state.info);
-  const { callBack = () => {}, title, description, cancelBtn, confirmBtn } = popup?.data ?? {};
+  const { popup = {} } = useSelector(
+    (state: { info: InfoState }) => state.info
+  );
+  const {
+    callBack = () => {},
+    title,
+    description,
+    cancelBtn,
+    confirmBtn,
+  } = popup?.data ?? {};
 
   const remove = () => {
     callBack(text);
@@ -45,7 +53,11 @@ const TextModal: React.FC = () => {
     <Container onPress={() => Keyboard.dismiss()}>
       {title && <H3 center>{title}</H3>}
       <Space n={1} />
-      {description && <H4 noBold center>{description}</H4>}
+      {description && (
+        <H4 noBold center>
+          {description}
+        </H4>
+      )}
       <Space n={1} />
       <View style={{ width: '100%' }}>
         <TextInput

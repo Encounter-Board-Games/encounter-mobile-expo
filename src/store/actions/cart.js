@@ -1,4 +1,4 @@
-import { openCart, openPopupModal } from "./info";
+import { openCart, openPopupModal } from './info';
 import {
   deliveryOptions,
   deliveryTaxes,
@@ -6,26 +6,26 @@ import {
   applyCupon,
   getLastPaymentId,
   renewOrderM,
-} from "../../graphql";
-import { addOrderAndSelect } from "./orders";
-import { handleShowNotification } from "./notification";
-import { translation } from "../../texts";
-import config from "../../../config";
-import { setProducts } from "./product";
+} from '../../graphql';
+import { addOrderAndSelect } from './orders';
+import { handleShowNotification } from './notification';
+import { translation } from '../../texts';
+import config from '../../../config';
+import { setProducts } from './product';
 
-export const CART_ADD_PRODUCT = "CART_ADD_PRODUCT";
-export const CART_SET_RENEW = "CART_SET_RENEW";
-export const CART_REMOVE_PRODUCT = "CART_REMOVE_PRODUCT";
-export const CART_SET_SUBTOTAL_AND_TOTAL = "CART_SET_SUBTOTAL_AND_TOTAL";
-export const CART_LOGOUT = "CART_LOGOUT";
-export const CART_SET_DELIVERY_TYPE_OPENED = "CART_SET_DELIVERY_TYPE_OPENED";
-export const CART_SET_DELIVERY = "CART_SET_DELIVERY";
-export const CART_SET_DELIVERY_OPTIONS = "CART_SET_DELIVERY_OPTIONS";
-export const CART_SET_DELIVERY_TAXES = "CART_SET_DELIVERY_TAXES";
-export const CART_SET_PAYMENT_METHODS = "CART_SET_PAYMENT_METHODS";
-export const CART_SET_CUPOM = "CART_SET_CUPOM";
-export const CART_IS_LOADING = "CART_IS_LOADING";
-export const CART_CLEAR = "CART_CLEAR";
+export const CART_ADD_PRODUCT = 'CART_ADD_PRODUCT';
+export const CART_SET_RENEW = 'CART_SET_RENEW';
+export const CART_REMOVE_PRODUCT = 'CART_REMOVE_PRODUCT';
+export const CART_SET_SUBTOTAL_AND_TOTAL = 'CART_SET_SUBTOTAL_AND_TOTAL';
+export const CART_LOGOUT = 'CART_LOGOUT';
+export const CART_SET_DELIVERY_TYPE_OPENED = 'CART_SET_DELIVERY_TYPE_OPENED';
+export const CART_SET_DELIVERY = 'CART_SET_DELIVERY';
+export const CART_SET_DELIVERY_OPTIONS = 'CART_SET_DELIVERY_OPTIONS';
+export const CART_SET_DELIVERY_TAXES = 'CART_SET_DELIVERY_TAXES';
+export const CART_SET_PAYMENT_METHODS = 'CART_SET_PAYMENT_METHODS';
+export const CART_SET_CUPOM = 'CART_SET_CUPOM';
+export const CART_IS_LOADING = 'CART_IS_LOADING';
+export const CART_CLEAR = 'CART_CLEAR';
 
 function addProduct(key, size) {
   return {
@@ -126,7 +126,7 @@ export function handleRemoveProductConfirmModal(productKey) {
   return async (dispatch) => {
     return await new Promise((resolve) => {
       dispatch(
-        openPopupModal("CONFIRM_MODAL", {
+        openPopupModal('CONFIRM_MODAL', {
           callBack: (r) => {
             if (r) {
               dispatch(handleRemoveProduct(productKey));
@@ -135,8 +135,8 @@ export function handleRemoveProductConfirmModal(productKey) {
             resolve(r);
           },
           // title: 'Exluir endereço',
-          confirmBtn: "Sim",
-          title: translation("cart.cartRemove"),
+          confirmBtn: 'Sim',
+          title: translation('cart.cartRemove'),
         })
       );
     });
@@ -166,7 +166,7 @@ export function handleAddProduct(productKey, options) {
       return Promise.resolve(chooseOption());
     return new Promise((r) => {
       dispatch(
-        openPopupModal("OPTIONS_MODAL", {
+        openPopupModal('OPTIONS_MODAL', {
           callBack: (option) => {
             if (option) {
               chooseOption(option);
@@ -175,7 +175,7 @@ export function handleAddProduct(productKey, options) {
             r(option);
           },
           options,
-          title: "Escolha o tamanho:",
+          title: 'Escolha o tamanho:',
         })
       );
     });
@@ -246,7 +246,7 @@ export function handleSelectAddressDefault(type, mode) {
     const { cart } = getState();
     const { delivery = {} } = cart;
     const deliveryOptions = delivery[type].deliveryOptions || [];
-    const otherType = type == "leave" ? "take" : "leave";
+    const otherType = type == 'leave' ? 'take' : 'leave';
     const value = delivery[otherType].selected.key;
 
     dispatch(cartSetDelivery(type, mode, value));
@@ -297,18 +297,15 @@ export function handleLoadDeliveryMethods() {
       };
     };
 
-    const {
-      takeDeliveryMethod,
-      leaveDeliveryMethod,
-      productsLength,
-    } = getOptions();
+    const { takeDeliveryMethod, leaveDeliveryMethod, productsLength } =
+      getOptions();
 
     const { take, leave } = await deliveryOptions(
       productsLength,
       takeDeliveryMethod
     );
-    dispatch(cartSetDeliveryOptions("take", take));
-    dispatch(cartSetDeliveryOptions("leave", leave));
+    dispatch(cartSetDeliveryOptions('take', take));
+    dispatch(cartSetDeliveryOptions('leave', leave));
   };
 }
 
@@ -403,8 +400,8 @@ export function handleCheckOut() {
       if (!order.success) {
         if (order.message)
           dispatch(
-            openPopupModal("INFO_POPUP", {
-              title: "Ops... 😔",
+            openPopupModal('INFO_POPUP', {
+              title: 'Ops... 😔',
               text: order.message,
             })
           );
@@ -414,14 +411,14 @@ export function handleCheckOut() {
       dispatch(addOrderAndSelect(order.order));
       dispatch(clear());
       dispatch(handleOpenCart(false));
-      if (renew) dispatch(handleShowNotification("Renovação realizada."));
-      else dispatch(handleShowNotification("Pedido realizado"));
+      if (renew) dispatch(handleShowNotification('Renovação realizada.'));
+      else dispatch(handleShowNotification('Pedido realizado'));
       if (order.order)
         if (order.order.isFirst)
           dispatch(
-            openPopupModal("INFO_POPUP", {
-              title: translation("orders.firstOrder.title"),
-              text: translation("orders.firstOrder.description"),
+            openPopupModal('INFO_POPUP', {
+              title: translation('orders.firstOrder.title'),
+              text: translation('orders.firstOrder.description'),
             })
           );
 
@@ -429,8 +426,8 @@ export function handleCheckOut() {
     } catch (error) {
       dispatch(
         handleShowNotification(
-          "Ops, ocorreu um erro. Tente novamente mais tarde.",
-          "danger"
+          'Ops, ocorreu um erro. Tente novamente mais tarde.',
+          'danger'
         )
       );
       console.log(error);

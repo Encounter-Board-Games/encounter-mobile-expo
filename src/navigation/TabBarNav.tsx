@@ -58,25 +58,15 @@ const Icon: React.FC<IIconProps> = ({ name, color, size = 16 }) => (
   <Icons name={name} size={size} color={color} />
 );
 
-
 const Tab: React.FC<ITabProps> = ({ state, navigation, theme }) => {
   const activeRouteIndex = state.index;
 
   return (
     <TabNav>
       {state.routes.map((item, index) => (
-        <NavItem
-          key={index}
-          onPress={() => navigation.navigate(item.name)}
-        >
-          <Icon
-            name={icons[item.name]}
-            size={20}
-            color="#414042"
-          />
-          <Text isSelected={index === activeRouteIndex}>
-            {item.name}
-          </Text>
+        <NavItem key={index} onPress={() => navigation.navigate(item.name)}>
+          <Icon name={icons[item.name]} size={20} color="#414042" />
+          <Text isSelected={index === activeRouteIndex}>{item.name}</Text>
         </NavItem>
       ))}
     </TabNav>

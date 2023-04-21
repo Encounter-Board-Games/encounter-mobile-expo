@@ -1,11 +1,11 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const evaluateProductMutation = gql`
-  mutation ($evaluation: Float!, $key: String!){
-    evaluateProduct(evaluation: $evaluation, key: $key){
+  mutation ($evaluation: Float!, $key: String!) {
+    evaluateProduct(evaluation: $evaluation, key: $key) {
       success
       action
-      product{
+      product {
         key
         myEvaluation
         name
@@ -27,22 +27,22 @@ export const evaluateProductMutation = gql`
       }
     }
   }
-  `;
+`;
 
 export const customFilterQuery = gql`
-  query($type: String!){
-    customFilter(type: $type){
-      steps{
+  query ($type: String!) {
+    customFilter(type: $type) {
+      steps {
         title
         type
         optionsType
-        options{
+        options {
           text
           image
           values
         }
         image
       }
+    }
   }
-}
 `;
