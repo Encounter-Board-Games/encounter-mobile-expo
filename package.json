@@ -23,6 +23,7 @@
     "@types/redux-thunk": "^2.1.0",
     "apollo-boost": "^0.4.9",
     "apollo-link-context": "^1.0.20",
+    "babel-plugin-module-resolver": "^5.0.0",
     "expo": "^48.0.9",
     "expo-apple-authentication": "~6.0.1",
     "expo-application": "~5.1.1",

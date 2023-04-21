@@ -4,6 +4,7 @@ export interface PopupData {
   description?: string;
   cancelBtn?: string;
   confirmBtn?: string;
+  options?: any;
 }
 
 export interface PopupState {

@@ -1,30 +1,56 @@
-import React, { useState } from 'react';
-import { Space } from '../../../components/Space';
-import Button from '../../../components/Button/Button';
+import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { H4, H3 } from '../../../components/Typography';
-import { closePopupModal } from '../../../store/actions/info';
 import { Keyboard, View } from 'react-native';
-import { Container, Line, Btn, Option } from './OptionsModalStyles';
-import theme from '../../../styles/theme';
+import styled from 'styled-components/native';
+
+import { Space } from '../../../components/Space';
+import { Button } from '../../../components/Input';
+import { H3, H4 } from '../../../components/Typography';
+import { closePopupModal } from '../../../store/actions/info';
+import { RootState } from '../../../store/reducers';
+
 
 interface OptionModalProps {}
 
-const OptionsModal: React.FC<OptionModalProps> = () => {
+const Container = styled.TouchableOpacity`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Line = styled.View`
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Btn = styled.View`
+  margin: 0 10px;
+`;
+
+const Option = styled.TouchableOpacity`
+  padding: 16px;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-width: 1px;
+  border-color: ${({ theme }) => theme.colors.gray[300]};
+`;
+
+const OptionsModal: FC<OptionModalProps> = () => {
   const dispatch = useDispatch();
   const [text, setText] = useState<string>('');
-  const { popup = {} } = useSelector((state) => state.info);
+  const { popup = {} } = useSelector((state: RootState) => state.info);
   const {
     callBack = () => {},
-    title = undefined,
-    description = undefined,
-    cancelBtn = undefined,
+    title,
+    description,
+    cancelBtn = 'Cancelar',
     options = [],
-  } = popup.data ? popup.data : {};
+  } = popup.data || {};
 
   const handleCancel = () => {
     dispatch(closePopupModal());
-    callBack(false);
+    callBack(false); // Pass a boolean value to the callback function
   };
 
   const handleChooseOption = (option: string) => {
@@ -39,8 +65,8 @@ const OptionsModal: React.FC<OptionModalProps> = () => {
       {description && <H4 noBold center>{description}</H4>}
       <Space n={1} />
       <View style={{ width: '100%', flexDirection: 'row', flexWrap: 'wrap' }}>
-        {options.map((option, index) => (
-          <View key={index} style={{ flexGrow: 1, alignItems: 'center' }}>
+        {options.map((option) => (
+          <View key={option} style={{ flexGrow: 1, alignItems: 'center' }}>
             <Option onPress={() => handleChooseOption(option)}>{option}</Option>
           </View>
         ))}
@@ -48,8 +74,8 @@ const OptionsModal: React.FC<OptionModalProps> = () => {
       <Space n={2} />
       <Line>
         <Btn>
-          <Button onPress={handleCancel} type="CallToAction-Outline" theme={theme}>
-            {cancelBtn ? cancelBtn : 'Cancelar'}
+          <Button onPress={handleCancel} type="CallToAction-Outline">
+            {cancelBtn}
           </Button>
         </Btn>
       </Line>

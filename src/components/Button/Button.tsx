@@ -1,21 +1,19 @@
 import React from 'react';
 import getConfigs from './getConfigs';
 import { ButtonWrapperProps } from './ButtonTypes';
-import { Button_, Text } from './ButtonStyles'
+import { Button_, Text } from './ButtonStyles';
 
-      
-const Button: React.FC<ButtonWrapperProps> = (props) => {
+interface ButtonProps extends ButtonWrapperProps {}
+
+const Button: React.FC<ButtonProps> = (props) => {
   return (
     <Button_
       {...getConfigs(props.theme, props.type)}
       {...props}
       onPress={() => !props.disabled && props.onPress && props.onPress()}
-      >
-      <Text
-      isOutline={props.isOutline}
-      {...getConfigs(props.theme, props.type)}
-      >
-      {props.children}
+    >
+      <Text isOutline={props.isOutline} {...getConfigs(props.theme, props.type)}>
+        {props.children}
       </Text>
     </Button_>
   );
