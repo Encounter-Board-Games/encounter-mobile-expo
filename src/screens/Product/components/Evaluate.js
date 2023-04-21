@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Dice from "../../../components/Dice";
 import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { closePopupModal } from "../../../store/actions/info";
 import { H3, Subtitle2 } from "../../../components/Typography";

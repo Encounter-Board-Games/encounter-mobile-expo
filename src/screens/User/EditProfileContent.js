@@ -7,7 +7,7 @@ import {
   Linking,
 } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { handleEditUserInfo } from "../../store/actions/user";
+import { handleEditUserInfo } from "../../store/actions/user/handlers";
 import { RadioButton } from "../../components/RadioButton";
 import { View } from "react-native-animatable";
 import {
@@ -29,7 +29,7 @@ import {
 } from "../../components/Typography";
 import { Space, Bottom } from "../../components/Space";
 import Input from "../../components/Input";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/Button/Button";
 
 export default function EditProfileContent ({ navigation }) {
   const dispatch = useDispatch();

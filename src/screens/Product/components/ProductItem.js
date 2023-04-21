@@ -14,7 +14,7 @@ import {
 } from "rn-placeholder";
 import { Space } from "../../../components/Space";
 import { Subtitle3 } from "../../../components/Typography";
-import { handleRememberProduct } from "../../../store/actions/user";
+import { handleRememberProduct } from "../../../store/actions/user/handlers";
 import { View } from "react-native-animatable";
 
 export const ProductImage = styled.View`

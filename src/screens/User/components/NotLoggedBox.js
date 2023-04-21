@@ -1,6 +1,6 @@
 import React from 'react'
 import InformationBox from '../../../components/InformationBox'
-import { openLoginPopup } from '../../../store/actions/user';
+import { openLoginPopup } from '../../../store/actions/user/handlers';
 import { useDispatch } from 'react-redux';
 import { translation } from '../../../texts';
 import config from '../../../config';

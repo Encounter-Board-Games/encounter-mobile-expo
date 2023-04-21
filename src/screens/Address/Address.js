@@ -8,7 +8,7 @@ import { Space } from '../../components/Space';
 import { useSelector, useDispatch } from 'react-redux';
 import NotLoggedBox from '../User/components/NotLoggedBox';
 import { Subtitle2 } from '../../components/Typography';
-import { handleSetCurrentLocation, handleSearchLocationByTerm } from '../../store/actions/address';
+import { handleSetCurrentLocation, handleSearchLocationByTerm } from '../../store/actions/address/address';
 import { handleCloseCartChoseAddress } from '../../store/actions/shared';
 import { handleSelectAddress } from '../../store/actions/cart';
 import BoxAddress from './component/BoxAddress';

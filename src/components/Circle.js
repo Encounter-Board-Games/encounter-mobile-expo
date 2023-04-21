@@ -18,6 +18,7 @@ export const CircleIntern = styled.View`
 `;
 
 export default (props) => {
-
-    return (<Circle  {...props}>{props.isSelected && <CircleIntern />}</Circle>)
+    return (
+        <Circle  {...props}>{props.isSelected && <CircleIntern />}</Circle>
+    );
 }

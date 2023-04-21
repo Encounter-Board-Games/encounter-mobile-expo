@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { Space } from '../../../components/Space';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../components/Button/Button';
 import { H3, H4 } from '../../../components/Typography';
 
 import { closePopupModal } from '../../../store/actions/info';

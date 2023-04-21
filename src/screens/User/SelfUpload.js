@@ -6,12 +6,12 @@ import { H2, Subtitle2 } from "../../components/Typography";
 import { Image } from "react-native";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import Constants from "expo-constants";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/Button/Button";
 import { useDispatch } from "react-redux";
 import * as Camera from "expo-camera";
 import CameraScreen from "./components/CameraScreen";
 import { useNavigation } from "@react-navigation/native";
-import { handleUploadSelfDocument } from "../../store/actions/user";
+import { handleUploadSelfDocument } from "../../store/actions/user/handlers";
 
 export const MainContainer = styled.View`
   flex: 1;

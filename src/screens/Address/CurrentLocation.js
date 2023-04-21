@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Dimensions, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useTheme, withTheme } from 'styled-components/native';
-import { Button } from '../../components/Button';
+import { Button } from '../../components/Button/Button';
 import { Space } from '../../components/Space';
 import { Subtitle2 } from '../../components/Typography';
 import { Ionicons } from '@expo/vector-icons';
-import { handleSearchLocation } from '../../store/actions/address';
-import { useDispatch, useSelector, connect } from 'react-redux';
+import { handleSearchLocation } from '../../store/actions/address/address';
+import { useDispatch, useSelector } from 'react-redux';
 
 const CurrentLocation = ({ navigation }) => {
   const dispatch = useDispatch();

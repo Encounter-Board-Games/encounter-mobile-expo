@@ -8,7 +8,7 @@ import HideInfo from "../../../components/HideInfo";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { handleSetCartChosePayment } from "../../../store/actions/shared";
-import { handleLoadPaymentMethods } from "../../../store/actions/payments";
+import { handleLoadPaymentMethods } from "../../../store/actions/payments/payments";
 
 const Line = styled.View`
   flex-flow: row;

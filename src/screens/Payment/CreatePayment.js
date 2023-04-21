@@ -5,7 +5,7 @@ import {
   handleCreateOrEditPayment,
   handleSetCurrentPayment,
   handleRemoveCurrentPaymentConfirmModal,
-} from '../../store/actions/payments';
+} from '../../store/actions/payments/payments';
 import {
   Button,
   Subtitle2,

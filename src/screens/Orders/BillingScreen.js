@@ -2,7 +2,7 @@ import React from "react";
 import styled, { withTheme } from "styled-components";
 import { H3, Subtitle2, Subtitle3, H4 } from "../../components/Typography";
 import { Space, SpaceHorizontal } from "../../components/Space";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/Button/Button";
 import { EvilIcons } from "@expo/vector-icons";
 import ScreePopup from "../../components/ScreePopup";
 import InformationBox from "../../components/InformationBox";

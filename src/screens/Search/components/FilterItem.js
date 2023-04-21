@@ -4,7 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import { H3 } from '../../../components/Typography';
 import { CheckButton } from '../../../components/CheckButton';
 import { RadioButton } from '../../../components/RadioButton';
-import { handleSetSelectFilter } from '../../../store/actions/filters';
+import { handleSetSelectFilter } from '../../../store/actions/filters/filters';
 import { useDispatch } from 'react-redux';
 import { openInfoModal } from '../../../store/actions/info';
 import Icons from '../../../components/Icons';

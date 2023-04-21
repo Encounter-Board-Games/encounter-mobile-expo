@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Animatable from "react-native-animatable";
 import { H3, Subtitle2, H4 } from "../../../components/Typography";
 import CustomInput from "../../../components/Input";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/Button/Button";
 import styled, { withTheme } from "styled-components";
 import { Space } from "../../../components/Space";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,7 +10,7 @@ import {
   hadleBackToLogin,
   handleSendPassword,
   handleForgotPassword,
-} from "../../../store/actions/user";
+} from "../../../store/actions/user/handlers";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Dimensions } from "react-native";
 

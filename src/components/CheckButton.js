@@ -29,6 +29,8 @@ font-family:  ${props => props.isSelected ? 'Nunito' : 'Nunito'};
 color: ${props => props.isSelected ? props.theme.colors.primaryDarkColor : props.theme.colors.darkColor};
 `;
 
-export const CheckButton = (props) => (<Radio {...props} onPress={() => props.onPress && props.onPress()}>
-    <Text {...props} >{props.children}</Text>
-</Radio>)
+export const CheckButton = (props) => (
+    <Radio {...props} onPress={() => props.onPress && props.onPress()}>
+      <Text {...props} >{props.children}</Text>
+    </Radio>
+)

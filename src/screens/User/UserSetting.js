@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Linking as ExpoLink } from 'expo';
 import * as Application from 'expo-application';
 import * as IntentLauncher from 'expo-intent-launcher';
-import { handleLogout } from '../../store/actions/user';
+import { handleLogout } from '../../store/actions/user/handlers';
 import config from '../../config';
 import storage from '../../utils/storage';
 import Icons from '../../components/Icons';

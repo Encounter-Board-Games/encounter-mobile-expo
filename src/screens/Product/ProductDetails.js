@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from "styled-components";
 import ProductStatus from "./components/ProductStatus";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/Button/Button";
 import { Badge } from "../../components/Badge";
 import Dice from "../../components/Dice";
 import Carrossel from "../../components/Carrossel";
 import { useSelector, useDispatch } from "react-redux";
 import ScreePopup from "../../components/ScreePopup";
 import VideoPlayerScreen from "./components/VideoPlayer";
-import { Image, Dimensions, ScrollView } from "react-native";
+import { Image, ScrollView } from "react-native";
 
 import {
   handleAddProduct,
@@ -28,7 +27,7 @@ import { Space } from "../../components/Space";
 import {
   handleToggleLike,
   handleRememberProduct,
-} from "../../store/actions/user";
+} from "../../store/actions/user/handlers";
 import { useNavigation } from "@react-navigation/native";
 import { handleOpenEvaluationProduct } from "../../store/actions/product";
 import config from "../../config";

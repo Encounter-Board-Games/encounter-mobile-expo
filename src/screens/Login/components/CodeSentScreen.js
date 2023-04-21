@@ -4,7 +4,7 @@ import { H3, H4 } from '../../../components/Typography'
 import styled, { withTheme } from 'styled-components'
 import { Space, SpaceHorizontal } from '../../../components/Space'
 import { Ionicons } from '@expo/vector-icons';
-import { hadleBackToLogin, handleSendConfirmCode, handleHideErrorCode } from '../../../store/actions/user'
+import { hadleBackToLogin, handleSendConfirmCode, handleHideErrorCode } from '../../../store/actions/user/handlers'
 import { useDispatch, useSelector } from 'react-redux'
 import { View, Dimensions } from 'react-native'
 import Numberpad from '../../../components/Numberpad';

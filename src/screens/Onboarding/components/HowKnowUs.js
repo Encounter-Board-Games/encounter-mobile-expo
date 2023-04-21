@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { Space, Bottom } from '../../../components/Space';
 import { H1, H4, H3 } from '../../../components/Typography';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../components/Button/Button';
 import { useDispatch } from 'react-redux';
 import { API_URI } from '../../../graphql/client';
 import OptionWithImage from '../../../components/OptionWithImage';
-import { handleRespondQuestion } from '../../../store/actions/user';
+import { handleRespondQuestion } from '../../../store/actions/user/handlers';
 
 
 export const Container = styled.View`

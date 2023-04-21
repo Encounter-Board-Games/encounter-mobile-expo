@@ -3,7 +3,7 @@ import ScreePopup from '../../components/ScreePopup'
 import { Subtitle3, Subtitle1, H3, H4 } from '../../components/Typography'
 import styled, { withTheme } from 'styled-components'
 import { Space, SpaceHorizontal } from '../../components/Space'
-import { Button } from '../../components/Button'
+import { Button } from '../../components/Button/Button'
 import { useSelector } from 'react-redux'
 import { Linking } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';

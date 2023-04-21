@@ -12,7 +12,7 @@ import {
   handleChangeFilteringText,
   handleSetMyFavorites,
   handleNeedTutorial,
-} from "../../store/actions/filters";
+} from "../../store/actions/filters/filters";
 import ProductShelf from "../Product/components/ProductShelf";
 import HeaderSeeAll from "../../components/HeaderSeeAll";
 import FilterResult from "./components/FilterResult";

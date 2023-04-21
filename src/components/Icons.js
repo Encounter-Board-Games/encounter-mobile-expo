@@ -2,7 +2,7 @@ import React from 'react';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 
-const icons = [
+export const icons = [
   {
     name: 'handbag',
     library: 'EvilIcons',

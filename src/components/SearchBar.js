@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { handleChangeFilteringText } from '../store/actions/filters';
+import { handleChangeFilteringText } from '../store/actions/filters/filters';
 import { EvilIcons } from '@expo/vector-icons';
-import { handleSearchLocationByTerm } from '../store/actions/address';
+import { handleSearchLocationByTerm } from '../store/actions/address/address';
 
 export const SearchBarContainer = styled.View`
   padding-top: 8px;

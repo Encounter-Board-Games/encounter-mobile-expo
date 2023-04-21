@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { withTheme } from 'styled-components'
 import { H3, H4, Subtitle2 } from './Typography'
-import { Button } from './Button'
+import { Button } from './Button/Button'
 import { Image } from 'react-native'
 import { Box } from './Box'
 import { Space } from './Space'

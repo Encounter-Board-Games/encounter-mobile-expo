@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ProductItem from "../../Product/components/ProductItem";
-import { handleSetRecentsFilteringText } from "../../../store/actions/filters";
+import { handleSetRecentsFilteringText } from "../../../store/actions/filters/filters";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Placeholder,

@@ -5,7 +5,7 @@ import { H1, H4, H2, Subtitle2, H3 } from "../../../components/Typography";
 import { Image, Platform } from "react-native";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import Constants from "expo-constants";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/Button/Button";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native-animatable";
 import { useDispatch } from "react-redux";
@@ -14,7 +14,7 @@ import {
   handleFinishOnboarding,
 } from "../../../store/actions/onboarding";
 
-const MainContainer = styled.View`
+export const MainContainer = styled.View`
 flex: 1;
 width: 100%;
 height: 100%
@@ -26,18 +26,20 @@ padding-top: ${(props) =>
     : props.theme.space.space2};
 
 `;
-const Line = styled.View`
+
+export const Line = styled.View`
   width: 100%;
   flex-flow: row;
   align-items: center;
 `;
-const Icon = styled.View`
+
+export const Icon = styled.View`
     min-height: 20px;
     width: ${(props) => props.theme.space.space2}
     margin-right: ${(props) => props.theme.space.space1}
 `;
 
-const ImageContent = styled.View`
+export const ImageContent = styled.View`
   flex: 1;
   min-height: 88px;
   width: 100%;
@@ -45,11 +47,13 @@ const ImageContent = styled.View`
   justify-content: center;
 `;
 
-const Content = styled.View`
+export const Content = styled.View`
   flex: 1;
 `;
-const Footer = styled.View``;
-const ButtonsRow = styled.View`
+
+export const Footer = styled.View``;
+
+export const ButtonsRow = styled.View`
   flex-flow: column;
   align-items: flex-end;
 `;

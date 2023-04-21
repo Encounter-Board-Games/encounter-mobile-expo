@@ -3,7 +3,7 @@ import { withTheme } from 'styled-components'
 import { Space, Bottom } from './Space'
 import { H4, H3 } from './Typography'
 import { Image, View } from 'react-native'
-import { Button } from './Button'
+import { Button } from './Button/Button'
 import Carrossel from './Carrossel'
 import { useDispatch, useSelector } from 'react-redux'
 import { openInfoModal } from '../store/actions/info'
@@ -14,7 +14,7 @@ import OptionWithImage from './OptionWithImage'
 import Icons from './Icons'
 import {MainContainer, Container, Content, ImageContent, ImageContent2, MoreInfo, Footer, Tags } from './FilterCustomStyles'
 
-const FilterItem = withTheme(({ type, image, selects, theme, full }) => {
+export const FilterItem = withTheme(({ type, image, selects, theme, full }) => {
 
     const filters = useSelector(state => state.filters.filters)
     const dispatch = useDispatch();
@@ -65,7 +65,7 @@ const FilterItem = withTheme(({ type, image, selects, theme, full }) => {
 })
 
 
-const Question = ({ full, title, options, type, optionsType, image, selectsState }) => {
+export const Question = ({ full, title, options, type, optionsType, image, selectsState }) => {
     
     const selects = selectsState[type] || [];
 
@@ -117,7 +117,7 @@ const Question = ({ full, title, options, type, optionsType, image, selectsState
 };
 
 
-const Step = ({ onNext, steps, selectsState }) => {
+export const Step = ({ onNext, steps, selectsState }) => {
 
     const hasSelects = steps
       .map(step => selectsState[step.type] && selectsState[step.type].length > 0)

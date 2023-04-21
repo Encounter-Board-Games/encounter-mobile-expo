@@ -2,13 +2,13 @@ import React from 'react'
 import MenuOption from '../../components/MenuOption'
 import styled, { withTheme } from 'styled-components'
 import Screen from '../../components/Screen'
-import { Button } from '../../components/Button'
+import { Button } from '../../components/Button/Button'
 import { H3, Subtitle2 } from '../../components/Typography'
 import { Space, SpaceHorizontal } from '../../components/Space'
 import { Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
-import { openLoginPopup } from '../../store/actions/user'
+import { openLoginPopup } from '../../store/actions/user/handlers'
 import {
     Placeholder,
     PlaceholderLine,

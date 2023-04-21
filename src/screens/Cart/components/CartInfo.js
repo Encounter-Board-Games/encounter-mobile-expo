@@ -1,11 +1,11 @@
 import React from "react";
 import { Subtitle2 } from "../../../components/Typography";
 import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/Button/Button";
 import { View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { handleCheckOut } from "../../../store/actions/cart";
-import { openLoginPopup } from "../../../store/actions/user";
+import { openLoginPopup } from "../../../store/actions/user/handlers";
 import { useNavigation } from "@react-navigation/native";
 import Delivery from "./Delivery";
 import {

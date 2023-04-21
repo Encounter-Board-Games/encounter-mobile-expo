@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Animated, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideLoginPopup } from '../../store/actions/user';
+import { hideLoginPopup } from '../../store/actions/user/login';
 import LoginFlow from './components/LoginFlow';
 import { Container } from './components/LoginFlow';
 import * as Animatable from 'react-native-animatable';

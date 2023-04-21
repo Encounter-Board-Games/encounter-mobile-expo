@@ -3,7 +3,7 @@ import styled, { withTheme } from "styled-components";
 import { Box } from "../../../components/Box";
 import { H3, Subtitle2, H4 } from "../../../components/Typography";
 import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/Button/Button";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { currencyFormat } from "../../../utils/helpers";

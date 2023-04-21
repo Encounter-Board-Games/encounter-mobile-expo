@@ -6,7 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import { H2 } from '../../components/Typography';
 import { View, TouchableWithoutFeedback, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { handleCloseTutorial } from '../../store/actions/filters';
+import { handleCloseTutorial } from '../../store/actions/filters/filters';
 import { translation } from '../../texts';
 import { SafeAreaView } from 'react-native-safe-area-context';
 

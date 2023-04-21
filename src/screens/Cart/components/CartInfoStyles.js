@@ -1,30 +1,4 @@
-import React, { Component } from "react";
-import { Subtitle2, H3, H4 } from "../../../components/Typography";
-import styled, { withTheme } from "styled-components";
-import { Space, SpaceHorizontal } from "../../../components/Space";
-import { Button } from "../../../components/Button";
-import { View, Dimensions } from "react-native";
-import { useSelector, useDispatch, connect } from "react-redux";
-import { currencyFormat } from "../../../utils/helpers";
-import {
-  handleRemoveProductConfirmModal,
-  handleCheckOut,
-} from "../../../store/actions/cart";
-import { openLoginPopup } from "../../../store/actions/user";
-import { Modalize } from "react-native-modalize";
-import { Entypo, AntDesign } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import { Box } from "../../../components/Box";
-import Constants from "expo-constants";
-import Delivery from "./Delivery";
-import {
-  handleSetCartChoseAddress,
-  handleSetCartChosePayment,
-} from "../../../store/actions/shared";
-import Payment from "./Payment";
-import { translation } from "../../../texts";
-import config from "../../../config";
-import { handleOpenCart } from "../../../store/actions/cart";
+import styled from "styled-components";
 
 export const Line = styled.View`
   flex: 1;

@@ -24,7 +24,6 @@ export const Container = styled.View`
 function Onboarding(props) {
   const dispatch = useDispatch();
   const onboarding = useSelector((state) => state.onboarding);
-
   const { steps = [] } = onboarding;
   const [step, setStep] = useState(0);
 
@@ -55,7 +54,6 @@ function Onboarding(props) {
             okBtn={"Gostei, me conta mais!"}
             onNext={() => setStep(1)}
           />
-
           <HowKnowUs onNext={() => setStep(2)} />
           <Welcome
             showListStyle
@@ -91,7 +89,6 @@ function Onboarding(props) {
           ]}
           onNext={() => setStep(1)}
         />
-
         <FisrtQuestion
           onNext={() => {
             dispatch(startOnboarding());
@@ -103,7 +100,6 @@ function Onboarding(props) {
           steps={steps}
           onNext={() => setStep(3)}
         />
-
         <Finish />
       </Carrossel>
     </Container>

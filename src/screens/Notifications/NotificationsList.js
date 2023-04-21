@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { TouchableOpacity } from 'react-native';
 import { H3, Subtitle2 } from '../../components/Typography';
 import { Space } from '../../components/Space';
 import ScreePopup from '../../components/ScreePopup';
@@ -8,7 +7,7 @@ import { Box } from '../../components/Box';
 import NotLoggedBox from '../User/components/NotLoggedBox';
 import InformationBox from '../../components/InformationBox';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleLoadNotifications } from '../../store/actions/user';
+import { handleLoadNotifications } from '../../store/actions/user/handlers';
 import {
     Placeholder,
     PlaceholderMedia,

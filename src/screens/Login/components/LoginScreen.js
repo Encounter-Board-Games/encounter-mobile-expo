@@ -3,10 +3,10 @@ import * as AppleAuthentication from 'expo-apple-authentication';
 import * as Animatable from 'react-native-animatable';
 import { H2, Subtitle2, H3 } from '../../../components/Typography'
 import CustomInput from '../../../components/Input'
-import { SocialButton } from '../../../components/Button'
+import { SocialButton } from '../../../components/Button/Button'
 import styled from 'styled-components'
 import { Space } from '../../../components/Space'
-import { handleEmailAlreadyExists, loginFB, loginGoogle, loginApple } from '../../../store/actions/user'
+import { handleEmailAlreadyExists, loginFB, loginGoogle, loginApple } from '../../../store/actions/user/handlers'
 import { useDispatch, useSelector } from 'react-redux'
 import { View, Platform } from 'react-native'
 import config from '../../../config';

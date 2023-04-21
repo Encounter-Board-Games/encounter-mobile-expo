@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { Space, Bottom } from '../../components/Space';
 import { H4, Subtitle1 } from '../../components/Typography';
 import { Image, View, Platform, TouchableOpacity } from 'react-native';
-import { Button } from '../../components/Button';
+import { Button } from '../../components/Button/Button';
 import { useDispatch } from 'react-redux';
 import Constants from 'expo-constants';
-import { handleAnswer } from '../../store/actions/quickSearch';
+import { handleAnswer } from '../../store/actions/quickSearch/quickSearch';
 
 
 const Container = styled.View`

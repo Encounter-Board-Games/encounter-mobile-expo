@@ -49,6 +49,7 @@ export const dices = [
   [topLeft, topRight, bottomLeft, bottomRight],
   [topLeft, topRight, bottomLeft, bottomRight, middle],
 ];
+
 export default function Dice(props) {
   
   return (

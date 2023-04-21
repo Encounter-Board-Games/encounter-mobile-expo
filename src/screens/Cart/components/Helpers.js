@@ -1,7 +1,7 @@
 import React from "react";
 import { H3, H4 } from "../../../components/Typography";
 import { Space } from "../../../components/Space";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/Button/Button";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import { currencyFormat } from "../../../utils/helpers";
