@@ -1,7 +1,8 @@
 import { uploadDocument } from '../../../../graphql';
 import * as ImageManipulator from 'expo-image-manipulator';
 import { UserAction } from '../userTypes';
-import { UserState } from '@types/globals';
+import { UserState } from '../../../../types/globals';
+import { API_URI } from '../../../../graphql/client';
 
 export function handleUploadSelfDocument(image: { uri: string }) {
   return async (
@@ -13,13 +14,16 @@ export function handleUploadSelfDocument(image: { uri: string }) {
     const SELF_WITH_DOCUMENT = 'SELF_WITH_DOCUMENT';
     const resizedPhoto = await ImageManipulator.manipulateAsync(
       image.uri,
-      [{ resize: { width: 300 } }], // resize to width of 300 and preserve aspect ratio
-      { compress: 0.7, format: 'jpeg' }
+      [{ resize: { width: 300 } }],
+      { compress: 0.7 }
     );
     const { filename } = await upload(resizedPhoto.uri);
     const result = await uploadDocument(filename, SELF_WITH_DOCUMENT);
     if (result.success) {
-      dispatch(setPendences(pendences.filter((c) => c !== SELF_WITH_DOCUMENT)));
+      dispatch({
+        type: 'SET_PENDENCES',
+        pendences: pendences.filter((c) => c !== SELF_WITH_DOCUMENT),
+      });
     }
   };
 }
@@ -28,18 +32,19 @@ export async function upload(uri: string) {
   let fileType = uri.substring(uri.lastIndexOf('.') + 1);
   let formData = new FormData();
 
-  let options = {
-    method: 'POST',
-    body: FormData,
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'multipart/form-data',
-    },
-  };
+  const blob = await fetch(uri).then((response) => response.blob());
+
+  formData.append('file', blob, `photo.${fileType}`);
+
   try {
-    return await fetch(API_URI + '/upload', options).then((response) =>
-      response.json()
-    );
+    return await fetch(API_URI + '/upload', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
+      },
+      body: formData,
+    }).then((response) => response.json());
   } catch (error) {
     console.log(error);
   }

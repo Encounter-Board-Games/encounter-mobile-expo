@@ -49,6 +49,7 @@ export interface IFilterSelectProps {
 export interface IFilterState {
   type: string;
   isSingle: boolean;
+  filters?: { [key: string]: string[] };
 }
 
 export interface IState {

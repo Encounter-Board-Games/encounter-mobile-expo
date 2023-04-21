@@ -5,30 +5,11 @@ import { arrayToObj } from '../../../../utils/helpers';
 import { handleLoginCart } from '../../cart';
 import { setAdresses } from '../../address/address';
 import { UserAction } from '../userTypes';
-import { handleAccessLog, handleLogout } from '../login';
+import { handleAccessLog, handleLogout, setLogged } from '../login';
+import { setUserRememberProducts } from '../user';
+import { setPendences, setFavorites } from './handlersSetters';
 
 export const USER_TOKEN = 'USER_TOKEN';
-
-export function setUserInfo(user: any) {
-  return {
-    type: 'SET_USER_INFO',
-    user,
-  };
-}
-
-export function addUserFavorite(productId: string) {
-  return {
-    type: 'ADD_USER_FAVORITE',
-    productId,
-  };
-}
-
-export function removeUserFavorite(productId: string) {
-  return {
-    type: 'REMOVE_USER_FAVORITE',
-    productId,
-  };
-}
 
 export function handleUserData(token = null) {
   return async (dispatch: (action: UserAction) => void) => {

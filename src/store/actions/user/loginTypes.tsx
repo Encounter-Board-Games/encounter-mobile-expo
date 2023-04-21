@@ -27,6 +27,8 @@ export interface IsChangePasswordProps {
 
 export interface LoginLoadingProps {
   type: string;
+  typeOfModal?: any;
+  payload?: any;
   loading: boolean;
 }
 
@@ -39,4 +41,5 @@ export interface EmailLoginProcessProps {
 export interface ErrorLoginProcessMessageProps {
   type: string;
   errorMessage: string;
+  typeOfModal: any;
 }

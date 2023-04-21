@@ -12,7 +12,9 @@ import storage from '../../../utils/storage';
 
 import { handleShowNotification } from '../notification';
 import { handleLogoutCart } from '../cart';
-import { setIsCodeSent, handleUserData } from './handlers';
+import { setIsCodeSent } from './handlers/handlersSetters';
+import { handleUserData } from './handlers/handlerUserData';
+
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../../Store';
 
@@ -211,7 +213,7 @@ export function handleHideErrorCode(): ThunkAction<
   RootState,
   unknown,
   any
-  > {
+> {
   return (dispatch) => {
     dispatch(setErroLoginProcessMessage(''));
   };

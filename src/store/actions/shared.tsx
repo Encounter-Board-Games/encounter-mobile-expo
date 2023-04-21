@@ -4,8 +4,8 @@ import {
   handleLoadOnboarding,
   setSelectFilterToggleOnboarding,
 } from './onboarding';
-import { handleLoadFilters, handleLoadAndOpenFilter } from './filters/filters';
-import { handleUserData } from './user/handlers';
+import { handleLoadFilters, handleLoadAndOpenFilter } from './filters/handleFilters';
+import { handleUserData } from './user/handlers/handlerUserData';
 import { cartSetDeliveryTypeOpened, handleLoadDeliveryMethods } from './cart';
 import { handleLoadAppConfig, handleLoadNeedUpdateApp } from './app';
 import { handleShowNotification } from './notification';

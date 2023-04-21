@@ -1,15 +1,9 @@
 import { openPopupModal } from '../../info';
-import {
-  toggleFavorite,
-  forgotPassword,
-  respondQuestion,
-} from '../../../../graphql';
+import { toggleFavorite } from '../../../../graphql';
 import { handleShowNotification } from '../../notification';
 import { UserAction } from '../userTypes';
-import { setLoginLoading } from '../login';
 import { UserState } from '../../../../types/globals';
 import { addUserFavorite, removeUserFavorite } from './handlerUser';
-import { setIsCodeSent } from './handlersSetters';
 
 interface UserInfo {
   favorites?: string[];
@@ -43,36 +37,4 @@ export function handleToggleLike(productId: string) {
       else dispatch(addUserFavorite(productId));
     }
   };
-}
-
-export function handleForgotPassword() {
-  return async (
-    dispatch: (action: UserAction) => void,
-    getState: () => { user: UserState }
-  ) => {
-    const { user } = getState();
-    const { login = {} } = user;
-    dispatch(setLoginLoading(true));
-    const result = await forgotPassword(login.email);
-    if (result.success) {
-      dispatch(setIsCodeSent(true, true));
-    } else {
-      dispatch(
-        handleShowNotification('Ocorreu um erro. Tente novamente.', 'danger')
-      );
-    }
-    dispatch(setLoginLoading(false));
-  };
-}
-
-export function handleRespondQuestion(value: string) {
-  return async (dispatch: (action: UserAction) => void) => {
-    const deviceID = await getUniqueDeviceId();
-    const response = await respondQuestion(deviceID, value);
-    dispatch({ type: 'RESPOND_QUESTION', payload: response });
-  };
-}
-
-function getUniqueDeviceId() {
-  throw new Error('Function not implemented.');
 }

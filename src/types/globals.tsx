@@ -25,6 +25,7 @@ export interface UserState {
   };
   rememberProducts: UserRememberProducts;
   rememberProductKeys: any;
+  pendences: any;
 }
 
 export interface Update {

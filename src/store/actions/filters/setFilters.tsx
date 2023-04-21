@@ -1,3 +1,5 @@
+import { IAction } from './filterTypes';
+
 export function setFilters(filters: { [key: string]: string[] }): IAction {
   return {
     type: 'SET_FILTERS',

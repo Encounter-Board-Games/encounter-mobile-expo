@@ -1,18 +1,18 @@
 import { editBasicInfo } from '../../../graphql';
 import { handleShowNotification } from '../notification';
-import { handleUserData } from './handlers';
+import { handleUserData } from './handlers/handlerUserData';
 import { setNeedCompleteInfos } from './login';
 
 import {
-  SetAutocompleteRegisterAction,
-  SetUserInfoAction,
-  SetFavoritesAction,
   AddUserFavoriteAction,
-  RemoveUserFavoriteAction,
-  SetPendencesAction,
-  SetUserRememberProductsAction,
   AddUserRememberProductsAction,
+  RemoveUserFavoriteAction,
   RemoveUserRememberProductsAction,
+  SetAutocompleteRegisterAction,
+  SetFavoritesAction,
+  SetPendencesAction,
+  SetUserInfoAction,
+  SetUserRememberProductsAction,
 } from './userTypes';
 
 export const SHOW_LOGIN_POPUP = 'SHOW_LOGIN_POPUP';
@@ -39,58 +39,13 @@ export const SET_USER_REMEMBER_PRODUCTS = 'SET_USER_REMEMBER_PRODUCTS';
 export const ADD_USER_REMEMBER_PRODUCTS = 'ADD_USER_REMEMBER_PRODUCTS';
 export const REMOVE_USER_REMEMBER_PRODUCTS = 'REMOVE_USER_REMEMBER_PRODUCTS';
 
-export function setAutocompleteRegister(
-  name: string,
-  lastname: string
-): SetAutocompleteRegisterAction {
-  return {
-    type: SET_AUTO_COMPLETE_REGISTER,
-    name,
-    lastname,
-  };
-}
-
-export function setUserInfo(userInfo: any): SetUserInfoAction {
-  return {
-    type: SET_USER_INFO,
-    userInfo,
-  };
-}
-
-export function setFavorites(favorites: any[]): SetFavoritesAction {
-  return {
-    type: SET_USER_FAVORITES,
-    favorites,
-  };
-}
+export const USER_TOKEN = 'USER_TOKEN';
 
 export function addUserFavorite(favorite: any): AddUserFavoriteAction {
   return {
-    type: ADD_USER_FAVORITE,
+    type: 'ADD_USER_FAVORITE',
+    productId,
     favorite,
-  };
-}
-
-export function removeUserFavorite(favorite: any): RemoveUserFavoriteAction {
-  return {
-    type: REMOVE_USER_FAVORITE,
-    favorite,
-  };
-}
-
-export function setPendences(pendences: any[]): SetPendencesAction {
-  return {
-    type: SET_PENDENCES,
-    pendences,
-  };
-}
-
-export function setUserRememberProducts(
-  rememberProductKeys: string[]
-): SetUserRememberProductsAction {
-  return {
-    type: SET_USER_REMEMBER_PRODUCTS,
-    rememberProductKeys,
   };
 }
 
@@ -98,16 +53,7 @@ export function addUserRememberProducts(
   rememberProductKeys: string[]
 ): AddUserRememberProductsAction {
   return {
-    type: ADD_USER_REMEMBER_PRODUCTS,
-    rememberProductKeys,
-  };
-}
-
-export function removeUserRememberProducts(
-  rememberProductKeys: string[]
-): RemoveUserRememberProductsAction {
-  return {
-    type: REMOVE_USER_REMEMBER_PRODUCTS,
+    type: 'ADD_USER_REMEMBER_PRODUCTS',
     rememberProductKeys,
   };
 }
@@ -139,5 +85,63 @@ export function handleEditUserInfo(
 
     if (!terms) dispatch(handleShowNotification('Dados alterados com sucesso'));
     dispatch(handleUserData());
+  };
+}
+
+export function removeUserFavorite(favorite: any): RemoveUserFavoriteAction {
+  return {
+    type: 'REMOVE_USER_FAVORITE',
+    productId,
+    favorite,
+  };
+}
+
+export function removeUserRememberProducts(
+  rememberProductKeys: string[]
+): RemoveUserRememberProductsAction {
+  return {
+    type: 'REMOVE_USER_REMEMBER_PRODUCTS',
+    rememberProductKeys,
+  };
+}
+
+export function setAutocompleteRegister(
+  name: string,
+  lastname: string
+): SetAutocompleteRegisterAction {
+  return {
+    type: 'SET_AUTO_COMPLETE_REGISTER',
+    name,
+    lastname,
+  };
+}
+
+export function setFavorites(favorites: any[]): SetFavoritesAction {
+  return {
+    type: 'SET_USER_FAVORITES',
+    favorites,
+  };
+}
+
+export function setPendences(pendences: any[]): SetPendencesAction {
+  return {
+    type: 'SET_PENDENCES',
+    pendences,
+  };
+}
+
+export function setUserInfo(userInfo: any): SetUserInfoAction {
+  return {
+    type: 'SET_USER_INFO',
+    userInfo,
+  };
+}
+
+export function setUserRememberProducts(
+  rememberProductKeys: string[]
+): SetUserRememberProductsAction {
+  return {
+    type: 'SET_USER_REMEMBER_PRODUCTS',
+    rememberProductKeys,
   };
 }
