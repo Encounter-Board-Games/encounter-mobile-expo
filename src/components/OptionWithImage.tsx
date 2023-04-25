@@ -1,9 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import * as React from 'react';
+import styled, { ThemeProps } from 'styled-components/native';
 import { H4, H3 } from './Typography';
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 
-export const OptionWithImageTouch = styled.TouchableOpacity`
+interface Props {
+  isActive: boolean;
+  text: string;
+  image: string;
+  onPress: () => void;
+}
+
+const OptionWithImageTouch = styled.TouchableOpacity<{ isActive: boolean }>`
   padding: ${(props) => props.theme.space.space2};
   padding-top: ${(props) => props.theme.space.space2};
   padding-bottom: ${(props) => props.theme.space.space2};
@@ -19,19 +26,19 @@ export const OptionWithImageTouch = styled.TouchableOpacity`
   height: 120px;
 `;
 
-export const Content = styled.View`
+const Content = styled.View`
   flex: 1;
   height: 100%;
   justify-content: center;
   flex-wrap: wrap;
 `;
 
-export const Line = styled.View`
+const Line = styled.View`
   flex-flow: row;
   align-items: flex-start;
 `;
 
-export const ImageContent = styled.View`
+const ImageContent = styled.View`
   align-items: flex-start;
   justify-content: flex-end;
   height: 100%;
@@ -39,9 +46,11 @@ export const ImageContent = styled.View`
   width: 50%;
 `;
 
-export default function OptionWithImage({ isActive, text, image, onPress }) {
+function OptionWithImage(props: Props & ThemeProps<any>) {
+  const { isActive, text, image, onPress } = props;
+
   return (
-    <OptionWithImage isActive={isActive} onPress={onPress}>
+    <OptionWithImageTouch isActive={isActive} onPress={onPress}>
       <Line>
         <ImageContent>
           <Image
@@ -66,6 +75,8 @@ export default function OptionWithImage({ isActive, text, image, onPress }) {
           )}
         </Content>
       </Line>
-    </OptionWithImage>
+    </OptionWithImageTouch>
   );
 }
+
+export default OptionWithImage;

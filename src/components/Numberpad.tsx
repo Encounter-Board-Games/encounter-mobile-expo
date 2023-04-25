@@ -1,11 +1,18 @@
-import React from 'react';
-import styled, { withTheme } from 'styled-components';
+import * as React from 'react';
+import styled, { ThemeProps, withTheme } from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Ionicons } from '@expo/vector-icons';
 
-export const NumberPad = styled.View``;
+interface Props {
+  onPress: (number: number) => void;
+  onCleanPress: () => void;
+  disabled?: boolean;
+  theme: ThemeProps<any>;
+}
 
-export const Number = styled.TouchableOpacity`
+const NumberPad = styled.View``;
+
+const Number = styled.TouchableOpacity<{ isLast?: boolean }>`
   margin-bottom: ${(props) => (props.isLast ? getBottomSpace() : 0)}px;
   height: 80px;
   flex: 1;
@@ -16,18 +23,20 @@ export const Number = styled.TouchableOpacity`
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
 `;
 
-export const NumberText = styled.Text`
+const NumberText = styled.Text`
   color: ${(props) => props.theme.colors.primaryDarkColor};
   font-family: Nunito;
   font-size: 24px;
 `;
 
-export const Line = styled.View`
+const Line = styled.View`
   flex-direction: row;
   width: 100%;
 `;
 
-function NumberPadComponent({ onPress, onCleanPress, disabled, theme }) {
+function NumberPadComponent(props: Props) {
+  const { onPress, onCleanPress, disabled, theme } = props;
+
   return (
     <NumberPad>
       <Line>
@@ -64,13 +73,13 @@ function NumberPadComponent({ onPress, onCleanPress, disabled, theme }) {
         </Number>
       </Line>
       <Line>
-        <Number disabled={disabled} isLast onPress={() => onCleanPress()}>
+        <Number disabled={disabled} isLast onPress={onCleanPress}>
           <NumberText />
         </Number>
         <Number disabled={disabled} isLast onPress={() => onPress(0)}>
           <NumberText>0</NumberText>
         </Number>
-        <Number disabled={disabled} isLast onPress={() => onCleanPress()}>
+        <Number disabled={disabled} isLast onPress={onCleanPress}>
           <NumberText>
             <Ionicons
               name="ios-arrow-back"

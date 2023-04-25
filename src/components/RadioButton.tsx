@@ -1,8 +1,18 @@
+/* eslint-disable indent */
 import React from 'react';
 import styled from 'styled-components';
 import Circle from './Circle';
 
-export const Radio = styled.TouchableOpacity`
+interface RadioButtonProps {
+  isSelected: boolean;
+  isFlex?: boolean;
+  isLast?: boolean;
+  onPress?: () => void;
+  children?: any;
+}
+
+const Radio = styled.button<RadioButtonProps>`
+  display: flex;
   flex-flow: row;
   margin-top: ${(props) => props.theme.space.space1};
   padding: 0px 12px;
@@ -12,20 +22,20 @@ export const Radio = styled.TouchableOpacity`
     props.isLast
       ? '0px'
       : props.isFlex
-        ? props.theme.space.space2
-        : props.theme.space.space1};
+      ? props.theme.space.space2
+      : props.theme.space.space1};
   height: 40px;
   border-radius: ${(props) => props.theme.borderRadius.button};
   border: 1.5px solid
     ${(props) =>
-    props.isSelected
-      ? props.theme.colors.primaryColor
-      : props.theme.colors.secondColor};
+      props.isSelected
+        ? props.theme.colors.primaryColor
+        : props.theme.colors.secondColor};
   background-color: ${(props) =>
     props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
 `;
 
-export const Text = styled.Text`
+const Text = styled.span<{ isSelected: boolean }>`
   font-size: 14px;
   font-family: Nunito ${(props) => (props.isSelected ? '-Bold' : '')};
   color: ${(props) =>
@@ -34,11 +44,24 @@ export const Text = styled.Text`
       : props.theme.colors.darkColor};
 `;
 
-export default function RadioButton(props) {
+const RadioButton: React.FC<RadioButtonProps> = ({
+  isSelected,
+  isFlex,
+  isLast,
+  onPress,
+  children,
+}) => {
   return (
-    <Radio {...props} onPress={() => props.onPress && props.onPress()}>
-      <Circle {...props} />
-      <Text {...props}>{props.children}</Text>
+    <Radio
+      isSelected={isSelected}
+      isFlex={isFlex}
+      isLast={isLast}
+      onClick={onPress}
+    >
+      <Circle isSelected={isSelected} />
+      <Text isSelected={isSelected}>{children}</Text>
     </Radio>
   );
-}
+};
+
+export default RadioButton;
