@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
 export default function getConfigs(theme: any, type: string) {
   switch (type) {
     case 'CallToAction':

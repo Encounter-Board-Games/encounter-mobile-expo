@@ -11,25 +11,22 @@ import * as Device from 'expo-device';
 import storage from '../../../utils/storage';
 
 import { handleShowNotification } from '../notification';
-import { handleLogoutCart } from '../cart';
-import { setIsCodeSent } from './handlers/handlersSetters';
-import { handleUserData } from './handlers/handlerUserData';
+import { handleLogoutCart } from '../cart/cart';
+import { setIsCodeSent } from './handlers/handleSetters';
+import { handleUserData } from './handlers/handleUserData';
 
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../../Store';
-
-export const SHOW_LOGIN_POPUP = 'SHOW_LOGIN_POPUP';
-export const SET_LOGOUT_USER = 'SET_LOGOUT_USER';
-export const SET_NEED_COMPLETE_INFOS = 'SET_NEED_COMPLETE_INFOS';
-export const SET_LOGIN_USER = 'SET_LOGIN_USER';
-export const SET_IS_CODE_SENT = 'SET_IS_CODE_SENT';
-export const SET_IS_CHANGE_PASSWORD = 'SET_IS_CHANGE_PASSWORD';
-export const SET_EMAIL_LOGIN_PROCESS = 'SET_EMAIL_LOGIN_PROCESS';
-export const SET_LOGIN_LOADING = 'SET_LOGIN_LOADING';
-export const SET_ERROR_LOGIN_PROCESS_MESSAGE =
-  'SET_ERROR_LOGIN_PROCESS_MESSAGE';
-export const SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS =
-  'SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS';
+import {
+  SET_ERROR_LOGIN_PROCESS_MESSAGE,
+  SET_IS_CHANGE_PASSWORD,
+  SET_LOGIN_LOADING,
+  SET_LOGOUT_USER,
+  SHOW_LOGIN_POPUP,
+  USER_TOKEN,
+  setLoginUser,
+} from './user';
+import { SET_NEED_COMPLETE_INFOS } from '../../../types/actionUserTypes';
 
 const platform = Device.modelName;
 const os = Device.osName;
@@ -46,13 +43,6 @@ export function showLoginPopup(show: boolean): { type: string; show: boolean } {
   return {
     type: SHOW_LOGIN_POPUP,
     show,
-  };
-}
-
-export function setLoginUser(user: any): { type: string; user: any } {
-  return {
-    type: SET_LOGIN_USER,
-    user,
   };
 }
 
@@ -183,17 +173,20 @@ export function handleSendConfirmCode(code: string): any {
   };
 }
 
-const USER_TOKEN = 'USER_TOKEN';
-
 export function logout(): { type: string } {
   return {
     type: SET_LOGOUT_USER,
   };
 }
 
-export function setLogged(user: any, action: string): any {
+export function setLogged(
+  user: any,
+  action: string,
+  isLogged: boolean,
+  loginPopup: boolean
+): any {
   return (dispatch: any) => {
-    dispatch(setLoginUser(user));
+    dispatch(setLoginUser(user, isLogged, loginPopup));
     dispatch(hideLoginPopup());
     if (action === 'NEED_COMPLETE_INFOS') dispatch(setNeedCompleteInfos(true));
   };
@@ -213,7 +206,8 @@ export function handleHideErrorCode(): ThunkAction<
   RootState,
   unknown,
   any
-> {
+  // eslint-disable-next-line prettier/prettier
+  > {
   return (dispatch) => {
     dispatch(setErroLoginProcessMessage(''));
   };

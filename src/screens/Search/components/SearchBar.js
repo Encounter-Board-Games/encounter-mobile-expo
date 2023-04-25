@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
-import SearchBar from '../../../components/SearchBar';
+import SearchBar from '../../../components/SearchBar/SearchBar';
 import { handleChangeFilteringText } from '../../../store/actions/filters/filters';
 
 const SearchButton = styled.TouchableOpacity`

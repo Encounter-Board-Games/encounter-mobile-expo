@@ -10,6 +10,7 @@ import {
   IFilterSelectProps,
   IFilterChipsProps,
 } from './filterTypes';
+import { ClearButton } from './handleFilters';
 
 export function clearSelects(): IAction {
   return {
@@ -111,7 +112,8 @@ export function filterItems(debounce = true): any {
 
     if (!hasFilter) dispatch(setFilteringResult([1, 2, 4], false));
     else
-      !debounce ? search_() :
+      !debounce
+        ? search_()
         setTimeout(async () => {
           if (filterId === currentId) {
             search_();
@@ -124,7 +126,7 @@ export function calcNumberOfFilters(): any {
   return (dispatch: any, getState: any) => {
     const state: IState = getState();
     const n = Object.keys(state.filters.selects)
-      .filter((key) => key !== "order" && key !== "searchGroup")
+      .filter((key) => key !== 'order' && key !== 'searchGroup')
       .filter((key) => state.filters.selects[key].length > 0).length;
     dispatch(setNumberOfFilters(n));
   };
@@ -133,7 +135,8 @@ export function calcNumberOfFilters(): any {
 export function FilterSelect(props: IFilterSelectProps) {
   const { type, options, isSingle } = props;
   const dispatch = useDispatch();
-  const selects = useSelector((state: IState) => state.filters.selects[type] || []);
+  const selects = useSelector(
+    (state: IState) => state.filters.selects[type] || []
   );
   const handleChange = (value: string) => {
     dispatch(setSelectFilter(type, value));

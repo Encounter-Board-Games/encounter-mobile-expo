@@ -8,7 +8,7 @@ import { currencyFormat } from '../../../utils/helpers';
 import { useNavigation } from '@react-navigation/native';
 import { Box } from '../../../components/Box';
 import { translation } from '../../../texts';
-import { handleOpenCart } from '../../../store/actions/cart';
+import { handleOpenCart } from '../../../store/actions/cart/cart';
 import { Line, Title, CupomContent, Hr } from './CartInfoStyles';
 import _Products from './_Products';
 

@@ -1,13 +1,14 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import getConfigs from './getConfigs';
 import { ButtonWrapperProps } from './ButtonTypes';
-import { Button_, Text } from './ButtonStyles';
+import { ButtonComponent, Text } from './ButtonStyles';
 
-interface ButtonProps extends ButtonWrapperProps {}
+export interface ButtonProps extends ButtonWrapperProps {}
 
-const Button: React.FC<ButtonProps> = (props) => {
+const EncounterButton: React.FC<ButtonProps> = (props) => {
   return (
-    <Button_
+    <ButtonComponent
       {...getConfigs(props.theme, props.type)}
       {...props}
       onPress={() => !props.disabled && props.onPress && props.onPress()}
@@ -18,8 +19,8 @@ const Button: React.FC<ButtonProps> = (props) => {
       >
         {props.children}
       </Text>
-    </Button_>
+    </ButtonComponent>
   );
 };
 
-export default Button;
+export default EncounterButton;

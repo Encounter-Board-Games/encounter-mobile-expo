@@ -16,7 +16,7 @@ export interface Banner {
   linkUrl: string;
 }
 
-export interface State {
+export interface RootState {
   onboarding: {
     filters: {
       [key: string]: {

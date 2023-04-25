@@ -98,7 +98,7 @@ export function handleInitBanner() {
 }
 
 function reducer(
-  state = { shelves: {}, banners: [], isLoading: false, currentBanner: null },
+  RootState = { shelves: {}, banners: [], isLoading: false, currentBanner: null },
   action: Action
 ) {
   switch (action.type) {

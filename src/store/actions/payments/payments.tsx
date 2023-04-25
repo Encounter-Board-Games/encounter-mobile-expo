@@ -5,7 +5,7 @@ import {
 } from '../../../graphql';
 import { validateCPF } from '../../../utils/helpers';
 import { handleShowNotification } from '../notification';
-import { handleSelectPaymentMethod } from '../cart';
+import { handleSelectPaymentMethod } from '../cart/cart';
 import { openPopupModal } from '../info';
 import {
   PaymentMethod,

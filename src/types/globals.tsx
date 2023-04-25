@@ -1,6 +1,11 @@
-import { UserRememberProducts } from '../store/actions/user/userTypes';
+import {
+  AutoCompleteRegister,
+  LoginState,
+  UserRememberProducts,
+} from './actionUserTypes';
 
 export interface AppState {
+  terms: any;
   app: {
     about: {
       phone: string;
@@ -14,8 +19,26 @@ export interface AppState {
   };
 }
 
-export interface UserState {
+export interface RootState {
+  app: AppState;
+  autoCompleteRegister?: AutoCompleteRegister;
+  cart: any;
+  email: string;
+  isCodeSent: boolean;
+  isForgot: boolean;
   isLogged: boolean;
+  isLogin: boolean;
+  isRegister: boolean;
+  loading: boolean;
+  login?: LoginState;
+  loginPopup?: boolean;
+  needCompleteInfos?: boolean;
+  notifications?: any[];
+  pendences?: any[];
+  products: any[];
+  rememberProducts: UserRememberProducts;
+  rememberProductKeys?: string[];
+  user: string;
   userInfo?: {
     favorites: {
       key: string;
@@ -23,9 +46,11 @@ export interface UserState {
     address: any[];
     rememberProductKeys: string[];
   };
-  rememberProducts: UserRememberProducts;
-  rememberProductKeys: any;
-  pendences: any;
+  users: string;
+}
+
+export interface TextProps {
+  text: string;
 }
 
 export interface Update {
@@ -35,8 +60,4 @@ export interface Update {
   btnText: string;
   img: string;
   link: string;
-}
-
-export interface TextProps {
-  text: string;
 }

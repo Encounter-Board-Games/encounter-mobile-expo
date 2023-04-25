@@ -1,13 +1,13 @@
 import { uploadDocument } from '../../../../graphql';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { UserAction } from '../userTypes';
-import { UserState } from '../../../../types/globals';
+import { UserAction } from '../../../../types/actionUserTypes';
+import { RootState } from '../../../../types/globals';
 import { API_URI } from '../../../../graphql/client';
 
 export function handleUploadSelfDocument(image: { uri: string }) {
   return async (
     dispatch: (action: UserAction) => void,
-    getState: () => { user: UserState }
+    getState: () => { user: RootState }
   ) => {
     const { user } = getState();
     const { pendences = [] } = user;

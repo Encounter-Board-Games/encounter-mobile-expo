@@ -12,7 +12,7 @@ import { handleSetCartChoseAddress } from '../../../store/actions/shared';
 import {
   handleSelectModeAddress,
   handleSelectAddressDefault,
-} from '../../../store/actions/cart';
+} from '../../../store/actions/cart/cart';
 
 const Hr = styled.View`
   background: ${(props) => props.theme.colors.secondLightColor};

@@ -14,7 +14,7 @@ import {
 } from '../../store/actions/payments/payments';
 import { Space } from '../../components/Space';
 import { useNavigation } from '@react-navigation/native';
-import { handleSelectPaymentMethod } from '../../store/actions/cart';
+import { handleSelectPaymentMethod } from '../../store/actions/cart/cart';
 
 const Container = styled.View`
   padding: ${(props) => props.theme.space.space2};

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { currencyFormat } from '../../../utils/helpers';
 import { translation } from '../../../texts';
-import { handleOpenCart } from '../../../store/actions/cart';
+import { handleOpenCart } from '../../../store/actions/cart/cart';
 
 export const PriceContent = styled.View`
   flex: 1;

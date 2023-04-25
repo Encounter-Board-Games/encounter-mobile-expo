@@ -20,7 +20,7 @@ interface Cupon {
 }
 
 interface CuponsState {
-  // Define the state properties
+  // Define the RootState properties
 }
 
 interface SetCuponsAction {

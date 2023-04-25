@@ -1,0 +1,71 @@
+import React from 'react';
+import styled from 'styled-components/native';
+import { EvilIcons } from '@expo/vector-icons';
+
+interface TagProps {
+  isSelected?: boolean;
+  isCircle?: boolean;
+  onPress?: () => void;
+  onClose?: () => void;
+  children: any;
+}
+
+const Radio = styled.TouchableOpacity<TagProps>`
+  margin-top: ${({ theme }) => theme.space.space1}px;
+  margin-right: ${({ theme }) => theme.space.space1}px;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: ${({ isCircle, theme }) =>
+    isCircle ? '100px' : theme.borderRadius.tag}px;
+  border: 1.5px solid ${({ theme }) => theme.colors.primaryColor};
+  background-color: ${({ theme }) => theme.colors.primaryLightColor};
+`;
+
+const CloseButtonArea = styled.TouchableOpacity`
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-right: 6px;
+  width: 30px;
+`;
+
+const CloseButton = styled.View`
+  background-color: ${({ theme }) => theme.colors.secondLightColor};
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-left: ${({ theme }) => theme.space.space1}px;
+`;
+
+const StyledText = styled.Text<TagProps>`
+  font-size: 14px;
+  font-family: ${({ isSelected }) => (isSelected ? 'Nunito-Bold' : 'Nunito')};
+  color: ${({ theme }) => theme.colors.primaryDarkColor};
+  margin: ${({ onClose }) => (onClose ? '6px 0px 6px 12px' : '6px 12px')};
+`;
+
+const Tag: React.FC<TagProps> = ({
+  isSelected,
+  isCircle,
+  onPress,
+  onClose,
+  children,
+}) => (
+  <Radio onPress={onPress} isCircle={isCircle}>
+    <StyledText isSelected={isSelected} onClose={onClose}>
+      {children}
+    </StyledText>
+    {onClose && (
+      <CloseButtonArea onPress={onClose}>
+        <CloseButton>
+          <EvilIcons name="close" color={'black'} size={12} />
+        </CloseButton>
+      </CloseButtonArea>
+    )}
+  </Radio>
+);
+
+export default Tag;

@@ -8,7 +8,7 @@ import { Modalize } from 'react-native-modalize';
 import { Entypo } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { translation } from '../../../texts';
-import { handleOpenCart } from '../../../store/actions/cart';
+import { handleOpenCart } from '../../../store/actions/cart/cart';
 import _Products from './_Products';
 import { Container, Header, CloseButton } from './InfoModalStyles';
 

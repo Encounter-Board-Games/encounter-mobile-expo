@@ -1,11 +1,11 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { SocialButtonProps, SocialIconName } from './ButtonTypes';
-import { SocialButton_ } from './ButtonStyles';
+import { SocialButtonComponent } from './ButtonStyles';
 
 export const SocialButton: React.FC<SocialButtonProps> = (props) => {
   return (
-    <SocialButton_ backgroundColor={props.backgroundColor} {...props}>
+    <SocialButtonComponent backgroundColor={props.backgroundColor} {...props}>
       {typeof props.icon === 'string' ? (
         <FontAwesome
           name={props.icon as SocialIconName}
@@ -16,7 +16,7 @@ export const SocialButton: React.FC<SocialButtonProps> = (props) => {
       ) : (
         props.icon
       )}
-      <SocialButton_>{props.children}</SocialButton_>
-    </SocialButton_>
+      <SocialButtonComponent>{props.children}</SocialButtonComponent>
+    </SocialButtonComponent>
   );
 };

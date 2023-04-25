@@ -1,27 +1,15 @@
+import {
+  SetNotificationAction,
+  ShowNotificationAction,
+} from '../../types/actionLoginTypes';
+
 export const SET_NOTIFICATION = 'SET_NOTIFICATION';
 export const SHOW_NOTIFICATION = 'SHOW_NOTIFICATION';
-
-interface SetNotificationAction {
-  type: typeof SET_NOTIFICATION;
-  notificationType: string;
-  notificationText: string;
-  notificationAction?: () => void;
-  notificationKey?: string;
-}
-
-interface ShowNotificationAction {
-  type: typeof SHOW_NOTIFICATION;
-  show: boolean;
-}
-
-export type NotificationActionTypes =
-  | SetNotificationAction
-  | ShowNotificationAction;
 
 export function setNotification(
   notificationText: string,
   notificationType: string,
-  notificationAction?: () => void,
+  notificationAction?: any,
   notificationKey?: string
 ): SetNotificationAction {
   return {

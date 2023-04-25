@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ScreenPopup from '../../components/ScreenPopup';
-import SearchBar from '../../components/SearchBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import styled, { withTheme } from 'styled-components';
 import MenuOption from '../../components/MenuOption';
 import { useNavigation } from '@react-navigation/native';
@@ -13,7 +13,7 @@ import {
   handleSearchLocationByTerm,
 } from '../../store/actions/address/address';
 import { handleCloseCartChoseAddress } from '../../store/actions/shared';
-import { handleSelectAddress } from '../../store/actions/cart';
+import { handleSelectAddress } from '../../store/actions/cart/cart';
 import BoxAddress from './component/BoxAddress';
 
 export const Container = styled.View`

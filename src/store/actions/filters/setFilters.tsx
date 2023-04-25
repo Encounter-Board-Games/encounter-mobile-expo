@@ -1,6 +1,20 @@
-import { IAction } from './filterTypes';
+export interface IFilterState {
+  [key: string]: any;
+}
 
-export function setFilters(filters: { [key: string]: string[] }): IAction {
+export interface IAction {
+  type: string;
+  filters?: IFilterState;
+  show?: boolean;
+  results?: number[];
+  isFiltered?: boolean;
+  text?: string;
+  texts?: string[];
+  numberOfFilters?: number;
+  chips?: { label: string; type: string }[];
+}
+
+export function setFilters(filters: IFilterState): IAction {
   return {
     type: 'SET_FILTERS',
     filters,

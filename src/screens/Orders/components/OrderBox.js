@@ -13,7 +13,7 @@ import {
 } from '../../../store/actions/orders';
 import { translation } from '../../../texts';
 import config from '../../../config';
-import { renewOrder } from '../../../store/actions/cart';
+import { renewOrder } from '../../../store/actions/cart/cart';
 
 const Line = styled.View`
   flex: 1;

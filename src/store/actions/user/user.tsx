@@ -1,8 +1,7 @@
 import { editBasicInfo } from '../../../graphql';
 import { handleShowNotification } from '../notification';
-import { handleUserData } from './handlers/handlerUserData';
+import { handleUserData } from './handlers/handleUserData';
 import { setNeedCompleteInfos } from './login';
-
 import {
   AddUserFavoriteAction,
   AddUserRememberProductsAction,
@@ -13,12 +12,11 @@ import {
   SetPendencesAction,
   SetUserInfoAction,
   SetUserRememberProductsAction,
-} from './userTypes';
+} from '../../../types/actionUserTypes';
 
 export const SHOW_LOGIN_POPUP = 'SHOW_LOGIN_POPUP';
-export const SET_LOGOUT_USER = 'SET_LOGOUT_USER';
-export const SET_NEED_COMPLETE_INFOS = 'SET_NEED_COMPLETE_INFOS';
 export const SET_LOGIN_USER = 'SET_LOGIN_USER';
+export const SET_LOGOUT_USER = 'SET_LOGOUT_USER';
 export const SET_IS_CODE_SENT = 'SET_IS_CODE_SENT';
 export const SET_IS_CHANGE_PASSWORD = 'SET_IS_CHANGE_PASSWORD';
 export const SET_EMAIL_LOGIN_PROCESS = 'SET_EMAIL_LOGIN_PROCESS';
@@ -41,7 +39,10 @@ export const REMOVE_USER_REMEMBER_PRODUCTS = 'REMOVE_USER_REMEMBER_PRODUCTS';
 
 export const USER_TOKEN = 'USER_TOKEN';
 
-export function addUserFavorite(favorite: any): AddUserFavoriteAction {
+export function addUserFavorite(
+  productId: any,
+  favorite: any
+): AddUserFavoriteAction {
   return {
     type: 'ADD_USER_FAVORITE',
     productId,
@@ -50,10 +51,12 @@ export function addUserFavorite(favorite: any): AddUserFavoriteAction {
 }
 
 export function addUserRememberProducts(
+  key: string,
   rememberProductKeys: string[]
 ): AddUserRememberProductsAction {
   return {
     type: 'ADD_USER_REMEMBER_PRODUCTS',
+    key,
     rememberProductKeys,
   };
 }
@@ -88,7 +91,10 @@ export function handleEditUserInfo(
   };
 }
 
-export function removeUserFavorite(favorite: any): RemoveUserFavoriteAction {
+export function removeUserFavorite(
+  productId: any,
+  favorite: any
+): RemoveUserFavoriteAction {
   return {
     type: 'REMOVE_USER_FAVORITE',
     productId,
@@ -97,10 +103,12 @@ export function removeUserFavorite(favorite: any): RemoveUserFavoriteAction {
 }
 
 export function removeUserRememberProducts(
+  key: string,
   rememberProductKeys: string[]
 ): RemoveUserRememberProductsAction {
   return {
     type: 'REMOVE_USER_REMEMBER_PRODUCTS',
+    key,
     rememberProductKeys,
   };
 }
@@ -120,6 +128,24 @@ export function setFavorites(favorites: any[]): SetFavoritesAction {
   return {
     type: 'SET_USER_FAVORITES',
     favorites,
+  };
+}
+
+export function setLoginUser(
+  user: any,
+  isLogged: boolean,
+  loginPopup: boolean
+): {
+  type: string;
+  user: string;
+  isLogged: boolean;
+  loginPopup: boolean;
+} {
+  return {
+    type: SET_LOGIN_USER,
+    isLogged,
+    user,
+    loginPopup,
   };
 }
 

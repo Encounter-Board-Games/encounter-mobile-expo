@@ -1,21 +1,21 @@
 import React from 'react';
-import { Subtitle2 } from '../../../components/Typography';
-import { Space, SpaceHorizontal } from '../../../components/Space';
-import { Button } from '../../../components/Button/Button';
+import { Subtitle2 } from '@components/Typography';
+import { Space, SpaceHorizontal } from '@components/Space';
+import { Button } from '@components/Button/Button';
 import { View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleCheckOut } from '../../../store/actions/cart';
-import { openLoginPopup } from '../../../store/actions/user/handlers';
+import { handleCheckOut } from '@store/actions/cart';
+import { openLoginPopup } from '@store/actions/user/handlers';
 import { useNavigation } from '@react-navigation/native';
 import Delivery from './Delivery';
 import {
   handleSetCartChoseAddress,
   handleSetCartChosePayment,
-} from '../../../store/actions/shared';
+} from '@store/actions/shared';
 import Payment from './Payment';
-import { translation } from '../../../texts';
-import config from '../../../config';
-import { handleOpenCart } from '../../../store/actions/cart';
+import { translation } from '@texts';
+import config from '@config';
+import { handleOpenCart } from '@store/actions/cart';
 import { Line } from './CartInfoStyles';
 import _Products from './_Products';
 import { Cupom, Billing, Disclaimer, DisclaimerRenew } from './Helpers';

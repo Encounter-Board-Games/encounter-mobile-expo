@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { ButtonProps, TextProps, SocialButtonProps } from './ButtonTypes';
 
-export const Button_ = styled.TouchableOpacity<ButtonProps>`
+export const ButtonComponent = styled.TouchableOpacity<ButtonProps>`
   justify-content: center;
   height: ${(props) => props.height || 'auto'};
   width: ${(props) => props.width || 'auto'};
@@ -23,6 +23,6 @@ export const Text = styled.Text<TextProps>`
     props.isOutline ? props.textColorIsOutline : props.textColor || 'black'};
 `;
 
-export const SocialButton_ = styled.TouchableOpacity<SocialButtonProps>`
+export const SocialButtonComponent = styled.TouchableOpacity<SocialButtonProps>`
   background: ${(props) => props.backgroundColor || props.theme.colors};
 `;

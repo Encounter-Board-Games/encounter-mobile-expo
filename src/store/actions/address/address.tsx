@@ -1,4 +1,4 @@
-import { handleSelectAddress } from '../cart';
+import { handleSelectAddress } from '../cart/cartAddress';
 import {
   getAddressByLatLong,
   addAddress,
@@ -22,7 +22,7 @@ import {
   SetSearchsLocationsTermAction,
   SetAddressesAction,
   RemoveAddressAction,
-} from './addressTypes';
+} from '../../../types/actionAddressTypes';
 
 // Action Types
 export const SET_CURRENT_LOCATION = 'SET_CURRENT_LOCATION';
@@ -89,6 +89,7 @@ export function setLocationSearchs(
   };
 }
 
+// eslint-disable-next-line max-len
 export function setLocationSearchsNotFound(): SetLocationsSearchsNotFoundAction {
   return {
     type: SET_LOCATIONS_SEARCHS_NOT_FOUND,

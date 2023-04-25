@@ -4,9 +4,13 @@ import {
   handleLoadOnboarding,
   setSelectFilterToggleOnboarding,
 } from './onboarding';
-import { handleLoadFilters, handleLoadAndOpenFilter } from './filters/handleFilters';
-import { handleUserData } from './user/handlers/handlerUserData';
-import { cartSetDeliveryTypeOpened, handleLoadDeliveryMethods } from './cart';
+import {
+  handleLoadFilters,
+  handleLoadAndOpenFilter,
+} from './filters/handleFilters';
+import { handleUserData } from './user/handlers/handleUserData';
+import { cartSetDeliveryTypeOpened } from './cart/cartDelivery';
+import { handleLoadDeliveryMethods } from './cart/cartLoadDeliveryMethods';
 import { handleLoadAppConfig, handleLoadNeedUpdateApp } from './app';
 import { handleShowNotification } from './notification';
 import { handleSetCurrentProduct } from './product';
