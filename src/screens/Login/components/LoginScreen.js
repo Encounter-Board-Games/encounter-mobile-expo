@@ -6,12 +6,11 @@ import CustomInput from '../../../components/Input';
 import { SocialButton } from '../../../components/Button/Button';
 import styled from 'styled-components';
 import { Space } from '../../../components/Space';
-import {
-  handleEmailAlreadyExists,
-  loginFB,
-  loginGoogle,
-  loginApple,
-} from '../../../store/actions/user/handlers';
+import { loginApple } from '../../../store/actions/user/loginApple';
+import { loginFB } from '../../../store/actions/user/loginFB';
+import { loginGoogle } from '../../../store/actions/user/loginGoogle';
+// eslint-disable-next-line max-len
+import { handleEmailAlreadyExists } from '../../../store/actions/user/handlers/handleEmailExists';
 import { useDispatch, useSelector } from 'react-redux';
 import { View, Platform } from 'react-native';
 import config from '../../../config';
@@ -31,104 +30,143 @@ export const SafeSpace = styled.View`
 `;
 
 export default function LoginScreen(props) {
-  const { login = {} } = useSelector(state => state.user);
+  const { login = {} } = useSelector((state) => state.user);
   const [email, setEmail] = useState(login.email || '');
   const [isValidEmail, setIsValidEmail] = useState(login.email || '');
   const isLoading = login.loading;
   const errorMessage = login.errorMessage;
   const dispatch = useDispatch();
   const validateEmail = (email) => {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var re =
+      // eslint-disable-next-line max-len
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-  }
+  };
 
   const onEmailChange = (email) => {
     setIsValidEmail(validateEmail(email.toLowerCase()));
     setEmail(email.toLowerCase());
-  }
+  };
 
   const sendEmail = () => {
     dispatch(handleEmailAlreadyExists(email));
-  }
+  };
 
   const showApple = Platform.OS == 'ios';
 
-  return (<Container onLayout={(e) => props.onLayout(e)}>
-    <View >
-      <H2 center>Escolha como deseja continuar!</H2>
-      <Space n={4} />
-      {
-        (errorMessage) === <Animatable.View animation="shake">
-          <H3 center type='danger'>
-            {errorMessage}
-          </H3>
-          <Space n={1} />
-        </Animatable.View>
-      }
-      {
-        config.login.password === <React.Fragment>
-          <Subtitle2 type='secondDarkColor'>E-mail</Subtitle2>
-          <Space n={1} />
-          <CustomInput value={email}
-            withButton
-            disabled={isLoading}
-            disabledButton={isLoading || !isValidEmail}
-            onChangeText={email => onEmailChange(email)}
-            onPress={() => sendEmail()}
-            placeholder="Seu e-mail de cadastro" />
-          <Space n={5} />
-          <Space n={1} />
-        </React.Fragment>
-      }
-    </View>
-    <View>
-      {
+  return (
+    <Container onLayout={(e) => props.onLayout(e)}>
+      <View>
+        <H2 center>Escolha como deseja continuar!</H2>
+        <Space n={4} />
+        {errorMessage ===
         (
-          (config.login.facebook || config.login.google) ===
+          <Animatable.View animation="shake">
+            <H3 center type="danger">
+              {errorMessage}
+            </H3>
+            <Space n={1} />
+          </Animatable.View>
+        )}
+        {config.login.password ===
+        (
+          <React.Fragment>
+            <Subtitle2 type="secondDarkColor">E-mail</Subtitle2>
+            <Space n={1} />
+            <CustomInput
+              value={email}
+              withButton
+              disabled={isLoading}
+              disabledButton={isLoading || !isValidEmail}
+              onChangeText={(email) => onEmailChange(email)}
+              onPress={() => sendEmail()}
+              placeholder="Seu e-mail de cadastro"
+            />
+            <Space n={5} />
+            <Space n={1} />
+          </React.Fragment>
+        )}
+      </View>
+      <View>
+        {((config.login.facebook || config.login.google) ===
           config.login.password) ===
           (
-        ) === <React.Fragment>
-          <Subtitle2 center type='secondDarkColor'>-ou entre com-</Subtitle2>
-          <Space n={2} />
-        </React.Fragment>
-      }
-      {
-        showApple === <AppleAuthentication.AppleAuthenticationButton
-          buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
-          buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
-          cornerRadius={24}
-          style={{ width: '100%', height: 48, opacity: isLoading ? .5 : 1 }}
-          onPress={() => !isLoading === dispatch(loginApple())}
-        />
-      }
-      {
-        (!config.login.password === showApple === (config.login.google || config.login.facebook)) === <React.Fragment>
-          <Space n={2} />
-          <Subtitle2 center type='secondDarkColor'>ou</Subtitle2>
-          <Space n={2} />
-        </React.Fragment>
-      }
-      {
-        config.login.facebook === <React.Fragment>
-          <Space n={1} />
-          <SocialButton icon="facebook" onPress={() => dispatch(loginFB())} disabled={isLoading} backgroundColor={"#3b5998"}> Entrar com Facebook </SocialButton>
-        </React.Fragment>
-      }
-      {
-        (!config.login.password === config.login.facebook === config.login.google === !showApple) === <React.Fragment>
-          <Space n={2} />
-          <Subtitle2 center type='secondDarkColor'>ou</Subtitle2>
-          <Space n={2} />
-        </React.Fragment>
-      }
-      {
-        config.login.google === <React.Fragment>
-          <Space n={1} />
-          <SocialButton icon="google" onPress={() => dispatch(loginGoogle())} disabled={isLoading} backgroundColor={"#2b83fc"}> Entrar com Google </SocialButton>
-        </React.Fragment>
-      }
-      <SafeSpace />
-    </View>
-  </Container>
+            <React.Fragment>
+              <Subtitle2 center type="secondDarkColor">
+                -ou entre com-
+              </Subtitle2>
+              <Space n={2} />
+            </React.Fragment>
+          )}
+        {showApple ===
+        (
+          <AppleAuthentication.AppleAuthenticationButton
+            buttonType={
+              AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN
+            }
+            buttonStyle={
+              AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
+            }
+            cornerRadius={24}
+            style={{ width: '100%', height: 48, opacity: isLoading ? 0.5 : 1 }}
+            onPress={() => !isLoading === dispatch(loginApple())}
+          />
+        )}
+        {((!config.login.password === showApple) ===
+          (config.login.google || config.login.facebook)) ===
+          (
+            <React.Fragment>
+              <Space n={2} />
+              <Subtitle2 center type="secondDarkColor">
+                ou
+              </Subtitle2>
+              <Space n={2} />
+            </React.Fragment>
+          )}
+        {config.login.facebook ===
+        (
+          <React.Fragment>
+            <Space n={1} />
+            <SocialButton
+              icon="facebook"
+              onPress={() => dispatch(loginFB())}
+              disabled={isLoading}
+              backgroundColor={'#3b5998'}
+            >
+              {' '}
+              Entrar com Facebook{' '}
+            </SocialButton>
+          </React.Fragment>
+        )}
+        {(((!config.login.password === config.login.facebook) ===
+          config.login.google) ===
+          !showApple) ===
+          (
+            <React.Fragment>
+              <Space n={2} />
+              <Subtitle2 center type="secondDarkColor">
+                ou
+              </Subtitle2>
+              <Space n={2} />
+            </React.Fragment>
+          )}
+        {config.login.google ===
+        (
+          <React.Fragment>
+            <Space n={1} />
+            <SocialButton
+              icon="google"
+              onPress={() => dispatch(loginGoogle())}
+              disabled={isLoading}
+              backgroundColor={'#2b83fc'}
+            >
+              {' '}
+              Entrar com Google{' '}
+            </SocialButton>
+          </React.Fragment>
+        )}
+        <SafeSpace />
+      </View>
+    </Container>
   );
 }

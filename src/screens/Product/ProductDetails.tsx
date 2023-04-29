@@ -26,7 +26,7 @@ import { handleRememberProduct } from '../../store/actions/user/handlers/handleR
 import { useNavigation } from '@react-navigation/native';
 import { handleOpenEvaluationProduct } from '../..//store/actions/product';
 import config from '../../config';
-import Icons from '../../components/Icons';
+import Icons from '../../components/IconsComponent';
 
 import { handleLoadDeliveryMethods } from '../../store/actions/cart/cartLoadDeliveryMethods';
 import { RootState } from '../../types/actionUserTypes';
@@ -44,7 +44,7 @@ import {
   Tags,
   Description,
   ButtonContent,
-} from './ProductDetailsTypes';
+} from './ProductDetailsStyles';
 
 interface Props {
   theme: DefaultTheme;

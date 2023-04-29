@@ -11,7 +11,7 @@ interface RadioButtonProps {
   children?: any;
 }
 
-const Radio = styled.button<RadioButtonProps>`
+export const Radio = styled.button<RadioButtonProps>`
   display: flex;
   flex-flow: row;
   margin-top: ${(props) => props.theme.space.space1};
@@ -35,7 +35,7 @@ const Radio = styled.button<RadioButtonProps>`
     props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
 `;
 
-const Text = styled.span<{ isSelected: boolean }>`
+export const Text = styled.span<{ isSelected: boolean }>`
   font-size: 14px;
   font-family: Nunito ${(props) => (props.isSelected ? '-Bold' : '')};
   color: ${(props) =>

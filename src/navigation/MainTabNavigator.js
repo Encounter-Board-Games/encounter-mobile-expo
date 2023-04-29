@@ -19,7 +19,7 @@ import UserSettingsScreen from '../screens/User/UserSetting';
 import SettingsScreen from '../screens/Settings/Settings';
 import PaymentScreen from '../screens/Payment/Payment';
 import CreatePaymentScreen from '../screens/Payment/CreatePayment';
-import AddressScreen from '../screens/Address/Address';
+import AddressScreen from '../screens/Address/AddressTypes';
 import CurrentLocation from '../screens/Address/CurrentLocation';
 import AddAddress from '../screens/Address/component/AddAddress';
 import SelfUpload from '../screens/User/SelfUpload';
@@ -31,7 +31,7 @@ import AboutScreen from '../screens/Settings/About';
 import { View, Dimensions } from 'react-native';
 import Discovery from '../screens/Discovery/Discovery';
 import Onboarding from '../screens/Onboarding/Onboarding';
-import QuickSearchs from '../screens/QuickSearchs/QuickSearchs';
+import QuickSearchs from '../screens/QuickSearches/QuickSearches';
 import RenewCartInfo from '../screens/Cart/components/RenewCartInfo';
 
 const SafeAreaView = styled.SafeAreaView`

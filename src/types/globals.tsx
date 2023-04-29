@@ -1,14 +1,16 @@
-import {
-  AutoCompleteRegister,
-  LoginState,
-  UserRememberProducts,
-} from './actionUserTypes';
+import { LoginState, UserRememberProducts } from './actionUserTypes';
+
+export interface AutoCompleteRegister {
+  name?: string;
+  lastname?: string;
+}
 
 export interface AppState {
   terms: any;
   app: {
     about: {
       phone: string;
+      terms: AppTerms;
     };
   };
   about: {
@@ -19,11 +21,26 @@ export interface AppState {
   };
 }
 
+export interface AppTerms {
+  terms: string;
+  policy: string;
+}
+
+export interface RadioButtonItem {
+  key: string;
+  isLast: boolean;
+  isSelected: boolean;
+  onPress: () => void;
+  children;
+}
+
 export interface RootState {
+  address: any;
   app: AppState;
   autoCompleteRegister?: AutoCompleteRegister;
   cart: any;
   email: string;
+  hasTerms: boolean;
   isCodeSent: boolean;
   isForgot: boolean;
   isLogged: boolean;
@@ -60,4 +77,30 @@ export interface Update {
   btnText: string;
   img: string;
   link: string;
+}
+
+export interface User {
+  userInfo?: {
+    name?: string;
+    lastname?: string;
+    preferenceName?: string;
+    cellphone?: string;
+    birthdayFormatted?: string;
+    gender?: string;
+    document?: string;
+  };
+  pendences?: any[];
+  hasTerms?: boolean;
+  email?: string;
+  autoCompleteRegister?: AutoCompleteRegister;
+}
+
+export interface UserInfo {
+  name: string;
+  lastname: string;
+  preferenceName: string;
+  cellphone: string;
+  birthdayFormatted: string | null;
+  gender: string;
+  document: string;
 }

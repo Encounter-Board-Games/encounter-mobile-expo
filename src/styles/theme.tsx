@@ -1,5 +1,5 @@
 import { Dimensions, Platform, PixelRatio } from 'react-native';
-import { Theme } from './theme-types';
+import { Theme } from './themeTypes';
 import config from '../../config';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');

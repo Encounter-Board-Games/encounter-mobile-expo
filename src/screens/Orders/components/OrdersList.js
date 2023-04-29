@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect } from 'react';
 import InformationBox from '../../../components/InformationBox';
 import styled from 'styled-components';
@@ -20,17 +21,18 @@ export default (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(handleLoadOrders());
-  }, []);
+  }, [dispatch]);
 
   const navigation = useNavigation();
-  const { isLogged = false } = useSelector((state) => state.user);
+  useSelector((state) => state.user);
   const { orders = {} } = useSelector((state) => state.orders);
 
   const ordersList = Object.keys(orders)
     .map((key) => orders[key])
     .filter((order) =>
       (props.type == 'History' && !order.current)(
-    (props.type != 'History' && order.current)
+        props.type != 'History' && order.current
+      )
     );
 
   if (ordersList.length == 0)

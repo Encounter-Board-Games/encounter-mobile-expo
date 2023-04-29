@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components/native';
 import { translation } from '../texts';
-import Icons from '../components/Icons';
+import Icons from '../components/IconsComponent';
 
 interface ITabProps {
   state: {

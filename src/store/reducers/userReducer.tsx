@@ -21,9 +21,9 @@ import {
 } from '../actions/user/user';
 import { 
   SET_NEED_COMPLETE_INFOS,
-  State,
   UserAction
 } from '../../types/actionUserTypes';
+import { RootState } from '../../types/globals'
 
 export const initialState: RootState = {
   email: '',
@@ -35,7 +35,12 @@ export const initialState: RootState = {
   isLogged: false,
   user: '',
   cart: undefined,
-  products: []
+  products: [],
+  address: undefined,
+  app: undefined,
+  hasTerms: false,
+  rememberProducts: undefined,
+  users: ''
 };
 
 export default function users(

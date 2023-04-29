@@ -6,7 +6,8 @@ import { Button } from '../../../components/Button/Button';
 import { useDispatch } from 'react-redux';
 import { API_URI } from '../../../graphql/client';
 import OptionWithImage from '../../../components/OptionWithImage';
-import { handleRespondQuestion } from '../../../store/actions/user/handlers';
+// eslint-disable-next-line max-len
+import { handleRespondQuestion } from '../../../store/actions/user/handlers/handleRespondQuestion';
 
 export const Container = styled.View`
     flex: 1;

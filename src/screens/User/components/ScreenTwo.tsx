@@ -38,7 +38,7 @@ const ScreenTwo: React.FC<Props> = ({ loading, onOkClick }) => {
             <Image
               resizeMode={'contain'}
               style={{ width: 20, height: 20 }}
-              source={require('../../assets/img/dado.png')}
+              source={require('../../../assets/img/dado.png')}
             />
           </Icon>
           <Content>
@@ -54,7 +54,7 @@ const ScreenTwo: React.FC<Props> = ({ loading, onOkClick }) => {
           <Image
             resizeMode={'contain'}
             style={{ height: '100%', maxWidth: '60%' }}
-            source={require('../../assets/img/selfie-2.png')}
+            source={require('../../../assets/img/selfie-2.png')}
           />
         </ImageContent>
         <Space n={4} />

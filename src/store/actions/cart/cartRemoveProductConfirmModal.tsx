@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../../Store';
+import { RootState } from '../../../types/globals';
 import { Action } from 'redux';
 import { openPopupModal } from '../info';
 import { translation } from '../../../texts';

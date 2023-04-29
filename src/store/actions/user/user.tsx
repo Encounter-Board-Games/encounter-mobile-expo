@@ -61,6 +61,12 @@ export function addUserRememberProducts(
   };
 }
 
+export function hadleBackToLogin() {
+  return {
+    type: 'SET_BACK_LOGIN_SCREEN_LOGIN_PROCESS',
+  };
+}
+
 export function handleEditUserInfo(
   name: string,
   lastname: string,

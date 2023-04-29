@@ -8,7 +8,7 @@ import {
   hadleBackToLogin,
   handleSendConfirmCode,
   handleHideErrorCode,
-} from '../../../store/actions/user/handlers';
+} from '../../../store/actions/user/handlers/handleUserData';
 import { useDispatch, useSelector } from 'react-redux';
 import { View, Dimensions } from 'react-native';
 import Numberpad from '../../../components/Numberpad';
@@ -134,7 +134,6 @@ export default withTheme((props) => {
               <SpaceHorizontal n={0} />
             </React.Fragment>
           ))}
-          }
         </CodeNumberLine>
         <Space n={3} />
       </Content>

@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 // Define TypeScript interfaces for the RootState and actions
-interface NotificationState {
+export interface NotificationState {
   notificationText?: string;
   notificationAction?: string;
   notificationKey?: string;
@@ -8,7 +8,7 @@ interface NotificationState {
   show?: boolean;
 }
 
-type NotificationAction = {
+export type NotificationAction = {
   type: 'SET_NOTIFICATION' | 'SHOW_NOTIFICATION';
   notificationText?: string;
   notificationAction?: string;

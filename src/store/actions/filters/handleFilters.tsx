@@ -168,7 +168,8 @@ export function FilterChips(props: IFilterChipsProps) {
 export function FilterSelect(props: IFilterSelectProps) {
   const { type, options, isSingle } = props;
   const dispatch = useDispatch();
-  const selects = useSelector((state: IState) => state.filters.selects[type] || []);
+  const selects = useSelector(
+    (state: IState) => state.filters.selects[type] || []
   );
   const handleChange = (value: string) => {
     dispatch(setSelectFilter(type, value));

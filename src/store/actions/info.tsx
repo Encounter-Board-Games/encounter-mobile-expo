@@ -3,6 +3,7 @@ export const CLOSE_INFO_MODAL = 'CLOSE_MODAL';
 export const OPEN_POPUP_MODAL = 'OPEN_POPUP_MODAL';
 export const CLOSE_POPUP_MODAL = 'CLOSE_POPUP_MODAL';
 export const OPEN_CART = 'OPEN_CART';
+export const CLOSE_TUTORIAL = 'CLOSE_TUTORIAL';
 
 export interface OpenInfoModalAction {
   type: typeof OPEN_INFO_MODAL;
@@ -29,12 +30,18 @@ export interface ClosePopupModalAction {
   type: typeof CLOSE_POPUP_MODAL;
 }
 
+export interface CloseTutorialAction {
+  type: typeof CLOSE_TUTORIAL;
+}
+export type TutorialActionTypes = CloseTutorialAction;
+
 export type ModalActionTypes =
   | OpenInfoModalAction
   | OpenCartAction
   | CloseInfoModalAction
   | OpenPopupModalAction
-  | ClosePopupModalAction;
+  | ClosePopupModalAction
+  | CloseTutorialAction;
 
 export function openInfoModal(
   content: React.ReactNode,
@@ -68,11 +75,5 @@ export function openPopupModal(
     type: OPEN_POPUP_MODAL,
     typeOfModal,
     payload: data,
-  };
-}
-
-export function closePopupModal(): ClosePopupModalAction {
-  return {
-    type: CLOSE_POPUP_MODAL,
   };
 }

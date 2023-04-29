@@ -40,7 +40,7 @@ const ScreenOne: React.FC<Props> = ({ loading, onCameraPress }) => {
             <Image
               resizeMode={'contain'}
               style={{ width: 20, height: 20 }}
-              source={require('../../assets/img/dado.png')}
+              source={require('../../../assets/img/dado.png')}
             />
           </Icon>
           <Subtitle2 type="secondDarkColor">
@@ -55,7 +55,7 @@ const ScreenOne: React.FC<Props> = ({ loading, onCameraPress }) => {
             <Image
               resizeMode={'contain'}
               style={{ width: 20, height: 20 }}
-              source={require('../../assets/img/dado.png')}
+              source={require('../../../assets/img/dado.png')}
             />
           </Icon>
           <Subtitle2 type="secondDarkColor">
@@ -68,7 +68,7 @@ const ScreenOne: React.FC<Props> = ({ loading, onCameraPress }) => {
           <Image
             resizeMode={'contain'}
             style={{ height: '100%', maxWidth: '75%' }}
-            source={require('../../assets/img/selfie.png')}
+            source={require('../../../assets/img/selfie.png')}
           />
         </ImageContent>
         <Space n={4} />

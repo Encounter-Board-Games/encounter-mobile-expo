@@ -1,7 +1,5 @@
 import { Dispatch } from 'redux';
-import { useDispatch } from 'react-redux';
-import { handleSetSelects } from './filters/filters';
-import { API_URI } from '../../graphql/client';
+import { handleSetSelects } from './filters/handleSetFilters';
 import { customFilter } from '../../graphql';
 
 export const SET_SELECT_FILTER_TOGGLE_DISCOVERY =
@@ -12,35 +10,35 @@ export const CLOSE_DISCOVERY = 'CLOSE_DISCOVERY';
 export const SET_FILTERS_DISCOVERY = 'SET_FILTERS_DISCOVERY';
 export const SET_DISCOVERY_STEPS = 'SET_DISCOVERY_STEPS';
 
-interface SetSelectFilterToggleDiscoveryAction {
+export interface SetSelectFilterToggleDiscoveryAction {
   type: typeof SET_SELECT_FILTER_TOGGLE_DISCOVERY;
   filterType: string;
   value: boolean;
 }
 
-interface SetFiltersDiscoveryAction {
+export interface SetFiltersDiscoveryAction {
   type: typeof SET_FILTERS_DISCOVERY;
   filters: Record<string, unknown>;
 }
 
-interface StartDiscoveryAction {
+export interface StartDiscoveryAction {
   type: typeof START_DISCOVERY;
 }
 
-interface SetDiscoveryStepsAction {
+export interface SetDiscoveryStepsAction {
   type: typeof SET_DISCOVERY_STEPS;
   steps: Record<string, unknown>;
 }
 
-interface OpenDiscoveryAction {
+export interface OpenDiscoveryAction {
   type: typeof OPEN_DISCOVERY;
 }
 
-interface CloseDiscoveryAction {
+export interface CloseDiscoveryAction {
   type: typeof CLOSE_DISCOVERY;
 }
 
-type DiscoveryActionTypes =
+export type DiscoveryActionTypes =
   | SetSelectFilterToggleDiscoveryAction
   | SetFiltersDiscoveryAction
   | StartDiscoveryAction

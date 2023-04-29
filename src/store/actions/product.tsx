@@ -54,7 +54,9 @@ export function setEvaluationsProducts(
   };
 }
 
-function setCurrentProduct(currentProductKey: string): SetCurrentProductAction {
+export function setCurrentProduct(
+  currentProductKey: string
+): SetCurrentProductAction {
   return {
     type: SET_CURRENT_PRODUCT,
     currentProductKey,

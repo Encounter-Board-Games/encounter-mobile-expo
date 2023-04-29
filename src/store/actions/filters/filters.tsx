@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../../graphql';
@@ -114,11 +115,11 @@ export function filterItems(debounce = true): any {
     else
       !debounce
         ? search_()
-        setTimeout(async () => {
-          if (filterId === currentId) {
-            search_();
-          }
-        }, 500);
+        : setTimeout(async () => {
+            if (filterId === currentId) {
+              search_();
+            }
+          }, 500);
   };
 }
 

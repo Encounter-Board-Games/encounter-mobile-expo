@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components/native';
 import { Subtitle1, H3 } from './Typography';
-import { Theme } from '../styles/theme-types';
+import { Theme } from '../styles/themeTypes';
 
 interface Props {
   title: string;

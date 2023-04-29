@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { handleChangeFilteringText } from '../../store/actions/filters/filters';
 import { EvilIcons } from '@expo/vector-icons';
+import { RootState } from '../../types/globals';
+import {
+  handleChangeFilteringText,
+  handleFilterAction,
+} from '../../store/actions/filters/handleFilters';
 // eslint-disable-next-line max-len
 import { handleSearchLocationByTerm } from '../../store/actions/address/address';
-import { type } from 'jquery';
-import { SearchBarContainer, SearchInput, ClearButton } from './SearchBarStyles';
+import { handleAddressAction } from '../../store/actions/address/address';
+import {
+  SearchBarContainer,
+  SearchInput,
+  ClearButton,
+} from './SearchBarStyles';
 
-export interface SearchBarProps {
+interface SearchBarProps {
   type: 'Filter' | 'Location';
   clearButton?: boolean;
   children?: React.ReactNode;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({
+const SearchBar: FC<SearchBarProps> = ({
   type,
   clearButton = false,
   children,
@@ -22,7 +30,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const textMaxLength = type === 'Location' ? 9 : undefined;
   const textKeyboardType = type === 'Location' ? 'number-pad' : 'default';
   const placeholderText = type === 'Location' ? 'Buscar por cep' : 'Buscar';
-  const text = useSelector((state) => {
+  const text = useSelector((state: RootState) => {
     if (type === 'Filter') {
       const filter = state.filters;
       return filter.text || '';
@@ -44,21 +52,26 @@ const SearchBar: React.FC<SearchBarProps> = ({
       )}-${formattedValue.substring(5, 8)}`;
     }
     if (type === 'Filter') {
-      dispatch(handleChangeFilteringText(formattedValue));
+      const action = handleChangeFilteringText(formattedValue);
+      dispatch(action);
     } else if (type === 'Location') {
-      dispatch(
-        handleSearchLocationByTerm(formattedValue.substring(0, 9), true)
+      const action = handleSearchLocationByTerm(
+        formattedValue.substring(0, 9),
+        true
       );
+      dispatch(action);
     }
   };
-};
 
-const handleClearText = () => {
-  if (type === 'Filter') {
-    dispatch(handleChangeFilteringText(''));
-  } else if (type === 'Location') {
-    dispatch(handleSearchLocationByTerm(''));
-  }
+  const handleClearText = () => {
+    if (type === 'Filter') {
+      const action = handleFilterAction('');
+      dispatch(action);
+    } else if (type === 'Location') {
+      const action = handleAddressAction({ searchLocations: { term: '' } });
+      dispatch(action);
+    }
+  };
 
   return (
     <SearchBarContainer>

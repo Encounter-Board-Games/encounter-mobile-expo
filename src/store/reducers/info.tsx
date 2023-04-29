@@ -12,6 +12,11 @@ interface InfoState {
     type?: string;
     data?: any;
   };
+  tutorial?: {
+    close: boolean;
+    type?: string;
+    data?: any;
+  };
 }
 
 type InfoAction = {
@@ -20,7 +25,8 @@ type InfoAction = {
     | 'OPEN_INFO_MODAL'
     | 'CLOSE_INFO_MODAL'
     | 'OPEN_POPUP_MODAL'
-    | 'CLOSE_POPUP_MODAL';
+    | 'CLOSE_POPUP_MODAL'
+    | 'CLOSE_TUTORIAL';
   show?: boolean;
   content?: string;
   title?: string;
@@ -70,6 +76,15 @@ export default function info(
           ...state.popup,
           type: state.popup?.type,
           open: false,
+        },
+      };
+    case 'CLOSE_TUTORIAL':
+      return {
+        ...state,
+        tutorial: {
+          ...state.tutorial,
+          type: state.tutorial?.type,
+          close: false,
         },
       };
     default:

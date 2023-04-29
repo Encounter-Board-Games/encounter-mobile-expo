@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 import config from '../../../config';
@@ -51,26 +50,36 @@ const ProductEnableBall = styled.View`
 export default withTheme(
   ({ available, rememberMe, hasAlert, theme, onPress, company }) => (
     <ProductEnable>
-  {
-    (config.showCompanyOnAvaiable && company) ? <Content>
-      <ProductEnableText>{company}</ProductEnableText>
-    </Content>
-      <Content>
-        <ProductEnableBall available={available} />
-        <Space />
-        <ProductEnableText>{available ? 'Disponível' : 'Insdisponível'}</ProductEnableText>
-      </Content>
-  }
-
-  {
-    rememberMe && <Timer hasAlert={hasAlert} onPress={() => onPress && onPress()}>
-      {
-        !hasAlert ? <Ionicons name="ios-notifications-outline" color={theme.colors.complementColor} size={16} /> :
-          <Ionicons name="ios-notifications-outline" color={theme.colors.lightColor} size={16} />
-      }
-
-    </Timer>
-  }
+      (config.showCompanyOnAvaiable && company) ?{' '}
+      <>
+        <Content>
+          <ProductEnableText>{company}</ProductEnableText>
+        </Content>
+        <Content>
+          <ProductEnableBall available={available} />
+          <Space />
+          <ProductEnableText>
+            {available ? 'Disponível' : 'Insdisponível'}
+          </ProductEnableText>
+        </Content>
+      </>
+      {rememberMe && (
+        <Timer hasAlert={hasAlert} onPress={() => onPress && onPress()}>
+          {!hasAlert ? (
+            <Ionicons
+              name="ios-notifications-outline"
+              color={theme.colors.complementColor}
+              size={16}
+            />
+          ) : (
+            <Ionicons
+              name="ios-notifications-outline"
+              color={theme.colors.lightColor}
+              size={16}
+            />
+          )}
+        </Timer>
+      )}
     </ProductEnable>
   )
 );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { Text, Image, TouchableOpacity } from 'react-native';
+import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ProductStatus from './ProductStatus';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,7 +14,8 @@ import {
 } from 'rn-placeholder';
 import { Space } from '../../../components/Space';
 import { Subtitle3 } from '../../../components/Typography';
-import { handleRememberProduct } from '../../../store/actions/user/handlers';
+// eslint-disable-next-line max-len
+import { handleRememberProduct } from '../../../store/actions/user/handlers/handleRememberProducts';
 import { View } from 'react-native-animatable';
 
 export const ProductImage = styled.View`

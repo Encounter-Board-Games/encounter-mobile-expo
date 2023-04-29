@@ -1,14 +1,14 @@
-import React from 'react';
-import {
-  ScrollView,
-  KeyboardAvoidingView,
-  View,
-  Platform,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { FC } from 'react';
+import { ScrollView, KeyboardAvoidingView, View, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { H3, Subtitle1 } from './Typography';
-import { SafeAreaView, Header, CloseButton, ToolItem } from './ScreePopupStyles';
+import IconComponent from './IconsComponent';
+import {
+  SafeAreaView,
+  Header,
+  CloseButton,
+  ToolItem,
+} from './ScreePopupStyles';
 
 interface Props {
   theme: any;
@@ -18,11 +18,10 @@ interface Props {
   onToolPress?: () => void;
   noScroll?: boolean;
   footer?: () => JSX.Element;
-  children?: React.ReactNode;
+  children: any;
 }
 
-
-const ScreenPopUp = ({
+const ScreenPopUp: FC<Props> = ({
   theme,
   hideHeader = false,
   title,
@@ -31,11 +30,16 @@ const ScreenPopUp = ({
   noScroll,
   footer,
   children,
-}: Props) => {
+}) => {
   const navigation = useNavigation();
+
   const goBack = () => {
     navigation.goBack();
-    return onBack === onBack();
+    onBack?.();
+  };
+
+  const onBack = () => {
+    return true; // placeholder, implement as needed
   };
 
   return (
@@ -52,8 +56,8 @@ const ScreenPopUp = ({
       <SafeAreaView>
         {!hideHeader && (
           <Header noPadding={!title} withBorder={!!tooltext}>
-            <CloseButton onClick={goBack}>
-              <Ionicons
+            <CloseButton onPress={goBack}>
+              <IconComponent
                 name="ios-arrow-round-back"
                 color={theme.colors.darkColor}
                 size={32}
@@ -65,8 +69,7 @@ const ScreenPopUp = ({
               title
             )}
             {typeof tooltext === 'string' || tooltext instanceof String ? (
-              <Tool onPress={onToolPress}
-              >
+              <ToolItem onPress={onToolPress}>
                 <Subtitle1 color={theme.colors.primaryDarkColor}>
                   {tooltext}
                 </Subtitle1>
@@ -80,9 +83,7 @@ const ScreenPopUp = ({
           {noScroll ? (
             children
           ) : (
-            <ScrollView
-              style={{ flex: 1, minHeight: '80%', minWidth: '100%' }}
-            >
+            <ScrollView style={{ flex: 1, minHeight: '80%', minWidth: '100%' }}>
               {children}
             </ScrollView>
           )}
@@ -90,7 +91,7 @@ const ScreenPopUp = ({
         {footer && footer()}
       </SafeAreaView>
     </KeyboardAvoidingView>
-    );
-    };
-    
-    export default ScreenPopUp;
+  );
+};
+
+export default ScreenPopUp;

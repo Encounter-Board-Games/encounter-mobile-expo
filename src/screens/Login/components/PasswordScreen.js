@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { H3, Subtitle2, H4 } from '../../../components/Typography';
@@ -6,11 +7,10 @@ import { Button } from '../../../components/Button/Button';
 import styled, { withTheme } from 'styled-components';
 import { Space } from '../../../components/Space';
 import { Ionicons } from '@expo/vector-icons';
-import {
-  hadleBackToLogin,
-  handleSendPassword,
-  handleForgotPassword,
-} from '../../../store/actions/user/handlers';
+import { hadleBackToLogin } from '../../../store/actions/user/user';
+// eslint-disable-next-line max-len
+import { handleForgotPassword } from '../../../store/actions/user/handlers/handleForgotPassword';
+import { handleSendPassword } from '../../../store/actions/user/login';
 import { useDispatch, useSelector } from 'react-redux';
 import { View, Dimensions } from 'react-native';
 

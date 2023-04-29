@@ -1,6 +1,7 @@
 import { openPopupModal } from '../../info';
 import { rememberMe } from '../../../../graphql';
 import { handleShowNotification } from '../../notification';
+// eslint-disable-next-line max-len
 import { UserRememberProductsAction } from '../../../../types/actionHandlersTypes';
 import {
   addUserRememberProducts,

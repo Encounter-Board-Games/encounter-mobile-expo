@@ -1,5 +1,5 @@
 import React from 'react';
-import Screen from '../../components/Screen';
+import Screen from '../../components/ScreenComponent';
 import Tab from '../../components/Tab';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';

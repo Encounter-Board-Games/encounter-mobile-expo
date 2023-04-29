@@ -10,7 +10,7 @@ import { openInfoModal } from '../store/actions/info';
 import CheckButton from './CheckButton';
 import { handleSelectFilterToggle } from '../store/actions/shared';
 import OptionWithImage from './OptionWithImage';
-import Icons from './Icons';
+import Icons from './IconsComponent';
 import {
   MainContainer,
   Container,

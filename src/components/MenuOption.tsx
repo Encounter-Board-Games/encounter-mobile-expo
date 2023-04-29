@@ -9,7 +9,7 @@ import {
 } from 'rn-placeholder';
 import { Space, SpaceHorizontal } from './Space';
 import { H4, Subtitle2 } from './Typography';
-import Icons from './Icons';
+import Icons from './IconsComponent';
 
 interface Props {
   isLoading?: boolean;
