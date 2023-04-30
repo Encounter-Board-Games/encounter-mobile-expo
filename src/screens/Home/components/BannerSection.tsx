@@ -19,7 +19,7 @@ const BannerSection: React.FC<Props> = ({ banners }) => {
     return (
       <Banner>
         <Placeholder Animation={Fade}>
-          <PlaceholderMedia size={'100%'} />
+          <PlaceholderMedia size={100} />
         </Placeholder>
       </Banner>
     );
@@ -28,13 +28,13 @@ const BannerSection: React.FC<Props> = ({ banners }) => {
   return (
     <Carrossel
       current={currentBanner}
-      onCurrentChange={(n) => setCurrentBanner(n)}
+      onCurrentChange={(n: number) => setCurrentBanner(n)}
     >
       {banners.map((banner: BannerType, index: number) => (
         <Banner key={index}>
           {banner.action && banner.action !== 'no_action' ? (
             <TouchableOpacity
-              onPress={() => dispatch(handleProcessActions(banner.action))}
+              onPress={() => dispatch<any>(handleProcessActions(banner.action))}
               style={{ width: '100%', height: '100%' }}
             >
               <Image
@@ -55,5 +55,5 @@ const BannerSection: React.FC<Props> = ({ banners }) => {
     </Carrossel>
   );
 };
-      
+
 export default BannerSection;

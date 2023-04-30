@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import MenuOption from '../../components/MenuOption';
 import ScreenPopup from '../../components/ScreenPopup';
 import { useNavigation } from '@react-navigation/native';
@@ -11,6 +12,8 @@ import { RootState } from '../../store/Store';
 import { Container } from './UserStyles';
 import { AppDispatch } from '../../store/Store';
 
+type CustomNavigationProp = NavigationScreenProp<NavigationState, {}>;
+
 export interface MenuItem {
   title: string;
   description: string;
@@ -18,7 +21,7 @@ export interface MenuItem {
 }
 
 export const EditProfileScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<CustomNavigationProp>();
   const dispatch = useDispatch<AppDispatch>();
   const { isLogged = false, pendences = [] } = useSelector(
     (state: RootState) => state.users
@@ -60,17 +63,16 @@ export const EditProfileScreen = () => {
               description={`Complete seu cadastro para começar a alugar.`}
               buttonText="Completar cadastro"
               onPressButton={handleCompleteProfile}
-            />
-            <Space n={3} />
-          </>
-        )}
-
-        {menuItems.map((item, index) => (
-          <MenuOption key={index} {...item} />
-        ))}
-      </Container>
-    </ScreenPopup>
-  );
+              />
+              <Space n={3} />
+              </>
+              )}
+              {menuItems.map((item, index) => (
+      <MenuOption key={index} {...item} />
+    ))}
+  </Container>
+</ScreenPopup>
+);
 };
 
 export default EditProfileScreen;

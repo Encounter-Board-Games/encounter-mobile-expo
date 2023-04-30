@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 export interface FindOutProps {
   theme: {
@@ -10,7 +10,8 @@ export interface FindOutProps {
 
 export const FindOut = styled.View<FindOutProps>`
   flex-flow: row;
-  padding-left: ${(props) => props.theme.space.space2};
+  padding-left: ${(props: { theme: { space: { space2: any } } }) =>
+    props.theme.space.space2};
 `;
 
 export interface BannerProps {
@@ -20,7 +21,7 @@ export interface BannerProps {
 }
 
 export const Banner = styled.View<BannerProps>`
-  width: ${(props) => props.width ?? '100%'};
-  height: ${(props) => props.height ?? '200px'};
-  max-height: ${(props) => props.maxHeight ?? '200px'};
+  width: ${(props: { width: any }) => props.width ?? '100%'};
+  height: ${(props: { height: any }) => props.height ?? '200px'};
+  max-height: ${(props: { maxHeight: any }) => props.maxHeight ?? '200px'};
 `;

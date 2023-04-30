@@ -29,6 +29,14 @@ export interface AppTerms {
   policy: string;
 }
 
+export interface Banner {
+  action: string;
+  url: string | undefined;
+  width?: string;
+  height?: string;
+  maxHeight?: string;
+}
+
 export type CombinedStateType = {
   app: AppState;
   products: ProductState;
@@ -44,7 +52,7 @@ export interface RadioButtonItem {
   isLast: boolean;
   isSelected: boolean;
   onPress: () => void;
-  children;
+  children: any;
 }
 
 export interface RootState {
