@@ -11,7 +11,7 @@ import { translation } from '../../../texts';
 import { Space2, Space } from '../SearchStyles';
 import { ContentLine } from './SearchBarStyles';
 
-interface Props {
+export interface Props {
   results?: Array<number>;
   isLoading?: boolean;
 }

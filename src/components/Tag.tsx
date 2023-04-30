@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { EvilIcons } from '@expo/vector-icons';
 
-interface TagProps {
+export interface TagProps {
   isSelected?: boolean;
   isCircle?: boolean;
   onPress?: () => void;
@@ -10,7 +10,7 @@ interface TagProps {
   children: any;
 }
 
-const Radio = styled.TouchableOpacity<TagProps>`
+export const Radio = styled.TouchableOpacity<TagProps>`
   margin-top: ${({ theme }) => theme.space.space1}px;
   margin-right: ${({ theme }) => theme.space.space1}px;
   flex-flow: row;
@@ -22,7 +22,7 @@ const Radio = styled.TouchableOpacity<TagProps>`
   background-color: ${({ theme }) => theme.colors.primaryLightColor};
 `;
 
-const CloseButtonArea = styled.TouchableOpacity`
+export const CloseButtonArea = styled.TouchableOpacity`
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -30,7 +30,7 @@ const CloseButtonArea = styled.TouchableOpacity`
   width: 30px;
 `;
 
-const CloseButton = styled.View`
+export const CloseButton = styled.View`
   background-color: ${({ theme }) => theme.colors.secondLightColor};
   height: 16px;
   width: 16px;
@@ -40,7 +40,7 @@ const CloseButton = styled.View`
   margin-left: ${({ theme }) => theme.space.space1}px;
 `;
 
-const StyledText = styled.Text<TagProps>`
+export const StyledText = styled.Text<TagProps>`
   font-size: 14px;
   font-family: ${({ isSelected }) => (isSelected ? 'Nunito-Bold' : 'Nunito')};
   color: ${({ theme }) => theme.colors.primaryDarkColor};

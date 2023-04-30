@@ -1,13 +1,13 @@
 /* eslint-disable indent */
 import { arrayToObj } from '../../utils/helpers';
 
-interface ProductState {
+export interface ProductState {
   products: Record<string, any>;
   currentProductKey?: string;
   evaluationsProducts?: any[];
 }
 
-type ProductAction = {
+export type ProductAction = {
   type: 'SET_EVALUATIONS_PRODUCTS' | 'SET_PRODUCTS' | 'SET_CURRENT_PRODUCT';
   evaluationsProducts?: any[];
   products?: Record<string, any>;

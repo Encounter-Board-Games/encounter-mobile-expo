@@ -1,18 +1,22 @@
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
-import { withTheme } from 'styled-components/native';
+import React, { useEffect, FunctionComponent } from 'react';
+import { View as RNView } from 'react-native';
+import styled, { withTheme } from 'styled-components/native';
 import { H3, Subtitle2 } from '../../components/Typography';
 import { useSelector, useDispatch } from 'react-redux';
-import { Tag } from '../../components/Tag';
+import { ThunkDispatch } from 'redux-thunk';
+import Tag from '../../components/Tag';
+// eslint-disable-next-line max-len
+import { handleSetMyFavorites } from '../../store/actions/filters/handleSetFilters';
 import {
   handleClearSelects,
   handleChangeFilteringText,
-  handleSetMyFavorites,
-  handleNeedTutorial,
-} from '../../store/actions/filters/filters';
+} from '../../store/actions/filters/handleFilters';
+// eslint-disable-next-line max-len
+import { handleNeedTutorial } from '../../store/actions/filters/tutorialFilters';
 import ProductShelf from '../Product/components/ProductShelf';
 import HeaderSeeAll from '../../components/HeaderSeeAll';
-import FilterResult, { Space, Space2 } from './components/FilterResult';
+import { Space2, Space } from '../Search/SearchStyles';
+import FilterResult from './components/FilterResult';
 import { translation } from '../../texts';
 import config from '../../config';
 import {
@@ -23,14 +27,24 @@ import {
   Space3,
 } from './SearchStyles';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import theme from '../../styles/theme';
 
-interface Chip {
+const Screen = styled.ScrollView`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.background};
+`;
+
+const View = styled(RNView)`
+  flex: 1;
+`;
+
+export interface Chip {
   text: string;
   isRemovable: boolean;
   type: string;
 }
 
-interface RootState {
+export interface RootState {
   filters: {
     chips: Chip[];
     recentTexts: string[];
@@ -40,12 +54,12 @@ interface RootState {
   user: {
     isLogged: boolean;
     userInfo: {
-      favorites: string[];
+      favorites?: string[];
     };
   };
 }
 
-const Search = () => {
+const Search: FunctionComponent = () => {
   const {
     chips = [],
     recentTexts = [],
@@ -56,7 +70,7 @@ const Search = () => {
   const { isLogged = false, userInfo = {} } = user;
   const favorites = userInfo.favorites || [];
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<RootState, void, any>>();
 
   useEffect(() => {
     dispatch(handleNeedTutorial());
@@ -134,7 +148,7 @@ const Search = () => {
   );
 
   return (
-    <Screen noScroll>
+    <Screen>
       <Container>
         <SearchBar type="Filter" />
         {isFiltered || isLoading ? filterResult() : recents()}

@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 // Define TypeScript interfaces for the RootState and actions
-interface ShelvesState {
+export interface ShelvesState {
   loading?: boolean;
   shelves?: Record<string, any>;
   banners?: {
@@ -9,27 +9,27 @@ interface ShelvesState {
   };
 }
 
-interface SetLoadingAction {
+export interface SetLoadingAction {
   type: 'SET_LOADING';
   loading: boolean;
 }
 
-interface SetShelvesAction {
+export interface SetShelvesAction {
   type: 'SET_SHELVES';
   shelves: Record<string, any>;
 }
 
-interface SetBannersAction {
+export interface SetBannersAction {
   type: 'SET_BANNERS';
   banners: any[];
 }
 
-interface SetCurrentBannerAction {
+export interface SetCurrentBannerAction {
   type: 'SET_CURRENT_BANNER';
   current: number;
 }
 
-type ShelvesAction =
+export type ShelvesAction =
   | SetLoadingAction
   | SetShelvesAction
   | SetBannersAction

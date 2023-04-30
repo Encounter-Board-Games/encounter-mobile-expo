@@ -1,49 +1,55 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { StatusBar, Platform } from "react-native";
-import { Image } from "react-native-animatable";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { StatusBar, Platform } from 'react-native';
+import { Image } from 'react-native-animatable';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
-import MainNavigation from "./src/navigation/MainTabNavigator";
-import Login from "./src/screens/Login/Login";
-import InfoModal from "./src/screens/Info/InfoModal";
-import Popup from "./src/screens/Info/Popup";
-import NeedUpdate from "./src/screens/NeedUpdate/NeedUpdate";
-import AppNotification from "./src/screens/Notifications/components/AppNotification";
-import { handleInitApp } from "./src/store/actions/shared";
+import MainNavigation from './src/navigation/MainTabNavigator';
+import Login from './src/screens/Login/Login';
+import InfoModal from './src/screens/Info/InfoModal';
+import Popup from './src/screens/Info/Popup';
+import NeedUpdate from './src/screens/NeedUpdate/NeedUpdate';
+// eslint-disable-next-line max-len
+import AppNotification from './src/screens/Notifications/components/AppNotification';
+import { handleInitApp } from './src/store/actions/shared';
+// eslint-disable-next-line max-len
 import { handleSetNotificationToken } from './src/store/actions/user/notifications';
-import { AppState } from "./src/types/globals";
-import { Container, LoadView } from "./src/styles/globalStyles";
-
+import { Container, LoadView } from './src/styles/globalStyles';
+import { useAppDispatch, useAppSelector } from './src/hooks/useTypedHooks';
 
 const App: React.FC = React.memo(() => {
-  const dispatch = useDispatch<AppDispatch>();
-  const { update } = useSelector((state: { app: AppState }) => state.app) || { update: { show: true } };
+  const dispatch = useAppDispatch();
+  const { update } = useAppSelector((state) => state.app) ?? {
+    update: { show: true },
+  };
   const [already, setAlready] = useState(false);
 
-  const askNotification = useCallback(async () => {
-    const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-    let finalStatus = existingStatus;
+  useEffect(() => {
+    const askNotification = async () => {
+      const { status: existingStatus } = await Permissions.getAsync(
+        Permissions.NOTIFICATIONS
+      );
+      let finalStatus = existingStatus;
 
-    if (existingStatus !== Permissions.PermissionStatus.GRANTED) {
-      const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      finalStatus = status;
-    }
+      if (existingStatus !== Permissions.PermissionStatus.GRANTED) {
+        const { status } = await Permissions.askAsync(
+          Permissions.NOTIFICATIONS
+        );
+        finalStatus = status;
+      }
 
-    if (finalStatus !== Permissions.PermissionStatus.GRANTED) {
-      return;
-    }
+      if (finalStatus !== Permissions.PermissionStatus.GRANTED) {
+        return;
+      }
 
-    let { data: token } = await Notifications.getExpoPushTokenAsync();
-    dispatch(handleSetNotificationToken({ token }));
+      let { data: token } = await Notifications.getExpoPushTokenAsync();
+      dispatch(handleSetNotificationToken({ token }));
+    };
+
+    askNotification();
+    Promise.resolve(dispatch(handleInitApp())).finally(() => setAlready(true));
   }, [dispatch]);
 
-  useEffect(() => {
-    askNotification();
-    dispatch(handleInitApp()).finally(() => setAlready(true));
-  }, [askNotification, dispatch]);
-
-  if (update.show) {
+  if (update?.show) {
     return (
       <Container>
         <NeedUpdate />
@@ -56,8 +62,8 @@ const App: React.FC = React.memo(() => {
       <LoadView>
         <Image
           resizeMode="contain"
-          style={{ width: "100%", height: "100%" }}
-          source={require("./src/assets/splash.png")}
+          style={{ width: '100%', height: '100%' }}
+          source={require('./src/assets/splash.png')}
         />
       </LoadView>
     );
@@ -65,7 +71,9 @@ const App: React.FC = React.memo(() => {
 
   return (
     <>
-      <StatusBar barStyle={Platform.OS === "ios" ? "dark-content" : "light-content"} />
+      <StatusBar
+        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'light-content'}
+      />
       <MainNavigation />
       <InfoModal />
       <AppNotification />

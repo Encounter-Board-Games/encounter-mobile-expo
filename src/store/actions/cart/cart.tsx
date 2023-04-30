@@ -111,3 +111,5 @@ export function handleOpenCart(show = true) {
     dispatch(openCart(show));
   };
 }
+
+export { handleSelectPaymentMethod };

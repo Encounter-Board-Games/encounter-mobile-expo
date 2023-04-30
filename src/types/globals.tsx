@@ -1,3 +1,6 @@
+import { InfoState } from '../screens/Info/components/TextModalTypes';
+import { ProductState } from '../store/reducers/product';
+import { ShelvesState } from '../store/reducers/shelves';
 import { LoginState, UserRememberProducts } from './actionUserTypes';
 
 export interface AutoCompleteRegister {
@@ -26,6 +29,16 @@ export interface AppTerms {
   policy: string;
 }
 
+export type CombinedStateType = {
+  app: AppState;
+  products: ProductState;
+  shelves: ShelvesState;
+  filters: RootState;
+  userReducer: RootState;
+  info: InfoState;
+  user: User;
+};
+
 export interface RadioButtonItem {
   key: string;
   isLast: boolean;
@@ -40,6 +53,7 @@ export interface RootState {
   autoCompleteRegister?: AutoCompleteRegister;
   cart: any;
   email: string;
+  filters: any;
   hasTerms: boolean;
   isCodeSent: boolean;
   isForgot: boolean;
@@ -51,6 +65,7 @@ export interface RootState {
   loginPopup?: boolean;
   needCompleteInfos?: boolean;
   notifications?: any[];
+  payments: any;
   pendences?: any[];
   products: any[];
   rememberProducts: UserRememberProducts;

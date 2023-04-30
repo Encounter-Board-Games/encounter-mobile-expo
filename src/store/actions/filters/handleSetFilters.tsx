@@ -1,9 +1,15 @@
 import storage from '../../../utils/storage';
-import { setSelectFilter, filterItems, handleClearSelects } from './filters';
+import { IState } from './filterTypes';
+import { setSelectFilter, handleClearSelects } from './filters';
+import { filterItems } from './filtersItems';
 import { setFilteringText, setRecentsFilteringTexts } from './handleFilters';
 import { setSelectFilterToggle, setSelects } from './setSelects';
 
 const myFavorites = 'Meus Favoritos';
+
+export interface Selects {
+  [key: string]: string[];
+}
 
 export function handleSetSelectFilter(
   filterType: string,
@@ -21,17 +27,22 @@ export function handleSetSelectFilter(
   };
 }
 
-export function handleSetSelects(filtersIn: { [key: string]: string }): any {
+export function handleSetSelects(filtersIn: {
+  [key: string]: string[];
+  text?: string[];
+}): any {
   return (dispatch: any, getState: any) => {
     const { filters }: IState = getState();
-    if (filtersIn.text) dispatch(setFilteringText(filtersIn.text));
+    if (filtersIn.text) dispatch(setFilteringText(filtersIn.text.join(' ')));
     else dispatch(setFilteringText(''));
     Object.keys(filtersIn).map((key) => {
       if (
         !filters.filters.find((f) => f.type === key) ||
         filtersIn[key] == null
-      )
+      ) {
         delete filtersIn[key];
+      }
+      return null;
     });
     dispatch(setSelects(filtersIn));
     dispatch(filterItems(false));
@@ -42,10 +53,10 @@ export function handleSetRecentsFilteringText(): any {
   return (dispatch: any, getState: any) => {
     const { filters }: IState = getState();
     const { recentTexts = [], text } = filters;
-    let newRecentTexts = recentTexts.filter((e) => e !== text).map((e) => e);
+    let newRecentTexts = recentTexts.filter((e) => e !== text);
     if (!text || text.length === 0) return;
     if (newRecentTexts.length !== 0) {
-      const lastText = newRecentTexts[recentTexts.length - 1];
+      const lastText = newRecentTexts[newRecentTexts.length - 1];
       if (text.includes(lastText)) {
         newRecentTexts[newRecentTexts.length - 1] = text;
       } else {
@@ -62,7 +73,7 @@ export function handleSetRecentsFilteringText(): any {
 
 export function handleSetMyFavorites(): any {
   return (dispatch: any) => {
-    dispatch(handleClearSelects());
+    dispatch(handleClearSelects('')); // Add empty string as an argument
     dispatch(handleSetSelectFilter('searchGroup', myFavorites, false));
   };
 }

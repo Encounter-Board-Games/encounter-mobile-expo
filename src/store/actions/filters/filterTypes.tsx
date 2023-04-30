@@ -58,8 +58,10 @@ export interface IState {
 
 export interface Chip {
   isRemovable: boolean;
+  label: string;
   text: string;
   type: string;
+  item: any;
 }
 
 export interface DefaultSelectsFilter {

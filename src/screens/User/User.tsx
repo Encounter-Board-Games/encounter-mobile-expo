@@ -9,6 +9,7 @@ import { handleReopenOnboarding } from '../../store/actions/onboarding';
 import config from '../../config';
 import { RootState } from '../../store/Store';
 import { Container } from './UserStyles';
+import { AppDispatch } from '../../store/Store';
 
 export interface MenuItem {
   title: string;
@@ -18,9 +19,9 @@ export interface MenuItem {
 
 export const EditProfileScreen = () => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { isLogged = false, pendences = [] } = useSelector(
-    (state: RootState) => state.user
+    (state: RootState) => state.users
   );
 
   const hasPendences = pendences.length > 0;

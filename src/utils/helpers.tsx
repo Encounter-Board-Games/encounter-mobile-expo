@@ -1,7 +1,15 @@
-export function arrayToObj<T extends { key: string }>(
-  arr: T[]
-): Record<string, T> {
-  return arr.reduce((acc, item) => ({ ...acc, [item.key]: item }), {});
+export function arrayToObj(products) {
+  return products.reduce((obj, product) => {
+    obj[product.id] = product;
+    return obj;
+  }, {});
+}
+
+export function productsArrayToObject(products) {
+  return products.reduce((obj, product) => {
+    obj[product.id] = product;
+    return obj;
+  }, {});
 }
 
 export function currencyFormat(value: number | undefined): string {

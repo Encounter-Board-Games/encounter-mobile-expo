@@ -1,6 +1,9 @@
+/* eslint-disable indent */
 import { Dispatch } from 'redux';
-import { RootState } from '../../Store';
+import { RootState } from '../../../types/globals';
 import { setChipFilters } from './setFilters';
+import { Chip } from '../filters/filterTypes';
+import { Selects, DefaultSelectsFilter } from './filterTypes';
 
 export const setSelects = (selects: Selects) => ({
   type: 'SET_SELECTS' as const,
@@ -37,6 +40,8 @@ export const setChips =
         isRemovable: false,
         text: filters.selects.order[0],
         type: 'order',
+        label: 'Order',
+        item: filters.selects.order[0],
       },
     ];
 
@@ -47,6 +52,8 @@ export const setChips =
           defaultSelectsFilter.searchGroup[0],
         text: filters.selects.searchGroup[0],
         type: 'searchGroup',
+        label: 'Search Group',
+        item: filters.selects.searchGroup[0],
       });
     }
 
@@ -62,15 +69,17 @@ export const setChips =
         text:
           key === 'numberOfPlayer'
             ? `${filters.selects[key].sort().join(', ')} jogador${
-              filters.selects[key].length === 1 &&
+                filters.selects[key].length === 1 &&
                 filters.selects[key][0] === 1
-                ? ''
-                : 'es'
-            }`
+                  ? ''
+                  : 'es'
+              }`
             : `${filters.filters.find((f) => f.type === key).title} (${
-              filters.selects[key].length
-            })`,
+                filters.selects[key].length
+              })`,
         type: key,
+        label: filters.filters.find((f) => f.type === key).title,
+        item: filters.selects[key].join(', '),
       }))
       .forEach((item) => chips.push(item));
 

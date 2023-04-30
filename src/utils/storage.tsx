@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-interface StorageProps {
+export interface StorageProps {
   clear: () => Promise<void>;
   getItem: (key: string) => Promise<any>;
   setItem: (key: string, value: any) => Promise<void>;

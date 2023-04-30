@@ -40,7 +40,16 @@ export const initialState: RootState = {
   app: undefined,
   hasTerms: false,
   rememberProducts: undefined,
-  users: ''
+  users: '',
+  filters: {
+    filters: [],
+    selects: {},
+    isFiltering: false,
+    filteredItems: [],
+    items: [],
+    recentTexts: [],
+    text: '',
+  },
 };
 
 export default function users(

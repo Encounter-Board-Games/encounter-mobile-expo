@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { KeyboardAvoidingView, Platform, Keyboard } from 'react-native';
+import { Platform, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   handleCreateOrEditPayment,
@@ -23,21 +24,17 @@ import {
   CustomInput,
   CustomInputText,
 } from './CreatePaymentStyles';
+import { RootState } from '../../store/reducers';
+import { Payment } from '../../types/Payment';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-function chunk(array, size) {
-  const chunked_arr = [];
-  for (let i = 0; i < array.length; i++) {
-    const last = chunked_arr[chunked_arr.length - 1];
-    if (!last || last.length === size) {
-      chunked_arr.push([array[i]]);
-    } else {
-      last.push(array[i]);
-    }
-  }
-  return chunked_arr;
-}
+type CreatePaymentProps = {
+  navigation: StackNavigationProp<any>;
+  choseMode?: boolean;
+  loading?: boolean;
+};
 
-const CreatePayment = (props) => {
+const CreatePayment = (props: CreatePaymentProps) => {
   const [cardNumber, setCardNumber] = useState('');
   const [cardExpirationDate, setCardExpirationDate] = useState('');
   const [cardHolderName, setCardHolderName] = useState('');
@@ -45,7 +42,7 @@ const CreatePayment = (props) => {
   const [cardDocument, setCardDocument] = useState('');
   const [isEdit, setIsEdit] = useState(false);
 
-  const currentPayment = useSelector((state) => {
+  const currentPayment = useSelector((state: RootState) => {
     if (state.payments.currentPaymentKey) {
       return state.payments.paymentMethods.find(
         (f) => f.key == state.payments.currentPaymentKey
@@ -150,6 +147,10 @@ const CreatePayment = (props) => {
                   value={cardNumber}
                   format={(value) => {
                     let valueToFormat = value.split(' ').join('');
+                    function chunk(arg0: any, arg1: number) {
+                      throw new Error('Function not implemented.');
+                    }
+
                     return chunk(valueToFormat.split(''), 4)
                       .map((i) => i.join(''))
                       .join(' ');
@@ -273,18 +274,20 @@ const CreatePayment = (props) => {
       </KeyboardAvoidingView>
     </ScreenPopup>
   );
-};
 
-function mapStateToProps({ user, payments }) {
-  return {
-    user,
-    choseMode: !!payments.choseMode,
-    loading: !!payments.loading,
-    isEdit: !!payments.currentPaymentKey,
-    currentPayment: payments.currentPaymentKey
-      ? payments.paymentMethods.find((f) => f.key == payments.currentPaymentKey)
-      : undefined,
-  };
-}
+  function mapStateToProps({ user, payments }) {
+    return {
+      user,
+      choseMode: !!payments.choseMode,
+      loading: !!payments.loading,
+      isEdit: !!payments.currentPaymentKey,
+      currentPayment: payments.currentPaymentKey
+        ? payments.paymentMethods.find(
+          (f) => f.key == payments.currentPaymentKey
+        )
+        : undefined,
+    };
+  }
+};
 
 export default CreatePayment;

@@ -2,22 +2,17 @@ import React from 'react';
 import styled, { withTheme } from 'styled-components/native';
 import { translation } from '../texts';
 import Icons from '../components/IconsComponent';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
-interface ITabProps {
-  state: {
-    index: number;
-    routes: { name: string }[];
-  };
-  navigation: {
-    navigate: (name: string) => void;
-  };
-  theme?: {
-    colors: {
-      text: string;
-      white: string;
-    };
-  };
+interface IIconProps {
+  name: string;
+  color: string;
+  size?: number;
 }
+
+const Icon: React.FC<IIconProps> = ({ name, color, size = 16 }) => (
+  <Icons name={name} size={size} color={color} />
+);
 
 const TabNav = styled.View`
   height: 56px;
@@ -48,17 +43,11 @@ const icons: Record<string, string> = {
   Perfil: 'user',
 };
 
-interface IIconProps {
-  name: string;
-  color: string;
-  size?: number;
-}
-
-const Icon: React.FC<IIconProps> = ({ name, color, size = 16 }) => (
-  <Icons name={name} size={size} color={color} />
-);
-
-const Tab: React.FC<ITabProps> = ({ state, navigation, theme }) => {
+const Tab: React.FC<BottomTabBarProps> = ({
+  state,
+  navigation,
+  descriptors,
+}) => {
   const activeRouteIndex = state.index;
 
   return (
