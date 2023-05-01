@@ -1,17 +1,24 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { translation } from '../../../texts';
-import { handleOpenDiscovery } from '../../../store/actions/discovery';
-import Container from '../../../components/Container';
-import { FindOut } from '../HomeStyles';
-import { ButtonComponent } from '../../../components/Button/ButtonStyles';
+import styled from 'styled-components';
+import { Button } from '../../components/Button';
+import Container from '../../components/Container';
+import { handleOpenDiscovery } from '../../store/actions/discovery';
+import { translation } from '../../texts';
+
+const FindOut = styled.View`
+  flex-flow: row;
+  padding-left: ${(props) => props.theme.space.space2};
+`;
 
 const DiscoverySection: React.FC = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
-  const openDiscovery = async () => {
-    const result = await dispatch(handleOpenDiscovery());
-    if (result) navigation.navigate('Busca');
+  const openDiscovery = () => {
+    dispatch(handleOpenDiscovery()).then((result) => {
+      if (result) navigation.navigate('Busca');
+    });
   };
 
   return (
@@ -20,9 +27,9 @@ const DiscoverySection: React.FC = () => {
       subtitle={translation('discovery.subtitle')}
     >
       <FindOut>
-        <ButtonComponent onPress={openDiscovery} type="ComplementButton-Medium">
+        <Button onPress={openDiscovery} type="ComplementButton-Medium">
           Descobrir
-        </ButtonComponent>
+        </Button>
       </FindOut>
     </Container>
   );

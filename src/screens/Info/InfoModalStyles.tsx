@@ -1,15 +1,19 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
 
 export const Container = styled.View`
-  padding: ${(props) => props.theme.space.space2};
-  background: ${(props) => props.theme.colors.lightColor};
+  padding: ${(props: { theme: { space: { space2: any } } }) =>
+    props.theme.space.space2};
+  background: ${(props: { theme: { colors: { lightColor: any } } }) =>
+    props.theme.colors.lightColor};
   flex: 1;
   width: 100%;
   flex-wrap: wrap;
 `;
 
 export const Header = styled.TouchableOpacity`
-  background-color: ${(props) => props.theme.colors.lightColor};
+  background-color: ${(props: { theme: { colors: { lightColor: any } } }) =>
+    props.theme.colors.lightColor};
   position: relative;
   justify-content: center;
   align-items: center;
@@ -21,7 +25,8 @@ export const CloseButton = styled.View`
   position: absolute;
   top: 0;
   left: 0px;
-  background-color: ${(props) => props.theme.colors.lightColor};
+  background-color: ${(props: { theme: { colors: { lightColor: any } } }) =>
+    props.theme.colors.lightColor};
   height: 100%;
   width: 40px;
   justify-content: center;

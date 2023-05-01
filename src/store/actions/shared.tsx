@@ -20,12 +20,12 @@ import {
   handleLoadDiscovery,
 } from './discovery';
 import { sendErros } from '../../graphql';
-import { RootState } from '../reducers';
 import { setChoseAddressMode } from './address/address';
 import { setChosePaymentMethodsMode } from './payments/payments';
 import { handleSetQuickSearchs } from './quickSearch/quickSearch';
 import { handleSetNotificationViewed } from './user/notifications';
 import { Action } from 'redux';
+import { RootState } from '../Store';
 
 export const handleInitHome = (): ThunkAction<
   void,

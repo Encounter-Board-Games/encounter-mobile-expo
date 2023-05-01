@@ -1,13 +1,21 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { translation } from '../../../texts';
-import { handleNotFoundProductSuggestion } from '../../../store/actions/discovery';
-import config from '../../../config';
+import styled from 'styled-components/native';
+import ButtonComponent from '../../../components/Button/Button';
 import Container from '../../../components/Container';
-import { FindOut } from '../HomeStyles';
-import { ButtonComponent } from '../../../components/Button/ButtonStyles';
+// eslint-disable-next-line max-len
+import { handleNotFoundProductSuggestion } from '../../../store/actions/user/handlers/handleNotFound';
+import { translation } from '../../../texts';
+import config from '../../../config';
+import theme from '../../../styles/theme';
 
-const NotFoundSuggestion: React.FC = () => {
+const FindOut = styled.View`
+  flex-flow: row;
+  padding-left: ${(props: { theme: { space: { space2: any } } }) =>
+    props.theme.space.space2};
+`;
+
+const NotFoundSection: React.FC = () => {
   const dispatch = useDispatch();
 
   const openSuggestion = () => {
@@ -27,6 +35,7 @@ const NotFoundSuggestion: React.FC = () => {
         <ButtonComponent
           onPress={openSuggestion}
           type="CallToAction-Primary-Color"
+          theme={theme}
         >
           {translation('notFoundProducts.buttonText')}
         </ButtonComponent>
@@ -35,4 +44,4 @@ const NotFoundSuggestion: React.FC = () => {
   );
 };
 
-export default NotFoundSuggestion;
+export default NotFoundSection;

@@ -1,25 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import { RootState, AppDispatch } from '../../store';
-import { Shelf, Banner as BannerType } from '../../store/types';
-import { handleInitHome } from '../../store/actions/shared';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../store/hooks';
 import Screen from '../../components/ScreenComponent';
-import LoadingScreen from './components/LoadingScreen';
-import MainContent from './components/MainContent';
+import { handleInitHome } from '../../store/actions/shared';
+import Banner from './components/Banner';
+import Shelves from './components/Shelves';
+import DiscoverySection from './components/DiscoverySection';
+import NotFoundSection from './components/NotFoundSection';
+import { RootState } from '../../store/Store';
 
-type Props = {};
-
-const Home: React.FC<Props> = () => {
-  const [currentBanner, setCurrentBanner] = useState<number>(0);
-  const dispatch = useDispatch<AppDispatch>(); // Update this line
-  const navigation = useNavigation();
+const Home = () => {
+  const dispatch = useAppDispatch();
+  const isLoading = useSelector((state: RootState) => state.shelves.loading);
 
   useEffect(() => {
     dispatch(handleInitHome());
   }, [dispatch]);
 
-  return <Screen>{isLoading ? <LoadingScreen /> : <MainContent />}</Screen>;
+  if (isLoading) {
+    return (
+      <Screen>
+        <Banner isLoading />
+        <Shelves isLoading />
+      </Screen>
+    );
+  }
+
+  return (
+    <Screen>
+      <Banner />
+      <Shelves />
+      <DiscoverySection />
+      <NotFoundSection />
+    </Screen>
+  );
 };
 
 export default Home;

@@ -9,6 +9,7 @@ export interface AutoCompleteRegister {
 }
 
 export interface AppState {
+  shelves: any;
   terms: any;
   app: {
     about: {
@@ -56,6 +57,7 @@ export interface RadioButtonItem {
 }
 
 export interface RootState {
+  [x: string]: any;
   address: any;
   app: AppState;
   autoCompleteRegister?: AutoCompleteRegister;
