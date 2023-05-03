@@ -16,7 +16,7 @@ import { setIsCodeSent } from './handlers/handleSetters';
 import { handleUserData } from './handlers/handleUserData';
 
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../../Store';
+import { RootState } from '../../store';
 import {
   SET_ERROR_LOGIN_PROCESS_MESSAGE,
   SET_IS_CHANGE_PASSWORD,
@@ -26,7 +26,7 @@ import {
   USER_TOKEN,
   setLoginUser,
 } from './user';
-import { SET_NEED_COMPLETE_INFOS } from '../../../types/actionUserTypes';
+import { SET_NEED_COMPLETE_INFOS } from '../../../types/userTypes';
 
 const platform = Device.modelName;
 const os = Device.osName;

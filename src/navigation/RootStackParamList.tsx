@@ -3,6 +3,7 @@ export type RootStackParamList = {
   ProductDetails: undefined;
   Filter: undefined;
   Billing: undefined;
+  Busca: undefined;
   EditProfile: undefined;
   Notifications: undefined;
   Cupons: undefined;

@@ -1,8 +1,7 @@
 import { FC, Key, ReactNode } from 'react';
-import { useDispatch } from 'react-redux';
-import { cupons } from '../../graphql';
+import { cupons as getCupons } from '../../graphql';
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../Store';
+import { RootState } from '../store';
 import { Action } from 'redux';
 
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -12,32 +11,32 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action<string>
 >;
 
-interface Cupon {
+export interface Cupon {
   id: Key;
   title: ReactNode;
   description: ReactNode;
   // Define the properties of the Cupon model
 }
 
-interface CuponsState {
+export interface CuponsState {
   // Define the RootState properties
 }
 
-interface SetCuponsAction {
+export interface SetCuponsAction {
   type: typeof SET_CUPONS;
   payload: Cupon[];
 }
 
-type CuponsActionTypes = SetCuponsAction;
+export type CuponsActionTypes = SetCuponsAction;
 
-const SET_CUPONS = 'SET_CUPONS';
+export const SET_CUPONS = 'SET_CUPONS';
 
-const setCupons = (cupons: Cupon[]): SetCuponsAction => ({
+export const setCupons = (cupons: Cupon[]): SetCuponsAction => ({
   type: SET_CUPONS,
   payload: cupons,
 });
 
-export const handleLoadCupons = (): AppThunk => async (dispatch) => {
+export const handleLoadCupons = (): AppThunk => async (dispatch, getState) => {
   const { cupons } = await getCupons();
   dispatch(setCupons(cupons));
 };

@@ -1,6 +1,6 @@
 import { uploadDocument } from '../../../../graphql';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { UserAction } from '../../../../types/actionUserTypes';
+import { UserAction } from '../../../../types/userTypes';
 import { RootState } from '../../../../types/globals';
 import { API_URI } from '../../../../graphql/client';
 

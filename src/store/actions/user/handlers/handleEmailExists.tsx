@@ -3,7 +3,7 @@ import {
   SetLoginLoading,
   SetErroLoginProcessMessage,
   SetEmailLoginProcess,
-} from '../../../../types/actionUserTypes';
+} from '../../../../types/userTypes';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 

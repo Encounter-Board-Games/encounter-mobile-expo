@@ -1,5 +1,4 @@
 /* eslint-disable indent */
-// actionTypes.ts
 export enum ActionTypes {
   APP_SET_TERMS = 'APP_SET_TERMS',
   APP_SET_CONFIGURATION = 'APP_SET_CONFIGURATION',

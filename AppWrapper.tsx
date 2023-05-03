@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { View } from "react-native";
-import { ThemeProvider } from "styled-components/native";
-import { Provider } from "react-redux";
-import * as Font from "expo-font";
-import { store } from "./src/store/Store";
-import theme from "./src/styles/theme";
-import App from "./App";
-
+import React, { useState, useEffect } from 'react';
+import { View } from 'react-native';
+import { ThemeProvider } from 'styled-components/native';
+import { Provider } from 'react-redux';
+import * as Font from 'expo-font';
+import { store } from './src/store/store';
+import theme from './src/styles/theme';
+import App from './App';
 
 const AppWrapper: React.FC = () => {
   const [already, setAlready] = useState(false);
 
   useEffect(() => {
     Font.loadAsync({
-      Nunito: require("./src/assets/fonts/Nunito-Regular.ttf"),
-      "Nunito-Bold": require("./src/assets/fonts/Nunito-Bold.ttf"),
+      Nunito: require('./src/assets/fonts/Nunito-Regular.ttf'),
+      'Nunito-Bold': require('./src/assets/fonts/Nunito-Bold.ttf'),
     }).then(() => setAlready(true));
   }, []);
 

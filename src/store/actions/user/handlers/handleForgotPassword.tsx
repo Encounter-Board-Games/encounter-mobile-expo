@@ -1,6 +1,6 @@
 import { forgotPassword } from '../../../../graphql';
 import { handleShowNotification } from '../../notification';
-import { UserAction } from '../../../../types/actionUserTypes';
+import { UserAction } from '../../../../types/userTypes';
 import { setLoginLoading } from '../login';
 import { RootState } from '../../../../types/globals';
 import { setIsCodeSent } from './handleSetters';

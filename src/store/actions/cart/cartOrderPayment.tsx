@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../../Store';
+import { RootState } from '../../store';
 import { Action } from 'redux';
 import { setProducts } from '../product';
 import { applyCupon } from '../../../graphql';

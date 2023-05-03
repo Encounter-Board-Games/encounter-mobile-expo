@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import userReducer from './reducers/userReducer';
-import product from './reducers/product';
-import shelves from './reducers/shelves';
-import filters from './reducers/filters';
+import product from './reducers/productReducer';
+import shelves from './reducers/shelvesReducer';
+import filters from './reducers/filtersReducer';
+import appReducer from './reducers/appReducer';
 // import other reducers
 
 const rootReducer = combineReducers({
+  app: appReducer,
   users: userReducer,
   products: product,
   shelves: shelves,

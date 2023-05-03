@@ -1,8 +1,8 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../../store/Store';
+import { RootState } from '../store';
 import Storage from '../../utils/storage';
-import { handleLoadShelves } from './shelves/shelves';
+import { handleLoadShelves } from './shelves';
 import { handleShowNotification } from './notification';
 import { customFilter } from '../../graphql';
 

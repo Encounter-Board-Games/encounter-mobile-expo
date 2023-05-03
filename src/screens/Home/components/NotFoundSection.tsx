@@ -1,46 +1,40 @@
 import React from 'react';
+import { View, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components/native';
-import ButtonComponent from '../../../components/Button/Button';
-import Container from '../../../components/Container';
 // eslint-disable-next-line max-len
 import { handleNotFoundProductSuggestion } from '../../../store/actions/user/handlers/handleNotFound';
+import ButtonComponent from '../../../components/Button/Button';
 import { translation } from '../../../texts';
-import config from '../../../config';
+import { FindOut } from '../HomeStyles';
 import theme from '../../../styles/theme';
 
-const FindOut = styled.View`
-  flex-flow: row;
-  padding-left: ${(props: { theme: { space: { space2: any } } }) =>
-    props.theme.space.space2};
-`;
+interface NotFoundSectionProps {
+  openSuggestion: () => void;
+}
 
-const NotFoundSection: React.FC = () => {
+const NotFoundSection: React.FC<NotFoundSectionProps> = ({
+  openSuggestion,
+}) => {
   const dispatch = useDispatch();
 
-  const openSuggestion = () => {
+  const handleOpenSuggestion = () => {
     dispatch(handleNotFoundProductSuggestion());
   };
 
-  if (!config.notFoundSuggestion) {
-    return null;
-  }
-
   return (
-    <Container
-      title={translation('notFoundProducts.title')}
-      subtitle={translation('notFoundProducts.subtitle')}
-    >
+    <View>
+      <Text>{translation('notFoundProducts.title')}</Text>
+      <Text>{translation('notFoundProducts.subtitle')}</Text>
       <FindOut>
         <ButtonComponent
-          onPress={openSuggestion}
+          onPress={handleOpenSuggestion}
           type="CallToAction-Primary-Color"
           theme={theme}
         >
           {translation('notFoundProducts.buttonText')}
         </ButtonComponent>
       </FindOut>
-    </Container>
+    </View>
   );
 };
 

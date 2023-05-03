@@ -1,5 +1,4 @@
 /* eslint-disable indent */
-// actionTypes.ts
 export enum ActionTypes {
   SET_FILTERING_TUTORIAL = 'SET_FILTERING_TUTORIAL',
   SET_SELECTS_DEFAULT = 'SET_SELECTS_DEFAULT',
@@ -76,7 +75,7 @@ export default function filters(
             ? [action.value!]
             : state.selects![action.filterType!].includes(action.value!)
             ? state.selects![action.filterType!].filter(
-                (c) => c !== action.value
+                (c: any) => c !== action.value
               )
             : state.selects![action.filterType!].concat([action.value!]),
         },

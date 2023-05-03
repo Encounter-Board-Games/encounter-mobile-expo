@@ -11,7 +11,7 @@ import InformationBox from '../../components/InformationBox';
 import ProgressBar from '../../components/ProgressBar';
 import { handleLoadCupons } from '../../store/actions/cupons';
 import { handleSetSelects } from '../../store/actions/filters/handleSetFilters';
-import { RootState } from '../../store/Store';
+import { RootState } from '../../store/store';
 import { View } from 'react-native';
 import { translation } from '../../texts';
 import { useNavigation } from '@react-navigation/native';

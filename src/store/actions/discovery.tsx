@@ -1,4 +1,3 @@
-import { Dispatch } from 'redux';
 import { handleSetSelects } from './filters/handleSetFilters';
 import { customFilter } from '../../graphql';
 
@@ -12,121 +11,87 @@ export const SET_DISCOVERY_STEPS = 'SET_DISCOVERY_STEPS';
 
 export interface SetSelectFilterToggleDiscoveryAction {
   type: typeof SET_SELECT_FILTER_TOGGLE_DISCOVERY;
-  filterType: string;
-  value: boolean;
+  filterType: any;
+  value: any;
 }
 
-export interface SetFiltersDiscoveryAction {
+export const setSelectFilterToggleDiscovery = (
+  filterType: any,
+  value: any
+): SetSelectFilterToggleDiscoveryAction => ({
+  type: SET_SELECT_FILTER_TOGGLE_DISCOVERY,
+  filterType,
+  value,
+});
+
+export interface SetFiltersAction {
   type: typeof SET_FILTERS_DISCOVERY;
-  filters: Record<string, unknown>;
+  filters: any;
 }
 
-export interface StartDiscoveryAction {
-  type: typeof START_DISCOVERY;
-}
-
-export interface SetDiscoveryStepsAction {
-  type: typeof SET_DISCOVERY_STEPS;
-  steps: Record<string, unknown>;
-}
-
-export interface OpenDiscoveryAction {
-  type: typeof OPEN_DISCOVERY;
-}
-
-export interface CloseDiscoveryAction {
-  type: typeof CLOSE_DISCOVERY;
-}
-
-export type DiscoveryActionTypes =
-  | SetSelectFilterToggleDiscoveryAction
-  | SetFiltersDiscoveryAction
-  | StartDiscoveryAction
-  | SetDiscoveryStepsAction
-  | OpenDiscoveryAction
-  | CloseDiscoveryAction;
-
-export function setSelectFilterToggleDiscovery(
-  filterType: string,
-  value: boolean
-): SetSelectFilterToggleDiscoveryAction {
-  return {
-    type: SET_SELECT_FILTER_TOGGLE_DISCOVERY,
-    filterType,
-    value,
-  };
-}
-
-function setFilters(
-  filters: Record<string, unknown>
-): SetFiltersDiscoveryAction {
+export function setFilters(filters: any): SetFiltersAction {
   return {
     type: SET_FILTERS_DISCOVERY,
     filters,
   };
 }
 
-export function startDiscovery(): StartDiscoveryAction {
-  return {
-    type: START_DISCOVERY,
-  };
+export interface StartDiscoveryAction {
+  type: typeof START_DISCOVERY;
 }
 
-export function setDiscoverySteps(
-  steps: Record<string, unknown>
-): SetDiscoveryStepsAction {
-  return {
-    type: SET_DISCOVERY_STEPS,
-    steps,
-  };
+export const startDiscovery = (): StartDiscoveryAction => ({
+  type: START_DISCOVERY,
+});
+
+export interface SetDiscoveryStepsAction {
+  type: typeof SET_DISCOVERY_STEPS;
+  steps: any;
 }
 
-function openDiscovery(): OpenDiscoveryAction {
+export const setDiscoverySteps = (steps: any): SetDiscoveryStepsAction => ({
+  type: SET_DISCOVERY_STEPS,
+  steps,
+});
+
+export interface OpenDiscoveryAction {
+  type: typeof OPEN_DISCOVERY;
+}
+
+export function openDiscovery(): OpenDiscoveryAction {
   return {
     type: OPEN_DISCOVERY,
   };
 }
 
-export function closeDiscovery(): CloseDiscoveryAction {
-  return {
-    type: CLOSE_DISCOVERY,
-  };
+export interface CloseDiscoveryAction {
+  type: typeof CLOSE_DISCOVERY;
 }
 
-let discoveryResolve:
-  | ((value?: boolean | PromiseLike<boolean>) => void)
-  | undefined;
+export const closeDiscovery = (): CloseDiscoveryAction => ({
+  type: CLOSE_DISCOVERY,
+});
 
-export function handleOpenDiscovery() {
-  return async (dispatch: Dispatch<DiscoveryActionTypes>) => {
-    dispatch(openDiscovery());
-    dispatch(handleLoadDiscovery());
+let discoveryResolve: any;
 
-    return new Promise((r) => {
-      discoveryResolve = r;
-    });
-  };
-}
+export const handleOpenDiscovery = () => async (dispatch: any) => {
+  dispatch(openDiscovery());
+  dispatch(handleLoadDiscovery());
 
-export function handleLoadDiscovery() {
-  return async (dispatch: Dispatch<DiscoveryActionTypes>) => {
-    const steps = await customFilter('discovery');
-    dispatch(setDiscoverySteps(steps));
-  };
-}
+  return new Promise((r) => (discoveryResolve = r));
+};
 
-export function handleFinishDiscovery() {
-  return async (
-    dispatch: Dispatch<DiscoveryActionTypes>,
-    getState: () => { discovery: { filters: Record<string, unknown> } }
-  ) => {
+export const handleLoadDiscovery = () => async (dispatch: any) => {
+  const steps = await customFilter('discovery');
+  dispatch(setDiscoverySteps(steps));
+};
+
+export const handleFinishDiscovery =
+  () => async (dispatch: any, getState: any) => {
     const { discovery } = getState();
 
     dispatch(handleSetSelects(discovery.filters));
-
-    // await Storage.setItem(storageName, discovery.filters)
     dispatch(closeDiscovery());
     dispatch(setFilters({}));
     if (discoveryResolve) discoveryResolve(true);
   };
-}

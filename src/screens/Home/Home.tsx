@@ -7,7 +7,7 @@ import Banner from './components/Banner';
 import Shelves from './components/Shelves';
 import DiscoverySection from './components/DiscoverySection';
 import NotFoundSection from './components/NotFoundSection';
-import { RootState } from '../../store/Store';
+import { RootState } from '../../store/store';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -31,7 +31,11 @@ const Home = () => {
       <Banner />
       <Shelves />
       <DiscoverySection />
-      <NotFoundSection />
+      <NotFoundSection
+        openSuggestion={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
     </Screen>
   );
 };

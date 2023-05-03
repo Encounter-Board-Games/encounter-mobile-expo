@@ -7,7 +7,7 @@ import { View, TouchableWithoutFeedback, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { translation } from '../../texts';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import handleCloseTutorial from '../../store/reducers/info';
+import handleCloseTutorial from '../../store/reducers/infoReducer';
 import { TutorialView, Content, Arrow, ContentArea } from './TutorialStyles';
 
 interface TutorialProps {}

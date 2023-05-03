@@ -8,9 +8,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import InformationBox from '../../components/InformationBox';
 import { handleReopenOnboarding } from '../../store/actions/onboarding';
 import config from '../../config';
-import { RootState } from '../../store/Store';
+import { RootState } from '../../store/store';
 import { Container } from './UserStyles';
-import { AppDispatch } from '../../store/Store';
+import { AppDispatch } from '../../store/store';
 
 type CustomNavigationProp = NavigationScreenProp<NavigationState, {}>;
 

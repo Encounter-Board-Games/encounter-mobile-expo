@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { about as getAbout, updateVersion } from '../../graphql';
 import storage from '../../utils/storage';
 import pkg from '../../../package.json';

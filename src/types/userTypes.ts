@@ -283,6 +283,28 @@ export interface UserRememberProducts {
   [key: string]: boolean;
 }
 
+export interface UserState {
+  app: {
+    isLoggedIn: boolean;
+  };
+  login: {
+    email: string;
+    isRegister: boolean;
+    isLogin: boolean;
+    errorMessage: string;
+    loading: boolean;
+    isCodeSent: boolean;
+    isForgot: boolean;
+    changePassword: boolean;
+    code: string;
+  };
+  userInfo: {
+    favorites: any[];
+    address: any[];
+    rememberProductKeys: any[];
+  };
+}
+
 export type UserAction =
   | AddUserFavoriteAction
   | AddUserRememberProductsAction

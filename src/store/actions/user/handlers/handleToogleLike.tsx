@@ -1,7 +1,7 @@
 import { openPopupModal } from '../../info';
 import { toggleFavorite } from '../../../../graphql';
 import { handleShowNotification } from '../../notification';
-import { UserAction } from '../../../../types/actionUserTypes';
+import { UserAction } from '../../../../types/userTypes';
 import { RootState } from '../../../../types/globals';
 import { addUserFavorite, removeUserFavorite } from '../user';
 

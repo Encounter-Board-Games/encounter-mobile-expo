@@ -88,7 +88,7 @@ export function handleEvaluateExperience() {
     return await new Promise<string>((resolve) => {
       dispatch(
         openPopupModal('TEXT_MODAL', {
-          callBack: (text) => {
+          callBack: (text: string | PromiseLike<string>) => {
             if (text)
               Linking.openURL(
                 'whatsapp://send?phone=' + phone + '&text=' + text

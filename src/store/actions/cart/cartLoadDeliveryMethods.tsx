@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { deliveryOptions } from '../../../graphql';
 import { Dispatch } from 'redux';
-import { RootState } from '../../Store';
+import { RootState } from '../../store';
 import { LoadDeliveryMethodsAction } from '../../../types/actionCartTypes';
 
 export const handleLoadDeliveryMethods =

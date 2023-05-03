@@ -1,7 +1,7 @@
 import { InfoState } from '../screens/Info/components/TextModalTypes';
-import { ProductState } from '../store/reducers/product';
-import { ShelvesState } from '../store/reducers/shelves';
-import { LoginState, UserRememberProducts } from './actionUserTypes';
+import { ProductState } from '../store/reducers/productReducer';
+import { ShelvesState } from '../store/reducers/shelvesReducer';
+import { LoginState, UserRememberProducts } from './userTypes';
 
 export interface AutoCompleteRegister {
   name?: string;

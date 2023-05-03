@@ -29,7 +29,7 @@ import config from '../../config';
 import Icons from '../../components/IconsComponent';
 
 import { handleLoadDeliveryMethods } from '../../store/actions/cart/cartLoadDeliveryMethods';
-import { RootState } from '../../types/actionUserTypes';
+import { RootState } from '../../types/userTypes';
 import {
   Container,
   CarrosselContainer,

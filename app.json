@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "encounter",
-    "slug": "Encounter",
+    "slug": "encounter",
     "platforms": [
       "ios",
       "android",
@@ -21,9 +21,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "facebookScheme": "fb707085366783241",
-    "facebookAppId": "707085366783241",
-    "facebookDisplayName": "Encounter",
     "ios": {
       "bundleIdentifier": "br.com.encounter.encounter",
       "buildNumber": "1.0.27",
@@ -33,10 +30,7 @@
         "NSCameraUsageDescription": "Nós precisamos acessar sua camera para que você tire foto com seu documento."
       },
       "config": {
-        "googleMapsApiKey": "AIzaSyAOwDY2YDjgwwy2m8p2fqjpaPEnhu-d1Uc",
-        "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.907241676885-mm3oh94rcke1a5nfm8ra4jtls0comm6a"
-        }
+        "googleMapsApiKey": "AIzaSyAOwDY2YDjgwwy2m8p2fqjpaPEnhu-d1Uc"
       }
     },
     "android": {
@@ -50,10 +44,6 @@
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyA8Gjfv8GrqHAwhAIFLq7N1RdYDR2ArkeM"
-        },
-        "googleSignIn": {
-          "apiKey": "AIzaSyA8Gjfv8GrqHAwhAIFLq7N1RdYDR2ArkeM",
-          "certificateHash": "4BFF995238A7C1B43ED6F2A69844667925784C1D"
         }
       }
     },
