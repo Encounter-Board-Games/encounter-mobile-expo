@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar, Platform } from 'react-native';
-import { Image } from 'react-native-animatable';
+import { Image } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import MainNavigation from './src/navigation/MainTabNavigator';
@@ -29,7 +29,6 @@ const App: React.FC = React.memo(() => {
         Permissions.NOTIFICATIONS
       );
       let finalStatus = existingStatus;
-
       if (existingStatus !== Permissions.PermissionStatus.GRANTED) {
         const { status } = await Permissions.askAsync(
           Permissions.NOTIFICATIONS

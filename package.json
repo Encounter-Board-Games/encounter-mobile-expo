@@ -1,6 +1,6 @@
 {
   "name": "encounter",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
     "start": "expo start",
@@ -10,6 +10,7 @@
     "lint": "npx eslint src"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.14",
     "@apollo/server": "^4.5.0",
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^18.0.2",
@@ -46,6 +47,7 @@
     "expo-status-bar": "~1.4.4",
     "expo-web-browser": "~12.1.1",
     "graphql": "^16.6.0",
+    "install-peers": "^1.0.4",
     "lru-cache": "^8.0.4",
     "openai": "^3.2.1",
     "prettier": "^2.8.7",
