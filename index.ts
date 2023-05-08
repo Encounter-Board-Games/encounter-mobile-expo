@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
 import { registerRootComponent } from 'expo';
-import AppWrapper from './AppWrapper';
+import App from './AppWrapper';
 
-registerRootComponent(AppWrapper);
+registerRootComponent(App);

@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
   padding: ${(props: { theme: { space: { space2: any } } }) =>

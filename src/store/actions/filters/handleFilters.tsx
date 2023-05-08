@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import storage from '../../../utils/storage';
-import { getFilters, getFilter } from '../../../graphql';
+import { useFilters, useFilter } from '../../../graphql/functions/loginClient';
 import React from 'react';
 import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
@@ -75,7 +75,7 @@ export function ClearButton(props: IClearButtonProps) {
 
   return (
     <div>
-      <button onClick={() => handleClick()}>Clear</button>
+      <button onPress={() => handleClick()}>Clear</button>
     </div>
   );
 }
@@ -120,7 +120,7 @@ export function handleLoadFilters(): any {
   return async (dispatch: any, getState: any) => {
     const { filters: filtersState }: IState = getState();
     if (filtersState.filters) return;
-    const { filters, selected }: IFilter = await getFilters();
+    const { filters, selected }: IFilter = await useFilters();
     const recentTexts = await storage.getItem('RECENT_TEXTS');
     const selectedFiltered = Object.keys(selected)
       .filter((key) => Array.isArray(selected[key]))
@@ -139,7 +139,7 @@ export function handleLoadFilters(): any {
 
 export function handleLoadAndOpenFilter(key: string): any {
   return async (dispatch: any) => {
-    const filter = await getFilter(key);
+    const filter = await useFilter(key);
     dispatch(handleSetSelects(filter));
   };
 }

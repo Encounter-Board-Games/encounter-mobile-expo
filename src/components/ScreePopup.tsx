@@ -1,14 +1,17 @@
 import React, { FC } from 'react';
-import { ScrollView, KeyboardAvoidingView, View, Platform } from 'react-native';
+import {
+  ScrollView,
+  KeyboardAvoidingView,
+  View,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { H3, Subtitle1 } from './Typography';
 import IconComponent from './IconsComponent';
-import {
-  SafeAreaView,
-  Header,
-  CloseButton,
-  ToolItem,
-} from './ScreePopupStyles';
+import styled, { ThemeProvider } from 'styled-components/native';
+import { CloseButton, Header, ToolItem } from './ScreePopupStyles';
 
 interface Props {
   theme: any;
@@ -18,10 +21,14 @@ interface Props {
   onToolPress?: () => void;
   noScroll?: boolean;
   footer?: () => JSX.Element;
-  children: any;
+  children: JSX.Element | JSX.Element[];
 }
 
-const ScreenPopUp: FC<Props> = ({
+const SafeArea = styled.SafeAreaView`
+  flex: 1;
+`;
+
+const ScreePopUp: FC<Props> = ({
   theme,
   hideHeader = false,
   title,
@@ -35,63 +42,60 @@ const ScreenPopUp: FC<Props> = ({
 
   const goBack = () => {
     navigation.goBack();
-    onBack?.();
-  };
-
-  const onBack = () => {
-    return true; // placeholder, implement as needed
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      style={{
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100%',
-      }}
-    >
-      <SafeAreaView>
-        {!hideHeader && (
-          <Header noPadding={!title} withBorder={!!tooltext}>
-            <CloseButton onPress={goBack}>
-              <IconComponent
-                name="ios-arrow-round-back"
-                color={theme.colors.darkColor}
-                size={32}
-              />
-            </CloseButton>
-            {typeof title === 'string' || title instanceof String ? (
-              <H3>{title}</H3>
-            ) : (
-              title
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={{
+          flex: 1,
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+        }}
+      >
+        <ThemeProvider theme={theme}>
+          <SafeArea>
+            {!hideHeader && (
+              <Header noPadding={!title} withBorder={!!tooltext}>
+                <CloseButton onPress={goBack}>
+                  <IconComponent
+                    name="ios-arrow-round-back"
+                    color={theme.darkColor}
+                    size={32}
+                  />
+                </CloseButton>
+                {title && typeof title === 'string' ? <H3>{title}</H3> : title}
+                {tooltext && typeof tooltext === 'string' ? (
+                  <ToolItem onPress={onToolPress}>
+                    <Subtitle1 color={theme.primaryDarkColor}>
+                      {tooltext}
+                    </Subtitle1>
+                  </ToolItem>
+                ) : (
+                  tooltext
+                )}
+              </Header>
             )}
-            {typeof tooltext === 'string' || tooltext instanceof String ? (
-              <ToolItem onPress={onToolPress}>
-                <Subtitle1 color={theme.colors.primaryDarkColor}>
-                  {tooltext}
-                </Subtitle1>
-              </ToolItem>
-            ) : (
-              tooltext
-            )}
-          </Header>
-        )}
-        <View style={{ flex: 1 }}>
-          {noScroll ? (
-            children
-          ) : (
-            <ScrollView style={{ flex: 1, minHeight: '80%', minWidth: '100%' }}>
-              {children}
-            </ScrollView>
-          )}
-        </View>
-        {footer && footer()}
-      </SafeAreaView>
-    </KeyboardAvoidingView>
+            <View style={{ flex: 1 }}>
+              {noScroll ? (
+                children
+              ) : (
+                <ScrollView
+                  style={{ flex: 1, minHeight: '80%', minWidth: '100%' }}
+                >
+                  {children}
+                </ScrollView>
+              )}
+            </View>
+            {footer && footer()}
+          </SafeArea>
+        </ThemeProvider>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 };
 
-export default ScreenPopUp;
+export default ScreePopUp;

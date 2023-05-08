@@ -1,5 +1,7 @@
 import { handleSetSelects } from './filters/handleSetFilters';
-import { customFilter } from '../../graphql';
+import { Dispatch } from 'react';
+import { AppActions } from '../../screens/home/components/DiscoverySection';
+import { useCustomFilter } from '../../graphql';
 
 export const SET_SELECT_FILTER_TOGGLE_DISCOVERY =
   'SET_SELECT_FILTER_TOGGLE_DISCOVERY';
@@ -74,15 +76,17 @@ export const closeDiscovery = (): CloseDiscoveryAction => ({
 
 let discoveryResolve: any;
 
-export const handleOpenDiscovery = () => async (dispatch: any) => {
-  dispatch(openDiscovery());
-  dispatch(handleLoadDiscovery());
+export const handleOpenDiscovery = (): AppActions => {
+  return (dispatch: Dispatch<AppActions>): Promise<AppActions> => {
+    dispatch(openDiscovery());
+    dispatch(handleLoadDiscovery());
 
-  return new Promise((r) => (discoveryResolve = r));
+    return new Promise((r) => (discoveryResolve = r));
+  };
 };
 
 export const handleLoadDiscovery = () => async (dispatch: any) => {
-  const steps = await customFilter('discovery');
+  const steps = await useCustomFilter('discovery');
   dispatch(setDiscoverySteps(steps));
 };
 

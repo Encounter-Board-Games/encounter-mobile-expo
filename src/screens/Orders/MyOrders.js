@@ -4,7 +4,7 @@ import Tab from '../../components/Tab';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import OrdersList from './components/OrdersList';
-import NotLoggedBox from '../User/components/NotLoggedBox';
+import NotLoggedBox from '../user/components/NotLoggedBox';
 import { translation } from '../../texts';
 
 const Container = styled.View`

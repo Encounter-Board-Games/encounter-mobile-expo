@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { H3 } from '../../../components/Typography';
 import { closePopupModal } from '../../../store/actions/info';
 import { Linking } from 'react-native';
-import theme from '../../../styles/theme';
+import theme from '../../../theme/theme';
 
 interface PopupData {
   text?: string;

@@ -30,7 +30,7 @@ export const Radio = styled.button<RadioButtonProps>`
     ${(props) =>
       props.isSelected
         ? props.theme.colors.primaryColor
-        : props.theme.colors.secondColor};
+        : props.theme.colors.secondaryColor};
   background-color: ${(props) =>
     props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
 `;
@@ -56,7 +56,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
       isSelected={isSelected}
       isFlex={isFlex}
       isLast={isLast}
-      onClick={onPress}
+      onPress={onPress}
     >
       <Circle isSelected={isSelected} />
       <Text isSelected={isSelected}>{children}</Text>

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import styled, { withTheme } from 'styled-components/native';
 import ScreePopup from '../../components/ScreePopup';
-import NotLoggedBox from '../User/components/NotLoggedBox';
+import NotLoggedBox from '../user/components/NotLoggedBox';
 import { handleCloseSetCartChosePayment } from '../../store/actions/shared';
 import MenuOption from '../../components/MenuOption';
 import ButtonComponent from '../../components/Button/Button';

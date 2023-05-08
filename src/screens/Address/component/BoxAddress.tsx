@@ -6,7 +6,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import setAddressSelected from '../../../store/actions/address/address';
 import { RootState } from '../../../types/globals';
 import { AddressBox, AddressBoxInfo } from './BoxAddressStyles';
-import theme from '../../../styles/theme';
+import theme from '../../../theme/theme';
 
 interface Props {
   addressKey: string;

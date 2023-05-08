@@ -1,5 +1,5 @@
 import { openCart } from '../info';
-import { getLastPaymentId } from '../../../graphql';
+import { useLastPaymentId } from '../../../graphql/functions/paymentClient';
 import {
   AddProductAction,
   SetRenewAction,
@@ -105,7 +105,7 @@ export function handleOpenCart(show = true) {
     }
 
     if (show) {
-      const paymentId = await getLastPaymentId();
+      const paymentId = await useLastPaymentId();
       if (paymentId) dispatch(handleSelectPaymentMethod(paymentId));
     }
     dispatch(openCart(show));

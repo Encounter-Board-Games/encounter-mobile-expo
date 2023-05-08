@@ -1,31 +1,32 @@
+/* eslint-disable indent */
 import React from 'react';
 import styled from 'styled-components/native';
+import theme from '../theme/theme';
 
-interface BadgeContainerProps {
+export interface BadgeContainerProps {
   isCircle?: boolean;
   isSelected?: boolean;
 }
 
 const BadgeContainer = styled.View<BadgeContainerProps>`
-  margin-top: ${(props) => props.theme.space.space0};
-  margin-right: ${(props) => props.theme.space.space0};
-  padding: ${(props) => props.theme.space.space0}
-    ${(props) => props.theme.space.space1};
+  margin-top: ${(props) => theme.space.space0};
+  margin-right: ${(props) => theme.space.space0};
+  padding: ${(props) => theme.space.space0} ${(props) => theme.space.space1};
   border-radius: ${(props) =>
-    props.isCircle ? '100px' : props.theme.borderRadius.tag};
+    props.isCircle ? '100px' : theme.borderRadius.tag};
   border: 1.5px solid
     ${(props) =>
       props.isSelected
-        ? props.theme.colors.primaryColor
-        : props.theme.colors.secondColor};
+        ? theme.colors.primaryColor
+        : theme.colors.secondaryColor};
   background-color: ${(props) =>
-    props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
+    props.isSelected ? theme.colors.primaryLightColor : 'transparent'};
 `;
 
 const BadgeText = styled.Text`
-  font-size: ${(props) => props.theme.fontSizes.subtitle3}px;
+  font-size: ${(props) => theme.fontSizes.subtitle3}px;
   font-family: Nunito;
-  color: ${(props) => props.theme.colors.primaryDarkColor};
+  color: ${theme.colors.primaryDarkColor};
 `;
 
 interface BadgeProps extends BadgeContainerProps {

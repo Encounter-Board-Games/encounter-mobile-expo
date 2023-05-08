@@ -4,22 +4,22 @@ import { createStackNavigator } from '@react-navigation/stack';
 import styled from 'styled-components/native';
 import HomeStackScreen from './HomeStackScreen';
 import { RootStackParamList } from './RootStackParamList';
-import CurrentLocation from '../screens/Address/CurrentLocation';
-import AddAddress from '../screens/Address/component/AddAddress';
-import CuponsScreen from '../screens/Cupons/Cupons';
-import BillingScreen from '../screens/Orders/BillingScreen';
-import ProductDetails from '../screens/Product/ProductDetails';
-import Filter from '../screens/Search/Filter';
-import AboutScreen from '../screens/Settings/About';
-import SelfUpload from '../screens/User/SelfUpload';
-import EditProfileScreen from '../screens/User/User';
-import UserSettingsScreen from '../screens/User/UserSetting';
+import CurrentLocation from '../screens/address/CurrentLocation';
+import AddAddress from '../screens/address/component/AddAddress';
+import CuponsScreen from '../screens/cupons/Cupons';
+import BillingScreen from '../screens/orders/BillingScreen';
+import ProductDetails from '../screens/product/ProductDetails';
+import Filter from '../screens/search/Filter';
+import AboutScreen from '../screens/settings/About';
+import SelfUpload from '../screens/user/SelfUpload';
+import EditProfileScreen from '../screens/user/User';
+import UserSettingsScreen from '../screens/user/UserSetting';
 // eslint-disable-next-line max-len
-import NotificationsListScreen from '../screens/Notifications/NotificationsList';
-import AddressScreen from '../screens/Address/Address';
-import PaymentScreen from '../screens/Payment/Payment';
-import CreatePaymentScreen from '../screens/Payment/CreatePayment';
-import UserScreen from '../screens/User/User';
+import NotificationsListScreen from '../screens/notifications/NotificationsList';
+import AddressScreen from '../screens/address/Address';
+import PaymentScreen from '../screens/payment/Payment';
+import CreatePaymentScreen from '../screens/payment/CreatePayment';
+import UserScreen from '../screens/user/User';
 
 const SafeAreaView = styled.SafeAreaView`
   flex: 1;

@@ -6,7 +6,7 @@ import ScreenPopup from '../../components/ScreenPopup';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import MenuOption from '../../components/MenuOption';
 import BoxAddress from './component/BoxAddress';
-import NotLoggedBox from '../User/components/NotLoggedBox';
+import NotLoggedBox from '../user/components/NotLoggedBox';
 import { Subtitle2 } from '../../components/Typography';
 import {
   handleSetCurrentLocation,

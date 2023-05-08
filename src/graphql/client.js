@@ -3,7 +3,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
 import { HttpLink } from 'apollo-link-http';
 import storage from '../utils/storage';
-import config from '../../config';
+import config from '../config';
 import { onError } from 'apollo-link-error';
 
 export const API_URI = config.API_URI;

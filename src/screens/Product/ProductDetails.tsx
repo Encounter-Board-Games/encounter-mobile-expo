@@ -24,7 +24,7 @@ import { Space } from '../../components/Space';
 import { handleToggleLike } from '../../store/actions/user/handlers/handleToogleLike';
 import { handleRememberProduct } from '../../store/actions/user/handlers/handleRememberProducts';
 import { useNavigation } from '@react-navigation/native';
-import { handleOpenEvaluationProduct } from '../..//store/actions/product';
+import { handleOpenEvaluationProduct } from '../../store/actions/product';
 import config from '../../config';
 import Icons from '../../components/IconsComponent';
 

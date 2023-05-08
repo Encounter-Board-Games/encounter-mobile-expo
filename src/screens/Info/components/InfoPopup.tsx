@@ -7,7 +7,7 @@ import { Button } from '../../../components/Input';
 import { H3, H4 } from '../../../components/Typography';
 import { RootState } from '../../../store/reducers';
 import { closePopupModal } from '../../../store/actions/info';
-import theme from '../../../styles/theme';
+import theme from '../../../theme/theme';
 
 interface PopupData {
   title: string;

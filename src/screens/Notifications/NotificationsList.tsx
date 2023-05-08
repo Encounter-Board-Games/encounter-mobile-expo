@@ -15,7 +15,7 @@ import { H3, Subtitle2 } from '../../components/Typography';
 import { handleOpenNotification } from '../../store/actions/shared';
 // eslint-disable-next-line max-len
 import { handleLoadNotifications } from '../../store/actions/user/notifications';
-import NotLoggedBox from '../User/components/NotLoggedBox';
+import NotLoggedBox from '../user/components/NotLoggedBox';
 import { NotificationBody, Hr, Container } from './NotificationsListStyles';
 import { NotificationType } from '../../types/NotificationsTypes';
 

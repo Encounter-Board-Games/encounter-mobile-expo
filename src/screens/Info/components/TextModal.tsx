@@ -6,7 +6,7 @@ import { H4, H3 } from '../../../components/Typography';
 import { closePopupModal } from '../../../store/actions/info';
 import { Keyboard, View } from 'react-native';
 import { Container, TextInput, Line, Btn } from './TextModalStyles';
-import theme from '../../../styles/theme';
+import theme from '../../../theme/theme';
 
 interface PopupData {
   callBack?: (text: string) => void;

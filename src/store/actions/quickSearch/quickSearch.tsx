@@ -1,19 +1,25 @@
+/* eslint-disable indent */
+/* eslint-disable prettier/prettier */
 import { ThunkAction } from 'redux-thunk';
-import { Action } from 'redux';
-import { quickSearchs, answerQuestion } from '../../../graphql';
+import { Action, Dispatch } from 'redux';
+import { useQuickSearchs, useAnswerQuestion } from '../../../graphql/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { AppState } from 'react-native/types';
+
 import {
   QuickSearch,
   SetQuickSearchsAction,
   RemoveQuickSearchsAction,
   REMOVE_QUICK_SEARCHS,
   SET_QUICK_SEARCHS,
+  AppState,
 } from './quickSearchTypes';
 
 interface AppStateWithQuickSearch extends AppState {
   quickSearchs: QuickSearch[];
+  user: {
+    isLogged: boolean;
+  };
 }
 
 function setQuickSearchs(quickSearchs: QuickSearch[]): SetQuickSearchsAction {
@@ -32,53 +38,54 @@ function removeQuickSearchs(key: string): RemoveQuickSearchsAction {
 
 export function handleSetQuickSearchs(): ThunkAction<
   void,
-  AppState,
+  AppStateWithQuickSearch,
   null,
   Action<string>
-  > {
+> {
   return async (dispatch, getState) => {
     const { user } = getState();
 
     if (!user.isLogged) return;
 
-    const searchs = await quickSearchs();
+    const searchs = await useQuickSearchs();
 
     if (searchs && searchs.length > 0) dispatch(setQuickSearchs(searchs));
   };
 }
 
 export function handleAnswer(key: string, value: string) {
-  return (dispatch: any) => {
-    dispatch(removeQuickSearchs(key));
-    answerQuestion(key, value);
+  return (dispatch: Dispatch) => {
+    if (key) {
+      dispatch(removeQuickSearchs(key));
+      useAnswerQuestion()(key, value);
+    }
   };
 }
 
 function QuickSearchComponent() {
   const dispatch = useDispatch();
-  const { quickSearchs } = useSelector(
+  const quickSearchs = useSelector(
     (state: AppStateWithQuickSearch) => state.quickSearchs
   );
 
   useEffect(() => {
-    dispatch(handleSetQuickSearchs());
+    dispatch(handleSetQuickSearchs() as any);
   }, [dispatch]);
 
-  function handleAnswerClick(key: string, value: string) {
-    dispatch(handleAnswer(key, value));
-  }
-
   return (
-    <div>
+    <>
       {quickSearchs.map((search) => (
-        <div key={search.key}>
-          <span>{search.key}</span>
-          <button onClick={() => handleAnswerClick(search.key, search.value)}>
-            Answer
-          </button>
-        </div>
+        <button
+          key={search.key || ''}
+          onClick={() =>
+            search.key &&
+            dispatch(handleAnswer(search.key, search.value) as any)
+          }
+        >
+          {search.children}
+        </button>
       ))}
-    </div>
+    </>
   );
 }
 

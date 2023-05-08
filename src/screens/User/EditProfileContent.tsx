@@ -27,7 +27,7 @@ import {
 import { Subtitle2, Subtitle3 } from '../../components/Typography';
 import { Space, Bottom } from '../../components/Space';
 import Input from '../../components/Input';
-import { ButtonComponent } from './../../components/Button/ButtonStyles';
+import { ButtonComponent } from '../../components/Button/ButtonStyles';
 
 export const EditProfileContent: React.FC<Props> = ({ navigation }) => {
   const dispatch = useDispatch();

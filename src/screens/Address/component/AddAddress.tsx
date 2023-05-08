@@ -23,7 +23,7 @@ import { RootState } from '../../../types/globals';
 import { Theme } from '../../../styles/themeTypes';
 import { AddressState, CurrentLocation } from '../AddressTypes';
 import { ButtonComponent } from '../../../components/Button/ButtonStyles';
-import { CustomInput } from '../../User/EditProfileContentStyles';
+import { CustomInput } from '../../user/EditProfileContentStyles';
 import { Dispatch } from 'redux';
 
 export interface Props {

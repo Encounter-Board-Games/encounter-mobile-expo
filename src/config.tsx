@@ -33,13 +33,14 @@ const encounterSettings = {
   },
 
   theme: {
+    fontSize: undefined,
     colors: {
       primaryColor: '#c8e8e0',
       primaryDarkColor: '#0e9577',
       primaryLightColor: '#ebf7f4',
-      secondColor: '#BCBEC0',
-      secondDarkColor: '#6D6E71',
-      secondLightColor: '#E6E7E8',
+      secondaryColor: '#BCBEC0',
+      secondaryDarkColor: '#6D6E71',
+      secondaryLightColor: '#E6E7E8',
 
       complementColor: '#0d3c54',
 

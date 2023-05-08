@@ -1,4 +1,9 @@
+import { ReactNode } from 'react';
+
 export interface QuickSearch {
+  key: string | null | undefined;
+  value: string;
+  children: ReactNode;
   id: string;
   quickSearchs: string[];
 }

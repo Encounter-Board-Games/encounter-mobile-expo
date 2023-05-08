@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery, FetchResult } from '@apollo/client';
 import { getLastPaymentIdQuery } from '../queries/cart';
 import {
   paymentMethodsQuery,
@@ -33,10 +33,9 @@ export function useCreatePaymentMethod() {
         card_cvv,
         card_document,
       },
-    }).then(
-      (resp: { data: { createPaymentMethod: any } }) =>
-        resp.data.createPaymentMethod
-    );
+    }).then((resp: FetchResult<{ createPaymentMethod: any }>) => {
+      return resp.data?.createPaymentMethod;
+    });
   };
 }
 
@@ -44,8 +43,8 @@ export function useRemovePaymentMethod() {
   const [removePaymentMethod] = useMutation(removePaymentMethodMutation);
   return (key: string) => {
     return removePaymentMethod({ variables: { key } }).then(
-      (resp: { data: { removePaymentMethod: any } }) =>
-        resp.data.removePaymentMethod
+      (resp: FetchResult<{ removePaymentMethod: any }>) =>
+        resp.data?.removePaymentMethod
     );
   };
 }

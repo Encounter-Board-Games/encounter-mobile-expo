@@ -1,8 +1,8 @@
 import React from 'react';
-import styled, { withTheme } from 'styled-components/native';
-import { translation } from '../texts';
+import styled from 'styled-components/native';
 import Icons from '../components/IconsComponent';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { theme } from '../theme/theme';
 
 interface IIconProps {
   name: string;
@@ -16,7 +16,7 @@ const Icon: React.FC<IIconProps> = ({ name, color, size = 16 }) => (
 
 const TabNav = styled.View`
   height: 56px;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.lightColor};
   width: 100%;
   flex-flow: row;
   elevation: 1;
@@ -26,7 +26,7 @@ const Text = styled.Text<{ isSelected?: boolean }>`
   font-size: 13px;
   font-family: 'Nunito-Bold';
   color: ${({ theme, isSelected }) =>
-    isSelected ? theme.colors.text : '#414042'};
+    isSelected ? theme.colors.darkColor : '#414042'};
 `;
 
 const NavItem = styled.TouchableOpacity`
@@ -39,7 +39,7 @@ const NavItem = styled.TouchableOpacity`
 const icons: Record<string, string> = {
   Início: 'home',
   Busca: 'magnifier',
-  [translation('menu.orders')]: 'handbag',
+  'Meus pedidos': 'handbag',
   Perfil: 'user',
 };
 
@@ -51,7 +51,7 @@ const Tab: React.FC<BottomTabBarProps> = ({
   const activeRouteIndex = state.index;
 
   return (
-    <TabNav>
+    <TabNav style={{ backgroundColor: theme.colors.lightColor }}>
       {state.routes.map((item, index) => (
         <NavItem key={index} onPress={() => navigation.navigate(item.name)}>
           <Icon name={icons[item.name]} size={20} color="#414042" />
@@ -62,4 +62,4 @@ const Tab: React.FC<BottomTabBarProps> = ({
   );
 };
 
-export default withTheme(Tab);
+export default Tab;

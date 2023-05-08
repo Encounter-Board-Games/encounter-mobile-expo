@@ -45,7 +45,7 @@ const ScreenPopUp: React.FC<ScreenPopUpProps> = ({
 
     return (
       <Header noPadding={!title} withBorder={withBorder}>
-        <CloseButton onClick={() => goBack()}>
+        <CloseButton onPress={() => goBack()}>
           <IconComponent
             name="ios-arrow-round-back"
             color={theme.colors.darkColor}
@@ -54,7 +54,7 @@ const ScreenPopUp: React.FC<ScreenPopUpProps> = ({
         </CloseButton>
         {typeof title === 'string' ? <H3>{title}</H3> : title}
         {typeof tooltext === 'string' ? (
-          <ToolItem onClick={() => onToolPress && onToolPress()}>
+          <ToolItem onPress={() => onToolPress && onToolPress()}>
             <Subtitle1 color={theme.colors.primaryDarkColor}>
               {tooltext}
             </Subtitle1>

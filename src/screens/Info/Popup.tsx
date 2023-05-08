@@ -4,7 +4,7 @@ import { KeyboardAvoidingView } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/native';
 
-import Evaluate from '../Product/components/Evaluate';
+import Evaluate from '../product/components/Evaluate';
 import PopupLogin from './components/PopupLogin';
 import WppRedirect from './components/WppRedirect';
 import InfoPopup from './components/InfoPopup';

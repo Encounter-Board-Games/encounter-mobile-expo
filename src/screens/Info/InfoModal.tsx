@@ -12,7 +12,7 @@ import {
   Content,
   SafeSpace,
 } from './InfoModalStyles';
-import { Theme } from '../../styles/themeTypes';
+import { Theme } from '../../theme/theme';
 import { RootState } from '../../store/store';
 
 interface InfoModalProps {

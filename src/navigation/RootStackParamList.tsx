@@ -1,4 +1,6 @@
 export type RootStackParamList = {
+  Address: { dispatch: any; state: any; navigation: any };
+  AddNewAddress: { dispatch: any; state: any; navigation: any };
   Home: undefined;
   ProductDetails: undefined;
   Filter: undefined;
@@ -8,11 +10,9 @@ export type RootStackParamList = {
   Notifications: undefined;
   Cupons: undefined;
   UserSettings: undefined;
-  Address: undefined;
   Payments: undefined;
   CreatePayment: undefined;
   CurrentLocation: undefined;
-  AddNewAddress: undefined;
   SelfUpload: undefined;
   User: undefined;
   About: undefined;

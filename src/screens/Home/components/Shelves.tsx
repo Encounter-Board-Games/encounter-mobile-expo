@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Container from '../../../components/Container';
-import ProductShelf from '../../Product/components/ProductShelf';
+import ProductShelf from '../../product/components/ProductShelf';
 import * as handleSetSelects from '../../../store/actions/filters/setSelects';
 import { useNavigation } from '@react-navigation/native';
 

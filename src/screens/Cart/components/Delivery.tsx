@@ -20,7 +20,7 @@ import {
   Address,
   Arrow,
 } from './DeliveryStyles';
-import { State } from '../../User/EditProfileContentTypes';
+import { State } from '../../user/EditProfileContentTypes';
 
 interface Props {
   type: 'take' | 'return';

@@ -11,7 +11,7 @@ import { H3, Subtitle2 } from '../../components/Typography';
 import { Space, SpaceHorizontal } from '../../components/Space';
 import { openLoginPopup } from '../../store/actions/user/login';
 import { openPopupModal } from '../../store/actions/info';
-import { translation } from '../../texts';
+import { translation } from '../../texts/index';
 import config from '../../config';
 import {
   Container,
@@ -40,7 +40,7 @@ const Settings = (props: ThemeProps) => {
   const hasPendences = pendences.length > 0;
 
   const isLoggedContent = () => (
-    <MenuOption onPress={() => navigation.navigate('User')}>
+    <MenuOption onPress={() => navigation.navigate('User')} title={''}>
       <UserImage>
         <Image
           borderRadius={128}

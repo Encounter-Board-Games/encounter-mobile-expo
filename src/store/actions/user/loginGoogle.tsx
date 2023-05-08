@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { startAsync, ResponseType } from 'expo-auth-session';
-import config from '../../../../config';
+import config from '../../../config';
 
 interface LoginProps {
   setLoginLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,10 +21,12 @@ export default function LoginGoogle({
   async function handleGoogleLogin() {
     try {
       setLoginLoading(true);
-      const redirectUri = `${config.login.googleSignIn.redirectUrl}:/oauth2redirect/google`;
+      // Add redirectUrl and web properties to your config object
+      // eslint-disable-next-line max-len
+      const redirectUri = `${config.login.googleSignIn}:/oauth2redirect/google`;
       const options = {
         responseType: ResponseType.Token,
-        clientId: config.login.googleSignIn.web,
+        clientId: config.login.googleSignIn, // Change web to clientId
         redirectUri,
         scopes: ['openid', 'profile', 'email'],
         authUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
@@ -47,6 +49,7 @@ export default function LoginGoogle({
   return (
     <>
       {error && <div className="error-message">{error}</div>}
+      {/* Change onPress to onClick */}
       <button onClick={handleGoogleLogin}>Login with Google</button>
     </>
   );

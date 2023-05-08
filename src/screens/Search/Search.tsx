@@ -13,9 +13,9 @@ import {
 } from '../../store/actions/filters/handleFilters';
 // eslint-disable-next-line max-len
 import { handleNeedTutorial } from '../../store/actions/filters/tutorialFilters';
-import ProductShelf from '../Product/components/ProductShelf';
+import ProductShelf from '../product/components/ProductShelf';
 import HeaderSeeAll from '../../components/HeaderSeeAll';
-import { Space2, Space } from '../Search/SearchStyles';
+import { Space2, Space } from './SearchStyles';
 import FilterResult from './components/FilterResult';
 import { translation } from '../../texts';
 import config from '../../config';
@@ -27,7 +27,7 @@ import {
   Space3,
 } from './SearchStyles';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import theme from '../../styles/theme';
+import theme from '../../theme/theme';
 
 const Screen = styled.ScrollView`
   flex: 1;

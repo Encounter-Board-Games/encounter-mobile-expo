@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Subtitle2 } from '../../../components/Typography';
 import { openLoginPopup } from '../../../store/actions/user/login';
 import { closePopupModal } from '../../../store/actions/info';
-import theme from '../../../styles/theme';
+import theme from '../../../theme/theme';
 import { Container, Line } from './PopupLoginStyles';
 
 const LoginPopup: React.FC = () => {

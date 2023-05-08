@@ -1,4 +1,4 @@
-import { InfoState } from '../screens/Info/components/TextModalTypes';
+import { InfoState } from '../screens/info/components/TextModalTypes';
 import { ProductState } from '../store/reducers/productReducer';
 import { ShelvesState } from '../store/reducers/shelvesReducer';
 import { LoginState, UserRememberProducts } from './userTypes';

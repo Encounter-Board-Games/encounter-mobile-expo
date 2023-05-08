@@ -1,8 +1,11 @@
 import { openPopupModal } from '../info';
-import config from '../../../../config';
+import config from '../../../config';
 import { addProduct, handleOpenCart } from './cart';
 import { handleApplyCupon, calcTotal } from './cartOrderPayment';
-import { ProductOption, OptionsModalProps } from '../../../types/actionCartTypes';
+import {
+  ProductOption,
+  OptionsModalProps,
+} from '../../../types/actionCartTypes';
 
 export function handleAddProduct(productKey: string, options: ProductOption[]) {
   return (dispatch: Function, getState: Function) => {

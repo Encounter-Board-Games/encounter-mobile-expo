@@ -1,4 +1,4 @@
-import { getShelves, getBanners } from '../../graphql';
+import { useShelves, useBanners } from '../../graphql/functions/loginClient';
 import { setProducts } from './product';
 
 export const SET_LOADING = 'SET_LOADING';
@@ -6,7 +6,7 @@ export const SET_SHELVES = 'SET_SHELVES';
 export const SET_BANNERS = 'SET_BANNERS';
 export const SET_CURRENT_BANNER = 'SET_CURRENT_BANNER';
 
-interface SetShelvesAction {
+export interface SetShelvesAction {
   type: typeof SET_SHELVES;
   shelves: any;
 }
@@ -16,7 +16,7 @@ export const setShelves = (shelves: any): SetShelvesAction => ({
   shelves,
 });
 
-interface SetBannersAction {
+export interface SetBannersAction {
   type: typeof SET_BANNERS;
   banners: any;
 }
@@ -51,7 +51,7 @@ export const handleLoadShelves = () => async (dispatch: any, getState: any) => {
 
   const { onboarding } = getState();
 
-  const shelves = await getShelves(
+  const shelves = await useShelves(
     Object.keys(onboarding.filters || {})
       .map((key) => ({ [key]: onboarding.filters[key].flat() }))
       .reduce((a, b) => ({ ...b, ...a }), {})
@@ -88,7 +88,7 @@ export const handleLoadShelves = () => async (dispatch: any, getState: any) => {
 };
 
 export const handleInitBanner = () => async (dispatch: any) => {
-  const banners = await getBanners();
+  const banners = await useBanners();
 
   dispatch(setBanners(banners));
 };

@@ -1,85 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar, Platform } from 'react-native';
-import { Image } from 'react-native';
-import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
-import MainNavigation from './src/navigation/MainTabNavigator';
-import Login from './src/screens/Login/Login';
-import InfoModal from './src/screens/Info/InfoModal';
-import Popup from './src/screens/Info/Popup';
-import NeedUpdate from './src/screens/NeedUpdate/NeedUpdate';
-// eslint-disable-next-line max-len
-import AppNotification from './src/screens/Notifications/components/AppNotification';
-import { handleInitApp } from './src/store/actions/shared';
-// eslint-disable-next-line max-len
-import { handleSetNotificationToken } from './src/store/actions/user/notifications';
-import { Container, LoadView } from './src/styles/globalStyles';
-import { useAppDispatch, useAppSelector } from './src/hooks/useTypedHooks';
-
-const App: React.FC = React.memo(() => {
-  const dispatch = useAppDispatch();
-  const { update } = useAppSelector((state) => state.app) ?? {
-    update: { show: true },
+import { View } from 'react-native';
+import { Provider } from 'react-redux';
+import * as Font from 'expo-font';
+import { store } from './src/store/store';
+import AppWrapper from './AppWrapper';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
+import theme from './src/theme/theme';
+interface ExtendedTheme extends DefaultTheme {
+  colors: DefaultTheme['colors'] & {
+    tertiaryColor: string;
+    backgroundColor: string;
+    foregroundColor: string;
+    accentColor: string;
+    errorColor: string;
   };
+}
+
+interface ExtendedTheme extends DefaultTheme {
+  colors: DefaultTheme['colors'] & {
+    tertiaryColor: string;
+    backgroundColor: string;
+    foregroundColor: string;
+    accentColor: string;
+    errorColor: string;
+  };
+}
+
+const extendedTheme: ExtendedTheme = {
+  ...theme,
+  colors: {
+    ...theme.colors,
+    tertiaryColor: '#6D6E71',
+    backgroundColor: '#414042',
+    foregroundColor: '#0d3c54',
+    accentColor: '#fda856',
+    errorColor: '#E35959',
+  },
+};
+
+const App: React.FC = () => {
   const [already, setAlready] = useState(false);
 
   useEffect(() => {
-    const askNotification = async () => {
-      const { status: existingStatus } = await Permissions.getAsync(
-        Permissions.NOTIFICATIONS
-      );
-      let finalStatus = existingStatus;
-      if (existingStatus !== Permissions.PermissionStatus.GRANTED) {
-        const { status } = await Permissions.askAsync(
-          Permissions.NOTIFICATIONS
-        );
-        finalStatus = status;
-      }
-
-      if (finalStatus !== Permissions.PermissionStatus.GRANTED) {
-        return;
-      }
-
-      let { data: token } = await Notifications.getExpoPushTokenAsync();
-      dispatch(handleSetNotificationToken({ token }));
-    };
-
-    askNotification();
-    Promise.resolve(dispatch(handleInitApp())).finally(() => setAlready(true));
-  }, [dispatch]);
-
-  if (update?.show) {
-    return (
-      <Container>
-        <NeedUpdate />
-      </Container>
-    );
-  }
+    Font.loadAsync({
+      Nunito: require('./src/assets/fonts/Nunito-Regular.ttf'),
+      'Nunito-Bold': require('./src/assets/fonts/Nunito-Bold.ttf'),
+    }).then(() => setAlready(true));
+  }, []);
 
   if (!already) {
-    return (
-      <LoadView>
-        <Image
-          resizeMode="contain"
-          style={{ width: '100%', height: '100%' }}
-          source={require('./src/assets/splash.png')}
-        />
-      </LoadView>
-    );
+    return <View />;
   }
 
   return (
-    <>
-      <StatusBar
-        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'light-content'}
-      />
-      <MainNavigation />
-      <InfoModal />
-      <AppNotification />
-      <Popup />
-      <Login />
-    </>
+    <Provider store={store}>
+      <ThemeProvider theme={extendedTheme}>
+        <AppWrapper />
+      </ThemeProvider>
+    </Provider>
   );
-});
+};
 
 export default App;

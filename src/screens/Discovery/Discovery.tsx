@@ -8,7 +8,7 @@ import {
 } from '../../store/actions/discovery';
 import { Platform } from 'react-native';
 import { RootState } from '../../store/reducers';
-import { DiscoveryState } from '../../screens/Discovery';
+import { DiscoveryState } from '.';
 
 interface ContainerProps {
   theme: DefaultTheme;

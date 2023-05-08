@@ -1,20 +1,24 @@
-import translations from './translations';
+interface TranslationKeys {
+  [key: string]: string;
+}
 
-type Translations = typeof translations;
+interface TranslationCategories {
+  [category: string]: TranslationKeys;
+}
 
-const t = (key: string): string => {
-  const keys = key.split('.');
-  let result: Translations | string = translations;
+export interface Translations {
+  [language: string]: TranslationCategories;
+}
 
-  for (let i = 0; i < keys.length; i++) {
-    if (typeof result === 'object' && result[keys[i]] !== undefined) {
-      result = result[keys[i]];
-    } else {
-      return '';
-    }
-  }
-
-  return result as unknown as string;
+const translations: Translations = {
+  en: {
+    discovery: {
+      title: 'Discover',
+      subtitle: 'Find the best restaurants',
+    },
+    // ... other categories and translations
+  },
+  // ... other languages
 };
 
-export default t;
+export default translations;

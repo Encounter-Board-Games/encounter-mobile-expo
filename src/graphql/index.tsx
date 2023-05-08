@@ -1,4 +1,8 @@
-import { useQuery, useMutation } from '@apollo/client';
+import {
+  useQuery,
+  useMutation,
+  FetchResult, // Import FetchResult type
+} from '@apollo/client';
 import { customFilterQuery } from './queries/product';
 import { cuponsQuery } from './queries/cupons';
 import { aboutQuery, updateVersionQuery } from './queries/app';
@@ -9,6 +13,7 @@ import {
 } from './queries/user';
 import { quickSearchsQuery } from './queries/quickSearchs';
 import { answerQuestionMutation } from './queries/quickSearchs';
+
 export function useCustomFilter(type: string) {
   const { data } = useQuery(customFilterQuery, {
     variables: { type },
@@ -21,7 +26,7 @@ export function useUploadDocument() {
   const [uploadDocument] = useMutation(uploadDocumentMutation);
   return (url: string, type: string) => {
     return uploadDocument({ variables: { url, type } }).then(
-      (resp: { data: { uploadDocument: any } }) => resp.data.uploadDocument
+      (resp: FetchResult) => resp.data?.uploadDocument
     );
   };
 }
@@ -30,7 +35,7 @@ export function useForgotPassword() {
   const [forgotPassword] = useMutation(forgotMutation);
   return (email: string) => {
     return forgotPassword({ variables: { email } }).then(
-      (resp: { data: { forgot: any } }) => resp.data.forgot
+      (resp: FetchResult) => resp.data?.forgot
     );
   };
 }
@@ -39,8 +44,7 @@ export function useRespondQuestion() {
   const [respondQuestion] = useMutation(respondQuestionMutation);
   return (deviceId: string, value: string) => {
     return respondQuestion({ variables: { deviceId, value } }).then(
-      (resp: { data: { respondQuestionMutation: any } }) =>
-        resp.data.respondQuestionMutation
+      (resp: FetchResult) => resp.data?.respondQuestionMutation
     );
   };
 }
@@ -80,7 +84,7 @@ export function useAnswerQuestion() {
   });
   return (key: string, answer: string) => {
     return answerQuestion({ variables: { key, answer } }).then(
-      (resp: { data: { answerQuestion: any } }) => resp.data.answerQuestion
+      (resp: FetchResult) => resp.data?.answerQuestion
     );
   };
 }

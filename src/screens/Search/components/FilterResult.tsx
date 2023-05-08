@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductItem from '../../Product/components/ProductItem';
+import ProductItem from '../../product/components/ProductItem';
 // eslint-disable-next-line max-len
 import { handleSetRecentsFilteringText } from '../../../store/actions/filters/handleSetFilters';
 import { useSelector, useDispatch } from 'react-redux';

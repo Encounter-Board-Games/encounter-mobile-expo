@@ -6,7 +6,7 @@ import { H3, Subtitle2 } from '../../components/Typography';
 import { Space } from '../../components/Space';
 import ScreePopup from '../../components/ScreePopup';
 import Box from '../../components/Box';
-import NotLoggedBox from '../User/components/NotLoggedBox';
+import NotLoggedBox from '../user/components/NotLoggedBox';
 import InformationBox from '../../components/InformationBox';
 import ProgressBar from '../../components/ProgressBar';
 import { handleLoadCupons } from '../../store/actions/cupons';

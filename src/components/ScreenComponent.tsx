@@ -1,23 +1,23 @@
 import React from 'react';
-import styled from 'styled-components';
-import CartMarker from '../screens/Cart/components/CartMarker';
+import styled from 'styled-components/native';
+import CartMarker from '../screens/cart/components/CartMarker';
 import { useSelector } from 'react-redux';
 import { RootState } from '../types/globals';
 
-interface MainContainerProps {
+export interface MainContainerProps {
   children: React.ReactNode;
   noScroll?: boolean;
 }
 
-const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.lightColor};
+export const Container = styled.View`
+  background-color: ${(props: { theme: { colors: { lightColor: any } } }) =>
+    props.theme.colors.lightColor};
   flex: 1;
 `;
 
-const ScrollContainer = styled.div`
+export const ScrollContainer = styled.ScrollView`
   flex: 1;
   background-color: blue;
-  overflow: auto;
 `;
 
 const MainContainer: React.FC<MainContainerProps> = ({

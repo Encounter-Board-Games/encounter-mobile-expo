@@ -6,7 +6,7 @@ import { handleNotFoundProductSuggestion } from '../../../store/actions/user/han
 import ButtonComponent from '../../../components/Button/Button';
 import { translation } from '../../../texts';
 import { FindOut } from '../HomeStyles';
-import theme from '../../../styles/theme';
+import theme from '../../../theme/theme';
 
 interface NotFoundSectionProps {
   openSuggestion: () => void;

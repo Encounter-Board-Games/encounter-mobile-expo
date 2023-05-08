@@ -55,7 +55,7 @@ export function useLogin() {
   ) => {
     return login({
       variables: { type, email, password, platform, os, notificationToken },
-    }).then((resp: { data: { login: any } }) => resp.data.login);
+    }).then((resp) => resp.data.login);
   };
 }
 
@@ -71,9 +71,7 @@ export function useResetPassword() {
   ) => {
     return resetPassword({
       variables: { email, newPassword, token, platform, os, notificationToken },
-    }).then(
-      (resp: { data: { resetPassword: any } }) => resp.data.resetPassword
-    );
+    }).then((resp) => resp.data.resetPassword);
   };
 }
 
@@ -83,8 +81,7 @@ export function useConfirmCodeResetPassword() {
   );
   return (code: string, email: string) => {
     return confirmCodeResetPassword({ variables: { email, code } }).then(
-      (resp: { data: { confirmCodeResetPassword: any } }) =>
-        resp.data.confirmCodeResetPassword
+      (resp) => resp.data.confirmCodeResetPassword
     );
   };
 }
@@ -101,7 +98,7 @@ export function useCreateAuth() {
   ) => {
     return createAuth({
       variables: { type, email, password, platform, os, notificationToken },
-    }).then((resp: { data: { createAuth: any } }) => resp.data.createAuth);
+    }).then((resp) => resp.data.createAuth);
   };
 }
 
@@ -113,7 +110,7 @@ export function useSendErrors() {
   `);
   return (errors: string) => {
     return sendErrors({ variables: { errors } }).then(
-      (resp: { data: { logErrors: any } }) => resp.data.logErrors
+      (resp) => resp.data.logErrors
     );
   };
 }
@@ -129,6 +126,6 @@ export function useConfirmCode() {
   ) => {
     return confirmCode({
       variables: { email, code, platform, os, notificationToken },
-    }).then((resp: { data: { confirmCode: any } }) => resp.data.confirmCode);
+    }).then((resp) => resp.data.confirmCode);
   };
 }

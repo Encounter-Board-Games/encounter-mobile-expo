@@ -1,39 +1,44 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// eslint-disable-next-line max-len
-import * as HomeScreen from '../screens/Home/Home';
-import * as SearchScreen from '../screens/Search/Search';
-import * as MyOrders from '../screens/Orders/MyOrders';
-import * as SettingsScreen from '../screens/Settings/Settings';
-import { RootState } from '../types/globals';
+import {
+  createBottomTabNavigator,
+  BottomTabBarProps,
+} from '@react-navigation/bottom-tabs';
+import HomeScreen from '../screens/home/Home';
+import SearchScreen from '../screens/search/Search';
+import MyOrders from '../screens/orders/MyOrders';
+import SettingsScreen from '../screens/settings/Settings';
 import { registerRedirectComponent } from '../store/actions/shared';
-import Tab from './TabBarNav';
+import TabBarNav from './TabBarNav';
+import { Theme } from '../theme/theme';
+
+interface HomeStackScreenProps {}
 
 const HomeStack = createBottomTabNavigator();
 
-function HomeStackScreen() {
-  const dispatch = useDispatch();
-  const navigation = useNavigation();
+const HomeStackScreen: React.FC<HomeStackScreenProps> = () => {
+  const navigation = useNavigation<any>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     registerRedirectComponent((screen: string) => {
       navigation.navigate(screen);
     });
-  }, []);
+  }, [navigation]);
+
+  const settingsScreenWrapper = (props: { theme: Theme }) => (
+    <SettingsScreen {...props} />
+  );
 
   return (
-    <HomeStack.Navigator tabBar={(props) => <Tab {...props} />}>
+    <HomeStack.Navigator
+      tabBar={(props: BottomTabBarProps) => <TabBarNav {...props} />}
+    >
       <HomeStack.Screen name="Início" component={HomeScreen} />
       <HomeStack.Screen name="Busca" component={SearchScreen} />
-      <HomeStack.Screen
-        name={translation('menu.orders')}
-        component={MyOrders}
-      />
-      <HomeStack.Screen name="Perfil" component={SettingsScreen} />
+      <HomeStack.Screen name="Orders" component={MyOrders} />
+      <HomeStack.Screen name="Perfil" component={settingsScreenWrapper} />
     </HomeStack.Navigator>
   );
-}
+};
 
 export default HomeStackScreen;
