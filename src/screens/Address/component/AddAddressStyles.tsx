@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Content = styled.ScrollView`
   flex: 1;
-  padding: ${({ theme }) => theme.space.space2};
+  padding: ${({ theme }) => theme.space.s2};
 `;
 
 export const ContainerInputs = styled.View`
@@ -19,7 +19,7 @@ export const LineButtons = styled.View`
   flex-flow: row;
   flex-wrap: wrap;
   width: 100%;
-  margin-top: ${({ theme }) => theme.space.space3};
+  margin-top: ${({ theme }) => theme.space.s3};
 `;
 
 export const LineAddress = styled.View`

@@ -7,11 +7,11 @@ export const Container = styled.View<{ withButton?: boolean }>`
 `;
 
 export const CustomInput = styled.TextInput<{ disabled?: boolean }>`
-  border: 1.5px solid ${({ theme }) => theme.colors.primaryColor};
-  background: ${({ theme }) => theme.colors.primaryLightColor};
-  padding-left: ${({ theme }) => theme.space.space2};
+  border: 1.5px solid ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.primaryLight};
+  padding-left: ${({ theme }) => theme.space.s2};
   border-radius: ${({ theme }) => theme.borderRadius.button};
-  font-size: ${({ theme }) => theme.space.space2};
+  font-size: ${({ theme }) => theme.space.s2};
   opacity: ${({ disabled }) => (disabled ? '.5' : '1')};
 `;
 
@@ -21,7 +21,7 @@ export const Button = styled.View<{ disabledButton?: boolean }>`
   justify-content: center;
   width: 56px;
   border-radius: 56px;
-  background: ${({ theme }) => theme.colors.primaryDarkColor};
+  background: ${({ theme }) => theme.colors.primaryDark};
   opacity: ${({ disabledButton }) => (disabledButton ? '.5' : '1')};
 `;
 
@@ -29,7 +29,7 @@ export const ButtonSpace = styled.View`
   height: 56px;
   width: 56px;
   border-radius: 56px;
-  background: ${({ theme }) => theme.colors.lightColor};
+  background: ${({ theme }) => theme.colors.light};
   position: absolute;
   right: 0;
 `;

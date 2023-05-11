@@ -1,5 +1,5 @@
 // Add imports for action types
-import { ProductAction } from '../../../store/actions/products';
+import { ProductAction } from '../../../store/actions/product';
 import { ShelvesAction } from '../../../store/actions/shelves';
 import { UserAction } from '../../../store/actions/user';
 
@@ -20,8 +20,8 @@ export type AppActions = ProductAction | ShelvesAction | UserAction;
 
 const FindOut = styled.View`
   flex-flow: row;
-  padding-left: ${(props: { theme: { space: { space2: any } } }) =>
-    props.theme.space.space2};
+  padding-left: ${(props: { theme: { space: { s2: any } } }) =>
+    props.theme.space.s2};
 `;
 
 const DiscoverySection: React.FC = () => {

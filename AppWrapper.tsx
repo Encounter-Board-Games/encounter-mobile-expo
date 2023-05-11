@@ -5,7 +5,7 @@ import { Image } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import MainNavigation from './src/navigation/MainTabNavigator';
-import Login from './src/screens/Login/Login';
+import Login from './src/screens/login/Login';
 import InfoModal from './src/screens/Info/InfoModal';
 import Popup from './src/screens/Info/Popup';
 import NeedUpdate from './src/screens/NeedUpdate/NeedUpdate';

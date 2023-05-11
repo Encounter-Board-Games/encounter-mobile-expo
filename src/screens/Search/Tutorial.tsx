@@ -5,7 +5,7 @@ import * as Animatable from 'react-native-animatable';
 import { H2 } from '../../components/Typography';
 import { View, TouchableWithoutFeedback, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { translation } from '../../texts';
+import { translation } from '../../texts/translations';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import handleCloseTutorial from '../../store/reducers/infoReducer';
 import { TutorialView, Content, Arrow, ContentArea } from './TutorialStyles';
@@ -39,16 +39,16 @@ const Tutorial: React.FC<TutorialProps> = () => {
                 source={require('../../assets/img/undo.png')}
               />
             </Arrow>
-            <H2 type="lightColor">Filtros de busca</H2>
+            <H2 type="light">Filtros de busca</H2>
             <Space n={3} />
-            <H2 type="lightColor">
+            <H2 type="light">
               Dica{' '}
-              <H2 noBold type="lightColor">
+              <H2 noBold type="light">
                 : {translation('tutorial')}{' '}
               </H2>{' '}
             </H2>
             <Space n={0} />
-            <H2 type="lightColor" noBold>
+            <H2 type="light" noBold>
               Use sem moderação :)
             </H2>
           </Animatable.View>

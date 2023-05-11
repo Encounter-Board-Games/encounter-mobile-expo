@@ -33,14 +33,14 @@ const BoxAddress: React.FC<Props> = ({
       <AddressBoxInfo>
         <Subtitle1>{address.nameFormated}</Subtitle1>
         <Space n={0} />
-        <Subtitle2 type="secondDarkColor">{address.addressFormated}</Subtitle2>
-        <Subtitle2 type="secondDarkColor">{address.complement}</Subtitle2>
+        <Subtitle2 type="seconddark">{address.addressFormated}</Subtitle2>
+        <Subtitle2 type="seconddark">{address.complement}</Subtitle2>
       </AddressBoxInfo>
       <SpaceHorizontal n={2} />
       {!choseAddressMode && (
         <EvilIcons
           name="chevron-right"
-          color={theme.colors.darkColor}
+          color={theme.colors.dark}
           size={theme.sizes.icons}
         />
       )}

@@ -9,7 +9,7 @@ export const Container = styled.View`
     align-items: center;
     background:  ${(props) => props.theme.colors[props.type]};
     padding-top: ${Platform.OS == 'ios' ? Constants.statusBarHeight : 8}px
-    padding-bottom: ${(props) => props.theme.space.space1}
+    padding-bottom: ${(props) => props.theme.space.s1}
     border-radius: 8px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -26,6 +26,6 @@ export const Message = styled.Text`
     font-size: ${(props) => props.theme.sizes.subtitle2};
     color: ${(props) =>
     props.type == 'success'
-      ? props.theme.colors.darkColor
-      : props.theme.colors.lightColor}
+      ? props.theme.colors.dark
+      : props.theme.colors.light}
 `;

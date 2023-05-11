@@ -53,7 +53,7 @@ function CustomTextInput(props: CustomTextInputProps) {
       >
         <IconComponent
           name={props.rightIcon}
-          color={theme.colors.darkColor}
+          color={theme.colors.dark}
           size={32}
         />
       </TouchRightIcon>

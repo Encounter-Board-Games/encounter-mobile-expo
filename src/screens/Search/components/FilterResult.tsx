@@ -7,8 +7,8 @@ import { Placeholder, PlaceholderLine, Fade } from 'rn-placeholder';
 import { Subtitle3 } from '../../../components/Typography';
 import { FlatList } from 'react-native-gesture-handler';
 import { View } from 'react-native-animatable';
-import { translation } from '../../../texts';
-import { Space2, Space } from '../SearchStyles';
+import { translation } from '../../../texts/translations';
+import { s2, Space } from '../SearchStyles';
 import { ContentLine } from './SearchBarStyles';
 
 export interface Props {
@@ -44,12 +44,12 @@ const FilterResult: React.FC<Props> = ({ results = [], isLoading = false }) => {
   return (
     <>
       {results.length > 0 && !isLoading && (
-        <Subtitle3 type="secondDarkColor">
+        <Subtitle3 type="seconddark">
           {results.length} resultado{results.length === 1 ? '' : 's'}
         </Subtitle3>
       )}
       {results.length === 0 && !isLoading && (
-        <Subtitle3 type="secondDarkColor">
+        <Subtitle3 type="seconddark">
           {translation('search.noResult')}
         </Subtitle3>
       )}
@@ -66,7 +66,7 @@ const FilterResult: React.FC<Props> = ({ results = [], isLoading = false }) => {
         viewabilityConfig={viewConfigRef.current}
         renderItem={({ item, index }) => (
           <View style={{ minHeight: 220 }}>
-            <Space2 />
+            <s2 />
             <ContentLine>
               <ProductItem
                 showRemember

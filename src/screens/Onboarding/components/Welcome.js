@@ -13,18 +13,18 @@ import Constants from 'expo-constants';
 export const MainContainer = styled.View`
 flex: 1;
 width: 100%;
-padding-left: ${(props) => props.theme.space.space3}
-padding-right: ${(props) => props.theme.space.space3}
+padding-left: ${(props) => props.theme.space.s3}
+padding-right: ${(props) => props.theme.space.s3}
 padding-top: ${(props) =>
     Platform.OS == 'ios'
       ? Constants.statusBarHeight + 'px'
-      : props.theme.space.space2};
+      : props.theme.space.s2};
 `;
 
 export const TextLine = styled.View`
   width: 100%;
   flex-flow: row;
-  margin-bottom: ${(props) => props.theme.space.space2};
+  margin-bottom: ${(props) => props.theme.space.s2};
 `;
 
 export const TextItemList = styled.View`
@@ -37,7 +37,7 @@ export const TextItemListIcon = styled.View`
   width: 12px;
   height: 12px;
   border-radius: 12px;
-  backgroundcolor: ${(props) => props.theme.colors.primaryDarkColor};
+  backgroundcolor: ${(props) => props.theme.colors.primaryDark};
 `;
 
 export const TextContent = styled.Text`

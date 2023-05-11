@@ -3,25 +3,25 @@ import 'styled-components';
 export interface Theme {
   fontSizes: any;
   colors: {
-    primaryColor: string;
-    primaryDarkColor: string;
-    primaryLightColor: string;
-    secondaryColor: string;
-    secondaryDarkColor: string;
-    secondaryLightColor: string;
-    complementColor: string;
-    lightColor: string;
-    darkColor: string;
+    primary: string;
+    primaryDark: string;
+    primaryLight: string;
+    secondary: string;
+    secondaryDark: string;
+    secondaryLight: string;
+    complement: string;
+    light: string;
+    dark: string;
     success: string;
-    warming: string;
+    warning: string;
     danger: string;
   };
   elements: {
     productDetailsImage: number;
   };
   header: {
-    heigth: string;
-    largeHeigth: string;
+    height: string;
+    largeHeight: string;
     title: string;
     largeTitle: string;
   };
@@ -43,26 +43,24 @@ export interface Theme {
     button3: string;
     button4: string;
   };
+  spacing: string;
   space: {
-    space0: string;
-    space1: string;
-    space2: string;
-    space3: string;
-    space4: string;
-    space5: string;
+    s0: string;
+    s1: string;
+    s2: string;
+    s3: string;
+    s4: string;
+    s5: string;
   };
-  borderRadius: {
-    button: string;
-    tag: string;
-  };
+  borderRadius: number;
   shadow: {
-    shadowColor: string;
-    shadowOffset: {
+    color: string;
+    offset: {
       width: string;
       height: string;
     };
-    shadowOpacity: number;
-    shadowRadius: string;
+    opacity: number;
+    radius: string;
     elevation: number;
   };
 }

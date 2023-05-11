@@ -17,14 +17,14 @@ export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } =
   Dimensions.get('window');
 
 export const Container = styled.View`
-  padding-top: ${(props) => props.theme.space.space2};
+  padding-top: ${(props) => props.theme.space.s2};
   padding-bottom: 0px;
   width: 100%;
   align-items: center;
 `;
 
 export const Content = styled.View`
-  padding: ${(props) => props.theme.space.space3};
+  padding: ${(props) => props.theme.space.s3};
   padding-bottom: 0px;
   width: 100%;
   align-items: center;
@@ -43,8 +43,8 @@ export const CodeNumberLine = styled.View`
 `;
 
 export const CodeNumber = styled.View`
-    background: ${(props) => props.theme.colors.primaryLightColor}
-    border: 1.5px ${(props) => props.theme.colors.primaryColor}
+    background: ${(props) => props.theme.colors.primaryLight}
+    border: 1.5px ${(props) => props.theme.colors.primary}
     border-radius: ${(props) => props.theme.borderRadius.button}
     height: 56px
     width: 56px
@@ -103,7 +103,7 @@ export default withTheme((props) => {
           <BackButton onPress={() => dispatch(hadleBackToLogin())}>
             <Ionicons
               name="ios-arrow-round-back"
-              color={props.theme.colors.darkColor}
+              color={props.theme.colors.dark}
               size={32}
             />
           </BackButton>

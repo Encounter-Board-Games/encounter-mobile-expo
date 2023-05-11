@@ -5,10 +5,10 @@ export interface AddressBoxProps {
 }
 
 export const AddressBox = styled.TouchableOpacity<AddressBoxProps>`
-  margin-left: ${({ theme }) => theme.space.space2};
-  margin-right: ${({ theme }) => theme.space.space2};
-  background-color: ${({ theme }) => theme.colors.lightColor};
-  padding: ${({ noPadding, theme }) => !noPadding && theme.space.space2};
+  margin-left: ${({ theme }) => theme.space.s2};
+  margin-right: ${({ theme }) => theme.space.s2};
+  background-color: ${({ theme }) => theme.colors.light};
+  padding: ${({ noPadding, theme }) => !noPadding && theme.space.s2};
   border-radius: ${({ theme }) => theme.borderRadius.button};
   shadow-color: ${({ theme }) => theme.shadow.shadowColor};
   shadow-offset: ${({ theme }) => theme.shadow.shadowOffset.width}
@@ -16,7 +16,7 @@ export const AddressBox = styled.TouchableOpacity<AddressBoxProps>`
   shadow-opacity: ${({ theme }) => theme.shadow.shadowOpacity};
   shadow-radius: ${({ theme }) => theme.shadow.shadowRadius};
   elevation: ${({ theme }) => theme.shadow.elevation};
-  margin-bottom: ${({ theme }) => theme.space.space2};
+  margin-bottom: ${({ theme }) => theme.space.s2};
   align-items: center;
   flex: 1;
   justify-content: center;

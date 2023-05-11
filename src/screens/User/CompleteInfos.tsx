@@ -13,13 +13,13 @@ interface Props {}
 const Container = styled.View`
   width: 100%;
   height: 100%;
-  padding-bottom: ${(props) => props.theme.space.space2};
+  padding-bottom: ${(props) => props.theme.space.s2};
 `;
 
 const Header = styled.View`
-  padding-top: ${(props) => props.theme.space.space3};
-  padding-left: ${(props) => props.theme.space.space2};
-  padding-right: ${(props) => props.theme.space.space2};
+  padding-top: ${(props) => props.theme.space.s3};
+  padding-left: ${(props) => props.theme.space.s2};
+  padding-right: ${(props) => props.theme.space.s2};
 `;
 
 const EditProfile: FC<Props> = () => {

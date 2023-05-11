@@ -14,11 +14,11 @@ export const Tab = styled.View`
 export const TabItem = styled.TouchableOpacity`
   flex: 1;
   border-color: ${(props) =>
-    props.isActive ? props.theme.colors.primaryDarkColor : 'transparent'};
+    props.isActive ? props.theme.colors.primaryDark : 'transparent'};
   border-bottom-width: 1.5px;
   justify-content: center;
   align-items: center;
-  padding: ${(props) => props.theme.space.space1};
+  padding: ${(props) => props.theme.space.s1};
 `;
 
 export default function Tabs({ tabs, children }) {

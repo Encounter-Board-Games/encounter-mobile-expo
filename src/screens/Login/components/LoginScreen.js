@@ -16,8 +16,8 @@ import { View, Platform } from 'react-native';
 import config from '../../../config';
 
 export const Container = styled.KeyboardAvoidingView`
-  padding: ${(props) => props.theme.space.space3};
-  padding-top: ${(props) => props.theme.space.space4};
+  padding: ${(props) => props.theme.space.s3};
+  padding-top: ${(props) => props.theme.space.s4};
   width: 100%;
 `;
 
@@ -71,7 +71,7 @@ export default function LoginScreen(props) {
         {config.login.password ===
         (
           <React.Fragment>
-            <Subtitle2 type="secondDarkColor">E-mail</Subtitle2>
+            <Subtitle2 type="seconddark">E-mail</Subtitle2>
             <Space n={1} />
             <CustomInput
               value={email}
@@ -92,7 +92,7 @@ export default function LoginScreen(props) {
           config.login.password) ===
           (
             <React.Fragment>
-              <Subtitle2 center type="secondDarkColor">
+              <Subtitle2 center type="seconddark">
                 -ou entre com-
               </Subtitle2>
               <Space n={2} />
@@ -117,7 +117,7 @@ export default function LoginScreen(props) {
           (
             <React.Fragment>
               <Space n={2} />
-              <Subtitle2 center type="secondDarkColor">
+              <Subtitle2 center type="seconddark">
                 ou
               </Subtitle2>
               <Space n={2} />
@@ -144,7 +144,7 @@ export default function LoginScreen(props) {
           (
             <React.Fragment>
               <Space n={2} />
-              <Subtitle2 center type="secondDarkColor">
+              <Subtitle2 center type="seconddark">
                 ou
               </Subtitle2>
               <Space n={2} />

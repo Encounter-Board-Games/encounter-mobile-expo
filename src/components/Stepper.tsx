@@ -29,8 +29,8 @@ const Circle = styled.View<CircleProps>`
       return props.theme.colors[props.customColor];
     }
     return props.isActive
-      ? props.theme.colors.primaryDarkColor
-      : props.theme.colors.primaryColor;
+      ? props.theme.colors.primaryDark
+      : props.theme.colors.primary;
   }};
 `;
 

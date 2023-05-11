@@ -16,9 +16,9 @@ interface ContainerProps {
 
 const Container = styled.View<ContainerProps>`
   flex: 1;
-  background: ${(props) => props.theme.colors.lightColor};
+  background: ${(props) => props.theme.colors.light};
   padding-top: ${(props) =>
-    Platform.OS === 'ios' ? props.theme.space.space4 : 0};
+    Platform.OS === 'ios' ? props.theme.space.s4 : 0};
 `;
 
 const Discovery: React.FC = withTheme(() => {

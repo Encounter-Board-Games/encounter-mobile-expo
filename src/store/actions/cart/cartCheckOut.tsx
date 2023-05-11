@@ -2,7 +2,7 @@ import { openPopupModal } from '../info';
 import { createOrder, renewOrderM } from '../../../graphql';
 import { addOrderAndSelect } from '../orders';
 import { handleShowNotification } from '../notification';
-import { translation } from '../../../texts';
+import { translation } from '../../../texts/translations';
 import config from '../../../../config';
 
 export function handleCheckOut() {

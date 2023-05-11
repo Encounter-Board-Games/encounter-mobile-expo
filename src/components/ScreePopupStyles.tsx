@@ -14,7 +14,7 @@ import { Theme } from '../styles/theme';
 declare module 'styled-components/native' {
   export interface DefaultTheme extends Theme {
     colors: {
-      primaryLightColor: Interpolation<
+      primaryLight: Interpolation<
         ThemedStyledProps<
           Omit<
             DetailedHTMLProps<
@@ -32,7 +32,7 @@ declare module 'styled-components/native' {
           DefaultTheme
         >
       >;
-      primaryDarkColor: Interpolation<
+      primaryDark: Interpolation<
         ThemedStyledProps<
           Omit<
             DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>,
@@ -47,10 +47,10 @@ declare module 'styled-components/native' {
           DefaultTheme
         >
       >;
-      lightColor: string;
-      darkColor: string;
-      primaryColor: string;
-      secondaryColor: string;
+      light: string;
+      dark: string;
+      primary: string;
+      secondary: string;
       tertiaryColor: string;
       backgroundColor: string;
       foregroundColor: string;
@@ -65,12 +65,12 @@ export const SafeAreaView = styled.View`
 `;
 
 export const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.lightColor};
+  background-color: ${({ theme }) => theme.colors.light};
   flex: 1;
   height: 100%;
   width: 100%;
   padding-top: ${({ theme }) =>
-    Platform.OS === 'ios' ? theme.space.space4 : 0};
+    Platform.OS === 'ios' ? theme.space.s4 : 0};
   padding-bottom: ${getBottomSpace()}px;
 `;
 
@@ -78,16 +78,16 @@ export const Header = styled.View<{
   noPadding?: boolean;
   withBorder?: boolean;
 }>`
-  background-color: ${({ theme }) => theme.colors.lightColor};
-  margin-top: ${({ noPadding, theme }) => (noPadding ? 0 : theme.space.space2)};
-  margin-left: ${({ theme }) => theme.space.space2};
-  margin-right: ${({ theme }) => theme.space.space2};
+  background-color: ${({ theme }) => theme.colors.light};
+  margin-top: ${({ noPadding, theme }) => (noPadding ? 0 : theme.space.s2)};
+  margin-left: ${({ theme }) => theme.space.s2};
+  margin-right: ${({ theme }) => theme.space.s2};
   height: 42px;
   position: relative;
   justify-content: center;
   align-items: center;
   border-color: ${({ withBorder, theme }) =>
-    withBorder ? theme.colors.secondaryColor : 'transparent'};
+    withBorder ? theme.colors.secondary : 'transparent'};
   border-bottom-width: 1px;
 `;
 
@@ -95,7 +95,7 @@ export const CloseButton = styled.Button`
   position: absolute;
   top: 0;
   left: -8px;
-  background-color: ${({ theme }) => theme.colors.lightColor};
+  background-color: ${({ theme }) => theme.colors.light};
   height: 40px;
   width: 40px;
   justify-content: center;
@@ -107,7 +107,7 @@ export const ToolItem = styled.Button`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: ${({ theme }) => theme.colors.lightColor};
+  background-color: ${({ theme }) => theme.colors.light};
   height: 40px;
   justify-content: center;
   align-items: center;

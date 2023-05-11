@@ -19,7 +19,7 @@ const Screen = styled.View`
   flex: 1;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
 `;
 
 const Line = styled.View`

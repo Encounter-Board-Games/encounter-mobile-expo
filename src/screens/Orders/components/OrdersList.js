@@ -6,7 +6,7 @@ import OrderBox from './OrderBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleLoadOrders } from '../../../store/actions/orders';
 import { useNavigation } from '@react-navigation/native';
-import { translation } from '../../../texts';
+import { translation } from '../../../texts/translations';
 
 const Container = styled.View`
   flex: 1;

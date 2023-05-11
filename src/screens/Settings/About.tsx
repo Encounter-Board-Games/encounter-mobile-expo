@@ -1,22 +1,21 @@
 import React from 'react';
-import styled, { withTheme } from 'styled-components/native';
+import styled from 'styled-components/native';
 import { useSelector } from 'react-redux';
 import { Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
-import { RootState } from '../../store/reducers';
-import { AboutState } from '../../store/types';
+import { RootState } from '../../types/globals';
 import ScreePopup from '../../components/ScreePopup';
-import { Subtitle3, Subtitle1, H3, H4 } from '../../components/Typography';
-import { Space, SpaceHorizontal } from '../../components/Space';
-import { Button } from '../../components/Button/Button';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { Subtitle1, H3, H4 } from '../../components/Typography';
+import { SpaceHorizontal } from '../../components/Space';
+import Button from '../../components/Button/Button';
+import theme from '../../theme/theme';
+import { AboutState } from '../../types/globals';
 
 interface ContainerProps {}
 
 const Container = styled.View<ContainerProps>`
-  padding: ${({ theme }) => theme.space.space2};
-  padding-top: ${({ theme }) => theme.space.space3};
+  padding: ${({ theme }) => theme.space.s2};
+  padding-top: ${({ theme }) => theme.space.s3};
   padding-bottom: 0;
   flex: 1;
   height: 100%;
@@ -24,7 +23,7 @@ const Container = styled.View<ContainerProps>`
 
 const ButtonContent = styled.View`
   width: 100%;
-  padding: ${({ theme }) => theme.space.space2};
+  padding: ${({ theme }) => theme.space.s2};
 `;
 
 const Line = styled.View`
@@ -32,12 +31,13 @@ const Line = styled.View`
   align-items: center;
 `;
 
-interface Props {}
+type AboutScreenProps = {
+  about: AboutState;
+};
 
-const AboutScreen: React.FC<Props> = withTheme((props) => {
-  const { about = {} }: { about: AboutState } = useSelector(
-    (state: RootState) => state.app
-  );
+const AboutScreen: React.FC<AboutScreenProps> = ({ about }) => {
+  const appState = useSelector((state: RootState) => state.app);
+  const { about: aboutData }: { about: AboutState } = appState;
 
   const openInstagram = () => {
     Linking.openURL('instagram://user?username=' + about.instagram).catch(
@@ -52,32 +52,36 @@ const AboutScreen: React.FC<Props> = withTheme((props) => {
       title={'Sobre' + (about.nameAbout || '')}
       footer={() => (
         <ButtonContent>
-          <Button type={'CallToAction-Light'} onPress={openInstagram}>
+          <Button
+            type={'CallToAction-Light'}
+            onPress={openInstagram}
+            theme={theme}
+          >
             Ir para o Instagram
           </Button>
         </ButtonContent>
       )}
-      withBorder
+      theme={theme}
     >
       <Container>
-        <Subtitle1>{about.aboutText}</Subtitle1>
+        <Subtitle1>{aboutData.aboutText}</Subtitle1>
 
-        <Space n={3} />
-        <H3 type="secondDarkColor">Conheça nosso instagram</H3>
+        <SpaceHorizontal n="s3" />
+        <H3 color="secondaryDark">Conheça nosso instagram</H3>
 
-        <Space n={0} />
+        <SpaceHorizontal n="s0" />
         <Line>
           <Ionicons
-            color={props.theme.colors.secondDarkColor}
+            color={theme.colors.secondaryDark}
             size={20}
             name="logo-instagram"
           />
-          <SpaceHorizontal n={1} />
-          <H4 type="secondDarkColor">@{about.instagram}</H4>
+          <SpaceHorizontal n="s1" />
+          <H4 type="secondaryDark">@{aboutData.instagram}</H4>
         </Line>
       </Container>
     </ScreePopup>
   );
-});
+};
 
 export default AboutScreen;

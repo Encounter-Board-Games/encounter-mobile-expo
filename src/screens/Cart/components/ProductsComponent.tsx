@@ -9,7 +9,7 @@ import { Space } from '../../../components/Space';
 // eslint-disable-next-line max-len
 import { handleRemoveProductConfirmModal } from '../../../store/actions/cart/cartRemoveProductConfirmModal';
 import { LineProducts, Remove, Title, Hr } from './CartInfoStyles';
-import { translation } from '../../../texts';
+import { translation } from '../../../texts/translations';
 import { currencyFormat } from '../../../utils/helpers';
 import { ProductsComponentProps, CartState, Product } from './CartTypes';
 import { ThunkDispatch } from 'redux-thunk';
@@ -53,7 +53,7 @@ const ProductsComponent: React.FC<ProductsComponentProps> = ({
   return (
     <View>
       {!renew && <Space n={2} />}
-      <H3 type="secondDarkColor">
+      <H3 type="seconddark">
         {renew ? 'Renovação de aluguel' : translation('orders.products')}
       </H3>
       <Space n={2} />

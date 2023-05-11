@@ -8,12 +8,12 @@ export const Content = styled.View`
   flex: 1;
   zindex: 999;
   border-radius: 8px;
-  background: ${(props) => props.theme.colors.lightColor};
+  background: ${(props) => props.theme.colors.light};
 `;
 
 export const ContentInput = styled.View`
   flex: 1;
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
   align-items: center;
   justify-content: center;
 `;
@@ -23,9 +23,9 @@ export const ContainerInputs = styled.ScrollView`
 `;
 
 export const CustomInput = styled.TouchableOpacity`
-  border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
-  background: ${(props) => props.theme.colors.primaryLightColor};
-  padding-left: ${(props) => props.theme.space.space3};
+  border: 1.5px solid ${(props) => props.theme.colors.primary};
+  background: ${(props) => props.theme.colors.primaryLight};
+  padding-left: ${(props) => props.theme.space.s3};
   border-radius: ${(props) => props.theme.borderRadius.button};
   height: 56px;
   width: 100%;
@@ -33,7 +33,7 @@ export const CustomInput = styled.TouchableOpacity`
 `;
 
 const CustomInputText = styled.Text<{ disabled?: boolean }>`
-  font-size: ${(props) => props.theme.space.space2};
+  font-size: ${(props) => props.theme.space.s2};
   opacity: ${(props) => (props.disabled ? '.5' : '1')};
   color: ${(props) => props.theme.colors.secondColor};
 `;

@@ -30,7 +30,7 @@ export const Container = styled.TouchableOpacity`
   width: ${(props) => (props.spotlight ? 200 : 140)}px;
   min-height: 10px;
   ${(props) =>
-    props.flex ? 'flex: 1;' : `margin-left: ${props.theme.space.space2}`}
+    props.flex ? 'flex: 1;' : `margin-left: ${props.theme.space.s2}`}
 `;
 
 export const Content = styled.View``;
@@ -39,7 +39,7 @@ export const ProductPrice = styled.Text`
   max-width: 100%;
   font-size: ${(props) => props.theme.sizes.subtitle2};
   font-family: Nunito;
-  color: ${(props) => props.theme.colors.darkColor};
+  color: ${(props) => props.theme.colors.dark};
 `;
 
 export const ProductStatusContent = styled.Text``;

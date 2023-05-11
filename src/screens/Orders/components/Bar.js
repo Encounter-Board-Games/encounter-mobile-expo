@@ -48,7 +48,7 @@ function Bar(props) {
           borderTopRightRadius: 5,
           borderBottomRightRadius: 5,
           opacity: opacity,
-          backgroundColor: props.theme.colors.primaryColor,
+          backgroundColor: props.theme.colors.primary,
           height: '100%',
         }}
       />

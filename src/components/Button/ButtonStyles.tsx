@@ -9,7 +9,7 @@ export const ButtonComponent = styled.TouchableOpacity<ButtonProps>`
   padding-left: ${(props) => props.paddingSides || '0'};
   padding-right: ${(props) => props.paddingSides || '0'};
   align-items: center;
-  border-radius: ${(props) => props.theme.borderRadius.button};
+  border-radius: ${(props) => props.theme.borderRadius};
   border: 1.5px solid ${(props) => props.borderColor || 'transparent'};
   background-color: ${(props) =>
     props.isOutline ? 'transparent' : props.background || 'transparent'};

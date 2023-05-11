@@ -13,7 +13,7 @@ import { handleLoadCupons } from '../../store/actions/cupons';
 import { handleSetSelects } from '../../store/actions/filters/handleSetFilters';
 import { RootState } from '../../store/store';
 import { View } from 'react-native';
-import { translation } from '../../texts';
+import { translation } from '../../texts/translations';
 import { useNavigation } from '@react-navigation/native';
 
 interface Cupon {
@@ -31,7 +31,7 @@ interface CuponsState {
 
 const Container = styled.View`
   min-height: 100%;
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
 `;
 
 const CuponContainer = styled.View`
@@ -63,7 +63,7 @@ const Cupons: FC = () => {
           <CuponContainer>
             <H3>{cupon.title}</H3>
             <Space n={2} />
-            <Subtitle2 type="secondDarkColor">{cupon.description}</Subtitle2>
+            <Subtitle2 type="seconddark">{cupon.description}</Subtitle2>
             <Space n={2} />
             <Button
               type="CallToAction-Outline"
@@ -72,7 +72,7 @@ const Cupons: FC = () => {
               {translation('cupon.btn')}
             </Button>
             <Space n={2} />
-            <Subtitle2 width="100%" right type="secondDarkColor">
+            <Subtitle2 width="100%" right type="seconddark">
               {cupon.progressBarText}
             </Subtitle2>
             <Space n={1} />

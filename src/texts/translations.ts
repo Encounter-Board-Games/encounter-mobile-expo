@@ -1,8 +1,8 @@
-interface TranslationKeys {
+export interface TranslationKeys {
   [key: string]: string;
 }
 
-interface TranslationCategories {
+export interface TranslationCategories {
   [category: string]: TranslationKeys;
 }
 

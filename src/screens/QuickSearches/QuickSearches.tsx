@@ -70,7 +70,7 @@ const QuickSearch: React.FC<QuickSearchProps> = (props: QuickSearchProps) => {
 
       <Footer>
         <Cancel onPress={() => answer(undefined)}>
-          <Subtitle1 center underline type="secondDarkColor">
+          <Subtitle1 center underline type="seconddark">
             Prefiro não responder
           </Subtitle1>
         </Cancel>

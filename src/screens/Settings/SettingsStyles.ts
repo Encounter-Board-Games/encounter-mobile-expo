@@ -1,21 +1,21 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
 `;
 
 export const MenuItem = styled.View`
   align-items: center;
-  padding-top: ${(props) => props.theme.space.space2};
-  padding-bottom: ${(props) => props.theme.space.space2};
-  border-color: ${(props) => props.theme.colors.secondLightColor};
+  padding-top: ${(props) => props.theme.space.s2};
+  padding-bottom: ${(props) => props.theme.space.s2};
+  border-color: ${(props) => props.theme.colors.secondaryLight};
   border-bottom-width: 1.5px;
 `;
 
 export const MenuItemHeader = styled.View`
   flex-flow: row;
   align-items: center;
-  padding-bottom: ${(props) => props.theme.space.space2};
+  padding-bottom: ${(props) => props.theme.space.s2};
 `;
 
 export const MenuItemText = styled.View`
@@ -35,6 +35,6 @@ export const Line = styled.View`
 export const UserImage = styled.View`
   width: 64px;
   height: 64px;
-  margin-right: ${(props) => props.theme.space.space2};
-  margin-bottom: ${(props) => props.theme.space.space1};
+  margin-right: ${(props) => props.theme.space.s2};
+  margin-bottom: ${(props) => props.theme.space.s1};
 `;

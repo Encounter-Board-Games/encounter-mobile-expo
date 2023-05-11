@@ -17,32 +17,32 @@ const Content = styled.View`
 `;
 
 const Timer = styled.TouchableOpacity`
-    width: ${(props) => props.theme.space.space3}
+    width: ${(props) => props.theme.space.s3}
     justify-content: center;
     align-items: center;
   
     background-color: ${(props) =>
-      !props.hasAlert ? 'transparent' : props.theme.colors.complementColor};
-    border-radius: ${(props) => props.theme.space.space3};
-    border: .5px solid ${(props) => props.theme.colors.complementColor};
+      !props.hasAlert ? 'transparent' : props.theme.colors.complement};
+    border-radius: ${(props) => props.theme.space.s3};
+    border: .5px solid ${(props) => props.theme.colors.complement};
 `;
 
 const ProductEnableText = styled.Text`
   max-width: 100%;
   font-size: 12px;
   font-family: Nunito;
-  color: ${(props) => props.theme.colors.secondDarkColor};
+  color: ${(props) => props.theme.colors.seconddark};
 `;
 
 const Space = styled.View`
-  width: ${(props) => props.theme.space.space0};
+  width: ${(props) => props.theme.space.s0};
   height: 1px;
 `;
 
 const ProductEnableBall = styled.View`
-  width: ${(props) => props.theme.space.space1};
-  height: ${(props) => props.theme.space.space1};
-  border-radius: ${(props) => props.theme.space.space1};
+  width: ${(props) => props.theme.space.s1};
+  height: ${(props) => props.theme.space.s1};
+  border-radius: ${(props) => props.theme.space.s1};
   background: ${(props) =>
     props.available ? props.theme.colors.success : props.theme.colors.danger};
 `;
@@ -68,13 +68,13 @@ export default withTheme(
           {!hasAlert ? (
             <Ionicons
               name="ios-notifications-outline"
-              color={theme.colors.complementColor}
+              color={theme.colors.complement}
               size={16}
             />
           ) : (
             <Ionicons
               name="ios-notifications-outline"
-              color={theme.colors.lightColor}
+              color={theme.colors.light}
               size={16}
             />
           )}

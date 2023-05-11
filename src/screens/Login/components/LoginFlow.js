@@ -6,7 +6,7 @@ import PasswordScreen from './PasswordScreen';
 import CodeSentScreen from './CodeSentScreen';
 
 export const Container = styled.View`
-  padding: ${(props) => props.theme.space.space3};
+  padding: ${(props) => props.theme.space.s3};
   width: 100%;
 `;
 

@@ -18,12 +18,12 @@ export const MainContainer = styled.View`
 flex: 1;
 width: 100%;
 height: 100%
-padding-left: ${(props) => props.theme.space.space3}
-padding-right: ${(props) => props.theme.space.space3}
+padding-left: ${(props) => props.theme.space.s3}
+padding-right: ${(props) => props.theme.space.s3}
 padding-top: ${(props) =>
   Platform.OS == 'ios'
     ? Constants.statusBarHeight + 'px'
-    : props.theme.space.space2};
+    : props.theme.space.s2};
 
 `;
 
@@ -35,8 +35,8 @@ export const Line = styled.View`
 
 export const Icon = styled.View`
     min-height: 20px;
-    width: ${(props) => props.theme.space.space2}
-    margin-right: ${(props) => props.theme.space.space1}
+    width: ${(props) => props.theme.space.s2}
+    margin-right: ${(props) => props.theme.space.s1}
 `;
 
 export const ImageContent = styled.View`
@@ -92,7 +92,7 @@ export default (props) => {
             />
           </Icon>
           <Content>
-            <Subtitle2 type="secondDarkColor">
+            <Subtitle2 type="seconddark">
               Informações pessoais básicas;
             </Subtitle2>
           </Content>
@@ -107,7 +107,7 @@ export default (props) => {
             />
           </Icon>
           <Content>
-            <Subtitle2 type="secondDarkColor">
+            <Subtitle2 type="seconddark">
               Selfie com documento de identidade.
             </Subtitle2>
           </Content>

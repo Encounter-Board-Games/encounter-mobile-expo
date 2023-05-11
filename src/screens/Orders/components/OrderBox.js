@@ -11,7 +11,7 @@ import {
   handleSelectOrder,
   handleOpenOrderHelp,
 } from '../../../store/actions/orders';
-import { translation } from '../../../texts';
+import { translation } from '../../../texts/translations';
 import config from '../../../config';
 import { renewOrder } from '../../../store/actions/cart/cart';
 
@@ -29,7 +29,7 @@ const Price = styled.View`
 `;
 
 const Hr = styled.View`
-  background: ${(prop) => prop.theme.colors.secondLightColor};
+  background: ${(prop) => prop.theme.colors.secondaryLight};
   height: 1px;
   width: 100%;
   flex: 1;
@@ -66,7 +66,7 @@ export default withTheme((props) => {
         <Line flexFlow="column">
           {config.rentTimeBox && (
             <React.Fragment>
-              <Subtitle2 color={props.theme.colors.secondDarkColor}>
+              <Subtitle2 color={props.theme.colors.seconddark}>
                 Tempo de {translation('orders.order').toLowerCase()}:{' '}
                 {order.rentDays} dias
               </Subtitle2>
@@ -74,7 +74,7 @@ export default withTheme((props) => {
             </React.Fragment>
           )}
 
-          <Subtitle2 color={props.theme.colors.secondDarkColor}>
+          <Subtitle2 color={props.theme.colors.seconddark}>
             {translation('orders.order')} #{order.key.toUpperCase()}
           </Subtitle2>
         </Line>

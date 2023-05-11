@@ -12,7 +12,7 @@ export const Title = styled.View`
 `;
 
 export const Remove = styled.TouchableOpacity`
-    margin-right: ${(props) => props.theme.space.space1}
+    margin-right: ${(props) => props.theme.space.s1}
     justify-content:center;
     width: 24px;
     height: 24px;
@@ -25,10 +25,10 @@ export const LineProducts = styled.View`
 
 export const CupomContent = styled.View`
     margin: 4px;
-    padding: ${(props) => props.theme.space.space2}
-    padding-top: ${(props) => props.theme.space.space1}
-    padding-bottom: ${(props) => props.theme.space.space1}
-    background: ${(props) => props.theme.colors.lightColor}
+    padding: ${(props) => props.theme.space.s2}
+    padding-top: ${(props) => props.theme.space.s1}
+    padding-bottom: ${(props) => props.theme.space.s1}
+    background: ${(props) => props.theme.colors.light}
     border-radius: ${(props) => props.theme.borderRadius.button}
     shadow-color: ${(props) => props.theme.shadow.shadowColor};
     shadow-offset: ${(props) => props.theme.shadow.shadowOffset.width} ${(
@@ -40,7 +40,7 @@ export const CupomContent = styled.View`
 `;
 
 export const Hr = styled.View`
-  background: ${(props) => props.theme.colors.secondLightColor};
+  background: ${(props) => props.theme.colors.secondaryLight};
   height: 1.5px;
   width: 100%;
 `;

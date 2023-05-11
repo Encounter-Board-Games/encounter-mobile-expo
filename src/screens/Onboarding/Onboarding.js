@@ -16,9 +16,9 @@ import config from '../../config';
 
 export const Container = styled.View`
   flex: 1;
-  background: ${(props) => props.theme.colors.lightColor};
+  background: ${(props) => props.theme.colors.light};
   padding-top: ${(props) =>
-    Platform.OS === 'ios' ? props.theme.space.space4 : 0};
+    Platform.OS === 'ios' ? props.theme.space.s4 : 0};
 `;
 
 function Onboarding(props) {

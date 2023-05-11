@@ -13,11 +13,11 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   position: absolute;
-  top: ${(props) => props.theme.space.space4};
+  top: ${(props) => props.theme.space.s4};
   left: 0;
   z-index: 99;
   width: 100%;
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
 `;
 
 export const Footer = styled.View`
@@ -26,7 +26,7 @@ export const Footer = styled.View`
   left: 0;
   z-index: 99;
   width: 100%;
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
 `;
 
 export const CloseButton = styled.TouchableOpacity`
@@ -37,10 +37,10 @@ export const CloseButton = styled.TouchableOpacity`
 `;
 
 export const Address = styled.View<Props>`
-  background: ${(props) => props.theme.colors.lightColor};
+  background: ${(props) => props.theme.colors.light};
   width: 100%;
   border-radius: ${(props) => props.theme.borderRadius.button};
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
   shadow-color: ${(props) => props.theme.shadow.shadowColor};
   shadow-offset: ${(props) => props.theme.shadow.shadowOffset.width}px
     ${(props) => props.theme.shadow.shadowOffset.width}px;

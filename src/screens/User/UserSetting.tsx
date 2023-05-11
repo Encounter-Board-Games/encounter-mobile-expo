@@ -74,14 +74,14 @@ const UserSettingsScreen = () => {
         ))}
         {config.cleanStorage && (
           <Logout onPress={handleClearStorage}>
-            <Icons name="logout" color={theme.colors.darkColor} size={16} />
+            <Icons name="logout" color={theme.colors.dark} size={16} />
             <SpaceHorizontal n={1} />
             <Subtitle1>Limpar</Subtitle1>
           </Logout>
         )}
         {isLogged && (
           <Logout onPress={() => dispatch(handleLogout(true))}>
-            <Icons name="logout" color={theme.colors.darkColor} size={16} />
+            <Icons name="logout" color={theme.colors.dark} size={16} />
             <SpaceHorizontal n={1} />
             <Subtitle1>Sair</Subtitle1>
           </Logout>

@@ -6,7 +6,7 @@ export const TutorialView = styled.View`
   position: absolute;
   z-index: 99;
   background: rgba(0, 0, 0, 0.8);
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
 `;
 
 export const Content = styled.View`

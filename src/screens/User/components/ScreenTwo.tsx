@@ -42,7 +42,7 @@ const ScreenTwo: React.FC<Props> = ({ loading, onOkClick }) => {
             />
           </Icon>
           <Content>
-            <Subtitle2 type="secondDarkColor">
+            <Subtitle2 type="seconddark">
               Assim que aprovarmos o seu cadastro, seu pedido será logo
               efetuado.
             </Subtitle2>

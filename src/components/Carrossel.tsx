@@ -85,7 +85,7 @@ const Carrossel: React.FC<CarrosselProps> = ({
               {!!onBack && (
                 <EvilIcons
                   name="chevron-left"
-                  color={theme.colors.darkColor}
+                  color={theme.colors.dark}
                   size={32}
                 />
               )}

@@ -48,14 +48,14 @@ const ScreenPopUp: React.FC<ScreenPopUpProps> = ({
         <CloseButton onPress={() => goBack()}>
           <IconComponent
             name="ios-arrow-round-back"
-            color={theme.colors.darkColor}
+            color={theme.colors.dark}
             size={32}
           />
         </CloseButton>
         {typeof title === 'string' ? <H3>{title}</H3> : title}
         {typeof tooltext === 'string' ? (
           <ToolItem onPress={() => onToolPress && onToolPress()}>
-            <Subtitle1 color={theme.colors.primaryDarkColor}>
+            <Subtitle1 color={theme.colors.primaryDark}>
               {tooltext}
             </Subtitle1>
           </ToolItem>

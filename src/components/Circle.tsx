@@ -13,9 +13,9 @@ export const Circle = styled.View<CircleProps>`
   border: 2px solid
     ${(props) =>
       props.isSelected
-        ? props.theme.colors.primaryDarkColor
+        ? props.theme.colors.primaryDark
         : props.theme.colors.secondColor};
-  margin-right: ${(props) => props.theme.space.space1};
+  margin-right: ${(props) => props.theme.space.s1};
   padding: 2px;
 `;
 
@@ -23,7 +23,7 @@ export const CircleIntern = styled.View`
   height: 100%;
   width: 100%;
   border-radius: 18px;
-  background: ${(props) => props.theme.colors.primaryDarkColor};
+  background: ${(props) => props.theme.colors.primaryDark};
 `;
 
 const CircleComponent: React.FC<CircleProps> = (props) => {

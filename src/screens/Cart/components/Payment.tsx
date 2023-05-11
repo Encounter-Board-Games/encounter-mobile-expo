@@ -51,7 +51,7 @@ const Payment: React.FC<PaymentProps> = ({ theme }) => {
   return (
     <>
       <Space n={2} />
-      <H3 type="secondDarkColor">Pagamento</H3>
+      <H3 type="seconddark">Pagamento</H3>
       <Space n={2} />
       <Line>
         <Title>
@@ -61,7 +61,7 @@ const Payment: React.FC<PaymentProps> = ({ theme }) => {
           <SelectPayment onPress={addPayment}>
             <EvilIcons
               name="credit-card"
-              color={theme.colors.darkColor}
+              color={theme.colors.dark}
               size={24}
             />
             <SpaceHorizontal n={0} />
@@ -74,7 +74,7 @@ const Payment: React.FC<PaymentProps> = ({ theme }) => {
             <Subtitle2 bold>Adicionar cartão</Subtitle2>
             <EvilIcons
               name="chevron-right"
-              color={theme.colors.darkColor}
+              color={theme.colors.dark}
               size={24}
             />
           </SelectPayment>

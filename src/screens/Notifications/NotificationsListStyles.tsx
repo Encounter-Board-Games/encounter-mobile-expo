@@ -2,12 +2,12 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   min-height: 100%;
-  padding: ${({ theme }) => theme.space.space2};
+  padding: ${({ theme }) => theme.space.s2};
 `;
 
 export const Info = styled.View`
   flex: 1;
-  margin-bottom: ${({ theme }) => theme.space.space0};
+  margin-bottom: ${({ theme }) => theme.space.s0};
 `;
 
 interface NotificationProps {
@@ -15,10 +15,10 @@ interface NotificationProps {
 }
 
 export const Notification = styled.TouchableOpacity<NotificationProps>`
-  padding: ${({ theme }) => theme.space.space2};
+  padding: ${({ theme }) => theme.space.s2};
   padding-bottom: 0px;
   ${({ isActive, theme }) =>
-    isActive ? `background: ${theme.colors.primaryColor};` : ''};
+    isActive ? `background: ${theme.colors.primary};` : ''};
 `;
 
 export const NotificationBody = styled.View`
@@ -27,7 +27,7 @@ export const NotificationBody = styled.View`
 `;
 
 export const Hr = styled.View`
-  background: ${({ theme }) => theme.colors.secondLightColor};
+  background: ${({ theme }) => theme.colors.secondaryLight};
   height: 1.5px;
 `;
 

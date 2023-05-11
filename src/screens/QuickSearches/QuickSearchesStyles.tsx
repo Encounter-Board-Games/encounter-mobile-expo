@@ -5,11 +5,11 @@ import Constants from 'expo-constants';
 interface Props {
   theme: {
     colors: {
-      lightColor: string;
+      light: string;
     };
     space: {
-      space2: string;
-      space3: string;
+      s2: string;
+      s3: string;
     };
   };
 }
@@ -17,13 +17,13 @@ interface Props {
 export const Container = styled.View<Props>`
   flex: 1;
   width: 100%;
-  background-color: ${(props) => props.theme.colors.lightColor};
-  padding-left: ${(props) => props.theme.space.space3};
-  padding-right: ${(props) => props.theme.space.space3};
+  background-color: ${(props) => props.theme.colors.light};
+  padding-left: ${(props) => props.theme.space.s3};
+  padding-right: ${(props) => props.theme.space.s3};
   padding-top: ${(props) =>
     Platform.OS == 'ios'
       ? Constants.statusBarHeight + 'px'
-      : props.theme.space.space2};
+      : props.theme.space.s2};
 `;
 
 export const Content = styled.View`

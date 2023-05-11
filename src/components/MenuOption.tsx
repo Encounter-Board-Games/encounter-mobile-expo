@@ -27,10 +27,10 @@ interface Props {
 const Container = styled.TouchableOpacity<{ hideBorder?: boolean }>`
   flex-flow: row;
   align-items: center;
-  padding-top: ${({ theme }) => theme.space.space2};
-  padding-bottom: ${({ theme }) => theme.space.space2};
+  padding-top: ${({ theme }) => theme.space.s2};
+  padding-bottom: ${({ theme }) => theme.space.s2};
   border-color: ${({ hideBorder, theme }) =>
-    hideBorder ? 'transparent' : theme.colors.secondLightColor};
+    hideBorder ? 'transparent' : theme.colors.secondaryLight};
   border-bottom-width: 1.5px;
 `;
 
@@ -40,12 +40,12 @@ const Info = styled.View`
 
 const InfoIcon = styled.View`
   min-width: 40px;
-  margin-right: ${({ theme }) => theme.space.space2};
-  padding-left: ${({ theme }) => theme.space.space0};
+  margin-right: ${({ theme }) => theme.space.s2};
+  padding-left: ${({ theme }) => theme.space.s0};
 `;
 
 const PlaceholderContainer = styled(Placeholder)`
-  padding: ${({ theme }) => theme.space.space2};
+  padding: ${({ theme }) => theme.space.s2};
 `;
 
 function ListItem(props: Props) {
@@ -93,7 +93,7 @@ function ListItem(props: Props) {
             <InfoIcon>
               <Icons
                 name={icon as string}
-                color={theme.colors.darkColor}
+                color={theme.colors.dark}
                 size={theme.sizes.icons}
               />
             </InfoIcon>
@@ -103,7 +103,7 @@ function ListItem(props: Props) {
             {description && (
               <>
                 <Space n={0} />
-                <Subtitle2 type="secondDarkColor">{description}</Subtitle2>
+                <Subtitle2 type="seconddark">{description}</Subtitle2>
               </>
             )}
           </Info>
@@ -112,7 +112,7 @@ function ListItem(props: Props) {
       {!hideArrow && (
         <EvilIcons
           name="chevron-right"
-          color={theme.colors.darkColor}
+          color={theme.colors.dark}
           size={theme.sizes.icons}
         />
       )}

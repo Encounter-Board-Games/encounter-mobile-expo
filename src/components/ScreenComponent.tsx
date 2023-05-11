@@ -10,8 +10,8 @@ export interface MainContainerProps {
 }
 
 export const Container = styled.View`
-  background-color: ${(props: { theme: { colors: { lightColor: any } } }) =>
-    props.theme.colors.lightColor};
+  background-color: ${(props: { theme: { colors: { light: any } } }) =>
+    props.theme.colors.light};
   flex: 1;
 `;
 

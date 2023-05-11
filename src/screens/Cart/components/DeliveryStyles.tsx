@@ -3,15 +3,15 @@ import { TouchableOpacity } from 'react-native';
 
 interface Theme {
   colors: {
-    secondLightColor: string;
+    secondaryLight: string;
   };
   space: {
-    space3: string;
+    s3: string;
   };
 }
 
 export const Hr = styled.View<{ theme: Theme }>`
-  background: ${(props) => props.theme.colors.secondLightColor};
+  background: ${(props) => props.theme.colors.secondaryLight};
   height: 1.5px;
 `;
 
@@ -23,7 +23,7 @@ export const Line = styled.View`
 export const AddressItem = styled(TouchableOpacity)<{ theme: Theme }>`
   flex-flow: row;
   width: 100%;
-  margin-top: ${(props) => props.theme.space.space3};
+  margin-top: ${(props) => props.theme.space.s3};
 `;
 
 export const AddressSelect = styled.View`

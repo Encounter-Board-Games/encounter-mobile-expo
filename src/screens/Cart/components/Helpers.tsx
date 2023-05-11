@@ -16,7 +16,7 @@ export const Cupom: React.FC<CupomProps> = ({ cupom }) => {
   return (
     <>
       <Space n={2} />
-      <H3 type="secondDarkColor">Cupom de desconto</H3>
+      <H3 type="seconddark">Cupom de desconto</H3>
       <Space n={2} />
       <CupomContent>
         {cupom ? <H4>{cupom.title}</H4> : <H4>Sem cupom disponível</H4>}
@@ -54,16 +54,16 @@ export const Billing: React.FC<BillingProps> = ({
         <>
           <Line>
             <Title>
-              <H4 type="secondDarkColor">Subtotal</H4>
+              <H4 type="seconddark">Subtotal</H4>
             </Title>
             <H4>{currencyFormat(subtotal)}</H4>
           </Line>
           <Space n={1} />
           <Line>
             <Title>
-              <H4 type="secondDarkColor">Taxa de entrega</H4>
+              <H4 type="seconddark">Taxa de entrega</H4>
             </Title>
-            <H4 type="secondDarkColor">
+            <H4 type="seconddark">
               {deliveryTaxes === undefined
                 ? 'a calcular'
                 : currencyFormat(deliveryTaxes)}
@@ -72,9 +72,9 @@ export const Billing: React.FC<BillingProps> = ({
           <Space n={1} />
           <Line>
             <Title>
-              <H4 type="secondDarkColor">Cupom de desconto</H4>
+              <H4 type="seconddark">Cupom de desconto</H4>
             </Title>
-            <H4 type="primaryDarkColor">
+            <H4 type="primaryDark">
               {cupom?.discount ? currencyFormat(cupom.discount) : '-'}
             </H4>
           </Line>

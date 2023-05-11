@@ -11,18 +11,18 @@ interface Props {
 }
 
 const OptionWithImageTouch = styled.TouchableOpacity<{ isActive: boolean }>`
-  padding: ${(props) => props.theme.space.space2};
-  padding-top: ${(props) => props.theme.space.space2};
-  padding-bottom: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
+  padding-top: ${(props) => props.theme.space.s2};
+  padding-bottom: ${(props) => props.theme.space.s2};
   border-radius: ${(props) => props.theme.borderRadius.button};
   border: 1.5px;
   border-color: ${(props) =>
     props.isActive
-      ? props.theme.colors.primaryColor
+      ? props.theme.colors.primary
       : props.theme.colors.secondColor};
-  margin-bottom: ${(props) => props.theme.space.space2};
+  margin-bottom: ${(props) => props.theme.space.s2};
   background-color: ${(props) =>
-    props.isActive ? props.theme.colors.primaryLightColor : 'transparent'};
+    props.isActive ? props.theme.colors.primaryLight : 'transparent'};
   height: 120px;
 `;
 
@@ -42,7 +42,7 @@ const ImageContent = styled.View`
   align-items: flex-start;
   justify-content: flex-end;
   height: 100%;
-  padding-right: ${(props) => props.theme.space.space2};
+  padding-right: ${(props) => props.theme.space.s2};
   width: 50%;
 `;
 
@@ -65,11 +65,11 @@ function OptionWithImage(props: Props & ThemeProps<any>) {
         </ImageContent>
         <Content>
           {isActive ? (
-            <H3 bold type="primaryDarkColor" style={{ width: '100%' }}>
+            <H3 bold type="primaryDark" style={{ width: '100%' }}>
               {text}
             </H3>
           ) : (
-            <H4 type="secondDarkColor" style={{ width: '100%' }}>
+            <H4 type="seconddark" style={{ width: '100%' }}>
               {text}
             </H4>
           )}

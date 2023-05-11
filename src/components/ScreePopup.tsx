@@ -63,14 +63,14 @@ const ScreePopUp: FC<Props> = ({
                 <CloseButton onPress={goBack}>
                   <IconComponent
                     name="ios-arrow-round-back"
-                    color={theme.darkColor}
+                    color={theme.dark}
                     size={32}
                   />
                 </CloseButton>
                 {title && typeof title === 'string' ? <H3>{title}</H3> : title}
                 {tooltext && typeof tooltext === 'string' ? (
                   <ToolItem onPress={onToolPress}>
-                    <Subtitle1 color={theme.primaryDarkColor}>
+                    <Subtitle1 color={theme.primaryDark}>
                       {tooltext}
                     </Subtitle1>
                   </ToolItem>

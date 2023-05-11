@@ -3,7 +3,7 @@ import { TouchableOpacityProps } from 'react-native';
 
 export const Content = styled.ScrollView`
   flex: 1;
-  padding: ${({ theme }) => theme.space.space2};
+  padding: ${({ theme }) => theme.space.s2};
 `;
 
 export const ContainerInputs = styled.View`
@@ -15,9 +15,9 @@ export const Opacity = styled.View`
 `;
 
 export const CustomInput = styled.TextInput`
-  border: 1.5px solid ${({ theme }) => theme.colors.primaryColor};
-  background: ${({ theme }) => theme.colors.primaryLightColor};
-  padding-left: ${({ theme }) => theme.space.space2};
+  border: 1.5px solid ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.primaryLight};
+  padding-left: ${({ theme }) => theme.space.s2};
   border-radius: ${({ theme }) => theme.borderRadius.button};
   height: 48px;
   width: 50%;
@@ -25,9 +25,9 @@ export const CustomInput = styled.TextInput`
 `;
 
 export const InputDate = styled.TouchableOpacity`
-  border: 1.5px solid ${({ theme }) => theme.colors.primaryColor};
-  background: ${({ theme }) => theme.colors.primaryLightColor};
-  padding-left: ${({ theme }) => theme.space.space2};
+  border: 1.5px solid ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.primaryLight};
+  padding-left: ${({ theme }) => theme.space.s2};
   border-radius: ${({ theme }) => theme.borderRadius.button};
   height: 48px;
   width: 50%;
@@ -59,13 +59,13 @@ interface CheckProps {
 }
 
 export const Check = styled.View<CheckProps>`
-  width: ${({ theme }) => theme.space.space2};
-  margin-right: ${({ theme }) => theme.space.space1};
-  border: 1px ${({ theme }) => theme.colors.primaryDarkColor};
+  width: ${({ theme }) => theme.space.s2};
+  margin-right: ${({ theme }) => theme.space.s1};
+  border: 1px ${({ theme }) => theme.colors.primaryDark};
   border-radius: 2px;
-  margin-top: ${({ theme }) => theme.space.space0};
+  margin-top: ${({ theme }) => theme.space.s0};
   background: ${({ selected, theme }) =>
-    selected ? theme.colors.primaryDarkColor : 'transparent'};
+    selected ? theme.colors.primaryDark : 'transparent'};
 `;
 
 interface CustomInputTextProps {
@@ -77,7 +77,7 @@ export const CustomInputText = styled.Text<CustomInputTextProps>`
   font-size: ${({ theme }) => theme.sizes.h3};
   opacity: ${({ disabled }) => (disabled ? '.5' : '1')};
   color: ${({ hasValue, theme }) =>
-    hasValue ? theme.colors.darkColor : theme.colors.secondColor};
+    hasValue ? theme.colors.dark : theme.colors.secondColor};
 `;
 
 export const TermsAndConditions = styled.TouchableOpacity`
@@ -88,5 +88,5 @@ export const LineButtons = styled.View`
   flex-flow: row;
   flex-wrap: wrap;
   width: 100%;
-  margin-top: ${({ theme }) => theme.space.space3};
+  margin-top: ${({ theme }) => theme.space.s3};
 `;

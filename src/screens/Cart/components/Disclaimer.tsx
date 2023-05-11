@@ -6,7 +6,7 @@ import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import Box from '../../../components/Box';
-import { translation } from '../../../texts';
+import { translation } from '../../../texts/translations';
 import { handleOpenCart } from '../../../store/actions/cart/cart';
 import { Line, Hr } from './CartInfoStyles';
 
@@ -29,7 +29,7 @@ export const Disclaimer: React.FC<DisclaimerProps> = ({ time, products }) => {
       <View style={{ margin: 4 }}>
         <Box>
           <Line>
-            <H3 flex type="secondDarkColor">
+            <H3 flex type="seconddark">
               {translation('cart.rentTimeBox.title')}
             </H3>
             {time && <H3>{translation('cart.rentTimeBox.time', { time })}</H3>}
@@ -38,7 +38,7 @@ export const Disclaimer: React.FC<DisclaimerProps> = ({ time, products }) => {
           {products.length <= 1 && (
             <>
               <Line>
-                <H4 flex type="secondDarkColor">
+                <H4 flex type="seconddark">
                   {translation('cart.rentTimeBox.description')}
                 </H4>
               </Line>
@@ -66,7 +66,7 @@ export const DisclaimerRenew: React.FC<DisclaimerRenewProps> = ({ time }) => {
       <View>
         <Box>
           <Line>
-            <H3 flex type="secondDarkColor">
+            <H3 flex type="seconddark">
               Tempo de renovação do aluguel
             </H3>
             {time && <H3>+{time} dias</H3>}

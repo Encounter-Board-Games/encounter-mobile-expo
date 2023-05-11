@@ -15,16 +15,16 @@ import {
 import { handleNeedTutorial } from '../../store/actions/filters/tutorialFilters';
 import ProductShelf from '../product/components/ProductShelf';
 import HeaderSeeAll from '../../components/HeaderSeeAll';
-import { Space2, Space } from './SearchStyles';
+import { s2, Space } from './SearchStyles';
 import FilterResult from './components/FilterResult';
-import { translation } from '../../texts';
+import { translation } from '../../texts/translations';
 import config from '../../config';
 import {
   Chips,
   Container,
   FlexContent,
   RecentItem,
-  Space3,
+  s3,
 } from './SearchStyles';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import theme from '../../theme/theme';
@@ -93,7 +93,7 @@ const Search: FunctionComponent = () => {
           </Tag>
         ))}
       </Chips>
-      <Space2 />
+      <s2 />
 
       <FilterResult />
     </FlexContent>
@@ -102,7 +102,7 @@ const Search: FunctionComponent = () => {
   const recents = () => (
     <FlexContent>
       <FlexContent>
-        <Space3 />
+        <s3 />
         <H3>Buscas Recentes</H3>
         <Space />
         {recentTexts && recentTexts.length > 0 ? (
@@ -114,7 +114,7 @@ const Search: FunctionComponent = () => {
                 key={index}
                 onPress={() => dispatch(handleChangeFilteringText(item, false))}
               >
-                <Subtitle2 color={theme.colors.secondDarkColor}>
+                <Subtitle2 color={theme.colors.seconddark}>
                   {item}
                 </Subtitle2>
               </RecentItem>

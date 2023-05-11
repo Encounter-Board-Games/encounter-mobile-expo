@@ -2,7 +2,7 @@ import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../../../types/globals';
 import { Action } from 'redux';
 import { openPopupModal } from '../info';
-import { translation } from '../../../texts';
+import { translation } from '../../../texts/translations';
 import { handleRemoveProduct } from './cart';
 import { handleApplyCupon } from './cartOrderPayment';
 

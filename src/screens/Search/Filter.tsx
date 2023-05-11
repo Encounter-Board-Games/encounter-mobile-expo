@@ -5,7 +5,7 @@ import ScreePopup from '../../components/ScreePopup';
 import { handleClearSelects } from '../../store/actions/filters/filters';
 import { useDispatch, useSelector } from 'react-redux';
 import { Theme, useNavigation } from '@react-navigation/native';
-import { translation } from '../../texts';
+import { translation } from '../../texts/translations';
 import { ButtonComponent } from '../../components/Button/ButtonStyles';
 
 interface FilterProps {
@@ -13,8 +13,8 @@ interface FilterProps {
 }
 
 const Container = styled.View<ThemeProps<Theme>>`
-  padding: ${(props) => props.theme.space.space2};
-  padding-top: ${(props) => props.theme.space.space0};
+  padding: ${(props) => props.theme.space.s2};
+  padding-top: ${(props) => props.theme.space.s0};
   flex: 1;
 `;
 

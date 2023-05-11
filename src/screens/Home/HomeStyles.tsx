@@ -3,15 +3,15 @@ import styled from 'styled-components/native';
 export interface FindOutProps {
   theme: {
     space: {
-      space2: string;
+      s2: string;
     };
   };
 }
 
 export const FindOut = styled.View<FindOutProps>`
   flex-flow: row;
-  padding-left: ${(props: { theme: { space: { space2: any } } }) =>
-    props.theme.space.space2};
+  padding-left: ${(props: { theme: { space: { s2: any } } }) =>
+    props.theme.space.s2};
 `;
 
 export interface BannerProps {

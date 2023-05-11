@@ -43,7 +43,7 @@ const ScreenOne: React.FC<Props> = ({ loading, onCameraPress }) => {
               source={require('../../../assets/img/dado.png')}
             />
           </Icon>
-          <Subtitle2 type="secondDarkColor">
+          <Subtitle2 type="seconddark">
             Este é um procedimento de segurança que você precisará fazer apenas
             uma vez.
           </Subtitle2>
@@ -58,7 +58,7 @@ const ScreenOne: React.FC<Props> = ({ loading, onCameraPress }) => {
               source={require('../../../assets/img/dado.png')}
             />
           </Icon>
-          <Subtitle2 type="secondDarkColor">
+          <Subtitle2 type="seconddark">
             Procure um lugar iluminado e não cubra seu rosto com o documento.
           </Subtitle2>
         </Line>

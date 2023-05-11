@@ -17,8 +17,8 @@ export interface CheckButtonProps extends RadioProps {
 }
 
 export const Radio = styled.TouchableOpacity<RadioProps>`
-  margin-top: ${(props) => props.theme.space.space1};
-  margin-right: ${(props) => props.theme.space.space1};
+  margin-top: ${(props) => props.theme.space.s1};
+  margin-right: ${(props) => props.theme.space.s1};
   padding: 6px 12px;
   flex-flow: row;
   align-items: center;
@@ -28,20 +28,20 @@ export const Radio = styled.TouchableOpacity<RadioProps>`
   border: 1.5px solid
     ${(props) =>
       props.isSelected
-        ? props.theme.colors.primaryColor
+        ? props.theme.colors.primary
         : props.theme.colors.secondColor};
   background-color: ${(props) =>
-    props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
+    props.isSelected ? props.theme.colors.primaryLight : 'transparent'};
 `;
 
 export const CloseButton = styled.TouchableOpacity`
-  background-color: ${(props) => props.theme.colors.secondLightColor};
+  background-color: ${(props) => props.theme.colors.secondaryLight};
   height: 16px;
   width: 16px;
   border-radius: 16px;
   justify-content: center;
   align-items: center;
-  margin-left: ${(props) => props.theme.space.space1};
+  margin-left: ${(props) => props.theme.space.s1};
 `;
 
 export const Text = styled.Text<TextProps>`
@@ -49,8 +49,8 @@ export const Text = styled.Text<TextProps>`
   font-family: ${(props) => (props.isSelected ? 'Nunito' : 'Nunito')};
   color: ${(props) =>
     props.isSelected
-      ? props.theme.colors.primaryDarkColor
-      : props.theme.colors.darkColor};
+      ? props.theme.colors.primaryDark
+      : props.theme.colors.dark};
 `;
 
 const CheckButton: React.FC<CheckButtonProps> = ({

@@ -53,7 +53,7 @@ const FilterItem = (props: FilterItemProps) => {
         }}
       >
         {props.title !== '' && (
-          <H3 color={props.theme.colors.secondDarkColor}>{props.title}</H3>
+          <H3 color={props.theme.colors.seconddark}>{props.title}</H3>
         )}
 
         {props.info && (
@@ -62,7 +62,7 @@ const FilterItem = (props: FilterItemProps) => {
           >
             <Icons
               name={'exclamation'}
-              color={props.theme.colors.darkColor}
+              color={props.theme.colors.dark}
               size={16}
             />
           </Icon>

@@ -1,7 +1,7 @@
 import { orders } from '../../graphql';
 import { arrayToObj } from '../../utils/helpers';
 import { openPopupModal } from './info';
-import { translation } from '../../texts';
+import { translation } from '../../texts/translations';
 import { Linking } from 'react-native';
 
 export interface Order {

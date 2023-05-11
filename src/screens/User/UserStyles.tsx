@@ -4,13 +4,13 @@ import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
 export const Container = styled.View`
-  padding: ${({ theme }) => theme.space.space2};
-  padding-top: ${({ theme }) => theme.space.space1};
+  padding: ${({ theme }) => theme.space.s2};
+  padding-top: ${({ theme }) => theme.space.s1};
 `;
 
 export const Logout = styled.TouchableOpacity`
   flex-flow: row;
-  margin-top: ${({ theme }) => theme.space.space3};
+  margin-top: ${({ theme }) => theme.space.s3};
   align-items: center;
 `;
 
@@ -18,14 +18,14 @@ export const MainContainer = styled.View`
   flex: 1;
   width: 100%;
   height: 100%;
-  padding-left: ${(props) => props.theme.space.space3};
-  padding-right: ${(props) => props.theme.space.space3};
+  padding-left: ${(props) => props.theme.space.s3};
+  padding-right: ${(props) => props.theme.space.s3};
   padding-top: ${(props) =>
     Platform.OS == 'ios'
       ? Constants.statusBarHeight + 'px'
-      : props.theme.space.space2};
+      : props.theme.space.s2};
   padding-bottom: ${getBottomSpace() + 24 + 'px'};
-  background: ${(props) => props.theme.colors.lightColor};
+  background: ${(props) => props.theme.colors.light};
 `;
 
 export const Line = styled.View`
@@ -36,8 +36,8 @@ export const Line = styled.View`
 
 export const Icon = styled.View`
   min-height: 20px;
-  width: ${(props) => props.theme.space.space2};
-  margin-right: ${(props) => props.theme.space.space1};
+  width: ${(props) => props.theme.space.s2};
+  margin-right: ${(props) => props.theme.space.s1};
 `;
 
 export const ImageContent = styled.View`
@@ -53,7 +53,7 @@ export const Content = styled.View`
 `;
 
 export const Footer = styled.View`
-  padding-bottom: ${(props) => props.theme.space.space2};
+  padding-bottom: ${(props) => props.theme.space.s2};
 `;
 
 export const ButtonsRow = styled.View`

@@ -20,7 +20,6 @@ import {
   Column,
 } from './AddAddressStyles';
 import { RootState } from '../../../types/globals';
-import { Theme } from '../../../styles/themeTypes';
 import { AddressState, CurrentLocation } from '../AddressTypes';
 import { ButtonComponent } from '../../../components/Button/ButtonStyles';
 import { CustomInput } from '../../user/EditProfileContentStyles';
@@ -138,7 +137,7 @@ const AddAddress: React.FC<Props> = ({ theme, navigation }) => {
             <LineAddress>
               <Icons
                 name="location-pin"
-                color={theme.colors.darkColor}
+                color={theme.colors.dark}
                 size={24}
               />
               <SpaceHorizontal n={2} />

@@ -81,13 +81,13 @@ const Notifications: React.FC<NotificationsProps> = ({
             <Info>
               <H3>{n.title}</H3>
               <Space n={0} />
-              <Subtitle2 type={'secondDarkColor'}>{n.body}</Subtitle2>
+              <Subtitle2 type={'seconddark'}>{n.body}</Subtitle2>
             </Info>
             <Date>
-              <Subtitle2 type={'secondDarkColor'}>
+              <Subtitle2 type={'seconddark'}>
                 {n.dateTimeFormated}
               </Subtitle2>
-              <Subtitle2 type={'secondDarkColor'}>{n.dateFormated}</Subtitle2>
+              <Subtitle2 type={'seconddark'}>{n.dateFormated}</Subtitle2>
             </Date>
           </NotificationBody>
           <Space n={1} />

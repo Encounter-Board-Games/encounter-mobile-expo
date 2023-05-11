@@ -6,25 +6,25 @@ import 'styled-components';
 export interface Theme extends DefaultTheme {
   fontSizes: any;
   colors: {
-    primaryColor: string;
-    primaryDarkColor: string;
-    primaryLightColor: string;
-    secondaryColor: string;
-    secondaryDarkColor: string;
-    secondaryLightColor: string;
-    complementColor: string;
-    lightColor: string;
-    darkColor: string;
+    primary: string;
+    primaryDark: string;
+    primaryLight: string;
+    secondary: string;
+    secondaryDark: string;
+    secondaryLight: string;
+    complement: string;
+    light: string;
+    dark: string;
     success: string;
-    warming: string;
+    warning: string;
     danger: string;
   };
   elements: {
     productDetailsImage: number;
   };
   header: {
-    heigth: string;
-    largeHeigth: string;
+    height: string;
+    largeHeight: string;
     title: string;
     largeTitle: string;
   };
@@ -46,26 +46,24 @@ export interface Theme extends DefaultTheme {
     button3: string;
     button4: string;
   };
+  spacing: string;
   space: {
-    space0: string;
-    space1: string;
-    space2: string;
-    space3: string;
-    space4: string;
-    space5: string;
+    s0: string;
+    s1: string;
+    s2: string;
+    s3: string;
+    s4: string;
+    s5: string;
   };
-  borderRadius: {
-    button: string;
-    tag: string;
-  };
+  borderRadius: number;
   shadow: {
-    shadowColor: string;
-    shadowOffset: {
+    color: string;
+    offset: {
       width: string;
       height: string;
     };
-    shadowOpacity: number;
-    shadowRadius: string;
+    opacity: number;
+    radius: string;
     elevation: number;
   };
 }
@@ -92,8 +90,8 @@ export const theme: Theme = {
     ...config.theme.elements,
   },
   header: {
-    heigth: actuatedNormalize(50),
-    largeHeigth: actuatedNormalize(80),
+    height: actuatedNormalize(50),
+    largeHeight: actuatedNormalize(80),
     title: actuatedNormalize(16),
     largeTitle: actuatedNormalize(24),
   },
@@ -115,23 +113,21 @@ export const theme: Theme = {
     button3: actuatedNormalize(12),
     button4: actuatedNormalize(11),
   },
+  spacing: actuatedNormalize(2),
   space: {
-    space0: actuatedNormalize(4),
-    space1: actuatedNormalize(8),
-    space2: actuatedNormalize(16),
-    space3: actuatedNormalize(24),
-    space4: actuatedNormalize(32),
-    space5: actuatedNormalize(40),
+    s0: actuatedNormalize(4),
+    s1: actuatedNormalize(8),
+    s2: actuatedNormalize(16),
+    s3: actuatedNormalize(24),
+    s4: actuatedNormalize(32),
+    s5: actuatedNormalize(40),
   },
-  borderRadius: {
-    button: actuatedNormalize(8),
-    tag: actuatedNormalize(20),
-  },
+  borderRadius: 5,
   shadow: {
-    shadowColor: 'rgb(0, 0, 0)',
-    shadowOffset: { width: '0', height: '2' },
-    shadowOpacity: 0.16,
-    shadowRadius: '3',
+    color: 'rgb(0, 0, 0)',
+    offset: { width: '0', height: '2' },
+    opacity: 0.16,
+    radius: '3',
     elevation: 2,
   },
 };

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { currencyFormat } from '../../../utils/helpers';
-import { translation } from '../../../texts';
+import { translation } from '../../../texts/translations';
 import { handleOpenCart } from '../../../store/actions/cart/cart';
 import {
   Container,

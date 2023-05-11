@@ -7,7 +7,7 @@ import { handleCheckOut } from '../../../store/actions/cart/cartCheckOut';
 import { useNavigation } from '@react-navigation/native';
 import Delivery from './Delivery';
 import Payment from './Payment';
-import { translation } from '../../../texts';
+import { translation } from '../../../texts/translations';
 import config from '../../../config';
 import { handleOpenCart } from '../../../store/actions/cart/cart';
 import { Line } from './CartInfoStyles';
@@ -101,7 +101,7 @@ const CartInfo: React.FC = () => {
 
       {!isLogged && (
         <React.Fragment>
-          <Subtitle2 type={'secondDarkColor'} center>
+          <Subtitle2 type={'seconddark'} center>
             {translation('cart.notLogged')}
           </Subtitle2>
           <Space n={3} />

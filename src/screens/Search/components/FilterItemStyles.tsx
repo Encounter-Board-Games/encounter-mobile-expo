@@ -14,7 +14,7 @@ export const Space = styled.View`
 export const Hr = styled.View`
   height: 16px;
   border-color: ${(props: { theme: Theme }) =>
-    props.theme.colors.secondLightColor};
+    props.theme.colors.secondaryLight};
   border-bottom-width: 1px;
 `;
 

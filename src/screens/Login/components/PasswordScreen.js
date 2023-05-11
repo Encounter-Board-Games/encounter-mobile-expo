@@ -18,8 +18,8 @@ export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } =
   Dimensions.get('window');
 
 export const Container = styled.View`
-  padding: ${(props) => props.theme.space.space3};
-  padding-top: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s3};
+  padding-top: ${(props) => props.theme.space.s2};
   width: 100%;
   align-items: center;
   min-height: ${(props) =>
@@ -72,7 +72,7 @@ function PasswordScreen(props) {
         <BackButton onPress={() => dispatch(hadleBackToLogin())}>
           <Ionicons
             name="ios-arrow-round-back"
-            color={props.theme.colors.darkColor}
+            color={props.theme.colors.dark}
             size={32}
           />
         </BackButton>
@@ -81,7 +81,7 @@ function PasswordScreen(props) {
         <Space n={1} />
         <H4 center>{title}</H4>
         <Space n={3} />
-        <Subtitle2 type="secondDarkColor">Senha</Subtitle2>
+        <Subtitle2 type="seconddark">Senha</Subtitle2>
         {errorMessage ===
         (
           <Animatable.View animation="shake">
@@ -107,7 +107,7 @@ function PasswordScreen(props) {
       {(login.isLogin === !login.isForgot) ===
       (
         <Forgot onPress={() => dispatch(handleForgotPassword())}>
-          <Subtitle2 underline type="primaryDarkColor">
+          <Subtitle2 underline type="primaryDark">
             Esqueci minha senha
           </Subtitle2>
         </Forgot>

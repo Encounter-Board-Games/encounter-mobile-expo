@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { InfoState } from '../screens/info/components/TextModalTypes';
 import { ProductState } from '../store/reducers/productReducer';
 import { ShelvesState } from '../store/reducers/shelvesReducer';
@@ -8,18 +9,23 @@ export interface AutoCompleteRegister {
   lastname?: string;
 }
 
+export interface AboutState {
+  app: AppState;
+  nameAbout: string;
+  aboutText: ReactNode;
+  name: string;
+  phone: string;
+  terms: AppTerms;
+  description: string;
+  location: string;
+  website: string;
+  instagram: string;
+}
+
 export interface AppState {
   shelves: any;
   terms: any;
-  app: {
-    about: {
-      phone: string;
-      terms: AppTerms;
-    };
-  };
-  about: {
-    phone: string;
-  };
+  about: AboutState;
   update: {
     show: boolean;
   };
@@ -59,12 +65,14 @@ export interface RadioButtonItem {
 export interface RootState {
   [x: string]: any;
   address: any;
+  about: AboutState;
   app: AppState;
   autoCompleteRegister?: AutoCompleteRegister;
   cart: any;
   email: string;
   filters: any;
   hasTerms: boolean;
+  info: string;
   isCodeSent: boolean;
   isForgot: boolean;
   isLogged: boolean;

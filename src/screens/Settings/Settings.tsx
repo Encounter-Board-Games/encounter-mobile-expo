@@ -11,7 +11,7 @@ import { H3, Subtitle2 } from '../../components/Typography';
 import { Space, SpaceHorizontal } from '../../components/Space';
 import { openLoginPopup } from '../../store/actions/user/login';
 import { openPopupModal } from '../../store/actions/info';
-import { translation } from '../../texts/index';
+import { translation } from '../../texts/translation';
 import config from '../../config';
 import {
   Container,
@@ -63,7 +63,7 @@ const Settings = (props: ThemeProps) => {
         )}
         <Space n={0} />
         <Line>
-          <Subtitle2 type="secondDarkColor">Editar perfil</Subtitle2>
+          <Subtitle2 type="seconddark">Editar perfil</Subtitle2>
           <SpaceHorizontal n={1} />
           {hasPendences && (
             <Ionicons
@@ -82,7 +82,7 @@ const Settings = (props: ThemeProps) => {
         <MenuItemText>
           <H3>Você ainda não está na sua conta.</H3>
           <Space n={1} />
-          <Subtitle2 type="secondDarkColor">
+          <Subtitle2 type="seconddark">
             {translation('settings.notLogged')}
           </Subtitle2>
         </MenuItemText>

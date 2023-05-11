@@ -14,7 +14,7 @@ interface RadioButtonProps {
 export const Radio = styled.button<RadioButtonProps>`
   display: flex;
   flex-flow: row;
-  margin-top: ${(props) => props.theme.space.space1};
+  margin-top: ${(props) => props.theme.space.s1};
   padding: 0px 12px;
   align-items: center;
   ${(props) => (props.isFlex ? `flex: 1` : '')}
@@ -22,17 +22,17 @@ export const Radio = styled.button<RadioButtonProps>`
     props.isLast
       ? '0px'
       : props.isFlex
-      ? props.theme.space.space2
-      : props.theme.space.space1};
+      ? props.theme.space.s2
+      : props.theme.space.s1};
   height: 40px;
   border-radius: ${(props) => props.theme.borderRadius.button};
   border: 1.5px solid
     ${(props) =>
       props.isSelected
-        ? props.theme.colors.primaryColor
-        : props.theme.colors.secondaryColor};
+        ? props.theme.colors.primary
+        : props.theme.colors.secondary};
   background-color: ${(props) =>
-    props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
+    props.isSelected ? props.theme.colors.primaryLight : 'transparent'};
 `;
 
 export const Text = styled.span<{ isSelected: boolean }>`
@@ -40,8 +40,8 @@ export const Text = styled.span<{ isSelected: boolean }>`
   font-family: Nunito ${(props) => (props.isSelected ? '-Bold' : '')};
   color: ${(props) =>
     props.isSelected
-      ? props.theme.colors.primaryDarkColor
-      : props.theme.colors.darkColor};
+      ? props.theme.colors.primaryDark
+      : props.theme.colors.dark};
 `;
 
 const RadioButton: React.FC<RadioButtonProps> = ({

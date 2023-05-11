@@ -35,20 +35,20 @@ const encounterSettings = {
   theme: {
     fontSize: undefined,
     colors: {
-      primaryColor: '#c8e8e0',
-      primaryDarkColor: '#0e9577',
-      primaryLightColor: '#ebf7f4',
-      secondaryColor: '#BCBEC0',
-      secondaryDarkColor: '#6D6E71',
-      secondaryLightColor: '#E6E7E8',
+      primary: '#c8e8e0',
+      primaryDark: '#0e9577',
+      primaryLight: '#ebf7f4',
+      secondary: '#BCBEC0',
+      secondaryDark: '#6D6E71',
+      secondaryLight: '#E6E7E8',
 
-      complementColor: '#0d3c54',
+      complement: '#0d3c54',
 
-      lightColor: '#FAFAFA',
-      darkColor: '#414042',
+      light: '#FAFAFA',
+      dark: '#414042',
 
       success: '#6FE382',
-      warming: '#fda856',
+      warning: '#fda856',
       danger: '#E35959',
     },
     elements: {

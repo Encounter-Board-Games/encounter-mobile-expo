@@ -28,7 +28,7 @@ const FilterHeader = ({ title, showSeeAll, onSeeAllPress, theme }: Props) => (
     <H3>{title}</H3>
     {showSeeAll && (
       <ToolItem onPress={onSeeAllPress}>
-        <Subtitle1 underline color={theme.colors.primaryDarkColor}>
+        <Subtitle1 underline color={theme.colors.primaryDark}>
           Ver todos
         </Subtitle1>
       </ToolItem>

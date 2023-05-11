@@ -8,7 +8,7 @@ const Container = styled.TouchableOpacity<{
   width: ${({ size }) => size * 16}px;
   border-radius: ${({ size }) => size * 2}px;
   position: relative;
-  margin-right: ${({ theme }) => theme.space.space0};
+  margin-right: ${({ theme }) => theme.space.s0};
   border: 0.5px solid ${({ theme }) => theme.colors.warming};
   background-color: ${({ theme, isSelected }) =>
     isSelected ? theme.colors.warming : 'transparent'};
@@ -30,7 +30,7 @@ const Pointer = styled.View<{
   ${({ bottom }) => (bottom ? `bottom: ${bottom}` : '')};
   border-radius: ${({ size }) => size * 4}px;
   background-color: ${({ theme, isSelected }) =>
-    isSelected ? theme.colors.lightColor : theme.colors.warming};
+    isSelected ? theme.colors.light : theme.colors.warming};
 `;
 
 interface DiceProps {

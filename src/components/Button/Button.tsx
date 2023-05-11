@@ -6,7 +6,7 @@ import { ButtonComponent, Text } from './ButtonStyles';
 
 export interface ButtonProps extends ButtonWrapperProps {}
 
-const EncounterButton: React.FC<ButtonProps> = (props) => {
+const Button: React.FC<ButtonProps> = (props) => {
   return (
     <ButtonComponent
       {...getConfigs(props.theme, props.type)}
@@ -23,4 +23,4 @@ const EncounterButton: React.FC<ButtonProps> = (props) => {
   );
 };
 
-export default EncounterButton;
+export default Button;

@@ -1,22 +1,35 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
+import {
+  TouchableOpacity,
+  TouchableOpacityProps,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import { SocialButtonProps, SocialIconName } from './ButtonTypes';
-import { SocialButtonComponent } from './ButtonStyles';
 
-export const SocialButton: React.FC<SocialButtonProps> = (props) => {
+interface SocialButtonComponentProps extends TouchableOpacityProps {
+  backgroundColor?: string;
+  icon?: React.ReactNode | SocialIconName;
+  style?: StyleProp<ViewStyle>;
+}
+
+export const SocialButton: React.FC<
+  SocialButtonProps & SocialButtonComponentProps
+> = ({ backgroundColor, icon, style, children, ...restProps }) => {
   return (
-    <SocialButtonComponent backgroundColor={props.backgroundColor} {...props}>
-      {typeof props.icon === 'string' ? (
+    <TouchableOpacity style={style} {...restProps}>
+      {typeof icon === 'string' ? (
         <FontAwesome
-          name={props.icon as SocialIconName}
+          name={icon as SocialIconName}
           size={16}
           color="white"
           style={{ marginRight: 6 }}
         />
       ) : (
-        props.icon
+        icon
       )}
-      <SocialButtonComponent>{props.children}</SocialButtonComponent>
-    </SocialButtonComponent>
+      {children}
+    </TouchableOpacity>
   );
 };

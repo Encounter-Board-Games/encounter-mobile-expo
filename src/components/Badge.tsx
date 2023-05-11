@@ -9,24 +9,24 @@ export interface BadgeContainerProps {
 }
 
 const BadgeContainer = styled.View<BadgeContainerProps>`
-  margin-top: ${(props) => theme.space.space0};
-  margin-right: ${(props) => theme.space.space0};
-  padding: ${(props) => theme.space.space0} ${(props) => theme.space.space1};
+  margin-top: ${(props) => theme.space.s0};
+  margin-right: ${(props) => theme.space.s0};
+  padding: ${(props) => theme.space.s0} ${(props) => theme.space.s1};
   border-radius: ${(props) =>
     props.isCircle ? '100px' : theme.borderRadius.tag};
   border: 1.5px solid
     ${(props) =>
       props.isSelected
-        ? theme.colors.primaryColor
-        : theme.colors.secondaryColor};
+        ? theme.colors.primary
+        : theme.colors.secondary};
   background-color: ${(props) =>
-    props.isSelected ? theme.colors.primaryLightColor : 'transparent'};
+    props.isSelected ? theme.colors.primaryLight : 'transparent'};
 `;
 
 const BadgeText = styled.Text`
   font-size: ${(props) => theme.fontSizes.subtitle3}px;
   font-family: Nunito;
-  color: ${theme.colors.primaryDarkColor};
+  color: ${theme.colors.primaryDark};
 `;
 
 interface BadgeProps extends BadgeContainerProps {

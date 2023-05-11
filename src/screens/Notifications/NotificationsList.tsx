@@ -54,7 +54,7 @@ const Notifications: React.FC<NotificationsProps> = ({
                   <PlaceholderLine noMargin width={40} />
                 </H3>
                 <Space n={0} />
-                <Subtitle2 type={'secondDarkColor'}>
+                <Subtitle2 type={'seconddark'}>
                   <PlaceholderLine noMargin width={80} />
                 </Subtitle2>
                 <Date>
@@ -81,12 +81,12 @@ const Notifications: React.FC<NotificationsProps> = ({
           <NotificationBody>
             <H3>{n.title}</H3>
             <Space n={0} />
-            <Subtitle2 type={'secondDarkColor'}>{n.body}</Subtitle2>
+            <Subtitle2 type={'seconddark'}>{n.body}</Subtitle2>
             <Date>
-              <Subtitle2 type={'secondDarkColor'}>
+              <Subtitle2 type={'seconddark'}>
                 {n.dateTimeFormated}
               </Subtitle2>
-              <Subtitle2 type={'secondDarkColor'}>{n.dateFormated}</Subtitle2>
+              <Subtitle2 type={'seconddark'}>{n.dateFormated}</Subtitle2>
             </Date>
           </NotificationBody>
           <Space n={1} />

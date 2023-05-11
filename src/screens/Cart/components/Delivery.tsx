@@ -87,7 +87,7 @@ const DeliveryOptions: React.FC<Props> = withTheme(({ theme, type }) => {
           />
         </ImageContent>
         <SpaceHorizontal n={1} />
-        <H3 type="secondDarkColor">{title}</H3>
+        <H3 type="seconddark">{title}</H3>
       </Line>
 
       {deliveryOptions.map((delivery, key) => (
@@ -105,8 +105,8 @@ const DeliveryOptions: React.FC<Props> = withTheme(({ theme, type }) => {
                 flex
                 type={
                   selected.type === delivery.type
-                    ? 'primaryDarkColor'
-                    : 'darkColor'
+                    ? 'primaryDark'
+                    : 'dark'
                 }
               >
                 {delivery.name}
@@ -118,7 +118,7 @@ const DeliveryOptions: React.FC<Props> = withTheme(({ theme, type }) => {
             <Space n={1} />
 
             <Line>
-              <Subtitle2 type="secondDarkColor">
+              <Subtitle2 type="seconddark">
                 {delivery.description}
               </Subtitle2>
             </Line>
@@ -134,7 +134,7 @@ const DeliveryOptions: React.FC<Props> = withTheme(({ theme, type }) => {
             <Arrow onPress={() => chooseAddress(delivery.type)}>
               <EvilIcons
                 name="chevron-right"
-                color={theme.colors.darkColor}
+                color={theme.colors.dark}
                 size={32}
               />
             </Arrow>

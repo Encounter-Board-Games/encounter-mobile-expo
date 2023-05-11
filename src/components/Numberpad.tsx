@@ -18,13 +18,13 @@ const Number = styled.TouchableOpacity<{ isLast?: boolean }>`
   flex: 1;
   align-items: center;
   justify-content: center;
-  border: 0.5px solid ${(props) => props.theme.colors.primaryColor};
-  background-color: ${(props) => props.theme.colors.primaryLightColor};
+  border: 0.5px solid ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.primaryLight};
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
 `;
 
 const NumberText = styled.Text`
-  color: ${(props) => props.theme.colors.primaryDarkColor};
+  color: ${(props) => props.theme.colors.primaryDark};
   font-family: Nunito;
   font-size: 24px;
 `;
@@ -83,7 +83,7 @@ function NumberPadComponent(props: Props) {
           <NumberText>
             <Ionicons
               name="ios-arrow-back"
-              color={theme.colors.primaryDarkColor}
+              color={theme.colors.primaryDark}
               size={24}
             />
           </NumberText>

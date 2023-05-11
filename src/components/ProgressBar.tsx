@@ -16,7 +16,7 @@ const Bar = styled.div<{ percent: number }>`
   width: ${(props) => (props.percent ? props.percent + '%' : '0%')};
   border-radius: 4px;
   height: 4px;
-  background: ${(props) => props.theme.colors.complementColor};
+  background: ${(props) => props.theme.colors.complement};
 `;
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ percent }) => {

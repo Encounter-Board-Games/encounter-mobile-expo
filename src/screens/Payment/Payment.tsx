@@ -21,7 +21,7 @@ import { PaymentMethod } from './PaymentTypes';
 import { RootState } from '../../types/globals';
 
 const Container = styled.View`
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
   min-height: 100%;
 `;
 

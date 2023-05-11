@@ -198,7 +198,7 @@ export function ProductDetails({ theme }: Props) {
               >
                 <Ionicons
                   name={isFavorite ? 'ios-heart' : 'ios-heart-empty'}
-                  color={theme.colors.darkColor}
+                  color={theme.colors.dark}
                   size={18}
                 />
               </Icon>
@@ -249,7 +249,7 @@ export function ProductDetails({ theme }: Props) {
             <VideoPlayer onPress={() => setShowVideo(true)}>
               <MaterialCommunityIcons
                 size={24}
-                color={theme.colors.darkColor}
+                color={theme.colors.dark}
                 name="play-circle"
               />
               <VideoPlayerText>Vídeo do jogo</VideoPlayerText>
@@ -266,7 +266,7 @@ export function ProductDetails({ theme }: Props) {
 
           <Description>
             {(product.description || '').split('</br>').map((d, i) => (
-              <Subtitle3 key={i} type="secondDarkColor">
+              <Subtitle3 key={i} type="seconddark">
                 {d}
               </Subtitle3>
             ))}

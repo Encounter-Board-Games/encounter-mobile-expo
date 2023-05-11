@@ -20,16 +20,16 @@ export const SearchBarContainer = styled.View`
 
 export const ClearButton = styled.TouchableOpacity`
   padding: 4px;
-  background-color: ${(props) => props.theme.colors.secondLightColor};
+  background-color: ${(props) => props.theme.colors.secondaryLight};
   border-radius: 16px;
   justify-content: center;
   align-items: center;
-  margin-right: ${(props) => props.theme.space.space1};
+  margin-right: ${(props) => props.theme.space.s1};
 `;
 
 export const SearchInput = styled.TextInput`
   flex: 1;
   height: 100%;
-  color: ${(props) => props.theme.colors.secondDarkColor};
+  color: ${(props) => props.theme.colors.seconddark};
   font-size: ${(props) => props.theme.sizes.subtitle3};
 `;

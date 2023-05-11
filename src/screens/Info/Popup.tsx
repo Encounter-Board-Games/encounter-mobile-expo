@@ -22,8 +22,8 @@ interface InfoState {
 }
 
 const Container = styled.View`
-  padding: ${({ theme }) => theme.space.space2};
-  background: ${({ theme }) => theme.colors.lightColor};
+  padding: ${({ theme }) => theme.space.s2};
+  background: ${({ theme }) => theme.colors.light};
   width: 100%;
   flex-wrap: wrap;
   border-radius: ${({ theme }) => theme.borderRadius.button};

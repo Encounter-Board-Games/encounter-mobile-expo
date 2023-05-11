@@ -4,14 +4,14 @@ import { TouchableOpacity } from 'react-native';
 export const MainContainer = styled.SafeAreaView`
   flex: 1;
   width: 100%;
-  padding-top: ${({ theme }) => theme.space.space2}px;
+  padding-top: ${({ theme }) => theme.space.s2}px;
 `;
 
 export const Container = styled.View`
   flex: 1;
   width: 100%;
-  padding-left: ${({ theme }) => theme.space.space3}px;
-  padding-right: ${({ theme }) => theme.space.space3}px;
+  padding-left: ${({ theme }) => theme.space.s3}px;
+  padding-right: ${({ theme }) => theme.space.s3}px;
 `;
 
 export const Content = styled.View`
@@ -43,8 +43,8 @@ export const ImageContent = styled.View<{
   justify-content: center;
   ${({ full }) => (full ? '' : 'height: 200px;')}
   ${({ noMaxHeight }) => (noMaxHeight ? '' : 'max-height: 320px;')}
-  padding-top: ${({ theme }) => theme.space.space4}px;
-  padding-bottom: ${({ theme }) => theme.space.space2}px;
+  padding-top: ${({ theme }) => theme.space.s4}px;
+  padding-bottom: ${({ theme }) => theme.space.s2}px;
 `;
 
 export const Footer = styled.View`

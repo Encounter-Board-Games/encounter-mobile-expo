@@ -13,12 +13,12 @@ import Constants from 'expo-constants';
 export const Container = styled.View`
     flex: 1;
     width: 100%;
-    padding-left: ${(props) => props.theme.space.space3}
-    padding-right: ${(props) => props.theme.space.space3}
+    padding-left: ${(props) => props.theme.space.s3}
+    padding-right: ${(props) => props.theme.space.s3}
     padding-top: ${(props) =>
     Platform.OS == 'ios'
       ? Constants.statusBarHeight + 'px'
-      : props.theme.space.space2};
+      : props.theme.space.s2};
 `;
 
 export const Content = styled.View`

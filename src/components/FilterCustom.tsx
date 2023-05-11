@@ -73,7 +73,7 @@ const FilterItem: React.FC<FilterItemProps & { theme: DefaultTheme }> = ({
             >
               <Icons
                 name={'exclamation'}
-                color={theme.colors.darkColor}
+                color={theme.colors.dark}
                 size={theme.sizes.icons}
               />
             </TouchableOpacity>
@@ -288,7 +288,7 @@ const Filter: React.FC<FilterProps & { theme: DefaultTheme }> = ({
     <MainContainer>
       <Carrossel
         stepperUp
-        paddingRight={theme.space.space3}
+        paddingRight={theme.space.s3}
         enablePages={stepsEnable}
         current={current}
         noMargin

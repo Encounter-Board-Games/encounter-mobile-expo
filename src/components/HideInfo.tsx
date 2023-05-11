@@ -8,7 +8,7 @@ interface Props {
 
 const Step = ({ n, size }: Props) => {
   return (
-    <Stepper customColor="darkColor" size={size || 2} number={n} current={-1} />
+    <Stepper customColor="dark" size={size || 2} number={n} current={-1} />
   );
 };
 

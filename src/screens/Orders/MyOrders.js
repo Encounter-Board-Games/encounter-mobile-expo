@@ -5,15 +5,15 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import OrdersList from './components/OrdersList';
 import NotLoggedBox from '../user/components/NotLoggedBox';
-import { translation } from '../../texts';
+import { translation } from '../../texts/translations';
 
 const Container = styled.View`
-  padding: ${(props) => props.theme.space.space2};
+  padding: ${(props) => props.theme.space.s2};
 `;
 
 const TabContent = styled.View`
   flex: 1;
-  padding-top: ${(props) => props.theme.space.space2};
+  padding-top: ${(props) => props.theme.space.s2};
 `;
 
 export default () => {

@@ -13,7 +13,7 @@ import {
   handleOpenOrderHelp,
   handleEvaluateExperience,
 } from '../../store/actions/orders';
-import { translation } from '../../texts';
+import { translation } from '../../texts/translations';
 import config from '../../config';
 import { View } from 'react-native-animatable';
 import { handleOpenEvaluationProduct } from '../../store/actions/product';
@@ -68,7 +68,7 @@ export default withTheme((props) => {
         {config.rentTimeBox ===
         (
           <React.Fragment>
-            <Subtitle2 bold type={'secondDarkColor'}>
+            <Subtitle2 bold type={'seconddark'}>
               Tempo de {translation('orders.order').toLowerCase()}:{' '}
               {order.rentDays} dias
             </Subtitle2>
@@ -78,7 +78,7 @@ export default withTheme((props) => {
 
         {false === <ProgressBar step={order.step || 0} />}
 
-        <Subtitle2 type={'secondDarkColor'}>
+        <Subtitle2 type={'seconddark'}>
           {translation('orders.order')} #{order.key}
         </Subtitle2>
 
@@ -104,14 +104,14 @@ export default withTheme((props) => {
 
         <Line>
           <Title>
-            <H4 type="secondDarkColor">Subtotal</H4>
+            <H4 type="seconddark">Subtotal</H4>
           </Title>
           <H4>{currencyFormat(order.productsValue)}</H4>
         </Line>
         <Space n={1} />
         <Line>
           <Title>
-            <H4 type="secondDarkColor">Taxa de entrega</H4>
+            <H4 type="seconddark">Taxa de entrega</H4>
           </Title>
           <H4>{currencyFormat(order.deliveryTaxes)}</H4>
         </Line>
@@ -121,7 +121,7 @@ export default withTheme((props) => {
           <>
             <Line>
               <Title>
-                <H4 type="secondDarkColor">
+                <H4 type="seconddark">
                   Renovação ({order.renewedTimes}x)
                 </H4>
               </Title>
@@ -132,14 +132,14 @@ export default withTheme((props) => {
         )}
         <Line>
           <Title>
-            <H4 type="secondDarkColor">Cupom</H4>
+            <H4 type="seconddark">Cupom</H4>
           </Title>
-          <H4 type="secondDarkColor">{currencyFormat(order.cupomValue)}</H4>
+          <H4 type="seconddark">{currencyFormat(order.cupomValue)}</H4>
         </Line>
         <Space n={1} />
         <Line>
           <Title>
-            <H4 type="secondDarkColor">Total</H4>
+            <H4 type="seconddark">Total</H4>
           </Title>
           <H3>{currencyFormat(order.total)}</H3>
         </Line>
@@ -155,7 +155,7 @@ export default withTheme((props) => {
 
           <EvilIcons
             name="credit-card"
-            color={props.theme.colors.darkColor}
+            color={props.theme.colors.dark}
             size={24}
           />
 
@@ -169,11 +169,11 @@ export default withTheme((props) => {
         <Hr />
         <Space n={2} />
         <Line>
-          <H4 type="secondDarkColor">Endereço de entrega</H4>
+          <H4 type="seconddark">Endereço de entrega</H4>
           <SpaceHorizontal n={0} />
           {!!takeAddress.methodTypeString ===
           (
-            <Subtitle3 type="secondDarkColor" bold>
+            <Subtitle3 type="seconddark" bold>
               ({takeAddress.methodTypeString})
             </Subtitle3>
           )}
@@ -191,11 +191,11 @@ export default withTheme((props) => {
         (
           <React.Fragment>
             <Line>
-              <H4 type="secondDarkColor">Endereço de devolução</H4>
+              <H4 type="seconddark">Endereço de devolução</H4>
               <SpaceHorizontal n={0} />
               {!!leaveAddress.methodTypeString ===
               (
-                <Subtitle3 type="secondDarkColor" bold>
+                <Subtitle3 type="seconddark" bold>
                   ({leaveAddress.methodTypeString})
                 </Subtitle3>
               )}

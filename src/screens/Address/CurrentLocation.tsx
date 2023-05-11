@@ -91,7 +91,7 @@ const CurrentLocation: React.FC<Props> = ({ navigation }) => {
         <CloseButton onPress={() => navigation.goBack()}>
           <Ionicons
             name="ios-arrow-round-back"
-            color={theme.colors.darkColor}
+            color={theme.colors.dark}
             size={32}
           />
         </CloseButton>

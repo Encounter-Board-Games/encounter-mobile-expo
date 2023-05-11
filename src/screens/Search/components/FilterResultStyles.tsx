@@ -11,10 +11,10 @@ export const ContentLine = styled.View`
 `;
 
 export const Space = styled.View`
-  width: ${(props: { theme: Theme }) => props.theme.space.space2};
+  width: ${(props: { theme: Theme }) => props.theme.space.s2};
   height: 1px;
 `;
 
-export const Space2 = styled.View`
+export const s2 = styled.View`
   width: 1px;
 `;

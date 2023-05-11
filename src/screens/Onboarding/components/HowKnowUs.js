@@ -13,8 +13,8 @@ export const Container = styled.View`
     flex: 1;
     width: 100%;
     position:relative;
-    padding-left: ${(props) => props.theme.space.space3}
-    padding-right: ${(props) => props.theme.space.space3}
+    padding-left: ${(props) => props.theme.space.s3}
+    padding-right: ${(props) => props.theme.space.s3}
 `;
 
 export const Content = styled.ScrollView`
@@ -40,7 +40,7 @@ export const ButtonSpace = styled.View`
 `;
 
 export const ButtonWrap = styled.View`
-  background-color: ${(props) => props.theme.colors.lightColor};
+  background-color: ${(props) => props.theme.colors.light};
   border-radius: ${(props) => props.theme.borderRadius.button};
 `;
 
@@ -48,7 +48,7 @@ export const Footer = styled.View`
   width: 100%;
   position: absolute;
   bottom: 0;
-  left: ${(props) => props.theme.space.space3};
+  left: ${(props) => props.theme.space.s3};
 `;
 
 export const Tags = styled.View`
@@ -103,11 +103,11 @@ function HowKnowUs(props) {
       <Content showsVerticalScrollIndicator={false}>
         <PaddingTop />
         <Space n={3} />
-        <H1 color="secondDarkColor">Antes de conhecer o app...</H1>
+        <H1 color="seconddark">Antes de conhecer o app...</H1>
         <Space n={3} />
-        <H4 color="secondDarkColor">
+        <H4 color="seconddark">
           ...só de curiosidade,{' '}
-          <H3 color="secondDarkColor">como chegou até aqui?</H3>
+          <H3 color="seconddark">como chegou até aqui?</H3>
         </H4>
         <Space n={3} />
         <Itens>

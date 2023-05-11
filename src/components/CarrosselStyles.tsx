@@ -10,7 +10,7 @@ export const Content = styled.View`
   align-items: center;
   justify-content: center;
   margin-bottom: ${(props) =>
-    props.noMargin ? 0 : props.stepperUp ? '0px' : props.theme.space.space2};
+    props.noMargin ? 0 : props.stepperUp ? '0px' : props.theme.space.s2};
 `;
 export const StepperHeader = styled.View`
   flex-flow: row;
