@@ -16,7 +16,6 @@ const rootReducer = combineReducers({
   products: product,
   shelves: shelves,
   filters: filters,
-  // other reducers
 });
 
 export const store = configureStore({

@@ -23,6 +23,8 @@ export interface AboutState {
 }
 
 export interface AppState {
+  modalInfo: {};
+  infoModal: string;
   shelves: any;
   terms: any;
   about: AboutState;
@@ -72,7 +74,7 @@ export interface RootState {
   email: string;
   filters: any;
   hasTerms: boolean;
-  info: string;
+  info: InfoState;
   isCodeSent: boolean;
   isForgot: boolean;
   isLogged: boolean;

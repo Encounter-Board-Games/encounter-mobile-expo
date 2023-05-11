@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
-import { Modalize } from 'react-native-modalize';
+import { Modalize, IHandles } from 'react-native-modalize';
 import { useDispatch, useSelector } from 'react-redux';
 import { Entypo } from '@expo/vector-icons';
-import { Space } from '../../components/Space';
+import { SpaceHorizontal } from '../../components/Space';
 import { H3, Subtitle2 } from '../../components/Typography';
 import { closeInfoModal } from '../../store/actions/info';
 import {
@@ -12,31 +12,23 @@ import {
   Content,
   SafeSpace,
 } from './InfoModalStyles';
-import { Theme } from '../../theme/theme';
-import { RootState } from '../../store/store';
+import { RootState } from '../../types/globals';
 
-interface InfoModalProps {
-  theme: Theme;
-}
+interface InfoModalProps {}
 
-const withTheme = (Component: React.ComponentType<any>) => {
-  const ThemedComponent = (props: any) => {
-    const theme = useSelector((state: RootState) => state.theme);
-    return <Component {...props} theme={theme} />;
-  };
-  return ThemedComponent;
-};
-
-const InfoModal: React.FC<InfoModalProps> = ({ theme }) => {
+const InfoModal: React.FC<InfoModalProps> = () => {
   const dispatch = useDispatch();
   const modalRef = useRef<Modalize>(null);
-  const info = useSelector((state: RootState) => state.info?.infoModal || {});
+  const info: { open?: boolean; content?: any[]; title?: string } = useSelector(
+    (state: RootState) => state.app.modalInfo || {}
+  );
+  const theme = useSelector((state: RootState) => state.theme);
 
   useEffect(() => {
-    if (info.open && !modalRef.current?.state.isVisible) {
+    if (info.open && !modalRef.current?.getContent()?.state.isVisible) {
       modalRef.current?.open();
     }
-    if (!info.open && modalRef.current?.state.isVisible) {
+    if (!info.open && modalRef.current?.getContent()?.state.isVisible) {
       modalRef.current?.close();
     }
   }, [info.open]);
@@ -45,32 +37,61 @@ const InfoModal: React.FC<InfoModalProps> = ({ theme }) => {
 
   return (
     <Modalize
-      modalStyle={{ backgroundColor: theme.colors.lightColor }}
+      modalStyle={{ backgroundColor: theme.colors.light }}
       onClosed={() => dispatch(closeInfoModal())}
-      HeaderComponent={undefined}
       ref={modalRef}
     >
-      <Container behavior="padding">
+      <Container>
         <Header onPress={() => dispatch(closeInfoModal())}>
           <CloseButton>
             <Entypo
               name="chevron-thin-down"
-              color={theme.colors.darkColor}
+              color={theme.colors.dark}
               size={16}
             />
           </CloseButton>
           <H3 center>{title}</H3>
         </Header>
-        <Space n={3} />
+        <SpaceHorizontal n="s3" />
         <Content>
-          {content.map((item, i) => (
-            <React.Fragment key={i}>
-              <H3 type="primaryDarkColor">{item.name}</H3>
-              <Space n={0} />
-              <Subtitle2>{item.description}</Subtitle2>
-              <Space n={3} />
-            </React.Fragment>
-          ))}
+          {content.map(
+            (
+              item: {
+                name:
+                  | string
+                  | number
+                  | boolean
+                  | React.ReactPortal
+                  | React.ReactElement<
+                      any,
+                      string | React.JSXElementConstructor<any>
+                    >
+                  | React.ReactFragment
+                  | null
+                  | undefined;
+                description:
+                  | string
+                  | number
+                  | boolean
+                  | React.ReactPortal
+                  | React.ReactElement<
+                      any,
+                      string | React.JSXElementConstructor<any>
+                    >
+                  | React.ReactFragment
+                  | null
+                  | undefined;
+              },
+              i: React.Key | null | undefined
+            ) => (
+              <React.Fragment key={i}>
+                <H3 type="primaryDark">{item.name}</H3>
+                <SpaceHorizontal n="s0" />
+                <Subtitle2>{item.description}</Subtitle2>
+                <SpaceHorizontal n="s3" />
+              </React.Fragment>
+            )
+          )}
         </Content>
         <SafeSpace />
       </Container>
@@ -78,4 +99,4 @@ const InfoModal: React.FC<InfoModalProps> = ({ theme }) => {
   );
 };
 
-export default withTheme(InfoModal);
+export default InfoModal;
