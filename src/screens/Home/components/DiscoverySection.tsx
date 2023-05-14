@@ -1,19 +1,20 @@
-// Add imports for action types
-import { ProductAction } from '../../../store/actions/product';
-import { ShelvesAction } from '../../../store/actions/shelves';
-import { UserAction } from '../../../store/actions/user';
-
 import React from 'react';
 import { useDispatch } from '../../../store/hooks';
 import styled from 'styled-components/native';
 import ButtonComponent from '../../../components/Button/Button';
 import Container from '../../../components/Container';
-import { handleOpenDiscovery } from '../../../store/actions/discovery';
+import {
+  handleOpenDiscovery,
+  openDiscovery,
+} from '../../../store/actions/discovery';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme/theme';
 import { NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../../navigation/RootStackParamList';
-import t from '../../../texts/translations/translations';
+import { ProductAction } from '../../../store/reducers/productReducer';
+import { ShelvesAction } from '../../../store/reducers/shelvesReducer';
+import { UserAction } from '../../../types/userTypes';
+import { translation } from '../../../texts/translation';
 
 // Create a type alias for the union of action types
 export type AppActions = ProductAction | ShelvesAction | UserAction;
@@ -30,13 +31,15 @@ const DiscoverySection: React.FC = () => {
 
   // Replace 'any' type with 'AppActions' for the dispatch function
   const openDiscovery = () => {
-    dispatch(handleOpenDiscovery()).then((result: AppActions) => {
-      if (result) navigation.navigate('Busca');
-    });
+    dispatch(handleOpenDiscovery());
+    navigation.navigate('Busca');
   };
 
   return (
-    <Container title={t('discovery.title')} subtitle={t('discovery.subtitle')}>
+    <Container
+      title={translation('discovery.title')}
+      subtitle={translation('discovery.subtitle')}
+    >
       <FindOut>
         <ButtonComponent
           onPress={openDiscovery}

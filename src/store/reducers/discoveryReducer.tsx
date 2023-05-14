@@ -44,7 +44,7 @@ export default function discovery(
           ? [action.value!]
           : state.filters[action.filterType!].includes(action.value!)
             ? state.filters[action.filterType!].filter(
-                (c) => c !== action.value
+                (c: any) => c !== action.value
               )
             : state.filters[action.filterType!].concat([action.value!]),
       },

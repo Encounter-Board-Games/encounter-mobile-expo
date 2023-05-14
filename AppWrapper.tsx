@@ -6,10 +6,10 @@ import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import MainNavigation from './src/navigation/MainTabNavigator';
 import Login from './src/screens/login/Login';
-import InfoModal from './src/screens/Info/InfoModal';
-import Popup from './src/screens/Info/Popup';
-import NeedUpdate from './src/screens/NeedUpdate/NeedUpdate';
-import AppNotification from './src/screens/Notifications/components/AppNotification';
+import InfoModal from './src/screens/info/InfoModal';
+import Popup from './src/screens/info/Popup';
+import NeedUpdate from './src/screens/needUpdate/NeedUpdate';
+import AppNotification from './src/screens/notifications/Notifications';
 import { handleInitApp } from './src/store/actions/shared';
 import { handleSetNotificationToken } from './src/store/actions/user/notifications';
 import { Container, LoadView } from './src/styles/globalStyles';
@@ -77,7 +77,7 @@ const AppWrapper: React.FC = React.memo(() => {
       />
       <MainNavigation />
       <InfoModal />
-      <AppNotification />
+      <AppNotification notifications={[]} isLoading={false} />
       <Popup />
       <Login />
     </>

@@ -9,7 +9,7 @@ const Progress = styled.div`
   width: 100%;
   border-radius: 4px;
   height: 4px;
-  background: ${(props) => props.theme.colors.secondColor};
+  background: ${(props) => props.theme.colors.secondary};
 `;
 
 const Bar = styled.div<{ percent: number }>`

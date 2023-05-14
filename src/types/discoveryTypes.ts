@@ -25,4 +25,5 @@ export type DiscoveryActionTypes = FinishDiscoveryAction | CloseDiscoveryAction;
 // Interface for the Discovery State
 export interface DiscoveryState {
   filters: DiscoveryFilters;
+  steps: string;
 }

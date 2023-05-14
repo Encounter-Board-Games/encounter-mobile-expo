@@ -7,7 +7,6 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import MenuOption from '../../components/MenuOption';
 import BoxAddress from './component/BoxAddress';
 import NotLoggedBox from '../user/components/NotLoggedBox';
-import { Subtitle2 } from '../../components/Typography';
 import {
   handleSetCurrentLocation,
   handleSearchLocationByTerm,
@@ -19,11 +18,12 @@ import {
   ScrollViewAddress,
   AddressNumber,
   MainContent,
+  Container,
 } from './AddressStyles';
-import { Container } from './CurrentLocationStyles';
-import { RootState } from '../../types/globals';
 import { Space } from '../../components/Space';
 import { Props, AddressLocation } from './AddressTypes';
+import { Subtitle2 } from '../../components/Typography';
+import { RootState } from '../search/Search';
 
 const ChoseAddressScreen: React.FC<Props> = withTheme(({ theme }) => {
   const dispatch = useDispatch();
@@ -44,7 +44,8 @@ const ChoseAddressScreen: React.FC<Props> = withTheme(({ theme }) => {
   );
 
   useEffect(() => {
-    return () => dispatch(handleCloseCartChoseAddress());
+    const handleClose = () => dispatch(handleCloseCartChoseAddress());
+    return handleClose;
   }, []);
 
   const openOrSelectAddress = (key: string) => {
@@ -57,23 +58,13 @@ const ChoseAddressScreen: React.FC<Props> = withTheme(({ theme }) => {
     }
   };
 
-  const locationClick = (location: AddressLocation) => {
-    dispatch(handleSetCurrentLocation(undefined, location));
-    dispatch(handleSearchLocationByTerm(''));
-    navigation.navigate('AddNewAddress');
-  };
-
-  const isLoggedContent = () => (
-    <Container>
-      <Content>
-        <SearchBar type="Location" />
-        <Space n={3} />
-      </Content>
+  const locationContent = () => (
+    <>
       {isSearch && (
         <Content>
           {locations.map((location, index) => (
             <MenuOption
-              onPress={() => locationClick(location)}
+              onPress={() => handleLocationClick(location)}
               hideBorder
               key={index.toString()}
               icon="location-pin"
@@ -122,21 +113,29 @@ const ChoseAddressScreen: React.FC<Props> = withTheme(({ theme }) => {
           </Content>
         </>
       )}
-    </Container>
+    </>
   );
 
-  const isNotLoggedContent = () => (
-    <Container>
-      <NotLoggedBox title="Você não possui endereços cadastrados." />
-    </Container>
-  );
+  const handleLocationClick = (location: AddressLocation) => {
+    dispatch(handleSetCurrentLocation(undefined, location));
+    dispatch(handleSearchLocationByTerm(''));
+    navigation.navigate('AddNewAddress');
+  };
 
   return (
     <ScreenPopup title="Endereço" withBorder>
       {isLogged ? (
-        isLoggedContent()
+        <Container>
+          <Content>
+            <SearchBar type="Location" />
+            <Space n={3} />
+          </Content>
+          {locationContent()}
+        </Container>
       ) : (
-        <MainContent>{isNotLoggedContent()}</MainContent>
+        <MainContent>
+          <NotLoggedBox title="Você não possui endereços cadastrados." />
+        </MainContent>
       )}
     </ScreenPopup>
   );

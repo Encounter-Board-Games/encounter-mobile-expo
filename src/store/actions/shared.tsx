@@ -22,7 +22,7 @@ import {
   handleLoadDiscovery,
 } from './discovery';
 import { handleSetQuickSearchs } from './quickSearch/quickSearch';
-import { sendErros } from '../../graphql';
+import { useSendErrors } from '../../graphql/functions/loginClient';
 
 export const handleInitHome = () => async (dispatch: any) => {
   await Promise.all([
@@ -47,7 +47,7 @@ export const handleInitApp = () => async (dispatch: any) => {
     dispatch(handleLoadDiscovery());
   } catch (error) {
     console.log(error);
-    sendErros(JSON.stringify(error));
+    useSendErrors();
   }
 };
 

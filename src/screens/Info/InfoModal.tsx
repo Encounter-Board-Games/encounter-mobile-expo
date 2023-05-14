@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { Modalize, IHandles } from 'react-native-modalize';
+import React, { useEffect } from 'react';
+import { Modalize } from 'react-native-modalize';
 import { useDispatch, useSelector } from 'react-redux';
 import { Entypo } from '@expo/vector-icons';
 import { SpaceHorizontal } from '../../components/Space';
@@ -13,25 +13,58 @@ import {
   SafeSpace,
 } from './InfoModalStyles';
 import { RootState } from '../../types/globals';
+import { IHandles } from 'react-native-modalize/lib/options';
 
-interface InfoModalProps {}
+interface InfoModalProps {
+  open?: boolean;
+  current?: any;
+}
+
+interface ModalRefProps extends IHandles {
+  current: Modalize | null;
+  open: () => void;
+  close: () => void;
+  getContent: () => any;
+}
+
+const useModalRef = (): ModalRefProps => {
+  const modalRef = React.useRef<Modalize>(null);
+
+  const customRef = {
+    open: () => modalRef.current?.open(),
+    close: () => modalRef.current?.close(),
+    getContent: () => modalRef.current?.getContent(),
+  };
+
+  useEffect(() => {
+    return () => {
+      modalRef.current?.close();
+    };
+  }, [modalRef]);
+
+  return customRef;
+};
 
 const InfoModal: React.FC<InfoModalProps> = () => {
   const dispatch = useDispatch();
-  const modalRef = useRef<Modalize>(null);
+  const modalRef = useModalRef();
   const info: { open?: boolean; content?: any[]; title?: string } = useSelector(
     (state: RootState) => state.app.modalInfo || {}
   );
   const theme = useSelector((state: RootState) => state.theme);
 
   useEffect(() => {
-    if (info.open && !modalRef.current?.getContent()?.state.isVisible) {
-      modalRef.current?.open();
+    const currentRef = modalRef.current;
+    if (info.open && !currentRef?.state.isVisible) {
+      modalRef.open();
     }
-    if (!info.open && modalRef.current?.getContent()?.state.isVisible) {
-      modalRef.current?.close();
+    if (!info.open && currentRef?.state.isVisible) {
+      modalRef.close();
     }
-  }, [info.open]);
+    return () => {
+      currentRef?.close();
+    };
+  }, [info.open, modalRef]);
 
   const { content = [], title = '' } = info;
 
@@ -39,7 +72,7 @@ const InfoModal: React.FC<InfoModalProps> = () => {
     <Modalize
       modalStyle={{ backgroundColor: theme.colors.light }}
       onClosed={() => dispatch(closeInfoModal())}
-      ref={modalRef}
+      ref={modalRef as React.RefObject<Modalize>}
     >
       <Container>
         <Header onPress={() => dispatch(closeInfoModal())}>

@@ -45,6 +45,7 @@ export interface Chip {
 }
 
 export interface RootState {
+  address: any;
   filters: {
     chips: Chip[];
     recentTexts: string[];

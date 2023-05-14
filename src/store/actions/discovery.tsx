@@ -2,6 +2,9 @@ import { handleSetSelects } from './filters/handleSetFilters';
 import { Dispatch } from 'react';
 import { AppActions } from '../../screens/home/components/DiscoverySection';
 import { useCustomFilter } from '../../graphql';
+import { UserAction } from '../../types/userTypes';
+import { ProductAction } from '../reducers/productReducer';
+import { ShelvesAction } from '../reducers/shelvesReducer';
 
 export const SET_SELECT_FILTER_TOGGLE_DISCOVERY =
   'SET_SELECT_FILTER_TOGGLE_DISCOVERY';
@@ -74,9 +77,17 @@ export const closeDiscovery = (): CloseDiscoveryAction => ({
   type: CLOSE_DISCOVERY,
 });
 
+export type AppActions =
+  | ProductAction
+  | ShelvesAction
+  | UserAction
+  | ((dispatch: Dispatch<AppActions>) => Promise<AppActions>);
+
 let discoveryResolve: any;
 
-export const handleOpenDiscovery = (): AppActions => {
+export const handleOpenDiscovery = (): ((
+  dispatch: Dispatch<AppActions>
+) => Promise<AppActions>) => {
   return (dispatch: Dispatch<AppActions>): Promise<AppActions> => {
     dispatch(openDiscovery());
     dispatch(handleLoadDiscovery());
@@ -85,13 +96,14 @@ export const handleOpenDiscovery = (): AppActions => {
   };
 };
 
-export const handleLoadDiscovery = () => async (dispatch: any) => {
-  const steps = await useCustomFilter('discovery');
-  dispatch(setDiscoverySteps(steps));
-};
+export const handleLoadDiscovery =
+  () => async (dispatch: Dispatch<AppActions>) => {
+    const steps = await useCustomFilter('discovery');
+    dispatch(setDiscoverySteps(steps));
+  };
 
 export const handleFinishDiscovery =
-  () => async (dispatch: any, getState: any) => {
+  () => async (dispatch: Dispatch<AppActions>, getState: any) => {
     const { discovery } = getState();
 
     dispatch(handleSetSelects(discovery.filters));
