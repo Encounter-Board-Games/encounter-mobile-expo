@@ -4,7 +4,7 @@ import { setProducts } from '../../product';
 import { arrayToObj } from '../../../../utils/helpers';
 import { handleLoginCart } from '../../cart/cart';
 import { setAdresses } from '../../address/address';
-import { UserAction } from '../../../../types/userTypes';
+import { UserAction } from '../../../../types/storeTypes';
 import { handleAccessLog, handleLogout, setLogged } from '../login';
 import { USER_TOKEN, setUserRememberProducts } from '../user';
 import { setPendences, setFavorites } from './handleSetters';

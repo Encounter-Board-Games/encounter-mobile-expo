@@ -1,42 +1,45 @@
 /* eslint-disable indent */
-import React from 'react';
-import styled from 'styled-components/native';
-import theme from '../theme/theme';
+import React, { useContext } from 'react';
+import { Theme } from '../theme/theme';
+import styled, { ThemeContext } from 'styled-components/native';
 
-export interface BadgeContainerProps {
+interface BadgeContainerProps {
   isCircle?: boolean;
   isSelected?: boolean;
+  theme: Theme;
 }
 
 const BadgeContainer = styled.View<BadgeContainerProps>`
-  margin-top: ${(props) => theme.space.s0};
-  margin-right: ${(props) => theme.space.s0};
-  padding: ${(props) => theme.space.s0} ${(props) => theme.space.s1};
-  border-radius: ${(props) =>
-    props.isCircle ? '100px' : theme.borderRadius.tag};
+  margin-top: ${({ theme }) => theme.space.s0};
+  margin-right: ${({ theme }) => theme.space.s0};
+  padding: ${({ theme }) => theme.space.s0} ${({ theme }) => theme.space.s1};
+  border-radius: ${({ isCircle, theme }) =>
+    isCircle ? '100px' : theme.borderRadius.tag};
   border: 1.5px solid
-    ${(props) =>
-      props.isSelected
-        ? theme.colors.primary
-        : theme.colors.secondary};
-  background-color: ${(props) =>
-    props.isSelected ? theme.colors.primaryLight : 'transparent'};
+    ${({ isSelected, theme }) =>
+      isSelected ? theme.colors.primary : theme.colors.secondary};
+  background-color: ${({ isSelected, theme }) =>
+    isSelected ? theme.colors.primaryLight : 'transparent'};
 `;
 
 const BadgeText = styled.Text`
-  font-size: ${(props) => theme.fontSizes.subtitle3}px;
+  font-size: ${({ theme }) => theme.fontSizes.subtitle3}px;
   font-family: Nunito;
-  color: ${theme.colors.primaryDark};
+  color: ${({ theme }) => theme.colors.primaryDark};
 `;
 
-interface BadgeProps extends BadgeContainerProps {
+interface BadgeProps {
+  isCircle?: boolean;
+  isSelected?: boolean;
   children: React.ReactNode;
 }
 
-const Badge: React.FC<BadgeProps> = (props) => {
+const Badge: React.FC<BadgeProps> = ({ isCircle, isSelected, children }) => {
+  const theme = useContext(ThemeContext);
+
   return (
-    <BadgeContainer {...props}>
-      <BadgeText>{props.children}</BadgeText>
+    <BadgeContainer isCircle={isCircle} isSelected={isSelected} theme={theme}>
+      <BadgeText>{children}</BadgeText>
     </BadgeContainer>
   );
 };

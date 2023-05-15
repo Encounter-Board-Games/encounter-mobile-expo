@@ -12,7 +12,7 @@ import {
   SetPendencesAction,
   SetUserInfoAction,
   SetUserRememberProductsAction,
-} from '../../../types/userTypes';
+} from '../../../types/storeTypes';
 
 export const SHOW_LOGIN_POPUP = 'SHOW_LOGIN_POPUP';
 export const SET_LOGIN_USER = 'SET_LOGIN_USER';

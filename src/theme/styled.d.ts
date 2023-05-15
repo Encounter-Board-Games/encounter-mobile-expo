@@ -54,6 +54,25 @@ export interface Theme {
   };
   borderRadius: number;
   shadow: {
+    shadowColor: Interpolation<
+      ThemedStyledProps<
+        ViewProps & RefAttributes<View> & BoxProps,
+        DefaultTheme
+      >
+    >;
+    shadowOffset: any;
+    shadowOpacity: Interpolation<
+      ThemedStyledProps<
+        ViewProps & RefAttributes<View> & BoxProps,
+        DefaultTheme
+      >
+    >;
+    shadowRadius: Interpolation<
+      ThemedStyledProps<
+        ViewProps & RefAttributes<View> & BoxProps,
+        DefaultTheme
+      >
+    >;
     color: string;
     offset: {
       width: string;

@@ -23,7 +23,7 @@ import {
 import { Space } from '../../components/Space';
 import { Props, AddressLocation } from './AddressTypes';
 import { Subtitle2 } from '../../components/Typography';
-import { RootState } from '../search/Search';
+import { RootState } from '../../store/store';
 
 const ChoseAddressScreen: React.FC<Props> = withTheme(({ theme }) => {
   const dispatch = useDispatch();

@@ -1,7 +1,6 @@
 import { Dimensions, Platform, PixelRatio } from 'react-native';
-import { DefaultTheme } from 'styled-components';
-import config from '../config';
-import 'styled-components';
+import { createContext } from 'react';
+import { DefaultTheme } from 'styled-components/native';
 
 export interface Theme extends DefaultTheme {
   fontSizes: any;
@@ -18,6 +17,11 @@ export interface Theme extends DefaultTheme {
     success: string;
     warning: string;
     danger: string;
+    tertiaryColor: string;
+    backgroundColor: string;
+    foregroundColor: string;
+    accentColor: string;
+    errorColor: string;
   };
   elements: {
     productDetailsImage: number;
@@ -55,7 +59,9 @@ export interface Theme extends DefaultTheme {
     s4: string;
     s5: string;
   };
-  borderRadius: number;
+  borderRadius: {
+    tag: number;
+  };
   shadow: {
     color: string;
     offset: {
@@ -84,10 +90,26 @@ function actuatedNormalize(size: number): string {
 export const theme: Theme = {
   fontSizes: undefined,
   colors: {
-    ...config.theme.colors,
+    primary: '#c8e8e0',
+    primaryDark: '#0e9577',
+    primaryLight: '#ebf7f4',
+    secondary: '#BCBEC0',
+    secondaryDark: '#6D6E71',
+    secondaryLight: '#E6E7E8',
+    complement: '#0d3c54',
+    light: '#FAFAFA',
+    dark: '#414042',
+    success: '#6FE382',
+    warning: '#fda856',
+    danger: '#E35959',
+    tertiaryColor: '#0d3c54',
+    backgroundColor: '#FAFAFA',
+    foregroundColor: '#414042',
+    accentColor: '#6FE382',
+    errorColor: '#E35959',
   },
   elements: {
-    ...config.theme.elements,
+    productDetailsImage: 0.5,
   },
   header: {
     height: actuatedNormalize(50),
@@ -122,7 +144,9 @@ export const theme: Theme = {
     s4: actuatedNormalize(32),
     s5: actuatedNormalize(40),
   },
-  borderRadius: 5,
+  borderRadius: {
+    tag: 5,
+  },
   shadow: {
     color: 'rgb(0, 0, 0)',
     offset: { width: '0', height: '2' },
@@ -131,5 +155,7 @@ export const theme: Theme = {
     elevation: 2,
   },
 };
+
+export const ThemeContext = createContext<Theme>(theme);
 
 export default theme;

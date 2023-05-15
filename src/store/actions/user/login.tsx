@@ -26,7 +26,7 @@ import {
   USER_TOKEN,
   setLoginUser,
 } from './user';
-import { SET_NEED_COMPLETE_INFOS } from '../../../types/userTypes';
+import { SET_NEED_COMPLETE_INFOS } from '../../../types/storeTypes';
 
 const platform = Device.modelName;
 const os = Device.osName;

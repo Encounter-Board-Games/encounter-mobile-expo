@@ -2,7 +2,7 @@ import { handleSetSelects } from './filters/handleSetFilters';
 import { Dispatch } from 'react';
 import { AppActions } from '../../screens/home/components/DiscoverySection';
 import { useCustomFilter } from '../../graphql';
-import { UserAction } from '../../types/userTypes';
+import { UserAction } from '../../types/storeTypes';
 import { ProductAction } from '../reducers/productReducer';
 import { ShelvesAction } from '../reducers/shelvesReducer';
 

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { InfoState } from '../screens/info/components/TextModalTypes';
 import { ProductState } from '../store/reducers/productReducer';
 import { ShelvesState } from '../store/reducers/shelvesReducer';
-import { LoginState, UserRememberProducts } from './userTypes';
+import { LoginState, UserRememberProducts } from './storeTypes';
 
 export interface AutoCompleteRegister {
   name?: string;

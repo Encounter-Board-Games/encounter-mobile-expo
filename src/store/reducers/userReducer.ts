@@ -20,7 +20,7 @@ import {
   SET_LOGOUT_USER,
   SHOW_LOGIN_POPUP,
 } from '../actions/user/user';
-import { SET_NEED_COMPLETE_INFOS, UserAction } from '../../types/userTypes';
+import { SET_NEED_COMPLETE_INFOS, UserAction } from '../../types/storeTypes';
 
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 interface AppAbout {

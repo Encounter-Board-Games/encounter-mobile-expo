@@ -13,7 +13,7 @@ import { NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../../navigation/RootStackParamList';
 import { ProductAction } from '../../../store/reducers/productReducer';
 import { ShelvesAction } from '../../../store/reducers/shelvesReducer';
-import { UserAction } from '../../../types/userTypes';
+import { UserAction } from '../../../types/storeTypes';
 import { translation } from '../../../texts/translation';
 
 // Create a type alias for the union of action types

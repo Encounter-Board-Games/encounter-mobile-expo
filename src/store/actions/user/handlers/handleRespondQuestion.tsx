@@ -1,5 +1,5 @@
 import { respondQuestion } from '../../../../graphql';
-import { UserAction } from '../../../../types/userTypes';
+import { UserAction } from '../../../../types/storeTypes';
 
 export function handleRespondQuestion(value: string) {
   return async (dispatch: (action: UserAction) => void) => {

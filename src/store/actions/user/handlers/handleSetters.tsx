@@ -1,5 +1,5 @@
 // eslint-disable-next-line max-len
-import { SetAutocompleteRegisterAction } from '../../../../types/userTypes';
+import { SetAutocompleteRegisterAction } from '../../../../types/storeTypes';
 
 export function setAutocompleteRegister(
   name: string,

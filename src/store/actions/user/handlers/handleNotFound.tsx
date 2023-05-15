@@ -1,6 +1,6 @@
 import { openPopupModal } from '../../info';
 import { Linking } from 'react-native';
-import { UserAction } from '../../../../types/userTypes';
+import { UserAction } from '../../../../types/storeTypes';
 import { AppState } from '../../../../types/globals';
 
 export function getState(): { user: any } {
