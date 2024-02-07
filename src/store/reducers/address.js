@@ -1,20 +1,9 @@
-import {
-    SET_CURRENT_LOCATION,
-    SET_CURRENT_LOCATION_NOT_FOUND,
-    SET_LOCATIONS_SEARCHS,
-    EDIT_ADDRESS,
-    SET_SEARCHS_LOCATIONS_TERM ,
-    SET_LOCATIONS_SEARCHS_LOADING, 
-    ADD_ADDRESS,
-    SET_ADRESSES ,
-    SET_CHOSE_ADDRESS_MODE,
-    REMOVE_ADDRESS
-} from '../actions/address'
+import { arrayToObj } from '../../utils/helpers'
 
 export default function address(state = {}, action) {
     
     switch (action.type) {
-        case SET_ADRESSES:
+        case 'SET_ADRESSES':
             return {
                 ...state,
                 adresses: {
@@ -22,7 +11,7 @@ export default function address(state = {}, action) {
                     ...(action.adresses || {} )
                 }
             }
-        case ADD_ADDRESS:
+        case 'ADD_ADDRESS':
             return {
                 ...state,
                 adresses: {
@@ -32,7 +21,7 @@ export default function address(state = {}, action) {
                     }
                 }
             }
-        case EDIT_ADDRESS:
+        case 'EDIT_ADDRESS':
             return {
                 ...state,
                 adresses: {
@@ -43,7 +32,7 @@ export default function address(state = {}, action) {
                     }
                 }
             }
-        case REMOVE_ADDRESS:
+        case 'REMOVE_ADDRESS':
             return {
                 ...state,
                 adresses: {
@@ -54,7 +43,7 @@ export default function address(state = {}, action) {
                     }
                 }
             }
-        case SET_SEARCHS_LOCATIONS_TERM:
+        case 'SET_SEARCHS_LOCATIONS_TERM':
             return {
                 ...state,
                 searchLocations: {
@@ -63,19 +52,19 @@ export default function address(state = {}, action) {
 
                 }
             }
-        case SET_CURRENT_LOCATION:
+        case 'SET_CURRENT_LOCATION':
             return {
                 ...state,
                 currentLocation: action.currentLocation
             }
-        case SET_CURRENT_LOCATION_NOT_FOUND:
+        case 'SET_CURRENT_LOCATION_NOT_FOUND':
             return {
                 ...state,
                 currentLocation: {
                     notFound: true
                 }
             }
-        case SET_LOCATIONS_SEARCHS:
+        case 'SET_LOCATIONS_SEARCHS':
             return {
                 ...state,
                 searchLocations: {
@@ -84,7 +73,7 @@ export default function address(state = {}, action) {
                     locations: action.locations,
                 }
             }
-        case SET_LOCATIONS_SEARCHS_LOADING:
+        case 'SET_LOCATIONS_SEARCHS_LOADING':
             return {
                 ...state,
                 searchLocations: {
@@ -92,7 +81,7 @@ export default function address(state = {}, action) {
                     loading: true,
                 }
             }
-        case SET_CHOSE_ADDRESS_MODE:
+        case 'SET_CHOSE_ADDRESS_MODE':
             return {
                 ...state,
                 choseAddressMode: action.choseAddressMode,

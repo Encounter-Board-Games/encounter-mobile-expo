@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import styled, { withTheme } from 'styled-components';
 import { Subtitle1, H3 } from './Typography';
 
-const ToolItem = styled(TouchableOpacity)`
+const ToolItem = styled.TouchableOpacity`
     position: absolute;
     top:0;
     right:0;

@@ -35,7 +35,7 @@ const Footer = styled.View`
 `
 
 
-const CloseButton = styled(TouchableOpacity)`
+const CloseButton = styled.TouchableOpacity`
     height: 40px;
     width: 40px;
     justify-content: center;

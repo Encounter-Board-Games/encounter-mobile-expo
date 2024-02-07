@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 export const Box = styled.View`
   width: 100%;

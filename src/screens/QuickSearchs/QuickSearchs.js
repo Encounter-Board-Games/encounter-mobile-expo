@@ -16,40 +16,35 @@ const Container = styled.View`
     padding-left: ${props => props.theme.space.space3}
     padding-right: ${props => props.theme.space.space3}
     padding-top: ${props => Platform.OS == "ios" ? Constants.statusBarHeight + 'px' : props.theme.space.space2};
-`
+`;
 
 const Content = styled.View`
 flex: 1;
-`
+`;
 
 const ImageContent = styled.View`
 flex: 1;
 align-items: center;
 justify-content: center;
-
-
-`
+`;
 
 const Footer = styled.View`
     width: 100%;
-`
+`;
 
 const Tags = styled.View`
     flex-flow: row;
     flex-wrap: wrap;
-`
+`;
 
-const KnowInfo = styled(TouchableOpacity)`
+const KnowInfo = styled.TouchableOpacity`
     flex-flow: row;
     width: 100%;
     justify-content: center;
     align-items: center;
-`
-const Cancel = styled(TouchableOpacity)`
+`;
 
-`
-
-
+const Cancel = styled.TouchableOpacity``;
 
 export default ({ quickSearch }) => {
 
@@ -69,7 +64,9 @@ export default ({ quickSearch }) => {
                 {
                     quickSearch.image && <React.Fragment>
                         <ImageContent>
-                            <Image resizeMode={"contain"} style={{ height: '100%', width: '70%' }} source={{ uri: quickSearch.image }} />
+                            <Image resizeMode={"contain"} 
+                            style={{ height: '100%', width: '70%' }} 
+                            source={{ uri: quickSearch.image }} />
                         </ImageContent>
                         <Space n={3} />
                     </React.Fragment>

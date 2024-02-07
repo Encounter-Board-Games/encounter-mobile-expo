@@ -12,6 +12,7 @@ import { Subtitle3 } from "../../../components/Typography";
 import { FlatList } from "react-native-gesture-handler";
 import { View } from "react-native-animatable";
 import { translation } from "../../../texts";
+
 const Content = styled.View`
   flex: 1;
 `;
@@ -20,13 +21,14 @@ const ContentLine = styled.View`
   flex-flow: row;
   flex: 1;
 `;
+
 const Space = styled.View`
     width: ${(props) => props.theme.space.space2}
-    
     height: 1px;
 `;
+
 const Space2 = styled.View`
-    height: ${(props) => props.theme.space.space2}
+
     width: 1px;
 `;
 

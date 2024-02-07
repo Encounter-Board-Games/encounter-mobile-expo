@@ -22,12 +22,12 @@ const ContainerInputs = styled.ScrollView`
   flex: 1;
 `;
 
-const CustomInput = styled(TouchableOpacity)`
-    border: 1.5px solid ${(props) => props.theme.colors.primaryColor}
-    background: ${(props) => props.theme.colors.primaryLightColor}
-    padding-left: ${(props) => props.theme.space.space3}
-    border-radius: ${(props) => props.theme.borderRadius.button}
-    height: 56px
+const CustomInput = styled.TouchableOpacity`
+    border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
+    background: ${(props) => props.theme.colors.primaryLightColor};
+    padding-left: ${(props) => props.theme.space.space3};
+    border-radius: ${(props) => props.theme.borderRadius.button};
+    height: 56px;
     width: 100%;
     justify-content: center;
 `;

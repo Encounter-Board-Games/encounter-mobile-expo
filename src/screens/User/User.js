@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import MenuOption from '../../components/MenuOption';
 import styled, { withTheme } from 'styled-components';
 import ScreePopup from '../../components/ScreePopup';
@@ -14,13 +13,13 @@ import config from '../../config';
 const Container = styled.View`
     padding: ${props => props.theme.space.space2};
     padding-top: ${props => props.theme.space.space1};
-`
+`;
 
-const Logout = styled(TouchableOpacity)`
+const Logout = styled.TouchableOpacity`
     flex-flow: row;
     margin-top: ${props => props.theme.space.space3}
     align-items:center;
-`
+`;
 
 
 export default withTheme((props) => {

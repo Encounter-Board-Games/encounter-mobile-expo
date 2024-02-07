@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import * as AppleAuthentication from 'expo-apple-authentication';
-
 import * as Animatable from 'react-native-animatable';
 import { H2, Subtitle2, H3 } from '../../../components/Typography'
 import CustomInput from '../../../components/Input'
@@ -15,20 +14,18 @@ import config from '../../../config';
 
 
 const Container = styled.KeyboardAvoidingView`
-
 padding: ${props => props.theme.space.space3};
 padding-top: ${props => props.theme.space.space4};
 width: 100%;
-`
+`;
 
 const FlexContent = styled.View`
     flex: 1;
-`
+`;
 
 const SafeSpace = styled.View`
-    height: ${getBottomSpace()}px;
     width: 1px;
-`
+`;
 
 export default (props) => {
     const { login = {} } = useSelector(state => state.user);

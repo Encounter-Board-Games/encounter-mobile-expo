@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { TouchableOpacity } from 'react-native';
 
 export const Container = styled.View`
     flex: 1;
@@ -18,7 +17,7 @@ export const StepperHeader = styled.View`
     padding-right: ${props => props.paddingRight ? props.paddingRight : '0'};
     padding-left: ${props => props.paddingRight ? props.paddingRight : '0'};
 `
-export const StepperHeaderBack = styled(TouchableOpacity)`
+export const StepperHeaderBack = styled.TouchableOpacity`
     flex-flow: row;
     flex: 1;
     height: 32px;

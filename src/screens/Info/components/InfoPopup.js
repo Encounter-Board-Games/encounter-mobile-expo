@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 import { Space } from '../../../components/Space';
 import { Button } from '../../../components/Button';
@@ -35,7 +35,6 @@ export default () => {
             <Line>
                 <Button onPress={() =>dispatch(closePopupModal())} type="ComplementButton-Big" width={'auto'}>Ok</Button>
             </Line>
-
         </Container>
     )
 }

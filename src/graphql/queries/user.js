@@ -1,35 +1,33 @@
 import gql from 'graphql-tag'
 
 export const EmailIsRegisteryQuery = gql`
-query($email: String!){
+  query($email: String!){
     emailIsRegistery(email: $email)
   }
-`
-
+`;
 
 export const CreateAuthMutation = gql`
-mutation($type: String!, $email: String!, $notificationToken: String, $password: String!, $platform: String!, $os: String!){
-  createAuth(user: {
-    type: $type,
-    email:$email,
-    password: $password,
-    notificationToken: $notificationToken,
-      deviceInfo: {
-        platform: $platform,
-        os: $os
+  mutation($type: String!, $email: String!, $notificationToken: String, $password: String!, $platform: String!, $os: String!){
+    createAuth(user: {
+      type: $type,
+      email:$email,
+      password: $password,
+      notificationToken: $notificationToken,
+        deviceInfo: {
+          platform: $platform,
+          os: $os
+        }
+    }){
+      token
+      user{
+        key
+        email
       }
-  }){
-    token
-    user{
-      key
-      email
+      success
+      action
     }
-  	success
-    action
   }
-}
-`
-
+`;
 
 export const LoginMutation = gql`
   mutation($type: String!, $email: String!,  $notificationToken: String, $password: String!, $platform: String!, $os: String!){
@@ -53,7 +51,7 @@ export const LoginMutation = gql`
       action
     }
   }
-`
+`;
 
 export const ConfirmCodeMutation = gql`
 mutation($email: String!, $code: String!, $notificationToken: String, $platform: String!, $os: String!){
@@ -68,7 +66,7 @@ mutation($email: String!, $code: String!, $notificationToken: String, $platform:
     }
   }
 }
-`
+`;
 
 export const resetPasswordMutation = gql`
 mutation ($email: String!, 
@@ -94,7 +92,7 @@ mutation ($email: String!,
     }
   }
 }
-`
+`;
 
 export const confirmCodeResetPasswordMutation = gql`
 mutation($code: String!, $email: String!){
@@ -103,7 +101,7 @@ mutation($code: String!, $email: String!){
     action
   }
 }
-`
+`;
 
 export const MeQuery = gql`
 query{
@@ -117,8 +115,7 @@ query{
     }
   }
 }
-`
-
+`;
 
 export const UserNotificationsQuery = gql`
 query{
@@ -135,7 +132,7 @@ query{
     }
  }
 }
-`
+`;
 
 export const SetNotificationViewedMutation = gql`
 mutation($key: String!){
@@ -150,7 +147,7 @@ mutation($key: String!){
     viewed
   }
 }
-`
+`;
 
 export const UserInfoQuery = gql`
 query{
@@ -192,7 +189,7 @@ query{
   }
  }
 }
-`
+`;
 
 export const EditBasicInfoMutation = gql`
 mutation($name: String!, $lastname: String!, $preferenceName: String!, $birthday: String, $cellphone: String!, $terms: Boolean!, $gender: String, $document: String! ){
@@ -210,7 +207,7 @@ mutation($name: String!, $lastname: String!, $preferenceName: String!, $birthday
      action
   }
 }
-`
+`;
 
 export const ToggleFavoriteMutation = gql`
 mutation($productId : String!) {
@@ -218,45 +215,46 @@ mutation($productId : String!) {
     success
     action
   }
-}`
+}
+`;
 
-  export const getAddressByLatLongQuery = gql`
-  query($lat: String!, $long: String!){
-    getAddressByLatLong(lat: $lat, long: $long){
-      success
-      action
-      address{
-        cep
-        street
-        neighborhood
-        city
-        formatted_address
-        state
-        lat
-        long
-      }
+export const getAddressByLatLongQuery = gql`
+query($lat: String!, $long: String!){
+  getAddressByLatLong(lat: $lat, long: $long){
+    success
+    action
+    address{
+      cep
+      street
+      neighborhood
+      city
+      formatted_address
+      state
+      lat
+      long
     }
   }
-`
-  export const getAddressBySearcQuery = gql`
-  query($search: String!){
-    getAddressBySearch(search: $search){
-      success
-      action
-      adresses{
-        cep
-        street
-        neighborhood
-        city
-        formatted_address
-        state
-        lat
-        long
-      }
+}
+`;
+
+export const getAddressBySearcQuery = gql`
+query($search: String!){
+  getAddressBySearch(search: $search){
+    success
+    action
+    adresses{
+      cep
+      street
+      neighborhood
+      city
+      formatted_address
+      state
+      lat
+      long
     }
   }
-`
-
+}
+`;
 
 export const addAddressMutation = gql`
 mutation (
@@ -293,8 +291,8 @@ mutation (
       neighborhood
     }
   }
-}`
-
+}
+`;
 
 export const editAddressMutation = gql`
 mutation (
@@ -324,9 +322,8 @@ mutation (
       neighborhood
     }
   }
-}`
-
-
+}
+`;
 
 export const removeAddressMutation = gql`
 mutation (
@@ -336,7 +333,8 @@ mutation (
     success
     action
   }
-}`
+}
+`;
 
 export const uploadDocumentMutation = gql`
 mutation ($url: String!, $type: String!){
@@ -345,7 +343,7 @@ mutation ($url: String!, $type: String!){
     action
   }
 }
-`
+`;
 
 export const forgotMutation = gql`
 mutation($email: String!){
@@ -353,7 +351,8 @@ mutation($email: String!){
     success
     action
   }
-}`
+}
+`;
 
 export const rememberMeMutation = gql`
 mutation ($key: String!){
@@ -361,9 +360,11 @@ mutation ($key: String!){
     success
     action
   }
-}`
+}
+`;
 
 export const respondQuestionMutation = gql`
 mutation($deviceId: String!, $value: String!){
   respondQuestion(deviceId: $deviceId, value: $value)
-}`
+}
+`;

@@ -1,30 +1,67 @@
 {
   "expo": {
-    "name": "encounter",
-    "slug": "encounter",
-    "version": "1.0.0",
+    "name": "Encounter",
+    "slug": "Encounter",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.2",
     "orientation": "portrait",
-    "icon": "./src/assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./src/assets/icon-encounter.png",
     "splash": {
-      "image": "./src/assets/splash.png",
+      "image": "./src/assets/splash-encounter.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0e9577"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
+    "facebookScheme": "fb707085366783241",
+    "facebookAppId": "707085366783241",
+    "facebookDisplayName": "Encounter",
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+      "bundleIdentifier": "br.com.encounter.encounter",
+      "buildNumber": "1.0.27",
+      "usesAppleSignIn": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Nós precisamos da sua localização para encontrar o endereço de entrega.",
+        "NSCameraUsageDescription": "Nós precisamos acessar sua camera para que você tire foto com seu documento."
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyAOwDY2YDjgwwy2m8p2fqjpaPEnhu-d1Uc",
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.907241676885-mm3oh94rcke1a5nfm8ra4jtls0comm6a"
+        }
       }
     },
-    "web": {
-      "favicon": "./src/assets/favicon.png"
+    "android": {
+      "package": "br.com.encounter.encounter",
+      "versionCode": 16,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CAMERA"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyA8Gjfv8GrqHAwhAIFLq7N1RdYDR2ArkeM"
+        },
+        "googleSignIn": {
+          "apiKey": "AIzaSyA8Gjfv8GrqHAwhAIFLq7N1RdYDR2ArkeM",
+          "certificateHash": "4BFF995238A7C1B43ED6F2A69844667925784C1D"
+        }
+      }
+    },
+    "description": "",
+    "extra": {
+      "eas": {
+        "projectId": "080c6400-c818-43f8-917b-03d7b4e2ec5f"
+      }
     }
   }
 }

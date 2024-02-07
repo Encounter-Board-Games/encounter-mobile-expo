@@ -23,61 +23,61 @@ const myFavorites = 'Meus Favoritos'
 
 function setFilters(filters) {
     return {
-        type: SET_FILTERS,
+        type: 'SET_FILTERS',
         filters
     }
 }
 function setSelects(selects) {
     return {
-        type: SET_SELECTS,
+        type: 'SET_SELECTS',
         selects
     }
 }
 
 function setFilteringTutorial(show) {
     return {
-        type: SET_FILTERING_TUTORIAL,
+        type: 'SET_FILTERING_TUTORIAL',
         show
     }
 }
 
 function setFilteringResult(results, isFiltered) {
     return {
-        type: SET_FILTERING_RESULTS,
+        type: 'SET_FILTERING_RESULTS',
         results,
         isFiltered
     }
 }
 function setFilteringResultLoading() {
     return {
-        type: SET_FILTERING_RESULTS_LOADING,
+        type: 'SET_FILTERING_RESULTS_LOADING',
     }
 }
 
 function setFilteringText(text) {
     return {
-        type: SET_FILTERING_TEXT,
+        type: 'SET_FILTERING_TEXT',
         text
     }
 }
 
 function setRecentsFilteringTexts(texts) {
     return {
-        type: SET_RECENTS_FILTERING_TEXT,
+        type: 'SET_RECENTS_FILTERING_TEXT',
         texts
     }
 }
 
 function setSelectFilterToggle(filterType, value) {
     return {
-        type: SET_SELECT_FILTER_TOGGLE,
+        type: 'SET_SELECT_FILTER_TOGGLE',
         filterType,
         value
     }
 }
 function setSelectFilter(filterType, value) {
     return {
-        type: SET_SELECT_FILTER,
+        type: 'SET_SELECT_FILTER',
         filterType,
         value
     }
@@ -85,34 +85,34 @@ function setSelectFilter(filterType, value) {
 
 function setNumberOfFilters(numberOfFilters) {
     return {
-        type: SET_NUMBER_OF_FILTERS,
+        type: 'SET_NUMBER_OF_FILTERS',
         numberOfFilters
     }
 }
 
 function setChipFilters(chips) {
     return {
-        type: SET_CHIP_FILTERS,
+        type: 'SET_CHIP_FILTERS',
         chips
     }
 }
 
 function clearSelects() {
     return {
-        type: SET_CLEAR_SELECTS
+        type: 'SET_CLEAR_SELECTS'
     }
 }
 
 function clearSelectsForType(filterType) {
     return {
-        type: SET_CLEAR_SELECTS_FOR_TYPE,
+        type: 'SET_CLEAR_SELECTS_FOR_TYPE',
         filterType
     }
 }
 
 function setSelectsDefault(defaultSelectsFilter){
     return {
-        type: SET_SELECTS_DEFAULT,
+        type: 'SET_SELECTS_DEFAULT',
         defaultSelectsFilter
     }
 }
@@ -152,7 +152,7 @@ export function handleSetSelectFilter(filterType, value, needDebounce = true) {
 }
 
 function setChips() {
-
+    // setChipFilters
     return (dispatch, getState) => {
 
         const { filters } = getState();
@@ -175,6 +175,8 @@ function setChips() {
                 type: 'searchGroup'
             })
 
+
+        // ${filters.filters.find(f => f.key == key).title}
         Object.keys(filters.selects)
             .filter(key => filters.selects[key].length > 0 && key !== 'order' && key !== 'searchGroup')
             .map(key => ({
@@ -234,6 +236,7 @@ export function handleLoadFilters() {
 
 export function handleLoadAndOpenFilter(key){
     return async dispatch => {
+        // dispatch(setFilteringResultLoading())
         const filter = await getFilter(key)
         dispatch(handleSetSelects(filter))
     }

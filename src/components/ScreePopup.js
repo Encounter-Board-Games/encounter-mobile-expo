@@ -1,13 +1,13 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { ScrollView, KeyboardAvoidingView, View, Platform, TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
+import { ScrollView, KeyboardAvoidingView, View, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { H3, Subtitle1 } from './Typography';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 const SafeSpace = styled.View`
-  height: ${getBottomSpace() + 'px'};
+
   width: 100%;
 `;
 
@@ -33,7 +33,7 @@ const Header = styled.View`
   border-bottom-width: 1px;
 `;
 
-const CloseButton = styled(TouchableOpacity)`
+const CloseButton = styled.TouchableOpacity`
   position: absolute;
   top: 0;
   left: -8px;
@@ -44,7 +44,7 @@ const CloseButton = styled(TouchableOpacity)`
   align-items: center;
 `;
 
-const ToolItem = styled(TouchableOpacity)`
+const ToolItem = styled.TouchableOpacity`
   position: absolute;
   top: 0;
   right: 0;
@@ -90,7 +90,7 @@ const ScreenPopUp = ({ theme, hideHeader, title, tooltext, onToolPress, noScroll
           {noScroll ? (
             children
           ) : (
-            <ScrollView style={{ flex: 1, minHeight: '80%', minWidth: '100%', height: '0%' }}>
+            <ScrollView style={{ flex: 1, minHeight: '80%', minWidth: '100%' }}>
               {children}
             </ScrollView>
           )}

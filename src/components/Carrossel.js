@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
-import { withTheme } from 'styled-components/native';
+import { withTheme } from 'styled-components';
 import Stepper from './Stepper';
 import { EvilIcons } from '@expo/vector-icons';
 import { Space } from './Space';

@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const NumberPad = styled.View``;
 
-const Number = styled(TouchableOpacity)`
+const Number = styled.TouchableOpacity`
   margin-bottom: ${(props) => (props.isLast ? getBottomSpace() : 0)}px;
   height: 80px;
   flex: 1;

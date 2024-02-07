@@ -10,7 +10,7 @@ import {
 import { addOrderAndSelect } from "./orders";
 import { handleShowNotification } from "./notification";
 import { translation } from "../../texts";
-import config from "../../config";
+import config from "../../../config";
 import { setProducts } from "./product";
 
 export const CART_ADD_PRODUCT = "CART_ADD_PRODUCT";
@@ -29,39 +29,39 @@ export const CART_CLEAR = "CART_CLEAR";
 
 function addProduct(key, size) {
   return {
-    type: CART_ADD_PRODUCT,
+    type: 'CART_ADD_PRODUCT',
     key,
     size,
   };
 }
 function setCupom(cupom) {
   return {
-    type: CART_SET_CUPOM,
+    type: 'CART_SET_CUPOM',
     cupom,
   };
 }
 function setRenew(renewOrderId) {
   return {
-    type: CART_SET_RENEW,
+    type: 'CART_SET_RENEW',
     renewOrderId,
   };
 }
 
 function setDeliveryTaxes(value) {
   return {
-    type: CART_SET_DELIVERY_TAXES,
+    type: 'CART_SET_DELIVERY_TAXES',
     value,
   };
 }
 function setPaymentMethods(key) {
   return {
-    type: CART_SET_PAYMENT_METHODS,
+    type: 'CART_SET_PAYMENT_METHODS',
     key,
   };
 }
 function clear() {
   return {
-    type: CART_CLEAR,
+    type: 'CART_CLEAR',
   };
 }
 
@@ -72,21 +72,21 @@ export function handleClearCart() {
 }
 function cartSetDeliveryOptions(deliveryType, options) {
   return {
-    type: CART_SET_DELIVERY_OPTIONS,
+    type: 'CART_SET_DELIVERY_OPTIONS',
     deliveryType,
     options,
   };
 }
 function cartIsLoading(isLoading) {
   return {
-    type: CART_IS_LOADING,
+    type: 'CART_IS_LOADING',
     isLoading,
   };
 }
 
 export function cartSetDelivery(type, mode, value) {
   return {
-    type: CART_SET_DELIVERY,
+    type: 'CART_SET_DELIVERY',
     deliveryType: type,
     deliveryTypeMode: mode,
     value,
@@ -94,7 +94,7 @@ export function cartSetDelivery(type, mode, value) {
 }
 export function cartSetDeliveryTypeOpened(type, mode) {
   return {
-    type: CART_SET_DELIVERY_TYPE_OPENED,
+    type: 'CART_SET_DELIVERY_TYPE_OPENED',
     deliveryType: type,
     deliveryTypeMode: mode,
   };
@@ -102,20 +102,20 @@ export function cartSetDeliveryTypeOpened(type, mode) {
 
 function cartLogout() {
   return {
-    type: CART_LOGOUT,
+    type: 'CART_LOGOUT',
   };
 }
 
 function removeProduct(productKey) {
   return {
-    type: CART_REMOVE_PRODUCT,
+    type: 'CART_REMOVE_PRODUCT',
     productKey,
   };
 }
 
 function setSubtotalAndTotal(total, subtotal, time) {
   return {
-    type: CART_SET_SUBTOTAL_AND_TOTAL,
+    type: 'CART_SET_SUBTOTAL_AND_TOTAL',
     total,
     subtotal,
     time,
@@ -134,6 +134,7 @@ export function handleRemoveProductConfirmModal(productKey) {
             }
             resolve(r);
           },
+          // title: 'Exluir endereço',
           confirmBtn: "Sim",
           title: translation("cart.cartRemove"),
         })
@@ -144,6 +145,8 @@ export function handleRemoveProductConfirmModal(productKey) {
 export function handleRemoveProduct(productKey) {
   return (dispatch, getState) => {
     dispatch(removeProduct(productKey));
+
+    // dispatch(openCart())
     dispatch(calcTotal());
   };
 }
@@ -158,7 +161,7 @@ export function handleAddProduct(productKey, options) {
 
       return true;
     };
-
+    // const options = ['P', 'M', 'G']
     if (!config.chooseTagsAndCategories || options.length <= 1)
       return Promise.resolve(chooseOption());
     return new Promise((r) => {
@@ -331,8 +334,8 @@ export function handleCalcDeliveryTaxes() {
         adresses[take.selected.key]
           ? adresses[take.selected.key].cep
           : undefined,
-        hasLeave ? adresses[leave.selected.key]
-          && adresses[leave.selected.key].cep
+        hasLeave && adresses[leave.selected.key]
+          ? adresses[leave.selected.key].cep
           : undefined
       );
       dispatch(cartIsLoading(false));
@@ -340,6 +343,7 @@ export function handleCalcDeliveryTaxes() {
     } else {
       dispatch(setDeliveryTaxes(0));
     }
+    // deliveryTaxes()
     dispatch(calcTotal());
   };
 }
@@ -406,6 +410,7 @@ export function handleCheckOut() {
           );
         return false;
       }
+      // console.log(JSON.stringify(order.order, null,))
       dispatch(addOrderAndSelect(order.order));
       dispatch(clear());
       dispatch(handleOpenCart(false));

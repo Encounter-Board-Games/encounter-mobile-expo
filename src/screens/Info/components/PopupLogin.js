@@ -11,14 +11,14 @@ const Container = styled.View`
     align-items: center;
     justify-content: center;
     width: 100%;
-`
+`;
 
 const Line = styled.View`
     flex-flow: row;
     align-items: flex-start;
     justify-content: center;
     
-`
+`;
 
 export default () => {
     const dispatch = useDispatch()
@@ -34,7 +34,6 @@ export default () => {
                     dispatch(openLoginPopup())
                 } } type="CallToAction-Outline" width={'100%'}>Entrar ou cadastrar</Button>
             </Line>
-
         </Container>
     )
 }

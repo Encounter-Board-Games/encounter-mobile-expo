@@ -6,20 +6,21 @@ import Constants from 'expo-constants';
 import * as Animatable from 'react-native-animatable';
 
 const Container = styled.View`
-width: 100%
-    height: ${Dimensions.get('window').height}px
-    position: absolute
-    z-index: 1
+    width: 100%
+   
+    position: absolute;
+    z-index: 1;
     top: -${Constants.statusBarHeight + 46}px;
-    left:0
-`
-const Content = styled(TouchableOpacity)`
+    left:0;
+`;
+
+const Content = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
-    width: 100%
-    height: 100%
-    background: rgba(0, 0, 0, .6)
-`
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+`;
 
 export default (props) => <Container>
     <Animatable.View duration={500} animation="fadeIn" style={{ flex: 1 }}>

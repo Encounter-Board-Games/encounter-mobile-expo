@@ -1,6 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import styled, { withTheme } from 'styled-components/native';
+import { TouchableWithoutFeedback } from 'react-native';
+import styled, { withTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 
 const Container = styled.View`
@@ -14,7 +14,7 @@ export const CustomInput = styled.TextInput`
     background: ${props => props.theme.colors.primaryLightColor}
     padding-left: ${props => props.theme.space.space2}
     border-radius: ${props => props.theme.borderRadius.button}
-    height: ${props => props.field ? '48px' : '56px'}
+  
     font-size: ${props => props.theme.space.space2};
     opacity: ${props => props.disabled ? '.5' : '1'}
 `
@@ -38,7 +38,7 @@ const ButtonSpace = styled.View`
     right: 0;
 `
 
-const TouchRightIcon = styled(TouchableOpacity)`
+const TouchRightIcon = styled.TouchableOpacity`
     height: 56px;
     width: 56px;
     border-radius: 56px;

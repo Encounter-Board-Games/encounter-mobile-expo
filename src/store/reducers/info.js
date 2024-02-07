@@ -1,14 +1,12 @@
-import { CLOSE_INFO_MODAL, OPEN_INFO_MODAL, CLOSE_POPUP_MODAL, OPEN_POPUP_MODAL, OPEN_CART } from "../actions/info";
-
 export default function info(state = {}, action ){
     
     switch (action.type) {
-        case OPEN_CART:
+        case 'OPEN_CART':
             return {
                 ...state,
                 showCart: action.show
             }
-        case OPEN_INFO_MODAL:
+        case 'OPEN_INFO_MODAL':
             return {
                 ...state,
                 infoModal : {
@@ -17,14 +15,14 @@ export default function info(state = {}, action ){
                     title: action.title,
                 }
             }
-        case CLOSE_INFO_MODAL:
+        case 'CLOSE_INFO_MODAL':
             return {
                 ...state,
                 infoModal : {
                     open: false,
                 }
             }
-        case OPEN_POPUP_MODAL:
+        case 'OPEN_POPUP_MODAL':
             return {
                 ...state,
                 popup : {
@@ -33,7 +31,7 @@ export default function info(state = {}, action ){
                     data: action.data
                 }
             }
-        case CLOSE_POPUP_MODAL:
+        case 'CLOSE_POPUP_MODAL':
             return {
                 ...state,
                 popup : {

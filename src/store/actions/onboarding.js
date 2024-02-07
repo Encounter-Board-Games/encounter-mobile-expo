@@ -108,6 +108,8 @@ export function handleSetFilters(){
     return (dispatch, getState) => {
         const { onboarding } = getState();
         const { filters = {}, steps = [] } = onboarding
+
+        // console.log(filters,)
     }
 }
 

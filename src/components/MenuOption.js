@@ -12,7 +12,7 @@ import { Space, SpaceHorizontal } from './Space';
 import { H4, Subtitle2 } from './Typography';
 import Icons from './Icons';
 
-const Container = styled(TouchableOpacity)`
+const Container = styled.TouchableOpacity`
   flex-flow: row;
   align-items: center;
   padding-top: ${({ theme }) => theme.space.space2};
@@ -46,11 +46,11 @@ const ListItem = withTheme((props) => {
             <PlaceholderMedia size={32} />
           </InfoIcon>
           <Info>
-            <PlaceholderLine noMargin height={24} />
+            <PlaceholderLine noMargin  />
             {!props.oneLine === (
               <>
                 <Space n={0} />
-                <PlaceholderLine noMargin height={20} />
+                <PlaceholderLine noMargin  />
               </>
             )}
           </Info>

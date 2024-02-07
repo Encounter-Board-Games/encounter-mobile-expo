@@ -1,14 +1,12 @@
-import { SET_SELECT_FILTER_TOGGLE_DISCOVERY, SET_FILTERS_DISCOVERY, OPEN_DISCOVERY, START_DISCOVERY, CLOSE_DISCOVERY, SET_DISCOVERY_STEPS } from "../actions/discovery"
-
 export default function discovery(state = { filters: {} }, action) {
   
     switch (action.type) {
-        case SET_DISCOVERY_STEPS:
+        case 'SET_DISCOVERY_STEPS':
             return {
                 ...state,
                 steps: action.steps
             }
-        case SET_SELECT_FILTER_TOGGLE_DISCOVERY:
+        case 'SET_SELECT_FILTER_TOGGLE_DISCOVERY':
             return {
                 ...state,
                 filters: {
@@ -20,23 +18,23 @@ export default function discovery(state = { filters: {} }, action) {
                     )
                 }
             }
-        case OPEN_DISCOVERY:
+        case 'OPEN_DISCOVERY':
             return {
                 ...state,
                 open: true
             }
-        case CLOSE_DISCOVERY:
+        case 'CLOSE_DISCOVERY':
             return {
                 ...state,
                 open: false
             }
-        case START_DISCOVERY:
+        case 'START_DISCOVERY':
             return {
                 ...state,
                 start: true
             }
             
-        case SET_FILTERS_DISCOVERY:
+        case 'SET_FILTERS_DISCOVERY':
             return  {
                 ...state,
                 filters: {

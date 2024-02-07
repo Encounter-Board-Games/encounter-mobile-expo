@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { H4, H3 } from './Typography';
 import { Image } from 'react-native';
 
-const OptionWithImage = styled(TouchableOpacity)`
+const OptionWithImage = styled.TouchableOpacity`
     padding: ${props => props.theme.space.space2};
     padding-top: ${props => props.theme.space.space2};
     padding-bottom: ${props => props.theme.space.space2};

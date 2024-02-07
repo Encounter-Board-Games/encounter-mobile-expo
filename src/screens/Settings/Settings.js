@@ -20,8 +20,8 @@ import { translation } from '../../texts'
 import config from '../../config'
 
 const Container = styled.View`
-    padding: ${props => props.theme.space.space2}
-`
+    padding: ${props => props.theme.space.space2};
+`;
 
 const MenuItem = styled.View`
     align-items:center;
@@ -29,31 +29,34 @@ const MenuItem = styled.View`
     padding-bottom: ${props => props.theme.space.space2};
     border-color: ${props => props.theme.colors.secondLightColor};
     border-bottom-width: 1.5px;
-`
+`;
 
 const MenuItemHeader = styled.View`
     flex-flow: row;
     align-items:center; 
     padding-bottom: ${props => props.theme.space.space2};
-`
+`;
+
 const MenuItemText = styled.View`
 flex: 1;
-`
+`;
+
 const MenuItemImage = styled.View`
     min-width: 64px;
     max-height: 64px;
-`
+`;
+
 const Line = styled.View`
     flex-flow: row
     align-items:center
-`
+`;
 
 const UserImage= styled.View`
-width: 64px;
-height: 64px;
-margin-right: ${props => props.theme.space.space2};
-margin-bottom: ${props => props.theme.space.space1};
-`
+    width: 64px;
+    height: 64px;
+    margin-right: ${props => props.theme.space.space2};
+    margin-bottom: ${props => props.theme.space.space1};
+`;
 
 export default withTheme((props) => {
 
@@ -63,49 +66,53 @@ export default withTheme((props) => {
     const dispatch = useDispatch();
     const hasPendences = pendences.length > 0
     
-    const isLoggedContent = () => (<MenuOption onPress={ () => navigation.navigate('User')}>
+    const isLoggedContent = () => (
+        <MenuOption onPress={ () => navigation.navigate('User')}>
             <UserImage>
-                <Image  borderRadius={128} style={{ width: '100%', height: '100%' }} resizeMode={"cover"} source={user.image ?{ uri : user.image }  : require('../../assets/img/profile.png')} />
+                <Image  
+                borderRadius={128} 
+                style={{ width: '100%', height: '100%' }}
+                resizeMode={"cover"} source={user.image ?{ uri : user.image }  : require('../../assets/img/profile.png')} />
             </UserImage>
            <MenuItemText>
                 {
-                    (userInfo.preferenceName && userInfo.preferenceName != "")? (
-                        <H3>{userInfo.preferenceName}</H3>
-                    ) :
-                    (
-                        <Placeholder Animation={Fade} >
-                            <PlaceholderLine noMargin width={40} height={20} />
-                        </Placeholder>
-                    )
+                 (userInfo.preferenceName && userInfo.preferenceName != "")? (
+                    <H3>{userInfo.preferenceName}</H3>
+                 ) :
+                 (
+                    <Placeholder Animation={Fade} >
+                      <PlaceholderLine noMargin width={40} height={20} />
+                    </Placeholder>
+                 )
                 }
-                
-               
                 <Space n={0} />
-                <Line>
-                    
+                <Line>   
                     <Subtitle2 type="secondDarkColor">Editar perfil</Subtitle2>
                     <SpaceHorizontal n={1} />
-                    {
-                        hasPendences && <Ionicons color={props.theme.colors.danger} size={16}  name="ios-alert" />
+                    { hasPendences &&
+                        <Ionicons color={props.theme.colors.danger} size={16}  name="ios-alert" />
                     }
                     
                 </Line>
             </MenuItemText>
     </MenuOption>)
 
-    const isNotLoggedContent = () => (<MenuItem>
-        <MenuItemHeader>
-            <MenuItemText>
-                <H3>Você ainda não está na sua conta.</H3>
-                <Space n={1} />
-                <Subtitle2 type="secondDarkColor">{translation("settings.notLogged")}</Subtitle2>
-            </MenuItemText>
-            <MenuItemImage>
-                <Image resizeMode={"contain"} style={{ width: '100%', height: '100%'}} source={config.notLoggedImg} />
-            </MenuItemImage>
-        </MenuItemHeader>
-        <Button type="CallToAction-Outline" width={'100%'} onPress={() =>  dispatch(openLoginPopup())}>Entrar ou cadastrar</Button>
-    </MenuItem>)
+    const isNotLoggedContent = () => (
+        <MenuItem>
+            <MenuItemHeader>
+                <MenuItemText>
+                    <H3>Você ainda não está na sua conta.</H3>
+                    <Space n={1} />
+                    <Subtitle2 type="secondDarkColor">{translation("settings.notLogged")}</Subtitle2>
+                </MenuItemText>
+                <MenuItemImage>
+                    <Image resizeMode={"contain"}
+                    style={{ width: '100%', height: '100%'}} 
+                    source={config.notLoggedImg} />
+                </MenuItemImage>
+            </MenuItemHeader>
+            <Button type="CallToAction-Outline" width={'100%'} onPress={() =>  dispatch(openLoginPopup())}>Entrar ou cadastrar</Button>
+        </MenuItem>)
 
     const menuItems = [
         { icon: "bell", title: "Notificações", description: "Minha central de notificações", onPress : () => navigation.navigate('Notifications') },
@@ -120,10 +127,7 @@ export default withTheme((props) => {
     return (<Screen>
         <Container>
             { isLogged ? isLoggedContent() : isNotLoggedContent()}
-            {
-                menuItems.map((item, index) =>  <MenuOption key={index} {...item} />)
-            }
-           
+            { menuItems.map((item, index) =>  <MenuOption key={index} {...item} />) }
         </Container>
     </Screen>
     )

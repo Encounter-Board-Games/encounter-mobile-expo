@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,7 +24,7 @@ const SearchBarContainer = styled.View`
   padding-left: 12px;
 `;
 
-const ClearButton = styled(TouchableOpacity)`
+const ClearButton = styled.TouchableOpacity`
   padding: 4px;
   background-color: ${props => props.theme.colors.secondLightColor};
   border-radius: 16px;

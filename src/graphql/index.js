@@ -48,15 +48,17 @@ import { gql } from "apollo-boost";
 import { cuponsQuery, applyCuponMutation } from "./queries/cupons";
 import {
   quickSearchsQuery,
-  anserwQuestionMutation,
+  answerQuestionMutation,
 } from "./queries/quickSearchs";
+
 export function getFilters() {
   return client
     .query({
       query: getFiltersQuery,
     })
     .then((resp) => resp.data.getFilters);
-}
+};
+
 export function getFilter(key) {
   return client
     .query({
@@ -64,7 +66,7 @@ export function getFilter(key) {
       variables: { key },
     })
     .then((resp) => resp.data.getFilter);
-}
+};
 
 export async function getShelves(filter) {
   return client
@@ -74,14 +76,16 @@ export async function getShelves(filter) {
     })
     .then((resp) => resp.data.shelves)
     .catch(console.log);
-}
+};
+
 export async function getBanners() {
   return client
     .query({
       query: bannersQuery,
     })
     .then((resp) => resp.data.banners);
-}
+};
+
 export async function getProduct(id) {
   const result = await client
     .query({
@@ -95,7 +99,7 @@ export async function getProduct(id) {
     .catch(console.log);
 
   return result;
-}
+};
 
 export async function emailExists(email) {
   const result = await client
@@ -631,16 +635,16 @@ export function quickSearchs() {
     })
     .catch(console.log);
 }
-export function anserwQuestion(key, answer) {
+export function answerQuestion(key, answer) {
   return client
     .mutate({
-      mutation: anserwQuestionMutation,
+      mutation: answerQuestionMutation,
       fetchPolicy: "no-cache",
       variables: { key, answer },
     })
     .catch(console.log)
     .then((resp) => {
-      return resp.data.anserwQuestion;
+      return resp.data.answerQuestion;
     })
     .catch(console.log);
 }

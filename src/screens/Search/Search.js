@@ -30,7 +30,7 @@ const FlexContent = styled.View`
 `;
 
 const Space = styled.View`
-  height: ${(props) => props.theme.space.space2};
+
   width: 100%;
   color: ${(props) => props.theme.colors.secondColor};
 `;
@@ -41,15 +41,15 @@ const Chips = styled.ScrollView`
 `;
 
 const Space3 = styled.View`
-    height: ${(props) => props.theme.space.space3}
+
     width: 1px;
 `;
 const Space2 = styled.View`
-    height: ${(props) => props.theme.space.space2}
+
     width: 1px;
 `;
 
-const RecentItem = styled(TouchableOpacity)`
+const RecentItem = styled.TouchableOpacity`
   padding-bottom: ${(props) => props.theme.space.space1};
   padding-top: ${(props) => props.theme.space.space1};
   border-bottom-width: 0.5px;

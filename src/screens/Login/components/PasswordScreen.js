@@ -12,8 +12,7 @@ import {
   handleForgotPassword,
 } from "../../../store/actions/user";
 import { useDispatch, useSelector } from "react-redux";
-import { getBottomSpace } from "react-native-iphone-x-helper";
-import { View, Dimensions, TouchableOpacity } from "react-native";
+import { View, Dimensions } from "react-native";
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
@@ -22,7 +21,6 @@ const Container = styled.View`
   padding-top: ${(props) => props.theme.space.space2};
   width: 100%;
   align-items: center;
-
   min-height: ${(props) =>
     props.minHeight ? props.minHeight : SCREEN_HEIGHT * 0.5}px;
 `;
@@ -32,16 +30,15 @@ const Line = styled.View`
   width: 100%;
 `;
 
-const BackButton = styled(TouchableOpacity)`
+const BackButton = styled.TouchableOpacity`
   width: 40px;
   align-items: flex-start;
   justify-content: flex-end;
 `;
 
-const Forgot = styled(TouchableOpacity)``;
+const Forgot = styled.TouchableOpacity``;
 
 const SafeSpace = styled.View`
-  height: ${getBottomSpace()}px;
   width: 1px;
 `;
 
@@ -84,7 +81,6 @@ export default withTheme((props) => {
         <Space n={1} />
         <H4 center>{title}</H4>
         <Space n={3} />
-
         <Subtitle2 type="secondDarkColor">Senha</Subtitle2>
         {errorMessage === (
           <Animatable.View animation="shake">
@@ -107,7 +103,6 @@ export default withTheme((props) => {
         />
         <Space n={3} />
       </View>
-
       {login.isLogin === !login.isForgot === (
         <Forgot onPress={() => dispatch(handleForgotPassword())}>
           <Subtitle2 underline type="primaryDarkColor">
@@ -115,7 +110,6 @@ export default withTheme((props) => {
           </Subtitle2>
         </Forgot>
       )}
-
       <Space n={3} />
       <Button
         disabled={minLengthPassword > password.length || isLoading}
@@ -124,12 +118,6 @@ export default withTheme((props) => {
       >
         Continuar
       </Button>
-      {/* <Subtitle2 center type='secondDarkColor'>-ou entre com-</Subtitle2>
-
-        <Space n={2} />
-        <SocialButton backgroundColor={"#3b5998"}> Entrar com Facebook </SocialButton>
-        <Space n={1} />
-        <SocialButton backgroundColor={"#2b83fc"}> Entrar com Google </SocialButton> */}
       <SafeSpace />
     </Container>
   );

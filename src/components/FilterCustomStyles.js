@@ -53,7 +53,7 @@ export const Tags = styled.View`
   flex-wrap: wrap;
 `
 
-export const KnowInfo = styled(TouchableOpacity)`
+export const KnowInfo = styled.TouchableOpacity`
   flex-flow: row;
   width: 100%;
   justify-content: center;

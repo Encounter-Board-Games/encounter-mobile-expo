@@ -79,7 +79,7 @@ const DicesNumber = styled.Text`
   color: ${(props) => props.theme.colors.secondDarkColor};
   margin-left: ${(props) => props.theme.space.space0};
 `;
-const Icon = styled(TouchableOpacity)`
+const Icon = styled.TouchableOpacity`
     padding-right: ${(props) => props.theme.space.space1}
     align-items:center;
     justify-content: center;
@@ -91,7 +91,7 @@ const Price = styled.Text`
   font-family: Nunito-Bold;
 `;
 
-const VideoPlayer = styled(TouchableOpacity)`
+const VideoPlayer = styled.TouchableOpacity`
   flex-flow: row;
   margin-top: ${(props) => props.theme.space.space2};
   align-items: center;
@@ -112,15 +112,9 @@ const Description = styled.View`
 `;
 
 const CarrosselContainer = styled.View`
-  height: ${(props) =>
-    Math.floor(
-      Dimensions.get("window").height * props.theme.elements.productDetailsImage
-    )}px;
-  ${(props) =>
-    props.isPlaceholder ?
-    `
+ 
     align-items: center;
-    justify-content: center;` : ''}
+   
 `;
 
 const Header = styled.View`
@@ -154,7 +148,7 @@ const ProductDetails = (props) => {
   const h2Size = +props.theme.sizes.h2.replace("px", "");
 
   if (!product) return <H2>Carregando...</H2>;
-  if (!product.isLoad && false)
+  if (!product.isLoad && false);
     return (
       <ScreePopup noScroll>
         <Container>

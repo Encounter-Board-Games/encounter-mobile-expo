@@ -34,7 +34,7 @@ function getConfigs(theme, type) {
       background: theme.colors.darkColor,
       borderColor: theme.colors.darkColor,
       width: "100%",
-      height: theme.sizes.btnBig,
+
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.h2,
     };
@@ -45,7 +45,7 @@ function getConfigs(theme, type) {
       background: theme.colors.warming,
       borderColor: theme.colors.warming,
       width: "100%",
-      height: theme.sizes.btnBig,
+
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.h2,
     };
@@ -56,7 +56,7 @@ function getConfigs(theme, type) {
       background: theme.colors.darkColor,
       borderColor: theme.colors.darkColor,
       width: "auto",
-      height: theme.sizes.btnSmall,
+
       paddingSides: theme.space.space1,
       fontSize: theme.sizes.subtitle2,
     };
@@ -67,7 +67,7 @@ function getConfigs(theme, type) {
       background: theme.colors.warming,
       borderColor: theme.colors.warming,
       width: "auto",
-      height: theme.sizes.btnSmall,
+
       paddingSides: theme.space.space1,
       fontSize: theme.sizes.subtitle2,
     };
@@ -78,7 +78,7 @@ function getConfigs(theme, type) {
       background: theme.colors.primaryDarkColor,
       borderColor: theme.colors.primaryDarkColor,
       width: "100%",
-      height: theme.sizes.btnSmall,
+
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.subtitle1,
     };
@@ -89,7 +89,7 @@ function getConfigs(theme, type) {
       background: theme.colors.primaryDarkColor,
       borderColor: theme.colors.primaryDarkColor,
       width: "100%",
-      height: theme.sizes.btn,
+
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.subtitle1,
     };
@@ -100,7 +100,7 @@ function getConfigs(theme, type) {
       background: theme.colors.primaryDarkColor,
       borderColor: theme.colors.primaryDarkColor,
       width: "100%",
-      height: theme.sizes.btnBig,
+
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.h2,
     };
@@ -113,7 +113,7 @@ function getConfigs(theme, type) {
       background: theme.colors.lightColor,
       borderColor: theme.colors.secondColor,
       width: "auto",
-      height: theme.sizes.btnBig,
+
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.subtitle1,
     };
@@ -125,7 +125,7 @@ function getConfigs(theme, type) {
       background: theme.colors.secondColor,
       borderColor: theme.colors.secondColor,
       width: "100%",
-      height: theme.sizes.btn,
+
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.subtitle1,
     };
@@ -136,7 +136,7 @@ function getConfigs(theme, type) {
       textColor: theme.colors.lightColor,
       background: theme.colors.complementColor,
       borderColor: theme.colors.complementColor,
-      height: theme.space.space4,
+
       paddingSides: theme.space.space1,
       fontSize: theme.sizes.subtitle2,
     };
@@ -148,9 +148,9 @@ function getConfigs(theme, type) {
       background: theme.colors.primaryDarkColor,
       borderColor: theme.colors.primaryDarkColor,
 
-      height: theme.space.space4,
+
       paddingSides: theme.space.space1,
-      height: theme.sizes.btn,
+
       fontSize: theme.sizes.subtitle1,
     };
 
@@ -160,9 +160,9 @@ function getConfigs(theme, type) {
       textColor: theme.colors.lightColor,
       background: theme.colors.complementColor,
       borderColor: theme.colors.complementColor,
-      height: theme.space.space4,
+
       paddingSides: theme.space.space1,
-      height: theme.sizes.btn,
+
       fontSize: theme.sizes.subtitle1,
     };
 
@@ -173,7 +173,7 @@ function getConfigs(theme, type) {
       background: theme.colors.complementColor,
       borderColor: theme.colors.complementColor,
       width: "auto",
-      height: theme.sizes.btnBig,
+  
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.subtitle1,
     };
@@ -185,7 +185,7 @@ function getConfigs(theme, type) {
       background: theme.colors.warming,
       borderColor: theme.colors.warming,
       width: "auto",
-      height: theme.sizes.btnBig,
+  
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.subtitle1,
     };
@@ -197,7 +197,7 @@ function getConfigs(theme, type) {
       background: theme.colors.complementColor,
       borderColor: theme.colors.complementColor,
       width: "auto",
-      height: theme.sizes.btnBig,
+  
       paddingSides: theme.space.space3,
       fontSize: theme.sizes.subtitle1,
     };

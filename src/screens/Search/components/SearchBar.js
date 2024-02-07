@@ -6,8 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from '../../../components/SearchBar';
 import { handleChangeFilteringText } from '../../../store/actions/filters';
 
-const SearchButton = styled(TouchableOpacity)`
-   
+const SearchButton = styled.TouchableOpacity`
     min-width: 25%;
     border-left-width: .5px;
     margin-top: 8px;
@@ -16,14 +15,13 @@ const SearchButton = styled(TouchableOpacity)`
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    
     border-color: ${props => props.theme.colors.primaryDarkColor};
-`
+`;
 
 const SearchButtonText = styled.Text`
     font-size: ${props => props.theme.sizes.subtitle2};
     color: ${props => props.theme.colors.primaryDarkColor};
-`
+`;
 
 const SearchFiltersNumber = styled.View`
     background: ${props => props.theme.colors.primaryDarkColor};
@@ -31,11 +29,12 @@ const SearchFiltersNumber = styled.View`
     padding-right: ${props => props.theme.space.space1};
     border-radius: ${props => props.theme.borderRadius.tag};
     margin-right: 2px;
-`
+`;
+
 const SearchFiltersNumberText = styled.Text`
     font-size: ${props => props.theme.sizes.subtitle2};
     color: ${props => props.theme.colors.lightColor};
-`
+`;
 
 
 export default () => {

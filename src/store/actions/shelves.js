@@ -8,28 +8,28 @@ export const SET_CURRENT_BANNER = 'SET_CURRENT_BANNER'
 
 export function setShelves(shelves) {
     return {
-        type: SET_SHELVES,
+        type: 'SET_SHELVES',
         shelves
     }
 }
 
 export function setBanners(banners) {
     return {
-        type: SET_BANNERS,
+        type: 'SET_BANNERS',
         banners
     }
 }
 
 export function setIsLoading(loading) {
     return {
-        type: SET_LOADING,
+        type: 'SET_LOADING',
         loading
     }
 }
 
 export function setCurrentBanner(current) {
     return {
-        type: SET_CURRENT_BANNER,
+        type: 'SET_CURRENT_BANNER',
         current
     }
 }

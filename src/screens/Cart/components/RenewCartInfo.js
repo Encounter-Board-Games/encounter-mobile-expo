@@ -16,7 +16,7 @@ const Container = styled.View`
   height: 100%;
 `;
 
-const Header = styled(TouchableOpacity)`
+const Header = styled.TouchableOpacity`
   padding: ${(props) => props.theme.space.space2};
   background-color: ${(props) => props.theme.colors.lightColor};
   position: relative;
@@ -62,7 +62,7 @@ export default withTheme(({ theme }) => {
         </Header>
       )}
       ref={modalRef}
-      adjustToContentHeight={true}
+      //adjustToContentHeight={true}
     >
       <SafeAreaView>
         Pedro

@@ -4,7 +4,7 @@ export const SET_CUPONS = "SET_COPONS";
 
 function setCupons(cupons) {
   return {
-    type: SET_CUPONS,
+    type: 'SET_CUPONS',
     cupons,
   };
 }

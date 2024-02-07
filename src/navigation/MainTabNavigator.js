@@ -23,7 +23,7 @@ import AddAddress from "../screens/Address/component/AddAddress";
 import SelfUpload from "../screens/User/SelfUpload";
 import CartInfo from "../screens/Cart/components/CartInfo";
 import UserScreen from "../screens/User/User";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import CompleteInfos from "../screens/User/CompleteInfos";
 import Tutorial from "../screens/Search/Tutorial";
 import AboutScreen from "../screens/Settings/About";
@@ -33,7 +33,6 @@ import Onboarding from "../screens/Onboarding/Onboarding";
 import { registerRedirectComponent } from "../store/actions/shared";
 import { translation } from "../texts";
 import QuickSearchs from "../screens/QuickSearchs/QuickSearchs";
-import RenewCartInfo from "../screens/Cart/components/RenewCartInfo";
 
 const SafeAreaView = styled.SafeAreaView`
   flex: 1;
@@ -74,7 +73,6 @@ function HomeStackScreen() {
     <SafeAreaView>
       <RedirectComponent />
       <CartInfo />
-
       {user.needCompleteInfos && <CompleteInfos />}
       {tutorial && <Tutorial />}
       {quickSearch && (
@@ -84,7 +82,6 @@ function HomeStackScreen() {
             top: 0,
             left: 0,
             width: Dimensions.get("window").width,
-            height: Dimensions.get("window").height,
             zIndex: 100,
           }}
         >
@@ -98,14 +95,12 @@ function HomeStackScreen() {
             top: 0,
             left: 0,
             width: Dimensions.get("window").width,
-            height: Dimensions.get("window").height,
             zIndex: 100,
           }}
         >
           {discoveryIsOpened ? <Discovery /> : <Onboarding />}
         </View>
       )}
-
       <HomeStack.Navigator
         initialRouteName="Início"
         tabBar={(props) => <TabNav {...props} />}
@@ -123,7 +118,6 @@ function HomeStackScreen() {
 }
 
 const Tab = createBottomTabNavigator();
-
 const SettingsStack = createStackNavigator();
 const T = createStackNavigator();
 
@@ -131,14 +125,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <SettingsStack.Navigator
-        screenOptions={
-          {
-            //animationTypeForReplace:"push",
-            //animationEnabled: false
-          }
-        }
+        screenOptions={{headerShown: false}}
         initialRouteName="Home"
-        headerMode={"none"}
       >
         <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="ProductDetails" component={ProductDetails} />

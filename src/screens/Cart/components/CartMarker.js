@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity } from 'react-native';
-import styled from "styled-components/native";
+import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { currencyFormat } from "../../../utils/helpers";
 import { translation } from "../../../texts";
@@ -31,13 +31,13 @@ const PriceItem = styled.Text`
   color: ${(props) => props.theme.colors.lightColor};
 `;
 
-const Button = styled(TouchableOpacity)`
+const Button = styled.TouchableOpacity`
   background: ${(props) => props.theme.colors.lightColor};
   padding-left: ${(props) => props.theme.space.space3};
   padding-right: ${(props) => props.theme.space.space3};
   margin-top: ${(props) => props.theme.space.space1};
   margin-bottom: ${(props) => props.theme.space.space1};
-  height: ${(props) => props.theme.space.space5};
+
   justify-content: center;
   align-items: center;
   border-radius: ${(props) => props.theme.borderRadius.button};

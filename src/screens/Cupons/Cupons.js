@@ -39,9 +39,9 @@ const Cupons = () => {
         navigation.navigate('Busca')
     }
 
-    return hasCupons ? <View  flex={1}>
-        {
-            cupons.map((cupon, index) => (
+    return (hasCupons ?
+         <View  flex={1}>
+            {cupons.map((cupon, index) => (
                 <Box key={index}>
                     <Cupon>
                         <H3>{cupon.title}</H3>
@@ -56,25 +56,28 @@ const Cupons = () => {
                     </Cupon>
                 </Box>
             ))
-        }
+            }
+
 
     </View> : <InformationBox
             title='Você não possui cupons ativos.'
             description='Assim que receber, poderá ver tudo por aqui!' />
+    );
 }
 
 export default () => {
 
     const hasCupons = true;
-    const { isLogged = false } = useSelector(state => state.user)
+    const { isLogged = false } = useSelector(state => state.user);
 
 
     const isNotLoggedContent = () => <NotLoggedBox title='Você não possui cupons ativos.' />
 
-    return (<ScreePopup title={"Cupons"} withBorder >
-        <Container>
-            {isLogged ? <Cupons /> : isNotLoggedContent()}
-        </Container>
-    </ScreePopup>
-    )
+    return (
+        <ScreePopup title={"Cupons"} withBorder >
+            <Container>
+                {isLogged ? <Cupons /> : isNotLoggedContent()}
+            </Container>
+        </ScreePopup>
+    );
 }

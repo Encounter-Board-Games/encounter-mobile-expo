@@ -8,33 +8,35 @@ import { getBottomSpace } from "react-native-iphone-x-helper";
 import Constants from "expo-constants";
 import { Button } from "../../components/Button";
 import { useDispatch } from "react-redux";
-import { Camera } from "expo-camera";
+import * as Camera from "expo-camera";
 import CameraScreen from "./components/CameraScreen";
 import { useNavigation } from "@react-navigation/native";
 import { handleUploadSelfDocument } from "../../store/actions/user";
 
 const MainContainer = styled.View`
-flex: 1;
-width: 100%;
-height: 100%
-padding-left: ${(props) => props.theme.space.space3}
-padding-right: ${(props) => props.theme.space.space3}
-padding-top: ${(props) =>
-  Platform.OS == "ios"
-    ? Constants.statusBarHeight + "px"
-    : props.theme.space.space2};
-padding-bottom: ${getBottomSpace() + 24 + "px"};
-background: ${(props) => props.theme.colors.lightColor}
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding-left: ${(props) => props.theme.space.space3};
+  padding-right: ${(props) => props.theme.space.space3};
+  padding-top: ${(props) =>
+    Platform.OS == "ios"
+      ? Constants.statusBarHeight + "px"
+      : props.theme.space.space2};
+  padding-bottom: ${getBottomSpace() + 24 + "px"};
+  background: ${(props) => props.theme.colors.lightColor};
 `;
+
 const Line = styled.View`
   width: 100%;
   flex-flow: row;
   align-items: center;
 `;
+
 const Icon = styled.View`
     min-height: 20px;
-    width: ${(props) => props.theme.space.space2}
-    margin-right: ${(props) => props.theme.space.space1}
+    width: ${(props) => props.theme.space.space2};
+    margin-right: ${(props) => props.theme.space.space1};
 `;
 
 const ImageContent = styled.View`
@@ -48,9 +50,11 @@ const ImageContent = styled.View`
 const Content = styled.View`
   flex: 1;
 `;
+
 const Footer = styled.View`
   padding-bottom: ${(props) => props.theme.space.space2};
 `;
+
 const ButtonsRow = styled.View`
   flex-flow: row;
   justify-content: flex-end;
@@ -204,7 +208,7 @@ export default () => {
   const [loading, setLoading] = useState();
 
   const openCamera = async () => {
-    const { status } = await Camera.requestPermissionsAsync();
+    const { status } = await Camera.useCameraPermissions();
 
     if (status === "granted") setOpenCamera(true);
   };
@@ -228,10 +232,7 @@ export default () => {
   return (
     <Animatable.View
       animation="fadeIn"
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
+      style={{ width: "100%", height: "100%" }}
     >
       {!camera ? (
         <ScreenOne loading={loading} onCameraPress={() => openCamera()} />

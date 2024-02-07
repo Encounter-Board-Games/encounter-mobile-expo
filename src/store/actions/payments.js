@@ -4,6 +4,7 @@ import { handleShowNotification } from "./notification";
 import { handleSelectPaymentMethod } from "./cart";
 import { openPopupModal } from "./info";
 
+// PAYMENT METHODS
 export const SET_PAYMENT_LOADING = "SET_PAYMENT_LOADING"
 export const SET_PAYMENT_METHODS = "SET_USER_PAYMENT_METHODS"
 export const SET_CURRENT_PAYMENT_METHODS = "SET_CURRENT_PAYMENT_METHODS"

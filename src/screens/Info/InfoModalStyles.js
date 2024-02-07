@@ -1,6 +1,4 @@
-import { TouchableOpacity } from 'react-native';
-import { getBottomSpace } from "react-native-iphone-x-helper";
-import styled from "styled-components/native";
+import styled from "styled-components";
 
 
 export const Container = styled.View`
@@ -11,7 +9,7 @@ export const Container = styled.View`
   flex-wrap: wrap;
 `;
 
-export const Header = styled(TouchableOpacity)`
+export const Header = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.colors.lightColor};
   position: relative;
   justify-content: center;
@@ -37,7 +35,7 @@ export const Content = styled.View`
 `;
 
 export const SafeSpace = styled.View`
-  height: ${getBottomSpace()}px;
+
   width: 1px;
 `;
 

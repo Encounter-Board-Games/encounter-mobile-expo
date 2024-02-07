@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 
 
-const AddressBox = styled(TouchableOpacity)`
+const AddressBox = styled.TouchableOpacity`
     
     margin-left: ${props => props.theme.space.space2};
     margin-right: ${props => props.theme.space.space2};

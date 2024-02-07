@@ -1,8 +1,6 @@
-import { SET_QUICK_SEARCHS, REMOVE_QUICK_SEARCHS } from "../actions/quickSearch";
-
 export default function quickSearch(state = {}, action){
     switch(action.type){
-        case REMOVE_QUICK_SEARCHS:
+        case 'REMOVE_QUICK_SEARCHS':
             return {
                 ...(
                     Object.keys(state)
@@ -17,7 +15,7 @@ export default function quickSearch(state = {}, action){
                 )
                 
             }
-        case SET_QUICK_SEARCHS:
+        case 'SET_QUICK_SEARCHS':
             return {
                 ...state,
                 ...(

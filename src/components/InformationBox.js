@@ -17,7 +17,9 @@ export default withTheme((props) => {
   const imgContent = props.img ? (
     <>
       <ImageContent>
-        <Image resizeMode={"contain"} style={{ height: '100%' }} source={props.img} />
+        <Image resizeMode={"contain"} 
+        style={{ height: '100%' }} 
+        source={props.img} />
       </ImageContent>
       <Space n={2} />
     </>

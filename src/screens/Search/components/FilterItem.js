@@ -12,28 +12,30 @@ import Icons from '../../../components/Icons';
 const Tags = styled.View`
     flex-flow: row;
     flex-wrap: wrap;
-`
+`;
 
 const Space = styled.View`
     height: 8px;
     width: 1px;
-`
+`;
+
 const Hr = styled.View`
     height: 16px;
     border-color:${prop => prop.theme.colors.secondLightColor};
     border-bottom-width: 1px;
-`
+`;
+
 const Header = styled.View`
     position: relative;
     flex-flow: row;
-`
+`;
 
-const Icon = styled(TouchableOpacity)`
+const Icon = styled.TouchableOpacity`
     position: absolute;
     right: 0;
     padding-left: 16px;
     padding-right: 16px;
-`
+`;
 
 const FilterItem = (props) => {
 

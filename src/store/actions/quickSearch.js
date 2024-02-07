@@ -1,17 +1,17 @@
-import { quickSearchs, anserwQuestion } from "../../graphql";
+import { quickSearchs, answerQuestion } from "../../graphql";
 
 export const SET_QUICK_SEARCHS = "SET_QUICK_SEARCHS";
 export const REMOVE_QUICK_SEARCHS = "REMOVE_QUICK_SEARCHS";
 
 function setQuickSearchs(quickSearchs) {
   return {
-    type: SET_QUICK_SEARCHS,
+    type: 'SET_QUICK_SEARCHS',
     quickSearchs,
   };
 }
 function removeQuickSearchs(key) {
   return {
-    type: REMOVE_QUICK_SEARCHS,
+    type: 'REMOVE_QUICK_SEARCHS',
     key,
   };
 }
@@ -30,6 +30,6 @@ export function handleSetQuickSearchs() {
 export function handleAnswer(key, value) {
   return (dispatch) => {
     dispatch(removeQuickSearchs(key));
-    anserwQuestion(key, value);
+    answerQuestion(key, value);
   };
 }

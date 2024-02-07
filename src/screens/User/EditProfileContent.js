@@ -9,9 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
-  Linking,
-  TouchableOpacity
-} from "react-native";
+  Linking} from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { handleEditUserInfo } from "../../store/actions/user";
 import { RadioButton } from "../../components/RadioButton";
@@ -21,29 +19,31 @@ const Content = styled.ScrollView`
   flex: 1;
   padding: ${(props) => props.theme.space.space2};
 `;
+
 const ContainerInputs = styled.View`
   flex: 1;
 `;
+
 const Opacity = styled.View`
   opacity: 0.5;
 `;
 
 const CustomInput = styled.TextInput`
-    border: 1.5px solid ${(props) => props.theme.colors.primaryColor}
-    background: ${(props) => props.theme.colors.primaryLightColor}
-    padding-left: ${(props) => props.theme.space.space2}
-    border-radius: ${(props) => props.theme.borderRadius.button}
-    height: 48px
+    border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
+    background: ${(props) => props.theme.colors.primaryLightColor};
+    padding-left: ${(props) => props.theme.space.space2};
+    border-radius: ${(props) => props.theme.borderRadius.button};
+    height: 48px;
     width: 50%;
     justify-content: center;
 `;
 
-const InputDate = styled(TouchableOpacity)`
-    border: 1.5px solid ${(props) => props.theme.colors.primaryColor}
-    background: ${(props) => props.theme.colors.primaryLightColor}
-    padding-left: ${(props) => props.theme.space.space2}
-    border-radius: ${(props) => props.theme.borderRadius.button}
-    height: 48px
+const InputDate = styled.TouchableOpacity`
+    border: 1.5px solid ${(props) => props.theme.colors.primaryColor};
+    background: ${(props) => props.theme.colors.primaryLightColor};
+    padding-left: ${(props) => props.theme.space.space2};
+    border-radius: ${(props) => props.theme.borderRadius.button};
+    height: 48px;
     width: 50%;
     justify-content: center;
 `;
@@ -55,41 +55,39 @@ const Line = styled.View`
 
 const LineRow = styled.View`
     flex-flow: row;
-    flex-wrap: wrap
-    flex: 1
+    flex-wrap: wrap;
+    flex: 1;
 `;
 
-const CheckLine = styled(TouchableOpacity)`
+const CheckLine = styled.TouchableOpacity`
   flex-flow: row;
   height: 100%;
 `;
 
 const Check = styled.View`
-    width: ${(props) => props.theme.space.space2}
-    height: ${(props) => props.theme.space.space2}
-    margin-right: ${(props) => props.theme.space.space1}
-
-    border: 1px ${(props) => props.theme.colors.primaryDarkColor}
-    borderRadius: 2px
-    margin-top: ${(props) => props.theme.space.space0}
-
+    width: ${(props) => props.theme.space.space2};
+    
+    margin-right: ${(props) => props.theme.space.space1};
+    border: 1px ${(props) => props.theme.colors.primaryDarkColor};
+    borderRadius: 2px;
+    margin-top: ${(props) => props.theme.space.space0};
     background: ${(props) =>
-      props.selected ? props.theme.colors.primaryDarkColor : "transparent"}
+      props.selected ? props.theme.colors.primaryDarkColor : "transparent"};
 `;
 
 const CustomInputText = styled.Text`
-
     font-size: ${(props) => props.theme.sizes.h3};
-    opacity: ${(props) => (props.disabled ? ".5" : "1")}
+    opacity: ${(props) => (props.disabled ? ".5" : "1")};
     color: ${(props) =>
       props.hasValue
         ? props.theme.colors.darkColor
-        : props.theme.colors.secondColor}
+        : props.theme.colors.secondColor};
 `;
 
-const TermsAndConditions = styled(TouchableOpacity)`
+const TermsAndConditions = styled.TouchableOpacity`
   flex-flow: row;
 `;
+
 const LineButtons = styled.View`
   flex-flow: row;
   flex-wrap: wrap;

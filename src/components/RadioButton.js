@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import Circle from './Circle';
 
-export const Radio = styled(TouchableOpacity)`
+export const Radio = styled.TouchableOpacity`
     flex-flow: row;
     margin-top: ${props => props.theme.space.space1};
     padding: 0px 12px;

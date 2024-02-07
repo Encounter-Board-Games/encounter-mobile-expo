@@ -1,5 +1,5 @@
 import translations from "./translations";
-import config from "../config";
+import config from "../../config";
 export const translation = (textPath, props) => {
   const pathSplited = textPath.split(".");
 
@@ -10,6 +10,8 @@ export const translation = (textPath, props) => {
     element = element[currentPath];
     if (!element) break;
   }
+
+  // arraty ["time", "countItems"]
 
   if (element && !!element.replace) {
     Object.keys(props || {}).forEach(

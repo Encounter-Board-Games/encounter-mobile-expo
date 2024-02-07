@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { Modalize } from "react-native-modalize";
 import { connect } from "react-redux";
 import { Entypo } from "@expo/vector-icons";
-import { withTheme } from "styled-components/native";
+import { withTheme } from "styled-components";
 import { Space } from "../../components/Space";
 import { H3, Subtitle2 } from "../../components/Typography";
 import { closeInfoModal } from "../../store/actions/info";

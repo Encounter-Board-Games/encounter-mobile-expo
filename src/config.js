@@ -1,5 +1,5 @@
 export default {
-  API_URI: "https://encounter-backend.fly.dev/graphql",
+  API_URI: "https://encounter-api-prd.herokuapp.com",
 
   translation: "encounter",
   facebookAppId: "707085366783241",
@@ -34,7 +34,7 @@ export default {
 
   theme: {
     colors: {
-      primaryColor: "#c8e8e0",
+      primaryColor:  '#c8e8e0',
       primaryDarkColor: "#0e9577",
       primaryLightColor: "#ebf7f4",
 
@@ -45,7 +45,7 @@ export default {
       complementColor: "#0d3c54",
 
       lightColor: "#FAFAFA",
-      darkColor: "#414042",
+      darkColor:  '#414042',
 
       success: "#6FE382",
       warming: "#fda856",

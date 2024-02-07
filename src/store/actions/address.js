@@ -23,70 +23,70 @@ import { openPopupModal } from "./info";
 
 function setLocationSearchsLoading() {
   return {
-    type: SET_LOCATIONS_SEARCHS_LOADING,
+    type: 'SET_LOCATIONS_SEARCHS_LOADING',
   };
 }
 
 function setAddAddress(address) {
   return {
-    type: ADD_ADDRESS,
+    type: 'ADD_ADDRESS',
     address,
   };
 }
 
 function setEditAddress(address) {
   return {
-    type: EDIT_ADDRESS,
+    type: 'EDIT_ADDRESS',
     address,
   };
 }
 
 export function setChoseAddressMode(show) {
   return {
-    type: SET_CHOSE_ADDRESS_MODE,
+    type: 'SET_CHOSE_ADDRESS_MODE',
     choseAddressMode: show,
   };
 }
 
 function setCurrentLocation(currentLocation) {
   return {
-    type: SET_CURRENT_LOCATION,
+    type: 'SET_CURRENT_LOCATION',
     currentLocation,
   };
 }
 
 function setCurrentLocationNotFound() {
   return {
-    type: SET_CURRENT_LOCATION_NOT_FOUND,
+    type: 'SET_CURRENT_LOCATION_NOT_FOUND',
   };
 }
 
 function setLocationSearchs(locations) {
   return {
-    type: SET_LOCATIONS_SEARCHS,
+    type: 'SET_LOCATIONS_SEARCHS',
     locations,
   };
 }
 function setLocationSearchsNotFound() {
   return {
-    type: SET_LOCATIONS_SEARCHS_NOT_FOUND,
+    type: 'SET_LOCATIONS_SEARCHS_NOT_FOUND',
   };
 }
 function setSearchLocationTerm(searchLocationsTerm) {
   return {
-    type: SET_SEARCHS_LOCATIONS_TERM,
+    type: 'SET_SEARCHS_LOCATIONS_TERM',
     searchLocationsTerm,
   };
 }
 export function setAdresses(adresses) {
   return {
-    type: SET_ADRESSES,
+    type: 'SET_ADRESSES',
     adresses,
   };
 }
 function setRemoveAddress(key) {
   return {
-    type: REMOVE_ADDRESS,
+    type: 'REMOVE_ADDRESS',
     key,
   };
 }
@@ -203,7 +203,10 @@ export function handleRemoveAddress() {
     try {
       dispatch(setRemoveAddress(key));
       const result = await removeAddress(key);
+      // await dispatch(handleaddressData())
+
       if (!result.success) throw Error();
+
       dispatch(handleShowNotification("Removido com sucesso"));
     } catch (error) {
       console.log(error);

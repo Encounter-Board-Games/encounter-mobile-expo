@@ -7,10 +7,9 @@ import CodeSentScreen from './CodeSentScreen'
 
 
 const Container = styled.View`
-
     padding: ${props => props.theme.space.space3};
     width: 100%;
-`
+`;
 
 export default () => {
     const [minHeight, setHeight] = useState(undefined)

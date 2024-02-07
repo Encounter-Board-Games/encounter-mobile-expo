@@ -50,7 +50,6 @@ justify-content: center;
 `
 
 const PaddingTop = styled.View`
-height:  ${props => Platform.OS == "ios" ? Constants.statusBarHeight + 'px' :props.theme.space.space2 };
 width: 100%;
 `
 const Content = styled.View`
@@ -96,7 +95,10 @@ export default ({ onNext, title, texts, footerText, cancelBtn, showListStyle, ok
             
             <Space n={4} />
             <ImageContent>
-            <Image resizeMode={"contain"} style={{ height: '100%', width: '75%' }} source={{ uri: (API_URI + "/" + img) }} />
+            <Image resizeMode={"contain"} 
+                style={{ height: '100%', width: '75%' }} 
+                source={{ uri: (API_URI + "/" + img) }}
+            />
             </ImageContent>
 
         </Content>

@@ -12,7 +12,7 @@ const Tab = styled.View`
   flex-flow: row;
 `;
 
-const TabItem = styled(TouchableOpacity)`
+const TabItem = styled.TouchableOpacity`
   flex: 1;
   border-color: ${(props) =>
     props.isActive

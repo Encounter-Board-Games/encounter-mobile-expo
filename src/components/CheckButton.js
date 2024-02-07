@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 
-export const Radio = styled(TouchableOpacity)`
+export const Radio = styled.TouchableOpacity`
     margin-top: ${props => props.theme.space.space1};
     margin-right: ${props => props.theme.space.space1};
     padding: 6px 12px;
@@ -14,7 +14,7 @@ export const Radio = styled(TouchableOpacity)`
     background-color:   ${props => props.isSelected ? props.theme.colors.primaryLightColor : 'transparent'};
 `;
 
-const CloseButton = styled(TouchableOpacity)`
+const CloseButton = styled.TouchableOpacity`
     background-color: ${props => props.theme.colors.secondLightColor};
     height: 16px;
     width: 16px;

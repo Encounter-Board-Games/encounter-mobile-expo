@@ -16,13 +16,13 @@ import {
 
 const Hr = styled.View`
   background: ${(props) => props.theme.colors.secondLightColor};
-  height: 1.5px; ;
+  height: 1.5px;
 `;
 const Line = styled.View`
   flex-flow: row;
   align-items: center;
 `;
-const AddressItem = styled(TouchableOpacity)`
+const AddressItem = styled.TouchableOpacity`
   flex-flow: row;
   width: 100%;
   margin-top: ${(props) => props.theme.space.space3};
@@ -40,7 +40,7 @@ const ImageContent = styled.View`
   width: 32px;
 `;
 
-const Arrow = styled(TouchableOpacity)`
+const Arrow = styled.TouchableOpacity`
   height: 100%;
   width: 32px;
 `;

@@ -31,7 +31,7 @@ const Header = styled.View`
     position: relative;
 `
 
-const ToolText = styled(TouchableOpacity)`
+const ToolText = styled.TouchableOpacity`
     position: absolute;
     right: ${props => props.theme.space.space2};
     top:0;
@@ -49,7 +49,7 @@ export default withTheme((props) => {
         <Header>
           {props.isLoading ? (
             <Placeholder style={{ flex: 1 }} Animation={Fade}>
-              <PlaceholderLine noMargin height={24} />
+              <PlaceholderLine noMargin  />
             </Placeholder>
           ) : (
             <H2>{props.title}</H2>

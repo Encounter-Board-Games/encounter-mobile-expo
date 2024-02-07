@@ -11,21 +11,21 @@ import { Ionicons } from '@expo/vector-icons';
 import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 const Container = styled.View`
-    padding: ${props => props.theme.space.space2}
-    padding-top: ${props => props.theme.space.space3}
-    padding-bottom: 0
-    flex: 1
-    height: 100%
-`
+    padding: ${props => props.theme.space.space2};
+    padding-top: ${props => props.theme.space.space3};
+    padding-bottom: 0;
+    flex: 1;
+    height: 100%;
+`;
 const ButtonContent = styled.View`
-    width: 100%
-    padding: ${props => props.theme.space.space2}
-`
+    width: 100%;
+    padding: ${props => props.theme.space.space2};
+`;
 
 const Line = styled.View` 
-    flex-flow: row
-    align-items:center
-`
+    flex-flow: row;
+    align-items:center;
+`;
 
 export default withTheme((props) => {
 

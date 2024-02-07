@@ -17,11 +17,12 @@ export const quickSearchsQuery = gql`query{
     }
   }
 }
-`
-export const anserwQuestionMutation = gql`mutation($answer: String, $key: String!){
-  anserwQuestion(
+`;
+
+export const answerQuestionMutation = gql`mutation($answer: String, $key: String!){
+  answerQuestion(
     answer: $answer,
     key: $key
   )
 }
-`
+`;

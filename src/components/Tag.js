@@ -14,7 +14,7 @@ export const Radio = styled.View`
   background-color: ${props => props.theme.colors.primaryLightColor};
 `;
 
-const CloseButtonArea = styled(TouchableOpacity)`
+const CloseButtonArea = styled.TouchableOpacity`
   height: 100%;
   justify-content: center;
   align-items: center;

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { TouchableOpacity } from 'react-native';
 import { Space, SpaceHorizontal } from "../../../components/Space";
 import { H4, Subtitle2, H3 } from "../../../components/Typography";
-import styled, { withTheme } from "styled-components/native";
+import styled, { withTheme } from "styled-components";
 import { EvilIcons } from "@expo/vector-icons";
 import HideInfo from "../../../components/HideInfo";
 import { useSelector, useDispatch } from "react-redux";
@@ -20,7 +20,7 @@ const Title = styled.View`
   padding-right: 8px;
 `;
 
-const SelectPayment = styled(TouchableOpacity)`
+const SelectPayment = styled.TouchableOpacity`
   flex-flow: row;
 `;
 export default withTheme((props) => {

@@ -20,23 +20,26 @@ padding-top: ${(props) =>
     ? Constants.statusBarHeight + "px"
     : props.theme.space.space2};
 `;
+
 const TextLine = styled.View`
   width: 100%;
   flex-flow: row;
   margin-bottom: ${(props) => props.theme.space.space2};
 `;
+
 const TextItemList = styled.View`
   width: 20px;
-
   align-items: flex-start;
   justify-content: center;
 `;
+
 const TextItemListIcon = styled.View`
   width: 12px;
   height: 12px;
   border-radius: 12px;
   backgroundcolor: ${(props) => props.theme.colors.primaryDarkColor};
 `;
+
 const TextContent = styled.Text`
   flex: 1;
   flex-flow-: row;
@@ -51,16 +54,15 @@ const ImageContent = styled.View`
 `;
 
 const PaddingTop = styled.View`
-  height: ${(props) =>
-    Platform.OS == "ios"
-      ? Constants.statusBarHeight + "px"
-      : props.theme.space.space2};
   width: 100%;
 `;
+
 const Content = styled.View`
   flex: 1;
 `;
+
 const Footer = styled.View``;
+
 const ButtonsRow = styled.View`
   flex-flow: row;
   justify-content: flex-end;
@@ -87,7 +89,6 @@ export default () => {
         {texts.map((text, i) => (
           <TextLine key={i}>
             <TextContent>
-              
               {text
                 .split("*")
                 .map((text, index) =>
@@ -96,12 +97,10 @@ export default () => {
                   ) : (
                     <H3 key={index}>{text}</H3>
                   )
-                )}
-                
+                )}   
             </TextContent>
           </TextLine>
         ))}
-
         <Space n={4} />
         <ImageContent>
           <Image
@@ -113,13 +112,11 @@ export default () => {
       </Content>
       <Footer>
         <Space n={4} />
-
         <ButtonsRow>
           <Button width={"100%"} type="CallToAction-Light" onPress={onNext}>
             {btnText}
           </Button>
         </ButtonsRow>
-
         {btnCancel && (
           <React.Fragment>
             <Space n={2} />
